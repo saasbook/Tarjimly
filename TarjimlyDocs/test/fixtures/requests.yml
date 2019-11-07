@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_tarjimly_id: 1
+  from_language: MyString
+  to_language: MyString
+  document: MyString
+  document_format: MyString
+  deadline: 2019-11-07 02:36:26
+  title: MyString
+  description: MyString
+  categories: MyString
+  num_claims: 1
+  form_type: MyString
+  _status: 1
+
+two:
+  user_tarjimly_id: 1
+  from_language: MyString
+  to_language: MyString
+  document: MyString
+  document_format: MyString
+  deadline: 2019-11-07 02:36:26
+  title: MyString
+  description: MyString
+  categories: MyString
+  num_claims: 1
+  form_type: MyString
+  _status: 1
