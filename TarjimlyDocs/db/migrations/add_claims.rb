@@ -1,6 +1,6 @@
 class CreateClaim < ActiveRecord::Migration
     def create_claim 
-        create_table :calims do |t|
+        create_table :claims do |t|
             t.int :translator_tarjimly_id
             t.references 'requests'
             t.int :_status 

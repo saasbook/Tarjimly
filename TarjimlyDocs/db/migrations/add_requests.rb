@@ -11,6 +11,8 @@ class CreateRequests < ActiveRecord::Migration
             t.string :description
             t.string :categories, array: true, default: []
             t.int :num_claims 
+            t.string :form_name 
+            t.int :_status
             t.timestamps
         end 
     end
