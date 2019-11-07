@@ -10,6 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2019_11_07_103626) do
+
+  create_table "claims", force: :cascade do |t|
+    t.integer "translator_tarjimly_id"
+    t.integer "_status"
+    t.datetime "submitted_date"
+    t.string "translation"
+    t.string "translation_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer "user_tarjimly_id"
+    t.string "from_language"
+    t.string "to_language"
+    t.string "document"
+    t.string "document_format"
+    t.datetime "deadline"
+    t.string "title"
+    t.string "description"
+    t.string "categories"
+    t.integer "num_claims"
+    t.string "form_type"
+    t.integer "_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end
