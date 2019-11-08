@@ -1,6 +1,7 @@
 require 'rails_helper'
 
-describe ClaimController do 
-    it {should belong_to (:request)}
-    
+describe Claim do 
+    it 'should belong to a Request' do
+        expect(Claim.reflect_on_association(:request).macro).to be (:belongs_to)
+    end
 end
