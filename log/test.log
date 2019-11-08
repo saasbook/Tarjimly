@@ -25,3 +25,64 @@
   [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (5.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "claims"[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE TABLE "claims" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "translator_tarjimly_id" integer, "_status" integer, "submitted_date" datetime, "translation" varchar, "translation_type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "requests"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_tarjimly_id" integer, "from_language" varchar, "to_language" varchar, "document" varchar, "document_format" varchar, "deadline" datetime, "title" varchar, "description" varchar, "categories" varchar, "num_claims" integer, "form_type" varchar, "_status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "claim_id" integer)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX "index_requests_on_claim_id" ON "requests" ("claim_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arequests" ("id" integer NOT NULL PRIMARY KEY, "user_tarjimly_id" integer DEFAULT NULL, "from_language" varchar DEFAULT NULL, "to_language" varchar DEFAULT NULL, "document" varchar DEFAULT NULL, "document_format" varchar DEFAULT NULL, "deadline" datetime DEFAULT NULL, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "categories" varchar DEFAULT NULL, "num_claims" integer DEFAULT NULL, "form_type" varchar DEFAULT NULL, "_status" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "claim_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_arequests_on_claim_id" ON "arequests" ("claim_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arequests" ("id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id")
+                     SELECT "id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id" FROM "requests"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE "requests"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer NOT NULL PRIMARY KEY, "user_tarjimly_id" integer DEFAULT NULL, "from_language" varchar DEFAULT NULL, "to_language" varchar DEFAULT NULL, "document" varchar DEFAULT NULL, "document_format" varchar DEFAULT NULL, "deadline" datetime DEFAULT NULL, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "categories" varchar DEFAULT NULL, "num_claims" integer DEFAULT NULL, "form_type" varchar DEFAULT NULL, "_status" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "claim_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_403bf5ae81"
+FOREIGN KEY ("claim_id")
+  REFERENCES "claims" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_requests_on_claim_id" ON "requests" ("claim_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id")
+                     SELECT "id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id" FROM "arequests"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arequests"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191108103829)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191107102418),
+(20191107103626);
+
+[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2019-11-08 10:51:43.177656"], ["updated_at", "2019-11-08 10:51:43.177656"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "schema_sha1"], ["value", "66e6e339b6edb1f68f16a3dadac2c8c2f5ac3a98"], ["created_at", "2019-11-08 10:51:43.180963"], ["updated_at", "2019-11-08 10:51:43.180963"]]
+  [1m[35m (0.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

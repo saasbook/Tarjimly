@@ -365,3 +365,121 @@ Change:
 To:
   >> Coffee::Rails::TemplateHandler.call(template, source)
  (called from <main> at /Users/cassidyhardin/Desktop/CS/Tarjimly/config/environment.rb:5)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddClaimRefToRequests (20191108103829)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "requests" ADD "claim_id" integer NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddClaimRefToRequests (20191108103829)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "requests" ADD "claim_id" integer[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE  INDEX "index_requests_on_claim_id" ON "requests" ("claim_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TEMPORARY TABLE "arequests" ("id" integer NOT NULL PRIMARY KEY, "user_tarjimly_id" integer DEFAULT NULL, "from_language" varchar DEFAULT NULL, "to_language" varchar DEFAULT NULL, "document" varchar DEFAULT NULL, "document_format" varchar DEFAULT NULL, "deadline" datetime DEFAULT NULL, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "categories" varchar DEFAULT NULL, "num_claims" integer DEFAULT NULL, "form_type" varchar DEFAULT NULL, "_status" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "claim_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_arequests_on_claim_id" ON "arequests" ("claim_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "arequests" ("id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id")
+                     SELECT "id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id" FROM "requests"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "requests"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer NOT NULL PRIMARY KEY, "user_tarjimly_id" integer DEFAULT NULL, "from_language" varchar DEFAULT NULL, "to_language" varchar DEFAULT NULL, "document" varchar DEFAULT NULL, "document_format" varchar DEFAULT NULL, "deadline" datetime DEFAULT NULL, "title" varchar DEFAULT NULL, "description" varchar DEFAULT NULL, "categories" varchar DEFAULT NULL, "num_claims" integer DEFAULT NULL, "form_type" varchar DEFAULT NULL, "_status" integer DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "claim_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_403bf5ae81"
+FOREIGN KEY ("claim_id")
+  REFERENCES "claims" ("id")
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "index_requests_on_claim_id" ON "requests" ("claim_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id")
+                     SELECT "id","user_tarjimly_id","from_language","to_language","document","document_format","deadline","title","description","categories","num_claims","form_type","_status","created_at","updated_at","claim_id" FROM "arequests"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "arequests"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191108103829"]]
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateClaims (20191107102418)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "claims" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "translator_tarjimly_id" integer, "_status" integer, "submitted_date" datetime, "translation" varchar, "translation_type" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191107102418"]]
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateRequests (20191107103626)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "requests" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "user_tarjimly_id" integer, "from_language" varchar, "to_language" varchar, "document" varchar, "document_format" varchar, "deadline" datetime, "title" varchar, "description" varchar, "categories" varchar, "num_claims" integer, "form_type" varchar, "_status" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191107103626"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-11-08 11:43:02.049044"], ["updated_at", "2019-11-08 11:43:02.049044"]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+DEPRECATION WARNING: Single arity template handlers are deprecated. Template handlers must
+now accept two parameters, the view object and the source for the view object.
+Change:
+  >> Coffee::Rails::TemplateHandler.call(template)
+To:
+  >> Coffee::Rails::TemplateHandler.call(template, source)
+ (called from <main> at /Users/cassidyhardin/Desktop/CS/Tarjimly/config/environment.rb:5)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRequestRefToClaims (20191108120042)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "claims" ADD "request_id" integer NOT NULL[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddRequestRefToClaims (20191108120042)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "claims" ADD "request_id" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_claims_on_request_id" ON "claims" ("request_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TEMPORARY TABLE "aclaims" ("id" integer NOT NULL PRIMARY KEY, "translator_tarjimly_id" integer DEFAULT NULL, "_status" integer DEFAULT NULL, "submitted_date" datetime DEFAULT NULL, "translation" varchar DEFAULT NULL, "translation_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "request_id" integer DEFAULT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE  INDEX "tindex_aclaims_on_request_id" ON "aclaims" ("request_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "aclaims" ("id","translator_tarjimly_id","_status","submitted_date","translation","translation_type","created_at","updated_at","request_id")
+                     SELECT "id","translator_tarjimly_id","_status","submitted_date","translation","translation_type","created_at","updated_at","request_id" FROM "claims"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE "claims"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "claims" ("id" integer NOT NULL PRIMARY KEY, "translator_tarjimly_id" integer DEFAULT NULL, "_status" integer DEFAULT NULL, "submitted_date" datetime DEFAULT NULL, "translation" varchar DEFAULT NULL, "translation_type" varchar DEFAULT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, "request_id" integer DEFAULT NULL, CONSTRAINT "fk_rails_25441a830e"
+FOREIGN KEY ("request_id")
+  REFERENCES "requests" ("id")
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE  INDEX "index_claims_on_request_id" ON "claims" ("request_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[32mINSERT INTO "claims" ("id","translator_tarjimly_id","_status","submitted_date","translation","translation_type","created_at","updated_at","request_id")
+                     SELECT "id","translator_tarjimly_id","_status","submitted_date","translation","translation_type","created_at","updated_at","request_id" FROM "aclaims"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE "aclaims"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20191108120042"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRequest Create (1.0ms)[0m  [1m[32mINSERT INTO "requests" ("created_at", "updated_at") VALUES (?, ?)[0m  [["created_at", "2019-11-08 12:03:07.267827"], ["updated_at", "2019-11-08 12:03:07.267827"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClaim Create (1.5ms)[0m  [1m[32mINSERT INTO "claims" ("created_at", "updated_at", "request_id") VALUES (?, ?, ?)[0m  [["created_at", "2019-11-08 12:03:51.249591"], ["updated_at", "2019-11-08 12:03:51.249591"], ["request_id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[36mcommit transaction[0m
