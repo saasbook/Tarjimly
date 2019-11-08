@@ -351,3 +351,17 @@ Change:
 To:
   >> Coffee::Rails::TemplateHandler.call(template, source)
  (called from <main> at /Users/cassidyhardin/Desktop/CS/Tarjimly/config/environment.rb:5)
+DEPRECATION WARNING: Single arity template handlers are deprecated. Template handlers must
+now accept two parameters, the view object and the source for the view object.
+Change:
+  >> Coffee::Rails::TemplateHandler.call(template)
+To:
+  >> Coffee::Rails::TemplateHandler.call(template, source)
+ (called from <main> at /Users/cassidyhardin/Desktop/CS/Tarjimly/config/environment.rb:5)
+DEPRECATION WARNING: Single arity template handlers are deprecated. Template handlers must
+now accept two parameters, the view object and the source for the view object.
+Change:
+  >> Coffee::Rails::TemplateHandler.call(template)
+To:
+  >> Coffee::Rails::TemplateHandler.call(template, source)
+ (called from <main> at /Users/cassidyhardin/Desktop/CS/Tarjimly/config/environment.rb:5)
