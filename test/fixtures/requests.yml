@@ -1,29 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+request_visa:
   user_tarjimly_id: 1
-  from_language: MyString
-  to_language: MyString
-  document: MyString
-  document_format: MyString
+  from_language: English
+  to_language: Arabic
+  document: file_location
+  document_format: pdf
   deadline: 2019-11-07 02:36:26
-  title: MyString
-  description: MyString
-  categories: MyString
-  num_claims: 1
-  form_type: MyString
-  _status: 1
+  title: Visa Application
+  description: New Visa Application for Refugee
+  categories: Visa 
+  num_claims: 2
+  form_type: Visa
+  _status: 0
 
-two:
+request_visa2:
   user_tarjimly_id: 1
-  from_language: MyString
-  to_language: MyString
-  document: MyString
-  document_format: MyString
+  from_language: English
+  to_language: Urdu
+  document: file_location
+  document_format: pdf
   deadline: 2019-11-07 02:36:26
-  title: MyString
-  description: MyString
-  categories: MyString
+  title: Visa Application
+  description: New Visa Application for Refugee
+  categories: Visa
   num_claims: 1
-  form_type: MyString
-  _status: 1
+  form_type: Visa
+  _status: 0
