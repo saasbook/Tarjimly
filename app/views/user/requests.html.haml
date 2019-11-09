@@ -1,0 +1,23 @@
+%h2 All Requests 
+
+-# = form_tag 
+
+%table#requests.table.tavle-striped.col-md-12
+    %thead
+        %tr
+            %th Title 
+            %th Request Language 
+            %th Translation Language
+            %th Status 
+            %th Deadline
+
+    %body 
+        -@requests.each do |r|
+            %tr
+                %td=r.title 
+                %td=t.from_language
+                %td=t.to_language
+                %td=r._status
+                %td=r.deadline
+
+= link_to 'Add new Request', new_request_path
