@@ -4,7 +4,7 @@ Given /the following requests exist/ do |requests_table|
   end
 end
 
-  Given("I go to my {page_name} page") do |page|
+  Given("I go to my {page} page") do |page|
     visit path_to(page)
   end
 
