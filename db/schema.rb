@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_103626) do
+ActiveRecord::Schema.define(version: 2019_11_08_120042) do
 
   create_table "claims", force: :cascade do |t|
     t.integer "translator_tarjimly_id"
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_103626) do
     t.string "translation_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "request_id"
+    t.index ["request_id"], name: "index_claims_on_request_id"
   end
 
   create_table "requests", force: :cascade do |t|
@@ -39,4 +41,5 @@ ActiveRecord::Schema.define(version: 2019_11_07_103626) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "claims", "requests"
 end

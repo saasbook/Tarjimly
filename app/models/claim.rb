@@ -1,3 +1,3 @@
-class Claim < ActiveRecord::Base
+class Claim < ApplicationRecord
     belongs_to :request
 end

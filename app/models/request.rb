@@ -1,3 +1,3 @@
-class Request < ActiveRecord::Base
+class Request < ApplicationRecord
     has_many :claims
 end
