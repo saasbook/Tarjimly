@@ -15,7 +15,7 @@ Feature: delete a requested translation
 
     Scenario: visiting user's pending transactions
         Given I go to my "Requests" page
-#     Then I should see "Pending Transactions" and "Completed Transactions"
+        Then I should see "Pending Transactions" and "Completed Transactions"
 #     And I click "Pending Transactions"
 #     Then I should see a list of "Pending Transactions" sorted by "deadline"
 #     Then I should see "Doctor Notes" before "Camp Announcment"

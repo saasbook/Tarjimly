@@ -21,6 +21,6 @@ Rails.application.routes.draw do
   get    '/claims/requests'      => 'claims#requests',    :as => 'translator_requests'
   get    '/claims/requests/:rid' => 'claims#request',     :as => 'preview_request'
 
-  root 'application#login'
+  root 'requests#requests'
 
 end

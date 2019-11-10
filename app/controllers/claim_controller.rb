@@ -1,3 +1,3 @@
-class Claim < ActionController::Base
+class ClaimsController < ActionController::Base
   
 end
