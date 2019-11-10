@@ -26,14 +26,10 @@ claims_seed = [{:translator_tarjimly_id => 1, :_status => 0, :submitted_date => 
             {:translator_tarjimly_id => 5, :_status => 0, :submitted_date => "N/A", :translation => "location_of_file", :translation_type => "pdf"}
 ]
 
-
-
-
-
 requests_seed.each do |r|
-    Request.create!(r)
+    Request.create(r)
 end
 
 claims_seed.each do |c|
-    Claim.create!(c)
+    Claim.create(c)
 end
