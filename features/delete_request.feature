@@ -2,7 +2,7 @@ Feature: delete a requested translation
 
     As a User
     So that I know I have succesfully deleted a requested
-    I want to no longer see the doccument in my "Pending Transactions" tab
+    I want to no longer see the doccument in my "Pending Translations" tab
 
     Background: current pending transactions
 
@@ -15,25 +15,22 @@ Feature: delete a requested translation
 
     Scenario: visiting user's pending transactions
         Given I go to my "Requests" page
-        Then I should see "Pending Transactions" and "Completed Transactions"
-#     And I click "Pending Transactions"
-#     Then I should see a list of "Pending Transactions" sorted by "deadline"
-#     Then I should see "Doctor Notes" before "Camp Announcment"
+        Then I should see "Pending Translations" and "Completed Translations"
 
 
-# Scenario: successfully deleting a translation
-#     Given I go to my "Pending Transactions" page
-#     When I go to the edit page for "Camp Announcment"
-#     Then I should see "Delete Request"
-#     And I click "Delete Request"
-#     Then I should see "Are you sure you want to delete this request?"
-#     When I click "Yes"
-#     Then I should see "Your request has been deleted!"
-#     When I am on my "Pending Transactions" page
-#     Then I should not see "Camp Announcment"
+    Scenario: successfully deleting a translation
+    # Given I go to my "Pending Transactions" page
+    #     When I go to the edit page for "Camp Announcment"
+    #     Then I should see "Delete Request"
+    #     And I click "Delete Request"
+    #     Then I should see "Are you sure you want to delete this request?"
+    #     When I click "Yes"
+    #     Then I should see "Your request has been deleted!"
+    #     When I am on my "Pending Transactions" page
+    #     Then I should not see "Camp Announcment"
 
-# Scenario: successfully deleting a translation
-#     Given I go to my "Pending Transactions" page
+    Scenario: successfully deleting a translation
+# Given I go to my "Pending Transactions" page
 #     When I go to the edit page for "Camp Announcment Flyer"
 #     Then I should see "Delete Request"
 #     And I click "Delete Request"

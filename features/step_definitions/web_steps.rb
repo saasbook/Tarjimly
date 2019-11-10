@@ -15,6 +15,3 @@ Given("I go to my {string} page") do |string|
     visit path_to(string)
   end
 
-#   When /^(?:|I )go to (.+)?/ do |page_name|
-#     visit path_to(page_name)
-#   end

@@ -1,18 +1,10 @@
 class RequestsController < ActionController::Base
-    def requests
-      # redirect_to user_request_path
+    def index
+
     end
 
-    def pending 
+    def show 
     
-    end
-
-    def completed 
-
-    end
-
-    def edit 
-
     end
     
     def new

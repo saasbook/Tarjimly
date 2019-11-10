@@ -4,21 +4,8 @@ module NavigationHelpers
       case page
         
       when 'Requests'
-        '/requests/:234'
+        '/users/:234/requests'
       
-    
-        # when /^the edit page for "(.*)"$/
-        #     edit_vegetable_path(Vegetable.find_by_name($1))
-
-
-    #   when /^the (RottenPotatoes )?home\s?page$/ then '/movies'
-        when /^the home\s?page$/
-            '/'
-        when /^ my Requests page$/  
-            user_requests_path()
-        
-    #   when /^Pending Transactions/ then 
-    #     "/requests/234"
   
       # Add more mappings here.
       # Here is an example that pulls values out of the Regexp:

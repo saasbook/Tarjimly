@@ -4,14 +4,6 @@ Given /the following requests exist/ do |requests_table|
   end
 end
 
-  # # Given("I go to my {string} page") do |string|
-  # #   visit path_to(string)
-  # # end
-
-  # When("I go to my {string} page") do |string|
-  #   visit path_to(string)
-  # end
-
   Then ("I should see {string} and {string}") do |string, string1|
     page.should have_content(string) 
     page.should have_content(string1)
