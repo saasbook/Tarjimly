@@ -4,9 +4,8 @@ class RequestsController < ActionController::Base
     end
 
     def show 
-        rid = params[:rid]
+        rid = params[:request_id]
         @request = Request.find(rid)
-        
     end
     
     def new

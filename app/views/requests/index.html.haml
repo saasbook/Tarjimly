@@ -17,7 +17,7 @@
     %body 
         -@requests.each do |r|
             %tr
-                %td= link_to "#{r.title}", show_requests_path(:uid => r.user_tarjimly_id, :rid => r.id) 
+                %td= link_to "#{r.title}", show_request_path(:uid => r.user_tarjimly_id, :request_id => r.id) 
                 %td= r.from_language
                 %td= r.to_language
                 - if (r._status == 0)

@@ -31,6 +31,6 @@
 
 %p#description= @request.description
 
-= link_to 'New Request', new_requests_path(:uid => @request.user_tarjimly_id)
+= link_to 'New Request', new_request_path(:uid => @request.user_tarjimly_id)
 = link_to 'View All Requests', index_requests_path(:uid => @request.user_tarjimly_id)
 
