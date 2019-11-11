@@ -12,6 +12,7 @@ require 'cucumber/rails'
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
 # Capybara.default_selector = :xpath
+Capybara.default_selector = :css
 
 # By default, any exception happening in your Rails application will bubble up
 # to Cucumber so that your scenario will fail. This is a different from how
@@ -37,6 +38,9 @@ begin
 rescue NameError
   raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
+
+# World(Capybara::DSL) 
+
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
