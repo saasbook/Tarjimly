@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   get '/login' => 'appliscation#login', :as => 'application_login'
-
   get '/users/:uid/requests' => 'requests#index', :as => 'index_requests'
   get '/users/:uid/requests/:request_id' => 'requests#show', :as => 'show_request'
   get '/users/:uid/requests/new' => 'requests#new', :as => 'new_request'
@@ -16,7 +15,7 @@ Rails.application.routes.draw do
   post '/translators/:tid/claims' => 'claims#create', :as => 'create_claim'
   delete '/translators/:tid/claims/:claim_id' => 'claims#delete', :as => 'delete_claim'
   patch '/translators/:tid/claims/:claim_id' => 'claims#complete', :as => 'complete_claim'
-
+  
   root 'requests#index'
 
 end

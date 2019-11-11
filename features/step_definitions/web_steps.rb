@@ -15,3 +15,10 @@ Given("I go to my {string} page") do |string|
     visit path_to(string)
   end
 
+When ("I click {string}") do |string|
+    click_button(string)
+end 
+
+When ("I select {string}") do |link|
+  click_link(link)
+end
