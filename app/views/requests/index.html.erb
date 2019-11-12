@@ -1,0 +1,33 @@
+
+<h3> All Translations </h3>
+<h3> Pending Translations </h3>
+<h3> Completed Translations </h3>
+
+<table>
+  <thead>
+    <tr>
+      <th> Title </th>
+      <th> Request Language </th>
+      <th> Translation Language </th>
+      <th> Status </th>
+      <th> Categories </th>
+      <th> Deadline </th>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>  
+        <td> <%= link_to "#{request.title}", show_request_path(uid: request.user_tarjimly_id, request_id: request.id) %>  </td>
+        <td> <%= request.from_language %> </td>
+        <td> <%= request.to_language %> </td>
+        <td> <%= request._status %> </td>
+        <td> <%= request.categories %> </td>
+        <td> <%= request.deadline %> </td>
+      </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+  
+<%# <%= button_to "New Request", new_request_path(uid: @user_id), method: :get %> 
+

@@ -1,0 +1,16 @@
+  <h3>Details for <%= @request.title %> </h3>
+  
+  <li class="requests">
+    Title: <%= @request.title %><br />
+    <li>
+    Request Language: <%= @request.from_language %><br />
+    <li>
+    Translation Language: <%= @request.to_language %><br />
+    <li>
+    Status: <%= @request._status %><br />
+    <li>
+    Categories: <%= @request.categories %><br />
+    <li>
+    Deadline: <%= @request.deadline %>
+  </li>
+
