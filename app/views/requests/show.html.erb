@@ -1,0 +1,36 @@
+<%# -# request.html.haml using partial
+
+%h2 Details for #{@request.title} Transaltion Request 
+
+%ul#details
+    %li
+        Request Language:
+        = @request.from_language
+    %li
+        Translation Language:
+        = @request.to_language
+    %li
+        Deadline:
+        = @request.deadline.strftime("%B %d, %Y")
+    %li 
+        Doccument:
+        = @request.document
+    %li 
+        Categories:
+        = @request.categories
+
+    %li
+        Status:
+        - if (@request._status == 0)
+            = "Pending"
+        - else 
+            = "Completed"
+
+
+%h4 Description:
+
+%p#description= @request.description
+
+= link_to 'New Request', new_request_path(:uid => @request.user_tarjimly_id)
+= link_to 'View All Requests', index_requests_path(:uid => @request.user_tarjimly_id)
+ %>

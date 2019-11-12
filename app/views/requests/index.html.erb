@@ -1,0 +1,24 @@
+<h3>All Requests</h3>
+
+<h3> All Translations </h3>
+<h3> Pending Translations </h3>
+<h3> Completed Translations </h3>
+
+<% @requests.each do |request| %>
+  <li class="requests">
+    Title: <%= request.title %><br />
+    Request Language: <%= request.from_language %><br />
+    Translation Language: <%= request.to_language %><br />
+    Status: <%= request._status %><br />
+    Categories: <%= request.categories %><br />
+    Deadline: <%= request.deadline %>
+  </li>
+  <br />
+<% end %>
+
+<%= button_to "New Request", new_requests_path(uid: @user_id), method: :get %>
+
+
+
+
+
