@@ -18,13 +18,8 @@ Feature: view previously submitted request
         When I select "Camp Announcment"
         Then I should see "Details for Camp Announcment"
         Then I should see "Request Language" and "Translation Language"
-        Then I should see "Description"
         Then I should see "Deadline"
 
     Scenario: return to all requests
         Given I go to my "Requests" page
         When I select "Camp Announcment"
-        Then I should see "View All Requests"
-        Then I should see "New Request"
-        When I select "View All Requests"
-        Then I should see "All Requests"
