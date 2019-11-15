@@ -1,7 +1,6 @@
 
-<h3> All Translations </h3>
-<h3> Pending Translations </h3>
-<h3> Completed Translations </h3>
+<button> <%= link_to "Pending Translations", index_requests_path(uid: 1, status: 0) %> </button>
+<button> <%= link_to "Completed Translations", index_requests_path(uid: 1, status: 1) %> </button>
 
 <table>
   <thead>
@@ -17,7 +16,7 @@
   <tbody>
     <% @requests.each do |request| %>
       <tr>  
-        <td> <%= link_to "#{request.title}", show_request_path(uid: request.user_tarjimly_id, request_id: request.id) %>  </td>
+        <td> <%= link_to "#{request.title}", show_request_path(request_id: request.id) %>  </td>
         <td> <%= request.from_language %> </td>
         <td> <%= request.to_language %> </td>
         <td> <%= request._status %> </td>
