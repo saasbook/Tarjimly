@@ -11,8 +11,11 @@
 !.vscode/extensions.json
 *.code-workspace
 
-## Rails Stuff
-# Ignore all logfiles and tempfiles.
+## Ignore RubyMine Stuff
+.idea/
+
+## Ignore Rails Stuff
+# Logfiles and tempfiles.
 /log/*
 /tmp/*
 !/log/.keep
