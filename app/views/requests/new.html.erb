@@ -4,28 +4,28 @@
   <div>
     <div style="padding: 5px 5px">
       <%= r.label :from_language %>
-      <%= select_tag "from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true %>
+      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true, required: true) %>
       <%= r.label :to_language %>
-      <%= select_tag "to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true %>
+      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true, required: true) %>
     </div>
 
     <div style="padding: 5px 5px">
       <%= r.label :title %><br>
-      <%= r.text_field :title %>
+      <%= r.text_field(:title, required: true) %>
     </div>
     <div style="padding: 5px 5px">
       <%= r.label :description %><br>
-      <%= r.text_area(:description, size: "100x5") %>
+      <%= r.text_area(:description, size: "100x5", required: true) %>
     </div>
 
     <div style="padding: 5px 5px">
       <%= r.label :document %><br>
-      <%= r.text_area(:document, size: "100x15") %>
+      <%= r.text_area(:document, size: "100x15", required: true) %>
     </div>
 
     <div style="padding: 5px 5px">
       <%= r.label :deadline %><br>
-      <%= r. date_field(:deadline, min: Date.today) %>
+      <%= r. date_field(:deadline, min: Date.today, required: true) %>
     </div>
     <div style="padding: 5px 5px">
       <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
