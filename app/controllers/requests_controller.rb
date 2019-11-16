@@ -9,11 +9,12 @@ class RequestsController < ActionController::Base
     end
     
     def new
-
+        @request = Request.new
     end
     
     def create
-       
+        @request = Request.new(request_params)
+        #Add in other fields
     end
 
     def delete 
@@ -21,5 +22,10 @@ class RequestsController < ActionController::Base
         @request.destroy 
         flash[:notice] = "Your request '#{@request.title}' has been deleted!"
         redirect_to index_requests_path
+    end
+
+    private
+    def request_params
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description, :categories, :form_type)
     end
 end

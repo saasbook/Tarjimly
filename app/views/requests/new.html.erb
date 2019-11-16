@@ -1,0 +1,9 @@
+<h1> My New Request! </h1>
+
+<%= form_for @request do |r| %>
+  <div>
+    <%= r.label :title %><br>
+    <%= r.text_field :title %>
+  </div>
+  <%= r.submit %>
+<% end %>
