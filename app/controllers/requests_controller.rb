@@ -14,7 +14,6 @@ class RequestsController < ActionController::Base
     
     def create
         @request = Request.new(request_params)
-        #Add in other fields
     end
 
     def delete 
@@ -26,6 +25,6 @@ class RequestsController < ActionController::Base
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description, :categories, :form_type)
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description, categories: [])
     end
 end
