@@ -23,3 +23,6 @@ Feature: view previously submitted request
     Scenario: return to all requests
         Given I go to my "Requests" page
         When I select "Camp Announcment"
+        When I click "All Requests"
+        Then I should see "All Requests"
+        Then I should be on "Request" page

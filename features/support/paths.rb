@@ -4,7 +4,7 @@ module NavigationHelpers
       case page
         
       when 'Requests'
-        '/users/:1/requests'
+        '/requests'
       
   
       # Add more mappings here.
