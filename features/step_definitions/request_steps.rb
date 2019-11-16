@@ -16,7 +16,7 @@ end
 Then("I should be on {string} page") do |page_name|
   case page_name
     when  "Request"
-        expect(page).to have_current_path(index_requests_path)
+        expect(page).to have_current_path(requests_path)
     else
       begin
         expect(page).to have_current_path("#{page_name}" + _path)

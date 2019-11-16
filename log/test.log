@@ -2363,3 +2363,832 @@ Processing by RequestsController#index as HTML
   Rendered requests/index.html.haml (Duration: 1.3ms | Allocations: 601)
 Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 970)
   [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:32:41 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.3ms | Allocations: 660)
+Completed 200 OK in 10ms (Views: 3.9ms | ActiveRecord: 0.4ms | Allocations: 3931)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:32:41 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.7ms | Allocations: 116)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 489)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:32:41 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.6ms | Allocations: 125)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 499)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.610472"], ["updated_at", "2019-11-16 03:32:43.610472"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.613331"], ["updated_at", "2019-11-16 03:32:43.613331"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.614779"], ["updated_at", "2019-11-16 03:32:43.614779"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.616224"], ["updated_at", "2019-11-16 03:32:43.616224"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 37.9ms | Allocations: 6505)
+Completed 500 Internal Server Error in 51ms (ActiveRecord: 0.2ms | Allocations: 8472)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.712108"], ["updated_at", "2019-11-16 03:32:43.712108"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.713495"], ["updated_at", "2019-11-16 03:32:43.713495"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.714483"], ["updated_at", "2019-11-16 03:32:43.714483"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.715322"], ["updated_at", "2019-11-16 03:32:43.715322"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 19.7ms | Allocations: 5755)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.1ms | Allocations: 6107)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.744669"], ["updated_at", "2019-11-16 03:32:43.744669"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.746495"], ["updated_at", "2019-11-16 03:32:43.746495"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.747538"], ["updated_at", "2019-11-16 03:32:43.747538"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.749682"], ["updated_at", "2019-11-16 03:32:43.749682"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 2.2ms | Allocations: 1526)
+Completed 200 OK in 4ms (Views: 3.1ms | ActiveRecord: 0.2ms | Allocations: 2458)
+Started GET "/translators/requests?utf8=%E2%9C%93&from_language=Chinese&to_language=French&commit=Filter" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"utf8"=>"✓", "from_language"=>"Chinese", "to_language"=>"French", "commit"=>"Filter"}
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."from_language" = ? AND "requests"."to_language" = ?[0m  [["from_language", "Chinese"], ["to_language", "French"]]
+  Rendered claims/requests.html.erb (Duration: 1.5ms | Allocations: 552)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.2ms | Allocations: 956)
+  [1m[35m (2.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.774835"], ["updated_at", "2019-11-16 03:32:43.774835"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.776478"], ["updated_at", "2019-11-16 03:32:43.776478"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.777500"], ["updated_at", "2019-11-16 03:32:43.777500"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.778652"], ["updated_at", "2019-11-16 03:32:43.778652"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.1ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1013)
+Started GET "/translators/requests?sort_by_deadline=true" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"sort_by_deadline"=>"true"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendering claims/requests.html.erb
+  Rendered claims/requests.html.erb (Duration: 0.5ms | Allocations: 442)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1027)
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."deadline" ASC, "requests"."num_claims" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.6ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.794814"], ["updated_at", "2019-11-16 03:32:43.794814"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.797660"], ["updated_at", "2019-11-16 03:32:43.797660"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.798903"], ["updated_at", "2019-11-16 03:32:43.798903"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:32:43.800409"], ["updated_at", "2019-11-16 03:32:43.800409"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:32:43 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.1ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1013)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:23 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.3ms | Allocations: 658)
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 3929)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:23 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.5ms | Allocations: 116)
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 489)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:23 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.5ms | Allocations: 116)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 488)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.510546"], ["updated_at", "2019-11-16 03:34:25.510546"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.513094"], ["updated_at", "2019-11-16 03:34:25.513094"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.514864"], ["updated_at", "2019-11-16 03:34:25.514864"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.516862"], ["updated_at", "2019-11-16 03:34:25.516862"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.6ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 3.1ms | Allocations: 1047)
+Completed 200 OK in 13ms (Views: 6.9ms | ActiveRecord: 0.6ms | Allocations: 3034)
+Started GET "/requests/1?uid=1" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"uid"=>"1", "request_id"=>"1"}
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 23.8ms | Allocations: 7917)
+Completed 500 Internal Server Error in 44ms (ActiveRecord: 0.2ms | Allocations: 8639)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.608565"], ["updated_at", "2019-11-16 03:34:25.608565"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.610018"], ["updated_at", "2019-11-16 03:34:25.610018"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.610912"], ["updated_at", "2019-11-16 03:34:25.610912"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.611781"], ["updated_at", "2019-11-16 03:34:25.611781"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.0ms | Allocations: 578)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 949)
+Started GET "/requests/1?uid=1" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"uid"=>"1", "request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 21.4ms | Allocations: 7376)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.1ms | Allocations: 7800)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.644908"], ["updated_at", "2019-11-16 03:34:25.644908"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.646436"], ["updated_at", "2019-11-16 03:34:25.646436"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.647371"], ["updated_at", "2019-11-16 03:34:25.647371"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.648580"], ["updated_at", "2019-11-16 03:34:25.648580"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 2.1ms | Allocations: 1490)
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.2ms | Allocations: 2413)
+Started GET "/translators/requests?utf8=%E2%9C%93&from_language=Chinese&to_language=French&commit=Filter" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"utf8"=>"✓", "from_language"=>"Chinese", "to_language"=>"French", "commit"=>"Filter"}
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."from_language" = ? AND "requests"."to_language" = ?[0m  [["from_language", "Chinese"], ["to_language", "French"]]
+  Rendered claims/requests.html.erb (Duration: 1.7ms | Allocations: 552)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.3ms | Allocations: 956)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.6ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.696635"], ["updated_at", "2019-11-16 03:34:25.696635"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.699670"], ["updated_at", "2019-11-16 03:34:25.699670"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.701841"], ["updated_at", "2019-11-16 03:34:25.701841"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.703561"], ["updated_at", "2019-11-16 03:34:25.703561"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.5ms | Allocations: 668)
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.1ms | Allocations: 1013)
+Started GET "/translators/requests?sort_by_deadline=true" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"sort_by_deadline"=>"true"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendering claims/requests.html.erb
+  Rendered claims/requests.html.erb (Duration: 0.8ms | Allocations: 442)
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1027)
+  [1m[36mRequest Load (0.3ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."deadline" ASC, "requests"."num_claims" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.729183"], ["updated_at", "2019-11-16 03:34:25.729183"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.732142"], ["updated_at", "2019-11-16 03:34:25.732142"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.734311"], ["updated_at", "2019-11-16 03:34:25.734311"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:34:25.736053"], ["updated_at", "2019-11-16 03:34:25.736053"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:34:25 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 2.0ms | Allocations: 668)
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.2ms | Allocations: 1013)
+  [1m[35m (0.7ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:59 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.6ms | Allocations: 658)
+Completed 200 OK in 10ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 3929)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:59 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.5ms | Allocations: 116)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 489)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:34:59 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.4ms | Allocations: 116)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 488)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.907352"], ["updated_at", "2019-11-16 03:35:01.907352"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.909662"], ["updated_at", "2019-11-16 03:35:01.909662"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.911161"], ["updated_at", "2019-11-16 03:35:01.911161"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.912709"], ["updated_at", "2019-11-16 03:35:01.912709"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:35:01 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 4.6ms | Allocations: 1047)
+Completed 200 OK in 13ms (Views: 7.9ms | ActiveRecord: 0.2ms | Allocations: 3034)
+Started GET "/requests/1?uid=1" for 127.0.0.1 at 2019-11-15 19:35:01 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"uid"=>"1", "request_id"=>"1"}
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 1.1ms | Allocations: 352)
+Completed 200 OK in 4ms (Views: 1.5ms | ActiveRecord: 0.2ms | Allocations: 1085)
+  [1m[35m (5.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (10.0ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.979840"], ["updated_at", "2019-11-16 03:35:01.979840"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.991617"], ["updated_at", "2019-11-16 03:35:01.991617"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.992981"], ["updated_at", "2019-11-16 03:35:01.992981"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:01.994031"], ["updated_at", "2019-11-16 03:35:01.994031"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:35:01 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.4ms | Allocations: 576)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 948)
+Started GET "/requests/1?uid=1" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"uid"=>"1", "request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 0.2ms | Allocations: 120)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 562)
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.0ms | Allocations: 574)
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 943)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.028300"], ["updated_at", "2019-11-16 03:35:02.028300"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.030052"], ["updated_at", "2019-11-16 03:35:02.030052"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.031287"], ["updated_at", "2019-11-16 03:35:02.031287"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.032378"], ["updated_at", "2019-11-16 03:35:02.032378"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 2.2ms | Allocations: 1494)
+Completed 200 OK in 4ms (Views: 3.2ms | ActiveRecord: 0.2ms | Allocations: 2417)
+Started GET "/translators/requests?utf8=%E2%9C%93&from_language=Chinese&to_language=French&commit=Filter" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"utf8"=>"✓", "from_language"=>"Chinese", "to_language"=>"French", "commit"=>"Filter"}
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."from_language" = ? AND "requests"."to_language" = ?[0m  [["from_language", "Chinese"], ["to_language", "French"]]
+  Rendered claims/requests.html.erb (Duration: 0.9ms | Allocations: 552)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.1ms | Allocations: 956)
+  [1m[35m (0.5ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.052033"], ["updated_at", "2019-11-16 03:35:02.052033"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.053514"], ["updated_at", "2019-11-16 03:35:02.053514"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.054509"], ["updated_at", "2019-11-16 03:35:02.054509"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.055519"], ["updated_at", "2019-11-16 03:35:02.055519"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.1ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 1013)
+Started GET "/translators/requests?sort_by_deadline=true" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"sort_by_deadline"=>"true"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendering claims/requests.html.erb
+  Rendered claims/requests.html.erb (Duration: 0.6ms | Allocations: 442)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1027)
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."deadline" ASC, "requests"."num_claims" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.5ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.074186"], ["updated_at", "2019-11-16 03:35:02.074186"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.076193"], ["updated_at", "2019-11-16 03:35:02.076193"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.077773"], ["updated_at", "2019-11-16 03:35:02.077773"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:35:02.079058"], ["updated_at", "2019-11-16 03:35:02.079058"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:35:02 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.4ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1013)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:09 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.3ms | Allocations: 658)
+Completed 200 OK in 10ms (Views: 3.7ms | ActiveRecord: 0.4ms | Allocations: 3929)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:09 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.7ms | Allocations: 116)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.2ms | Allocations: 489)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:09 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.5ms | Allocations: 116)
+Completed 200 OK in 1ms (Views: 0.7ms | ActiveRecord: 0.1ms | Allocations: 488)
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.015933"], ["updated_at", "2019-11-16 03:36:11.015933"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.018058"], ["updated_at", "2019-11-16 03:36:11.018058"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.019467"], ["updated_at", "2019-11-16 03:36:11.019467"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.020829"], ["updated_at", "2019-11-16 03:36:11.020829"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 3.8ms | Allocations: 1013)
+Completed 200 OK in 13ms (Views: 7.1ms | ActiveRecord: 0.2ms | Allocations: 3000)
+Started GET "/requests/1" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 1.0ms | Allocations: 357)
+Completed 200 OK in 24ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 1093)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.091086"], ["updated_at", "2019-11-16 03:36:11.091086"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.092661"], ["updated_at", "2019-11-16 03:36:11.092661"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.093647"], ["updated_at", "2019-11-16 03:36:11.093647"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.094599"], ["updated_at", "2019-11-16 03:36:11.094599"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.1ms | Allocations: 544)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 914)
+Started GET "/requests/1" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 0.2ms | Allocations: 120)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.1ms | Allocations: 561)
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.0ms | Allocations: 542)
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.1ms | Allocations: 911)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.131833"], ["updated_at", "2019-11-16 03:36:11.131833"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.133946"], ["updated_at", "2019-11-16 03:36:11.133946"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.135214"], ["updated_at", "2019-11-16 03:36:11.135214"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.136418"], ["updated_at", "2019-11-16 03:36:11.136418"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.9ms | Allocations: 1490)
+Completed 200 OK in 4ms (Views: 2.8ms | ActiveRecord: 0.1ms | Allocations: 2413)
+Started GET "/translators/requests?utf8=%E2%9C%93&from_language=Chinese&to_language=French&commit=Filter" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"utf8"=>"✓", "from_language"=>"Chinese", "to_language"=>"French", "commit"=>"Filter"}
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."from_language" = ? AND "requests"."to_language" = ?[0m  [["from_language", "Chinese"], ["to_language", "French"]]
+  Rendered claims/requests.html.erb (Duration: 1.1ms | Allocations: 552)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms | Allocations: 956)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.159014"], ["updated_at", "2019-11-16 03:36:11.159014"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.160735"], ["updated_at", "2019-11-16 03:36:11.160735"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.161991"], ["updated_at", "2019-11-16 03:36:11.161991"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.163325"], ["updated_at", "2019-11-16 03:36:11.163325"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.1ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.1ms | Allocations: 1013)
+Started GET "/translators/requests?sort_by_deadline=true" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"sort_by_deadline"=>"true"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendering claims/requests.html.erb
+  Rendered claims/requests.html.erb (Duration: 0.6ms | Allocations: 442)
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.1ms | Allocations: 1027)
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."deadline" ASC, "requests"."num_claims" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.182793"], ["updated_at", "2019-11-16 03:36:11.182793"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.184533"], ["updated_at", "2019-11-16 03:36:11.184533"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.185601"], ["updated_at", "2019-11-16 03:36:11.185601"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:11.186605"], ["updated_at", "2019-11-16 03:36:11.186605"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:11 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.2ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 1013)
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:30 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.3ms | Allocations: 658)
+Completed 200 OK in 11ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 3929)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:30 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.5ms | Allocations: 116)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 489)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:30 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 0.6ms | Allocations: 116)
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.1ms | Allocations: 488)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:32.952646"], ["updated_at", "2019-11-16 03:36:32.952646"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:32.955372"], ["updated_at", "2019-11-16 03:36:32.955372"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:36:32.956823"], ["updated_at", "2019-11-16 03:36:32.956823"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:32.958769"], ["updated_at", "2019-11-16 03:36:32.958769"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:32 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.6ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 2.9ms | Allocations: 1013)
+Completed 200 OK in 12ms (Views: 5.9ms | ActiveRecord: 0.6ms | Allocations: 3000)
+Started GET "/requests/1" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 0.7ms | Allocations: 357)
+Completed 200 OK in 21ms (Views: 1.2ms | ActiveRecord: 0.1ms | Allocations: 1093)
+  [1m[35m (2.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-09 00:00:00"], ["title", "Camp Announcment"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.035814"], ["updated_at", "2019-11-16 03:36:33.035814"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Urdu"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-10 00:00:00"], ["title", "Camp Announcment Flyer"], ["description", "information"], ["categories", "Refugee, Camp"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.037533"], ["updated_at", "2019-11-16 03:36:33.037533"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Arabic"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-12-09 00:00:00"], ["title", "Visa Application"], ["description", "information"], ["categories", "Visa"], ["num_claims", 2], ["form_type", "Visa"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.038768"], ["updated_at", "2019-11-16 03:36:33.038768"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Urdu"], ["to_language", "English"], ["document", "location"], ["document_format", "pdf"], ["deadline", "2019-11-01 00:00:00"], ["title", "Doctor Notes"], ["description", "information"], ["categories", "Child, Doctor"], ["num_claims", 1], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.040577"], ["updated_at", "2019-11-16 03:36:33.040577"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.1ms | Allocations: 544)
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.1ms | Allocations: 914)
+Started GET "/requests/1" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by RequestsController#show as HTML
+  Parameters: {"request_id"=>"1"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering requests/show.html.erb
+  Rendered requests/show.html.erb (Duration: 0.2ms | Allocations: 120)
+Completed 200 OK in 1ms (Views: 0.6ms | ActiveRecord: 0.1ms | Allocations: 561)
+Started GET "/requests" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by RequestsController#index as HTML
+  Rendering requests/index.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."user_tarjimly_id" = ?[0m  [["user_tarjimly_id", 1]]
+  Rendered requests/index.html.erb (Duration: 1.2ms | Allocations: 542)
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.1ms | Allocations: 911)
+  [1m[35m (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.064378"], ["updated_at", "2019-11-16 03:36:33.064378"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.076566"], ["updated_at", "2019-11-16 03:36:33.076566"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.077650"], ["updated_at", "2019-11-16 03:36:33.077650"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.078779"], ["updated_at", "2019-11-16 03:36:33.078779"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.9ms | Allocations: 1490)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 2413)
+Started GET "/translators/requests?utf8=%E2%9C%93&from_language=Chinese&to_language=French&commit=Filter" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"utf8"=>"✓", "from_language"=>"Chinese", "to_language"=>"French", "commit"=>"Filter"}
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" WHERE "requests"."from_language" = ? AND "requests"."to_language" = ?[0m  [["from_language", "Chinese"], ["to_language", "French"]]
+  Rendered claims/requests.html.erb (Duration: 1.0ms | Allocations: 552)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.2ms | Allocations: 956)
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.3ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.099510"], ["updated_at", "2019-11-16 03:36:33.099510"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.101133"], ["updated_at", "2019-11-16 03:36:33.101133"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.102112"], ["updated_at", "2019-11-16 03:36:33.102112"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.103102"], ["updated_at", "2019-11-16 03:36:33.103102"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.4ms | Allocations: 668)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.1ms | Allocations: 1013)
+Started GET "/translators/requests?sort_by_deadline=true" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by ClaimsController#requests as HTML
+  Parameters: {"sort_by_deadline"=>"true"}
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendering claims/requests.html.erb
+  Rendered claims/requests.html.erb (Duration: 0.5ms | Allocations: 442)
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.1ms | Allocations: 1027)
+  [1m[36mRequest Load (0.2ms)[0m  [1m[34mSELECT "requests".* FROM "requests" ORDER BY "requests"."deadline" ASC, "requests"."num_claims" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.4ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "English"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "pdf"], ["deadline", "2019-11-25 00:00:00"], ["title", "Camp Announcment"], ["description", "Event going on in camp"], ["categories", "Recreation, Children"], ["num_claims", 0], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.120037"], ["updated_at", "2019-11-16 03:36:33.120037"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.2ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Spanish"], ["to_language", "Latin"], ["document", "location_of_file"], ["document_format", "Word"], ["deadline", "2020-01-25 00:00:00"], ["title", "PTO Announcment"], ["description", "Description of PTO policy"], ["categories", "Employment, Work, Policy"], ["num_claims", 2], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.122108"], ["updated_at", "2019-11-16 03:36:33.122108"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "French"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 4], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.123435"], ["updated_at", "2019-11-16 03:36:33.123435"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mRequest Create (0.1ms)[0m  [1m[32mINSERT INTO "requests" ("user_tarjimly_id", "from_language", "to_language", "document", "document_format", "deadline", "title", "description", "categories", "num_claims", "form_type", "_status", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)[0m  [["user_tarjimly_id", 1], ["from_language", "Chinese"], ["to_language", "Arabic"], ["document", "location_of_file"], ["document_format", "CSV"], ["deadline", "2019-12-31 00:00:00"], ["title", "Rally Announcment"], ["description", "Event to plan rally in capital"], ["categories", "Civic, Activism"], ["num_claims", 5], ["form_type", "N/A"], ["_status", 0], ["created_at", "2019-11-16 03:36:33.124604"], ["updated_at", "2019-11-16 03:36:33.124604"]]
+  [1m[35m (0.0ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Started GET "/translators/requests" for 127.0.0.1 at 2019-11-15 19:36:33 -0800
+Processing by ClaimsController#requests as HTML
+  Rendering claims/requests.html.erb
+  [1m[36mRequest Load (0.1ms)[0m  [1m[34mSELECT "requests".* FROM "requests"[0m
+  Rendered claims/requests.html.erb (Duration: 1.6ms | Allocations: 668)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.1ms | Allocations: 1013)
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
