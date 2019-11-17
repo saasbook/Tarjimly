@@ -25,4 +25,4 @@ Feature: view previously submitted request
         When I select "Camp Announcment"
         When I click "All Requests"
         Then I should see "All Requests"
-        Then I should be on "Request" page
+        Then I should be on "/requests" path

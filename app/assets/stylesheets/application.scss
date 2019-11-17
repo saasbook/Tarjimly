@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+// @import "bootstrap-sprockets";
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.custom-model{
+    .modal-header{
+      color: red
+    }
+  }
+
+

@@ -27,28 +27,10 @@ Feature: delete a requested translation
     Scenario: successfully deleting a translation
         Given I go to my "Requests" page
         When I select "Camp Announcment"
-        #     Then I should see "Delete Request"
         And I click "Delete Request"
-        #     Then I should see "Are you sure you want to delete this request?"
-        #     When I click "Yes"
-        #     Then I should see "Your request Camp Announcment has been deleted!"
-        #     When I am on my "Pending Transactions" page
-        Then I should be on "Request" page
+        # Then I should see "Are you sure you want to delete this request?"
+        # When I click "Yes"
+        Then I should be on "/requests" path
         Then I should see confirmation of deleting "Camp Announcment"
         When I refesh the page
         Then I should not see "Camp Announcment"
-
-
-
-# Scenario: successfully deleting a translation
-#     Given I go to my "Requests" page
-#     When I click "Pending Translations"
-#     When I click "Camp Announcment"
-#     Then I should see "Delete Request"
-#     And I click "Delete Request"
-#     Then I should see "Are you sure you want to delete this request?"
-#     When I click "No"
-#     Then I should see "Your request has not been deleted"
-#     Then I should be on "Camp Announcment" page
-#     When I go to my "Requests" page
-#     Then I should see "Camp Announcment"
