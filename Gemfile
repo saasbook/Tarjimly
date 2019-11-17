@@ -65,3 +65,4 @@ gem 'simplecov', :require => false
 gem 'jquery-rails'
 gem 'haml'
 gem 'rails-controller-testing'
+gem 'data-confirm-modal'

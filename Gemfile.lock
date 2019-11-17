@@ -111,6 +111,8 @@ GEM
       cucumber-rails (>= 1.1.1)
     cucumber-tag_expressions (1.1.1)
     cucumber-wire (0.0.1)
+    data-confirm-modal (1.6.2)
+      railties (>= 3.0)
     database_cleaner (1.4.1)
     diff-lcs (1.3)
     docile (1.3.1)
@@ -282,6 +284,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   cucumber-rails
   cucumber-rails-training-wheels
+  data-confirm-modal
   database_cleaner (= 1.4.1)
   haml
   jbuilder (~> 2.5)

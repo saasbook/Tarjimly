@@ -1,0 +1,1 @@
+//= require data-confirm-modal

@@ -34,8 +34,3 @@ Then("I should see confirmation of deleting {string}") do |string|
   page.should have_content(string)
 end
 
-# Then ("there should be confirmation of deleting {string)" do |page_name|
-#   # page.should have_css('.flashnotice', text: "Your request '#{page_name}' has been deleted!")
-#   # page.should  have_content("Your request '#{page_name}' has been deleted!")
-
-# end
