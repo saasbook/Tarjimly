@@ -17,7 +17,7 @@
   <tbody>
     <% @requests.each do |request| %>
       <tr>  
-        <td> <%= link_to "#{request.title}", requests_path(request_id: request.id) %>  </td>
+        <td> <%= link_to "#{request.title}", request_path(request_id: request.id) %>  </td>
         <td> <%= request.from_language %> </td>
         <td> <%= request.to_language %> </td>
         <td> <%= request._status %> </td>

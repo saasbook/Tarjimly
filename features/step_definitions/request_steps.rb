@@ -13,15 +13,12 @@ Then ("I should see {string} and {string}") do |string, string1|
     page.should have_content(string1)
 end
 
-Then("I should be on {string} page") do |page_name|
-  case page_name
-    when  "Request"
-        expect(page).to have_current_path(index_requests_path)
-    else
-      begin
-        expect(page).to have_current_path("#{page_name}" + _path)
-      rescue NoMethodError, ArgumentError
-        raise "Can't find path for \"#{page_name}\" " 
-        end
+Then("I should be on the {string} path") do |page_path|
+    begin
+      expect(page).to have_current_path(page_path)
+    rescue NoMethodError, ArgumentError
+      raise "Can't find path for \"#{page_path}\" " 
     end
-end 
+end
+
+

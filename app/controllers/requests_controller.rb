@@ -13,14 +13,14 @@ class RequestsController < ActionController::Base
     end
     
     def create
-        #Obtain request from params
+        #Obtain request object from params
         @request = Request.new(request_params)
         
         #Add in private fields
         @request.document_format = "text" #TODO: Should be conditional based on upload
-        @request.num_claims = 0
         @request.user_tarjimly_id = 1 #TODO: Should be based on auth
-        @request._status = 0
+        @request.num_claims = 0 #TODO: Should be daault in db
+        @request._status = 0  #TODO: Should be daault in db
 
         if @request.save
           flash[:notice] = "Success!"
