@@ -15,3 +15,5 @@
   </li>
 
 <%= button_to "All Requests", requests_path, action: "index", method: :get %>
+<%= button_to "Delete Request", delete_request_path, request_id: @request.id, action: "delete", method: :delete %>
+
