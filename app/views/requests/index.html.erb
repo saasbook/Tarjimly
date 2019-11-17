@@ -1,6 +1,6 @@
 
-<button> <%= link_to "Pending Translations", index_requests_path(uid: 1, status: 0) %> </button>
-<button> <%= link_to "Completed Translations", index_requests_path(uid: 1, status: 1) %> </button>
+<button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
+<button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
 
 <table>
   <thead>
@@ -16,7 +16,7 @@
   <tbody>
     <% @requests.each do |request| %>
       <tr>  
-        <td> <%= link_to "#{request.title}", show_request_path(request_id: request.id) %>  </td>
+        <td> <%= link_to "#{request.title}", request_path(request_id: request.id) %>  </td>
         <td> <%= request.from_language %> </td>
         <td> <%= request.to_language %> </td>
         <td> <%= request._status %> </td>

@@ -5,7 +5,8 @@ Given /the following requests exist/ do |requests_table|
 end
 
 Then ("I should see {string}") do |string|
-  page.should have_content(string) 
+  # page.should have_content(string)
+  expect(page).to have_content(string)
 end
 
 Then ("I should see {string} and {string}") do |string, string1|
@@ -24,4 +25,4 @@ Then("I should be on {string} page") do |page_name|
         raise "Can't find path for \"#{page_name}\" " 
         end
     end
-end 
+end
