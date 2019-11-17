@@ -17,6 +17,7 @@ module TarjimlyDocs
     # the framework and any gems in your application.
 
     config.active_support.escape_html_entities_in_json = true
+    config.active_record.observers = :request_observer
 
   end
 end

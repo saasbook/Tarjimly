@@ -68,3 +68,5 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'rails-controller-testing'
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal', branch: 'bootstrap2'
+gem 'rails-observers'
+
