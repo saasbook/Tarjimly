@@ -37,4 +37,7 @@ end
 
 When("I check {string}") do |field|
   check(field)
+
+When("I refesh the page") do
+  visit current_path 
 end

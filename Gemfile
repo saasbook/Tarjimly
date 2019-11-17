@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap-sass', '~> 3.3.7'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -66,3 +68,5 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'rails-controller-testing'
 gem "table_print"
+gem 'data-confirm-modal', github: 'ifad/data-confirm-modal', branch: 'bootstrap2'
+gem 'rails-observers'

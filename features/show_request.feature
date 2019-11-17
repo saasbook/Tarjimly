@@ -26,3 +26,4 @@ Feature: view previously submitted request
         When I click the "All Requests" button
         Then I should see "All Requests"
         Then I should be on the "/requests" path
+

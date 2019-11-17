@@ -37,7 +37,7 @@ class RequestsController < ActionController::Base
     end
 
     def delete 
-        @request = Request.find(params[:rid])
+        @request = Request.find(params[:request_id])
         @request.destroy 
         flash[:notice] = "Your request '#{@request.title}' has been deleted!"
         redirect_to requests_url

@@ -8,6 +8,10 @@ Then ("I should see {string}") do |string|
   page.should have_content(string) 
 end
 
+Then ("I should not see {string}") do |string|
+  page.should have_no_content(string) 
+end
+
 Then ("I should see {string} and {string}") do |string, string1|
     page.should have_content(string) 
     page.should have_content(string1)
@@ -21,4 +25,7 @@ Then("I should be on the {string} path") do |page_path|
     end
 end
 
+Then("I should see confirmation of deleting {string}") do |string|
+  page.should have_content(string)
+end
 

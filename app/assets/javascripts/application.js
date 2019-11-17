@@ -14,3 +14,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+//= require data-confirm-modal
+//= require jquery3
+//= require bootstrap
+//= require jquery_ujs
+//= require bootstrap.min
