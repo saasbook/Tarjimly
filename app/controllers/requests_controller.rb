@@ -15,7 +15,12 @@ class RequestsController < ActionController::Base
     def create
         #Obtain request object from params
         @request = Request.new(request_params)
-        
+
+        if @request.nil? || @request.from_language.nil? || @request.to_language.nil? || @request.description.nil? || @request.title.nil? || @request.document.nil? || @request.deadline.nil? 
+          redirect_to new_request_url
+          return
+        end
+
         #Add in private fields
         @request.document_format = "text" #TODO: Should be conditional based on upload
         @request.user_tarjimly_id = 1 #TODO: Should be based on auth

@@ -1,75 +1,100 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/helpers/application_helper.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/models/claim.rb": [
-        1,
-        1,
-        null
-      ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/models/application_record.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/models/claim.rb": [
         1,
         1,
         null
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/models/request.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/models/application_record.rb": [
         1,
         1,
         null
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/mailers/application_mailer.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/models/request.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/requests_controller.rb": [
+        1,
+        1,
+        5,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        1,
+        6,
+        null,
+        null,
+        1,
+        null,
+        2,
+        null,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/mailers/application_mailer.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/jobs/application_job.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/jobs/application_job.rb": [
         0,
         0
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/controllers/requests_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        null,
-        0,
-        0,
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/translator_controller.rb": [
         0,
         0,
         0,
         0,
         0
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/controllers/application_controller.rb": [
-        0,
-        null,
-        0
-      ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/controllers/translator_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/controllers/claims_controller.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/claims_controller.rb": [
         0,
         0,
         0,
@@ -102,19 +127,162 @@
         null,
         0
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/channels/application_cable/connection.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/channels/application_cable/connection.rb": [
         0,
         0,
         0,
         0
       ],
-      "/Users/cassidyhardin/Desktop/CS/Tarjimly/app/channels/application_cable/channel.rb": [
+      "/Users/ahmad/Desktop/Tarjimly/app/channels/application_cable/channel.rb": [
         0,
         0,
         0,
         0
       ]
     },
-    "timestamp": 1573536582
+    "timestamp": 1574033381
+  },
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/helpers/application_helper.rb": [
+        1,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/requests_controller.rb": [
+        1,
+        1,
+        4,
+        null,
+        null,
+        1,
+        2,
+        2,
+        null,
+        null,
+        1,
+        3,
+        null,
+        null,
+        1,
+        null,
+        2,
+        null,
+        2,
+        1,
+        1,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        1,
+        1,
+        2,
+        null,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/models/request.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/claims_controller.rb": [
+        1,
+        1,
+        5,
+        1,
+        null,
+        4,
+        null,
+        9,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/mailers/application_mailer.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/models/claim.rb": [
+        0,
+        0,
+        0
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/controllers/translator_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/channels/application_cable/connection.rb": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "/Users/ahmad/Desktop/Tarjimly/app/channels/application_cable/channel.rb": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "timestamp": 1574033267
   }
 }
