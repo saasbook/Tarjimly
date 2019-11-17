@@ -33,7 +33,7 @@ Feature: delete a requested translation
         #     When I click "Yes"
         #     Then I should see "Your request Camp Announcment has been deleted!"
         #     When I am on my "Pending Transactions" page
-        Then I should be on "Request" page
+        Then I should be on "/requests" path
         Then I should see confirmation of deleting "Camp Announcment"
         When I refesh the page
         Then I should not see "Camp Announcment"
