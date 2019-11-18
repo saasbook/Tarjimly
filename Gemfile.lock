@@ -213,6 +213,10 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     regexp_parser (1.6.0)
+    rspec (3.7.0)
+      rspec-core (~> 3.7.0)
+      rspec-expectations (~> 3.7.0)
+      rspec-mocks (~> 3.7.0)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -309,6 +313,8 @@ DEPENDENCIES
   rails (~> 6.0.0)
   rails-controller-testing
   rails-observers
+  rspec
+  rspec-mocks
   rspec-rails (= 3.7.2)
   sass-rails (~> 5.0)
   selenium-webdriver

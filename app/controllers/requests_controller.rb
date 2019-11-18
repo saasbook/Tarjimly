@@ -1,6 +1,6 @@
 class RequestsController < ActionController::Base
     def index
-        @requests = Request.where(user_tarjimly_id: 1)
+        @requests = Request.where(user_tarjimly_id: 1) #TODO: SHould be based on user auth
     end
 
     def show 
