@@ -10,19 +10,19 @@ Feature: display all my submitted requests
 
     Given the following requests exist:
       | user_tarjimly_id | from_language | to_language | document | document_format | deadline   | title                  | description | categories    | num_claims | form_type | _status |
-      | 234              | English       | Arabic      | location | pdf             | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 1       |
-      | 234              | English       | Urdu        | location | pdf             | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
-      | 234              | Arabic        | English     | location | pdf             | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 1       |
-      | 234              | Urdu          | English     | location | pdf             | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
+      | 1              | English       | Arabic      | location | pdf             | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 1       |
+      | 1              | English       | Urdu        | location | pdf             | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
+      | 1              | Arabic        | English     | location | pdf             | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 1       |
+      | 1              | Urdu          | English     | location | pdf             | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
 
     And I go to my "Requests" page
 
   Scenario: see all pending requests
-    When I click "Pending Translations"
+    When I select "Pending Translations"
     Then I should see "Camp Announcment Flyer"
     And I should see "Doctor Notes"
 
   Scenario: see all completed requests
-    When I click "Completed Translations"
+    When I select "Completed Translations"
     Then I should see "Camp Announcment"
     And I should see "Visa Application"
