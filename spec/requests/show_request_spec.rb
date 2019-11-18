@@ -1,27 +1,35 @@
 require 'spec_helper.rb'
 require 'rails_helper'
 
-describe "User viewing their requests " do 
-    # before(:each) do 
-    #     @request = Request.create(1, 'English','Arabic','location_of_file',  'pdf', '25-Nov-2019', 'Camp Announcment',  'Event going on in camp','MISSING', 0,  'N/A',  0)
-    # end
+describe "User viewing details for a specific request" do 
+    before(:each) do 
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1)
+    end
     it 'should be all submitted translations' do
         get "/requests"
         expect(response).to render_template(:index)
     end
-    # it 'should be to see details for specific request' do
-    #     get '/requests/8'
+    it 'should be to see details for specific request' do
+        get '/requests/1'
+        expect(response).to render_template(:show)
+    end
 
-    #     expect(response).to render_template(:show)
-    # end
-    # @AHMAD ADD PARAMATERS FOR THE FILTERING OF REQUESTS 
-    it 'should be all to see pending requests' do
-        get "/requests"
-        expect(response).to render_template(:index)
+    it 'should be able to return back too all requests' do 
+        visit "/requests/1"
+        page.should have_selector(:link_or_button, 'All Requests')
     end
-    # @AHMAD ADD PARAMATERS FOR THE FILTERING OF REQUESTS PART 2
-    it 'should be all completed requests' do
-        get "/requests"
-        expect(response).to render_template(:index)
+
+    it 'clicking all requests wil redirect to index page' do 
+        visit "/requests/1"
+        click_button("All Requests")
+        expect(page.current_path).to eq "/requests"
+    end 
+
+    it 'should have infotmation about the specifics of the request' do 
+        visit "/requests/1"
+        expect(page).to have_content("Request Language: English")
+        expect(page).to have_content("Translation Language: Arabic")
+        expect(page).to have_content("information regarding upcoming doctors appointment")
     end
+   
 end

@@ -1,6 +1,8 @@
 
 <button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
 <button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
+<p id="notice"><%= flash[:notice] %></p>
+
 
 <table>
   <thead>
@@ -28,4 +30,4 @@
     </tbody>
   </table>
   
-<%# <%= button_to "New Request", new_request_path, action: "new", method: :get %> 
+<%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button" %>

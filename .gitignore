@@ -16,8 +16,8 @@
 
 ## Ignore Rails Stuff
 # Logfiles and tempfiles.
-/log/*
-/tmp/*
+/log/
+/tmp/
 !/log/.keep
 !/tmp/.keep
 
@@ -28,3 +28,12 @@ config/master.key
 # Ignore uploaded files in development
 /storage/*
 !/storage/.keep
+
+#db
+db/test.sqlite3
+db/development.sqlite3
+
+
+
+# Coverage
+/coverage/*

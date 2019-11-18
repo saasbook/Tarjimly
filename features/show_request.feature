@@ -14,15 +14,16 @@ Feature: view previously submitted request
             | 1                | Urdu          | English     | location | pdf             | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
 
     Scenario: visiting request's details page
-        Given I go to my "Requests" page
+        Given I go to the "Requests" page
         When I select "Camp Announcment"
         Then I should see "Details for Camp Announcment"
         Then I should see "Request Language" and "Translation Language"
         Then I should see "Deadline"
 
     Scenario: return to all requests
-        Given I go to my "Requests" page
+        Given I go to the "Requests" page
         When I select "Camp Announcment"
-        When I click "All Requests"
+        When I click the "All Requests" button
         Then I should see "All Requests"
-        Then I should be on "Request" page
+        Then I should be on the "/requests" path
+
