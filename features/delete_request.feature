@@ -21,16 +21,16 @@ Feature: delete a requested translation
             | 14                     | 0       | English        | location    | pdf              | 2          |
 
     Scenario: visiting user's pending transactions
-        Given I go to my "Requests" page
+        Given I go to the "Requests" page
 
 
     Scenario: successfully deleting a translation
-        Given I go to my "Requests" page
+        Given I go to the "Requests" page
         When I select "Camp Announcment"
-        And I click "Delete Request"
+        And I click the "Delete Request" button
         # Then I should see "Are you sure you want to delete this request?"
         # When I click "Yes"
-        Then I should be on "/requests" path
+        Then I should be on the "/requests" path
         Then I should see confirmation of deleting "Camp Announcment"
         When I refesh the page
         Then I should not see "Camp Announcment"
