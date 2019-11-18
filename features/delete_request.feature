@@ -28,8 +28,6 @@ Feature: delete a requested translation
         Given I go to the "Requests" page
         When I select "Camp Announcment"
         And I click the "Delete Request" button
-        # Then I should see "Are you sure you want to delete this request?"
-        # When I click "Yes"
         Then I should be on the "/requests" path
         Then I should see confirmation of deleting "Camp Announcment"
         When I refesh the page
