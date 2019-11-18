@@ -29,5 +29,11 @@ config/master.key
 /storage/*
 !/storage/.keep
 
+#db
+db/test.sqlite3
+db/development.sqlite3
+
+
+
 # Coverage
 /coverage/*
