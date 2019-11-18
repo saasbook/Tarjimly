@@ -1,13 +1,6 @@
 
 <button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
 <button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
-<%#= button_to "All Requests", requests_path, action: "index", method: :get %>
-
-<%#= button_to "Pending Translations", requests_path(status: 0), action: "index", method: :get %>
-<%#= button_to "Completed Translations", requests_path(status: 1), action: "index", method: :get %>
-
-<%#= button_to("Pending Translations 2", requests_path(:status => 0), :action => "index", :method => :get)%>
-
 
 <table>
   <thead>
