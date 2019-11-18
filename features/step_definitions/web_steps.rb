@@ -11,16 +11,32 @@ end
 World(WithinHelpers)
 
 
-Given("I go to my {string} page") do |string|
+Given("I go to the {string} page") do |string|
     visit path_to(string)
   end
 
-When ("I click {string}") do |string|
+When ("I click the {string} button") do |string|
     click_button(string)
 end 
 
 When ("I select {string}") do |link|
   click_link(link)
+end
+
+When("I fill in {string} with {string}") do |field, value|
+  fill_in(field, with: value)
+end
+
+# When("I fill in datefield {string} with {string}") do |field, value|
+#   fill_in(field, with: "))
+# end
+
+When("I select {string} from {string}") do |value, field|
+  select(value, from: field)
+end
+
+When("I check {string}") do |field|
+  check(field)
 end
 
 When("I refesh the page") do

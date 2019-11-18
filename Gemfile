@@ -67,6 +67,6 @@ gem 'simplecov', :require => false
 gem 'jquery-rails'
 gem 'haml'
 gem 'rails-controller-testing'
+gem "table_print"
 gem 'data-confirm-modal', github: 'ifad/data-confirm-modal', branch: 'bootstrap2'
 gem 'rails-observers'
-
