@@ -15,7 +15,7 @@ Feature: display all my submitted requests
       | 1              | Arabic        | English     | location | pdf             | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 1       |
       | 1              | Urdu          | English     | location | pdf             | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
 
-    And I go to my "Requests" page
+    And I go to the "Requests" page
 
   Scenario: see all pending requests
     When I select "Pending Translations"
