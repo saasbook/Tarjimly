@@ -13,7 +13,11 @@ class ClaimsController < ActionController::Base
   end
 
   def index
-    # @deleted_requests = Claim.where.(request_id: nil)
+    @claims = Claim.all
+    @deleted_claims = Claim.where.(request_id: nil)
+    if @deleted_claims.present?
+      flash[:notice] = "Requests you claimed no longer require translation. You can dismiss them below!"
+    end
 
   end
 
