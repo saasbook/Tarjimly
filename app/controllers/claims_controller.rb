@@ -13,6 +13,7 @@ class ClaimsController < ActionController::Base
   end
 
   def index
+    # @deleted_requests = Claim.where.(request_id: nil)
 
   end
 

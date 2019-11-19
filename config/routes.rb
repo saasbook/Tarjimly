@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
 
-  get '/login' => 'appliscation#login', :as => 'application_login'
+  #Login
+  get '/login' => 'application#login', :as => 'application_login'
 
-  get '/users/:uid/requests' => 'requests#index', :as => 'index_requests'
-  get '/users/:uid/requests/:request_id' => 'requests#show', :as => 'show_request'
-  get '/users/:uid/requests/new' => 'requests#new', :as => 'new_request'
-  post '/users/:uid/requests' => 'requests#create', :as => 'create_request'
-  delete '/users/:uid/requests/:request_id' => 'requests#delete', :as => 'delete_request'
+  #User Pages
+  get '/requests' => 'requests#index', :as => 'requests'
+  get '/requests/new' => 'requests#new', :as => 'new_request'
+  get '/requests/:request_id' => 'requests#show', :as => 'request'
+  post '/requests' => 'requests#create', :as => 'create_request'
+  delete '/requests/:request_id' => 'requests#delete', :as => 'delete_request'
 
-
+  #Translator Pages
+  get '/claims' => 'claims#index', :as => 'claims'
+  get '/claims/:claim_id' => 'claims#show', :as => 'claim'
+  post '/claims' => 'claims#create', :as => 'create_claim'
+  delete '/claims/:claim_id' => 'claims#delete', :as => 'delete_claim'
+  patch '/claims/:claim_id' => 'claims#complete', :as => 'complete_claim'
+  
+  ## Translator -> View All Requests
   get '/translators/requests' => 'claims#requests', :as => 'view_requests'
   get '/translators/requests/:request_id' => 'claims#preview', :as => 'preview_request'
-  get '/translators/:tid/claims' => 'claims#index', :as => 'index_claims'
-  get '/translators/:tid/claims/:claim_id' => 'claims#show', :as => 'show_claim'
-  post '/translators/:tid/claims' => 'claims#create', :as => 'create_claim'
-  delete '/translators/:tid/claims/:claim_id' => 'claims#delete', :as => 'delete_claim'
-  patch '/translators/:tid/claims/:claim_id' => 'claims#complete', :as => 'complete_claim'
+
 
   root 'requests#index'
 
