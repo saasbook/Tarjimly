@@ -60,11 +60,11 @@ requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'A
                       title: 'Lawyer Meeting', description: 'Times to schedulue upcoming appointment', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0}
 ]
 
-claims_seed = [{ translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf' },
-               {translator_tarjimly_id: 3, _status: 0, submitted_date: '6-Nov-2019', translation: 'location_of_file', translation_type: 'text-box'},
-               {translator_tarjimly_id: 3, _status: 1, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf'},
-               {translator_tarjimly_id: 2, _status: 2, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'jpg'},
-               {translator_tarjimly_id: 5, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf'}
+claims_seed = [{translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 1},
+               {translator_tarjimly_id: 1, _status: 0, submitted_date: '6-Nov-2019', translation: 'location_of_file', translation_type: 'text-box'},
+               {translator_tarjimly_id: 1, _status: 1, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 2},
+               {translator_tarjimly_id: 1, _status: 2, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'jpg', request_id: 3},
+               {translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 4}
 ]
 
 
