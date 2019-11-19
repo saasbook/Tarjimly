@@ -3,11 +3,12 @@ require 'rails_helper'
 
 describe 'Users are able to delete their requests' do 
     before(:each) do 
-        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1)
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1)
     end
     
     it 'user requests page should display all submitted requests' do
         visit "/requests"
+        click_link("Completed Translations")
         expect(page).to have_text("Doctor Appointment")
     end 
     it 'should have a delete button' do
