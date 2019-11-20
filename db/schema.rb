@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2019_11_08_120042) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "claims", force: :cascade do |t|
     t.integer "translator_tarjimly_id"
     t.integer "_status"
