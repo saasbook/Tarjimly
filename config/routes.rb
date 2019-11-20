@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   get '/translators/requests/:request_id' => 'claims#preview', :as => 'preview_request'
 
 
-  root 'requests#index'
+  root 'application#index'
 
 end
