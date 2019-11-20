@@ -33,7 +33,7 @@ config/master.key
 db/test.sqlite3
 db/development.sqlite3
 
-
+/node_modules/
 
 # Coverage
 /coverage/*

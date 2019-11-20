@@ -18,6 +18,8 @@ module TarjimlyDocs
 
     config.active_support.escape_html_entities_in_json = true
     config.active_record.observers = :request_observer
+    config.assets.initialize_on_precompile = false
+
 
   end
 end
