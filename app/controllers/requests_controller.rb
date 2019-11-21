@@ -8,7 +8,7 @@ class RequestsController < ActionController::Base
 
     def show 
         rid = params[:request_id]
-        @request = Request.find(rid)
+        @request = Request.find_by_id(rid)
     end
     
     def new
