@@ -1,0 +1,18 @@
+<div class="requests" id="request_<%=@request.id%>">
+  Title: <%= @request.title %><br />
+  Desc: <%= @request.description %><br />
+  From: <%= @request.from_language %><br />
+  To: <%= @request.to_language %><br />
+
+  Format: <%= @request.document_format %><br />
+  Number of Claims: <%= @request.num_claims %><br />
+  Categories: <%= @request.categories %><br />
+  Deadline: <%= @request.deadline %><br />
+
+  <%=form_tag "/claims", method: "post" do %>
+  <%=hidden_field_tag "translator_tarjimly_id", @user%>
+  <%=hidden_field_tag "_status", 0%>
+  <%=hidden_field_tag "request_id", @request.id%>
+  <%=submit_tag "Claim", data: { confirm: 'Your confirm message' }%>
+  <% end %>
+</div>

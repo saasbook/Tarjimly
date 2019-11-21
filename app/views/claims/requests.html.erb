@@ -1,5 +1,6 @@
 <h3>Pending Requests</h3>
 
+
 <%=link_to "Sort by deadline", controller: "claims", action: "requests", sort_by_deadline: true%>
 
 <%=form_tag "requests", method: "get" do %>
@@ -11,7 +12,7 @@
 <% end %>
 
 <% @requests.each do |request| %>
-  <li class="requests">
+  <li class="requests" id="request_<%=request.id%>">
     Title: <%= request.title %><br />
     Desc: <%= request.description %><br />
     From: <%= request.from_language %><br />
@@ -20,7 +21,15 @@
     Format: <%= request.document_format %><br />
     Number of Claims: <%= request.num_claims %><br />
     Categories: <%= request.categories %><br />
-    Deadline: <%= request.deadline %>
+    Deadline: <%= request.deadline %><br />
+    <%=link_to "View Request", controller: "claims", action: "preview", request_id: request.id%>
+
+    <%=form_tag "/claims", method: "post" do %>
+    <%=hidden_field_tag "translator_tarjimly_id", @user%>
+    <%=hidden_field_tag "_status", 0%>
+    <%=hidden_field_tag "request_id", request.id%>
+    <%=submit_tag "Claim", confirm: 'Your confirm message'%>
+    <% end %>
   </li>
   <br />
 <% end %>
