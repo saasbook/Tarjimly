@@ -10,7 +10,7 @@ services:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=d6619829f91a85320403900a94a02139ea416a0b60150dd0f4603263b7028cc5
+    - CC_TEST_REPORTER_ID=cd4c2070b6c0bf4abfe14ee4b6472b5cc4ba81fee58c2deaf9f1fb0f50740785
 
 bundler_args:
     --without production
