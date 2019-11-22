@@ -227,7 +227,19 @@ h1 .glitch1::after {
 .bounce {
   padding-right: 40%;
   animation-name: stretch;
-  animation-duration: .4s; 
+  animation-duration: .7s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+  
+}
+
+.bounce-reg {
+  animation-name: stretch;
+  animation-duration: .3s; 
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-direction: alternate;
@@ -240,7 +252,7 @@ h1 .glitch1::after {
 .bounce-2 {
   padding-left: 40%;
   animation-name: stretch;
-  animation-duration: .5s; 
+  animation-duration: .7s; 
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-direction: alternate;
@@ -270,7 +282,7 @@ h1 .glitch1::after {
 
 .spiny {
   animation-name: spin;
-  animation-duration: 500ms;
+  animation-duration: 5000ms;
   animation-iteration-count: infinite;
   animation-timing-function: linear; 
   /* transform: rotate(3deg); */
