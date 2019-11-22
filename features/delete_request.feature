@@ -20,7 +20,7 @@ Feature: delete a requested translation
             | 98                     | 0       | English        | location    | pdf              | 1          |
             | 14                     | 0       | English        | location    | pdf              | 2          |
 
-    Scenario: visiting user's pending transactions
+    Scenario: visiting user's pending translations
         Given I go to the "Requests" page
 
 

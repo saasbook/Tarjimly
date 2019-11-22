@@ -32,10 +32,10 @@ class ClaimsController < ActionController::Base
       flash[:notice] = "You have sucessfully dismissed your claim for a deleted request!"
       redirect_to claims_url
     else 
-      @claim.request.num_claims -= 1
-      @claim.destroy 
-      flash[:notice] = "You have sucessfully unclaimed this translation!"
-      redirect_to claims_url
+      # @claim.request.num_claims -= 1
+      # @claim.destroy 
+      # flash[:notice] = "You have sucessfully unclaimed this translation!"
+      # redirect_to claims_url
     end
 
   end
