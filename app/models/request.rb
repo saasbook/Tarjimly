@@ -1,8 +1,11 @@
 class Request < ApplicationRecord
-    has_many :claims, dependent: :nullify
+    has_many :claims
     before_destroy :update_claims, prepend: true
 
     def update_claims 
-        // actions to be able to nullify claims and include record of request details for dimissal by translator 
+        if @request.claims.present?
+            @request._status = 2
+            return false 
+        end 
     end 
 end

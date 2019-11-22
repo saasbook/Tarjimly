@@ -19,3 +19,5 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require bootstrap.min
+//= require bootstrap-sprockets
+//= require popper
