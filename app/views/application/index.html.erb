@@ -7,9 +7,13 @@
     Tarjimly Docs
   </h1>
   </header>
-  <div style="text-align: center" class="element">
-    <%= button_to "User Homepage", requests_path, action: "index", method: :get, class: "btn btn-primary" %>
-    <%= button_to "Translator Homepage", claims_path, action: "index", method: :get, class: "btn btn-warning" %>
+  <div style="text-align: center" class="spiny">
      <%= button_to "Translator See Available Requests", view_requests_path, action: "requests", method: :get, class: "btn btn-danger" %>
+  </div>
+  <div style="text-align: left" class="bounce">
+    <%= button_to "User Homepage", requests_path, action: "index", method: :get, class: "btn btn-primary" %>
+  </div>
+  <div style="text-align: right" class="bounce-2">
+    <%= button_to "Translator Homepage", claims_path, action: "index", method: :get, class: "btn btn-warning" %>
   </div>
 </div>

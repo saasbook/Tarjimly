@@ -224,12 +224,10 @@ h1 .glitch1::after {
   }
 }
 
-.element {
-  height: 250px;
-  width: 250px;
-  margin: 70px auto;
+.bounce {
+  padding-right: 40%;
   animation-name: stretch;
-  animation-duration: .6s; 
+  animation-duration: .4s; 
   animation-timing-function: ease-out; 
   animation-delay: 0;
   animation-direction: alternate;
@@ -238,6 +236,19 @@ h1 .glitch1::after {
   animation-play-state: running;
   
 }
+
+.bounce-2 {
+  padding-left: 40%;
+  animation-name: stretch;
+  animation-duration: .5s; 
+  animation-timing-function: ease-out; 
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+  
 
 @keyframes stretch {
   0% {
@@ -255,4 +266,24 @@ h1 .glitch1::after {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.spiny {
+  animation-name: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear; 
+  /* transform: rotate(3deg); */
+   /* transform: rotate(0.3rad);/ */
+   /* transform: rotate(3grad); */ 
+   /* transform: rotate(.03turn);  */
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
 }
