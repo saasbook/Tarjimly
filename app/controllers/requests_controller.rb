@@ -12,6 +12,7 @@ class RequestsController < ActionController::Base
     end
     
     def new
+        @type = params[:type] || "text"
         @request = Request.new
     end
     

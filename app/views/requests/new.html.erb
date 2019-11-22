@@ -1,33 +1,45 @@
-<h1> My New Request! </h1>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
 
-<%= form_for @request do |r| %>
-  <div>
-    <div style="padding: 5px 5px">
+<div style="margin: 15px">
+  <h2> My New Request! </h2>
+  <%= form_for @request do |r| %>
+    <div class="form-group">
       <%= r.label :from_language %>
-      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true, required: true) %>
+      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
       <%= r.label :to_language %>
-      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), include_blank: true, required: true) %>
+      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
     </div>
 
-    <div style="padding: 5px 5px">
+    <div class="form-group">
       <%= r.label :title %><br>
-      <%= r.text_field(:title, required: true) %>
+      <%= r.text_field(:title, required: true, class: "form-control") %>
     </div>
-    <div style="padding: 5px 5px">
+
+    <div class="form-group">
       <%= r.label :description %><br>
-      <%= r.text_area(:description, size: "100x5", required: true) %>
+      <%= r.text_field(:description, required: true, class: "form-control") %>
     </div>
 
-    <div style="padding: 5px 5px">
-      <%= r.label :document %><br>
-      <%= r.text_area(:document, size: "100x15", required: true) %>
+    <div class="form-group">
+      <% if @type == "text"%>
+        <%= r.label :document %><br>
+        <%= r.text_area(:document,  required: true, class: "form-control") %><br>
+        <%= link_to "Upload File Instead", new_request_path(type: "upload"), method: :get %>
+      <% else %>
+        <%= r.label :files %><br>
+        <%= r.file_field(:files, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
+        <%= link_to "Enter Text Instead", new_request_path(type: "text"), method: :get %>
+      <% end %>
     </div>
 
-    <div style="padding: 5px 5px">
+    <div class="form-group">
       <%= r.label :deadline %><br>
-      <%= r. date_field(:deadline, min: Date.today, required: true) %>
+      <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
     </div>
-    <div style="padding: 5px 5px">
+
+    <div class="form-group">
       <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
       <%= r.label :categories %><br>
       <% @categories.each do |c| %>
@@ -36,10 +48,12 @@
       <% end %>
     </div>
 
-  </div>
+    <div class="form-group">
+      <%= r.submit 'Save', data: { confirm: 'Do you details look correct?' }, class: "btn btn-primary" %>
+    </div>
+  <% end %>
 
-
-  <div style="padding: 5px 5px">
-    <%= r.submit %>
+  <div class="form-group">
+    <%= button_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
   </div>
-<% end %>
+</div>
