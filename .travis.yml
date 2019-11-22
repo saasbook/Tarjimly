@@ -4,10 +4,6 @@ rvm:
 services:
   - postgresql
 
-# before_script:
-#   - psql -c 'create database tarjimly_test;' -U postgres
-
-
 env:
   global:
     - CC_TEST_REPORTER_ID=cd4c2070b6c0bf4abfe14ee4b6472b5cc4ba81fee58c2deaf9f1fb0f50740785
