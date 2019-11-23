@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_22_033036) do
+ActiveRecord::Schema.define(version: 2019_11_23_174900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_033036) do
     t.integer "translator_tarjimly_id"
     t.integer "_status"
     t.datetime "submitted_date"
-    t.string "translation"
+    t.string "translation_text"
     t.string "translation_type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 2019_11_22_033036) do
     t.integer "user_tarjimly_id"
     t.string "from_language"
     t.string "to_language"
-    t.string "document"
+    t.string "document_text"
     t.string "document_format"
     t.datetime "deadline"
     t.string "title"
