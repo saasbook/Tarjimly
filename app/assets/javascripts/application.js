@@ -19,4 +19,5 @@
 //= require bootstrap
 //= require jquery_ujs
 //= require bootstrap.min
-//= require activestorage
+//= require direct_uploads.js
+//= require_self
