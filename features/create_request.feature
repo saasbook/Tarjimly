@@ -10,7 +10,7 @@ Feature: create a new request
   Scenario: successfully create a new request
     When I fill in "request_title" with "Cucumber Test Request"
     And I fill in "request_description" with "Cucumber Test Description"
-    And I fill in "request_document" with "Cucumber Test Document"
+    And I fill in "request_document_text" with "Cucumber Test Document"
     And I select "English" from "request_from_language"
     And I select "Arabic" from "request_to_language"
     And I fill in "request_deadline" with "2097-08-08"

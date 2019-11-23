@@ -17,7 +17,7 @@
     <li><%= "Document Text: " + @request.document_text %></li>
   <% else %>
     <li> Document Files:</li>
-    <% @request.document_files.each do |file| %>
+    <% @request.document_uploads.each do |file| %>
       <li><%= link_to(file.filename, file, target: "_blank") %></li>
     <% end %>
   <% end %>

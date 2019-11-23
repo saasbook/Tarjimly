@@ -28,8 +28,8 @@
         <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
         <%= link_to "Upload File Instead", new_request_path(format: "upload"), method: :get %>
       <% else %>
-        <%= r.label :document_files %><br>
-        <%= r.file_field(:document_files, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
+        <%= r.label :document_uploads %><br>
+        <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
         <%= link_to "Enter Text Instead", new_request_path(format: "text"), method: :get %>
       <% end %>
     </div>

@@ -17,8 +17,13 @@ class RequestsController < ActionController::Base
     end
     
     def create
-        #Obtain request object from params
         @request = Request.new(request_params)
+
+        #TODO: should be a validation
+        if @request.nil? || @request.from_language.nil? || @request.to_language.nil? || @request.description.nil? || @request.title.nil? || @request.deadline.nil? 
+            redirect_to new_request_url
+            return
+          end
 
         #Add in private fields
         @request.document_format = params[:request][:format] || "text" 
@@ -44,6 +49,6 @@ class RequestsController < ActionController::Base
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_files: [])
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
     end
 end
