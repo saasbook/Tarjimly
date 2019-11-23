@@ -13,6 +13,7 @@
   <li>Categories: <%= @request.categories %></li>
   <li>Description: <%= @request.description %></li>
   <li>Deadline: <%= @request.deadline %></li>
+  <li>Format: <%= @request.document_format %></li>
   <% if @request.document_format=="text"%>
     <li><%= "Document Text: " + @request.document_text %></li>
   <% else %>

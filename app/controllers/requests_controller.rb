@@ -23,10 +23,16 @@ class RequestsController < ActionController::Base
         if @request.nil? || @request.from_language.nil? || @request.to_language.nil? || @request.description.nil? || @request.title.nil? || @request.deadline.nil? 
             redirect_to new_request_url
             return
-          end
+        end
 
-        #Add in private fields
-        @request.document_format = params[:request][:format] || "text" 
+        upload_format = params[:request][:format] || "text"
+        if upload_format != "text"
+            filename_string = @request.document_uploads.first.filename.to_s
+            upload_format =  File.extname(filename_string)
+            upload_format = upload_format[1..-1]
+        end
+        @request.document_format = upload_format
+
         @request.user_tarjimly_id = 1 #TODO: Should be based on auth
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db
