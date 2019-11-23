@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'Arabic', document: 'location_of_file', document_format: 'pdf', deadline: '25-Nov-2019',
                   title: 'Camp Announcment', description: 'Event going on in camp', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0},
                  
@@ -61,10 +54,12 @@ requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'A
 ]
 
 claims_seed = [{translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 1},
-               {translator_tarjimly_id: 1, _status: 0, submitted_date: '6-Nov-2019', translation: 'location_of_file', translation_type: 'text-box'},
+               {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'text-box', request_id: 5},
                {translator_tarjimly_id: 1, _status: 1, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 2},
                {translator_tarjimly_id: 1, _status: 2, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'jpg', request_id: 3},
-               {translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 4}
+               {translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 4},
+               {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 6},
+               {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation: 'location_of_file', translation_type: 'pdf', request_id: 7}
 ]
 
 
