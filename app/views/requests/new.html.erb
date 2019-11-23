@@ -2,8 +2,8 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<div style="margin: 15px">
-  <h2> My New Request! </h2>
+<div class="container">
+  <h1 style="text-align: center; padding: 20px 0"> My New Request </h1>
   <%= form_for @request do |r| %>
     <div class="form-group">
       <%= r.label :from_language %>
@@ -24,12 +24,12 @@
 
     <div class="form-group">
       <% if @type == "text"%>
-        <%= r.label :document %><br>
-        <%= r.text_area(:document,  required: true, class: "form-control") %><br>
+        <%= r.label :document_text %><br>
+        <%= r.text_area(:document_text,  required: true, class: "form-control") %><br>
         <%= link_to "Upload File Instead", new_request_path(type: "upload"), method: :get %>
       <% else %>
-        <%= r.label :files %><br>
-        <%= r.file_field(:files, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
+        <%= r.label :document_files %><br>
+        <%= r.file_field(:document_files, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
         <%= link_to "Enter Text Instead", new_request_path(type: "text"), method: :get %>
       <% end %>
     </div>

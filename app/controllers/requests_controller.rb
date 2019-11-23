@@ -49,6 +49,6 @@ class RequestsController < ActionController::Base
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, :categories => [])
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_files: [])
     end
 end
