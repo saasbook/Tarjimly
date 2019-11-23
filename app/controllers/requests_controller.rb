@@ -12,7 +12,7 @@ class RequestsController < ActionController::Base
     end
     
     def new
-        @type = params[:type] || "text"
+        @format = params[:format] || "text"
         @request = Request.new
     end
     
@@ -20,22 +20,17 @@ class RequestsController < ActionController::Base
         #Obtain request object from params
         @request = Request.new(request_params)
 
-        if @request.nil? || @request.from_language.nil? || @request.to_language.nil? || @request.description.nil? || @request.title.nil? || @request.document.nil? || @request.deadline.nil? 
-          redirect_to new_request_url
-          return
-        end
-
         #Add in private fields
-        @request.document_format = "text" #TODO: Should be conditional based on upload
+        @request.document_format = params[:request][:format] || "text" 
         @request.user_tarjimly_id = 1 #TODO: Should be based on auth
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db
 
         if @request.save
-          flash[:notice] = "Success!"
+          flash[:notice] = "Successfull created your request."
           redirect_to requests_url
         else
-          flash[:notice] = "Uh Oh!"
+          flash[:notice] = "Uh Oh! There was an error creating your request."
         end 
 
     end

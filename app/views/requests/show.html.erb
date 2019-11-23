@@ -18,7 +18,7 @@
   <% else %>
     <li> Document Files:</li>
     <% @request.document_files.each do |file| %>
-      <li><%= link_to(file.filename, file) %></li>
+      <li><%= link_to(file.filename, file, target: "_blank") %></li>
     <% end %>
   <% end %>
 </ul>

@@ -23,16 +23,18 @@
     </div>
 
     <div class="form-group">
-      <% if @type == "text"%>
+      <% if @format == "text"%>
         <%= r.label :document_text %><br>
-        <%= r.text_area(:document_text,  required: true, class: "form-control") %><br>
-        <%= link_to "Upload File Instead", new_request_path(type: "upload"), method: :get %>
+        <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
+        <%= link_to "Upload File Instead", new_request_path(format: "upload"), method: :get %>
       <% else %>
         <%= r.label :document_files %><br>
         <%= r.file_field(:document_files, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
-        <%= link_to "Enter Text Instead", new_request_path(type: "text"), method: :get %>
+        <%= link_to "Enter Text Instead", new_request_path(format: "text"), method: :get %>
       <% end %>
     </div>
+
+    <%= r.hidden_field :format, value: @format %>
 
     <div class="form-group">
       <%= r.label :deadline %><br>
@@ -49,7 +51,7 @@
     </div>
 
     <div class="form-group">
-      <%= r.submit 'Save', data: { confirm: 'Do you details look correct?' }, class: "btn btn-primary" %>
+      <%= r.submit data: { confirm: 'Do you details look correct?' }, class: "btn btn-primary" %>
     </div>
   <% end %>
 
