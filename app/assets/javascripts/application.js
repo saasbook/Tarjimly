@@ -20,4 +20,5 @@
 //= require jquery_ujs
 //= require bootstrap.min
 //= require direct_uploads.js
-//= require_self
+//= require bootstrap-sprockets
+//= require popper
