@@ -4,13 +4,13 @@ requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'A
                   {user_tarjimly_id: 1, from_language: 'English', to_language: 'Urdu', document: 'location_of_file', document_format: 'pdf', deadline: '25-Nov-2019',
                   title: 'Camp Announcment', description: 'Event going on in camp', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0},
                  
-                  {user_tarjimly_id: 2, from_language: 'Arabic', to_language: 'Urdu', document: 'location_of_file', document_format: 'jpg', deadline: '25-Dec-2019',
+                  {user_tarjimly_id: 1, from_language: 'Arabic', to_language: 'Urdu', document: 'location_of_file', document_format: 'jpg', deadline: '25-Dec-2019',
                   title: 'Visa Application', description: 'Information for steps in visa application', categories: 'MISSING', num_claims: 0, form_type: 'Visa Application', _status: 0},
                  
-                  {user_tarjimly_id: 2, from_language: 'Urdu', to_language: 'English', document: 'location_of_file', document_format: 'png', deadline: '15-Nov-2019',
+                  {user_tarjimly_id: 1, from_language: 'Urdu', to_language: 'English', document: 'location_of_file', document_format: 'png', deadline: '15-Nov-2019',
                   title: 'Governement Forms', description: 'Governemnt forms regarding family dependencies', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0},
                  
-                  {user_tarjimly_id: 4, from_language: 'English', to_language: 'Arabic', document: 'location_of_file', document_format: 'pdf', deadline: '01-Jan-2020',
+                  {user_tarjimly_id: 1, from_language: 'English', to_language: 'Arabic', document: 'location_of_file', document_format: 'pdf', deadline: '01-Jan-2020',
                   title: 'Doctor Notes', description: 'Notes from recent Doctors visit', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0},
                  
                   {user_tarjimly_id: 5, from_language: 'English', to_language: 'Arabic', document: 'location_of_file', document_format: 'pdf', deadline: '25-Dec-2019',

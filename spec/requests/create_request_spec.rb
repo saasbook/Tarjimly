@@ -20,7 +20,6 @@ describe "Creating a new request" do
     expect(response).to render_template(:new)
   end
 
-
   it "should be able to fill in fields succcessfully" do
     within("#new_request") do
       fill_in 'request_title', with: 'Rspec Test'

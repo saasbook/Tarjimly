@@ -1,5 +1,5 @@
 class Request < ApplicationRecord
-    has_many :claims
+    has_many :claims, dependent: :nullify
     before_destroy :update_claims, prepend: true
 
     def update_claims 
