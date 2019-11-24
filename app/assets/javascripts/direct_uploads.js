@@ -11,8 +11,8 @@ addEventListener("direct-upload:initialize", event => {
 
 addEventListener("direct-upload:start", e => {
     const { id } = e.detail
-    const elem = document.getElementById(`direct-upload-${id}`)
-    elem.classList.remove("direct-upload--pending")
+    const id_string = `direct-upload-${id}`
+    document.getElementById(id_string).classList.remove("direct-upload--pending")
 })
 
 addEventListener("direct-upload:progress", event => {
