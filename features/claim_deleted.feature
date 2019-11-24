@@ -7,17 +7,17 @@ Feature: claimed request deleted by user
     Background: current pending translations
 
         Given the following requests exist:
-            | id | user_tarjimly_id | from_language | to_language | document | document_format | deadline   | title            | description | categories    | num_claims | form_type | _status |
-            | 1  | 1                | English       | Arabic      | location | pdf             | 2019-11-09 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
-            | 2  | 1                | English       | Urdu        | location | pdf             | 2019-11-10 | Camp Flyer       | information | Refugee, Camp | 1          | N/A       | 0       |
-            | 3  | 1                | Arabic        | English     | location | pdf             | 2019-12-09 | Visa Application | information | Visa          | 2          | Visa      | 0       |
-            | 4  | 1                | Urdu          | English     | location | pdf             | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
+            | id | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title            | description | categories    | num_claims | form_type | _status |
+            | 1  | 1                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
+            | 2  | 1                | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Flyer       | information | Refugee, Camp | 1          | N/A       | 0       |
+            | 3  | 1                | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application | information | Visa          | 2          | Visa      | 0       |
+            | 4  | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
 
         Given the following claims exist:
-            | id | translator_tarjimly_id | _status | submitted_date | translation | translation_type | request_id |
-            | 1  | 1                      | 3       | Arabic         | location    | pdf              | 1          |
-            | 2  | 1                      | 1       | Urdu           | location    | pdf              | 2          |
-            | 3  | 1                      | 0       | English        | location    | pdf              | 3          |
+            | id | translator_tarjimly_id | _status | submitted_date | translation_text | translation_format | request_id |
+            | 1  | 1                      | 3       | Arabic         | example text     | text               | 1          |
+            | 2  | 1                      | 1       | Urdu           | example text     | text               | 2          |
+            | 3  | 1                      | 0       | English        | example text     | text               | 3          |
 
     Scenario: visiting translator's claimed translations
         Given I go to the "Claims" page
