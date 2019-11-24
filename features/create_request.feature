@@ -26,3 +26,14 @@ Feature: create a new request
     And I click the "Create Request" button
     Then I should be on the "/requests/new" path
 
+# Scenario: upload a file
+#   When I select "Upload File Instead"
+#   And I fill in "request_title" with "Cucumber Upload Test Request"
+#   And I fill in "request_description" with "Cucumber Test Description"
+#   And I upload a test file to "request_document_uploads"
+#   And I select "English" from "request_from_language"
+#   And I select "Arabic" from "request_to_language"
+#   And I fill in "request_deadline" with "2097-08-08"
+#   And I check "request_categories_legal"
+#   And I click the "Create Request" button
+

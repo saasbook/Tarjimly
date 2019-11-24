@@ -38,7 +38,7 @@ class RequestsController < ActionController::Base
         @request._status = 0  #TODO: Should be daault in db
 
         if @request.save
-          flash[:notice] = "Successfull created your request."
+          flash[:notice] = "Successfully created your request."
           redirect_to requests_url
         else
           flash[:notice] = "Uh Oh! There was an error creating your request."
