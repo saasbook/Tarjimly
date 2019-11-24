@@ -1,6 +1,7 @@
 class Request < ApplicationRecord
     has_many :claims, dependent: :nullify
     before_destroy :update_claims, prepend: true
+    has_many_attached :document_uploads
 
     def update_claims 
         if !self.claims.nil? && self.claims.present?

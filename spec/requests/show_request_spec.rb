@@ -3,7 +3,7 @@ require 'rails_helper'
 
 describe "User viewing details for a specific request" do 
     before(:each) do 
-        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1)
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1)
         @curr_id = @request.id
     end
     it 'should be all submitted translations' do
