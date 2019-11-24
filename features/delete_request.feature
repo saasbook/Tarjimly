@@ -14,11 +14,11 @@ Feature: delete a requested translation
             | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
 
         Given the following claims exist:
-            | translator_tarjimly_id | _status | submitted_date | translation_text | translation_type | request_id |
-            | 142                    | 0       | Arabic         | example text     | text             | 1          |
-            | 142                    | 0       | Urdu           | example text     | text             | 3          |
-            | 98                     | 0       | English        | example text     | text             | 1          |
-            | 14                     | 0       | English        | example text     | text             | 2          |
+            | translator_tarjimly_id | _status | submitted_date | translation_text | translation_format | request_id |
+            | 142                    | 0       | Arabic         | example text     | text               | 1          |
+            | 142                    | 0       | Urdu           | example text     | text               | 3          |
+            | 98                     | 0       | English        | example text     | text               | 1          |
+            | 14                     | 0       | English        | example text     | text               | 2          |
 
     Scenario: visiting user's pending translations
         Given I go to the "Requests" page
