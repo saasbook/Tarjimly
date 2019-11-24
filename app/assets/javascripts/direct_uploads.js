@@ -9,10 +9,10 @@ addEventListener("direct-upload:initialize", event => {
     `)
 })
 
-addEventListener("direct-upload:start", event => {
-    const { id } = event.detail
-    const element = document.getElementById(`direct-upload-${id}`)
-    element.classList.remove("direct-upload--pending")
+addEventListener("direct-upload:start", e => {
+    const { id } = e.detail
+    const elem = document.getElementById(`direct-upload-${id}`)
+    elem.classList.remove("direct-upload--pending")
 })
 
 addEventListener("direct-upload:progress", event => {
@@ -30,7 +30,7 @@ addEventListener("direct-upload:error", event => {
 })
 
 addEventListener("direct-upload:end", event => {
-    const { id } = event.detail
-    const element = document.getElementById(`direct-upload-${id}`)
+    let { id } = event.detail
+    let element = document.getElementById(`direct-upload-${id}`)
     element.classList.add("direct-upload--complete")
 })

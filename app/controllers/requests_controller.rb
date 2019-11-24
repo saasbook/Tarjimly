@@ -19,8 +19,8 @@ class RequestsController < ActionController::Base
     def create
         @request = Request.new(request_params)
 
-        #TODO: should be a validation
-        if @request.nil? || @request.from_language.nil? || @request.to_language.nil? || @request.description.nil? || @request.title.nil? || @request.deadline.nil? 
+        #TODO: should be a validation and include rest
+        if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
             return
         end
