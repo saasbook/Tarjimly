@@ -3,8 +3,10 @@ require 'rails_helper'
 
 describe 'Users are able to delete their requests' do 
     before(:each) do 
-        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1)
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
         @curr_id = @request.id
+        @claim = Claim.create(translator_tarjimly_id: 1, _status: 0, translation: 'text', submitted_date: "Nov-25-2019", translation_type: 'pdf', request_id: @curr_id, request: @request)
+        @claim_id = @claim.id
     end
     it 'user requests page should display all submitted requests' do
         visit "/requests"
@@ -28,6 +30,15 @@ describe 'Users are able to delete their requests' do
     it 'after refreshing page, request should be gone' do 
         visit "/requests/#{@curr_id}"
         click_button("Delete Request")
+        visit "/requests"
+        expect(page).to have_no_content("Doctor Appointment")
+    end 
+    it 'claimed request should not fully delete' do 
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        @request.claims.equal? @claim
+        click_button("Delete Request")
+        expect(@request.reload._status).to equal(2)
         visit "/requests"
         expect(page).to have_no_content("Doctor Appointment")
     end 

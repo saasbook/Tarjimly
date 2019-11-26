@@ -1,14 +1,13 @@
 class Request < ApplicationRecord
     has_many :claims, dependent: :nullify
-    before_destroy :update_claims, prepend: true
+    before_destroy :update_claims, prepend: true do 
+        throw(:abort) if self.claims.present?
+    end 
 
     def update_claims 
-        if !self.claims.nil? && self.claims.present?
-            self._status = 2
-            self.claims.each do |claim|
-                claim._status = 3
-            end
-            return false 
+        if self.claims.present?
+            puts("visited helper")
+            errors.add(:base, "request has existing claims")
         end 
     end 
 end
