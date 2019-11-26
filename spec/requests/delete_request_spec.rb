@@ -3,9 +3,9 @@ require 'rails_helper'
 
 describe 'Users are able to delete their requests' do 
     before(:each) do 
-        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_text: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
         @curr_id = @request.id
-        @claim = Claim.create(translator_tarjimly_id: 1, _status: 0, translation: 'text', submitted_date: "Nov-25-2019", translation_type: 'pdf', request_id: @curr_id, request: @request)
+        @claim = Claim.create(translator_tarjimly_id: 1, _status: 0, translation_text: 'text', submitted_date: "Nov-25-2019", translation_format: 'pdf', request_id: @curr_id, request: @request)
         @claim_id = @claim.id
     end
     it 'user requests page should display all submitted requests' do
