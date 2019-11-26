@@ -21,6 +21,15 @@
     <li>
     Deadline: <%= @request.deadline %>
   </li>
+  <li>Format: <%= @request.document_format %></li>
+  <% if @request.document_format=="text"%>
+    <li><%= "Document Text: " + @request.document_text %></li>
+  <% else %>
+    <li> Document Files:</li>
+    <% @request.document_uploads.each do |file| %>
+      <li><%= link_to(file.filename, file, target: "_blank") %></li>
+    <% end %>
+  <% end %>
 
 <%= button_to "All Requests", requests_path, action: "index", method: :get %>
 <%= button_to "Delete Request", delete_request_path(request_id: @request.id), request_id: @request.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to delete this request?', title: 'Confirm Request Deletion', commit: 'YES', cancel: 'NO'} %>

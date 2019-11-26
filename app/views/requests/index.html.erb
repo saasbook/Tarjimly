@@ -1,11 +1,10 @@
 
+<button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
+<button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
 <p id="notice"><%= flash[:notice] %></p>
 
-<h3> All Requests </h3>
-<h3> Pending Translations </h3>
-<h3> Completed Translations </h3>
 
-<table>
+<table class=" table table-striped">
   <thead>
     <tr>
       <th> Title </th>

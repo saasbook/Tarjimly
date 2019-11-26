@@ -1,3 +1,33 @@
 language: ruby
 rvm:
  - 2.6.3
+services:	
+  - postgresql	
+
+
+env:
+  global:	 
+    - CC_TEST_REPORTER_ID=cd4c2070b6c0bf4abfe14ee4b6472b5cc4ba81fee58c2deaf9f1fb0f50740785
+
+bundler_args:
+    --without production
+
+
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+
+script:
+  - bundle exec rake db:drop
+  - bundle exec rake db:create
+  - bundle exec rake db:migrate
+  - bundle exec rspec
+  - ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json
+  - bundle exec cucumber
+  - ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json
+
+after_script:
+  - ./cc-test-reporter sum-coverage coverage/codeclimate.*.json | ./cc-test-reporter upload-coverage
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+

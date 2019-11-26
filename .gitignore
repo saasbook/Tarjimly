@@ -33,7 +33,9 @@ config/master.key
 db/test.sqlite3
 db/development.sqlite3
 
-
+#Extra assets
+/node_modules/
+/public/assets/
 
 # Coverage
 /coverage/*

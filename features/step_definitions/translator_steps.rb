@@ -3,8 +3,8 @@ Given("I am on the {string} page") do |string|
     user_tarjimly_id: 1,
     from_language: "English",
     to_language: "Arabic",
-    document: "location_of_file",
-    document_format: "pdf",
+    document_text: "this is the document text",
+    document_format: "text",
     deadline: "2019-11-25 00:00:00",
     title: "Camp Announcment",
     description: "Event going on in camp",
@@ -17,8 +17,8 @@ Given("I am on the {string} page") do |string|
       user_tarjimly_id: 1,
       from_language: "Spanish",
       to_language: "Latin",
-      document: "location_of_file",
-      document_format: "Word",
+      document_text: "this is the document text",
+      document_format: "text",
       deadline: "2020-1-25 00:00:00",
       title: "PTO Announcment",
       description: "Description of PTO policy",
@@ -31,8 +31,8 @@ Given("I am on the {string} page") do |string|
       user_tarjimly_id: 1,
       from_language: "Chinese",
       to_language: "French",
-      document: "location_of_file",
-      document_format: "CSV",
+      document_text: "this is the document text",
+      document_format: "text",
       deadline: "2019-12-31 00:00:00",
       title: "Rally Announcment",
       description: "Event to plan rally in capital",
@@ -45,8 +45,8 @@ Given("I am on the {string} page") do |string|
         user_tarjimly_id: 1,
         from_language: "Chinese",
         to_language: "Arabic",
-        document: "location_of_file",
-        document_format: "CSV",
+        document_text: "this is the document text",
+        document_format: "text",
         deadline: "2019-12-31 00:00:00",
         title: "Rally Announcment",
         description: "Event to plan rally in capital",
@@ -59,7 +59,7 @@ Given("I am on the {string} page") do |string|
           user_tarjimly_id: 1,
           from_language: "English",
           to_language: "Arabic",
-          document: "location_of_file",
+          document_text: "location_of_file",
           document_format: "pdf",
           deadline: "2020-11-25 00:00:00",
           title: "Camp",
@@ -113,7 +113,7 @@ Then("I should see a list of requests sorted") do
 end
 
 When("I click on {string} from the list of request") do |string|
-  within "#request_1" do
+  within "#request_#{@request.id}" do
     click_on string
   end
 end
@@ -121,11 +121,11 @@ end
 Then("I should be able to find the claim by my id") do
   claim = Claim.last
   expect(claim.translator_tarjimly_id).to eq(1)
-  expect(claim.request_id).to eq(1)
+  expect(claim.request_id).to eq(@request.id)
 end
 
 When("I click on {string}") do |string|
-  within "#request_1" do
+  within "#request_#{@request.id}" do
     click_on string
   end
 end

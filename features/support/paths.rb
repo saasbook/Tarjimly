@@ -7,6 +7,8 @@ module NavigationHelpers
         '/requests'
       when 'new_request'
         '/requests/new'
+      when 'Claims'
+        '/claims'
       
   
       # Add more mappings here.
