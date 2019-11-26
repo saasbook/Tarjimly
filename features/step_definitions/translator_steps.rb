@@ -3,13 +3,13 @@ Given("I am on the {string} page") do |string|
     user_tarjimly_id: 1,
     from_language: "English",
     to_language: "Arabic",
-    document: "location_of_file",
-    document_format: "pdf",
+    document_text: "this is the document text",
+    document_format: "text",
     deadline: "2019-11-25 00:00:00",
     title: "Camp Announcment",
     description: "Event going on in camp",
     categories: "Recreation, Children",
-    num_claims: 0,
+    num_claims: 2,
     form_type: "N/A",
     _status: 0)
 
@@ -17,8 +17,8 @@ Given("I am on the {string} page") do |string|
       user_tarjimly_id: 1,
       from_language: "Spanish",
       to_language: "Latin",
-      document: "location_of_file",
-      document_format: "Word",
+      document_text: "this is the document text",
+      document_format: "text",
       deadline: "2020-1-25 00:00:00",
       title: "PTO Announcment",
       description: "Description of PTO policy",
@@ -31,8 +31,8 @@ Given("I am on the {string} page") do |string|
       user_tarjimly_id: 1,
       from_language: "Chinese",
       to_language: "French",
-      document: "location_of_file",
-      document_format: "CSV",
+      document_text: "this is the document text",
+      document_format: "text",
       deadline: "2019-12-31 00:00:00",
       title: "Rally Announcment",
       description: "Event to plan rally in capital",
@@ -45,8 +45,8 @@ Given("I am on the {string} page") do |string|
         user_tarjimly_id: 1,
         from_language: "Chinese",
         to_language: "Arabic",
-        document: "location_of_file",
-        document_format: "CSV",
+        document_text: "this is the document text",
+        document_format: "text",
         deadline: "2019-12-31 00:00:00",
         title: "Rally Announcment",
         description: "Event to plan rally in capital",
@@ -54,6 +54,20 @@ Given("I am on the {string} page") do |string|
         num_claims: 5,
         form_type: "N/A",
         _status: 0)
+
+        Request.create(
+          user_tarjimly_id: 1,
+          from_language: "English",
+          to_language: "Arabic",
+          document_text: "location_of_file",
+          document_format: "pdf",
+          deadline: "2020-11-25 00:00:00",
+          title: "Camp",
+          description: "Event going on in camp",
+          categories: "Recreation, Children",
+          num_claims: 0,
+          form_type: "N/A",
+          _status: 0)
 
   visit string
 end
@@ -96,4 +110,26 @@ Then("I should see a list of requests sorted") do
   expect(requests_2).to have_content(db_requests_2.deadline) && have_content("Number of Claims: #{db_requests_2.num_claims}")
   expect(requests_3).to have_content(db_requests_3.deadline) && have_content("Number of Claims: #{db_requests_3.num_claims}")
   expect(requests_4).to have_content(db_requests_4.deadline) && have_content("Number of Claims: #{db_requests_4.num_claims}")
+end
+
+When("I click on {string} from the list of request") do |string|
+  within "#request_#{@request.id}" do
+    click_on string
+  end
+end
+
+Then("I should be able to find the claim by my id") do
+  claim = Claim.last
+  expect(claim.translator_tarjimly_id).to eq(1)
+  expect(claim.request_id).to eq(@request.id)
+end
+
+When("I click on {string}") do |string|
+  within "#request_#{@request.id}" do
+    click_on string
+  end
+end
+
+Then("I should be notified of requests with no claims in the same from and to languages") do
+  expect(page).to have_content("There are other requests of the same languages with no claims.")
 end

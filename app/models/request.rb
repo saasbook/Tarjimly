@@ -1,12 +1,12 @@
 class Request < ApplicationRecord
     has_many :claims, dependent: :nullify
+    has_many_attached :document_uploads
     before_destroy :update_claims, prepend: true do 
-        throw(:abort) if self.claims.present?
+        throw(:abort) if errors.present?
     end 
 
     def update_claims 
         if self.claims.present?
-            puts("visited helper")
             errors.add(:base, "request has existing claims")
         end 
     end 
