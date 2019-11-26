@@ -3,6 +3,7 @@ requests_seed = [{user_tarjimly_id: 5, from_language: 'English', to_language: 'A
 
                   {user_tarjimly_id: 1, from_language: 'English', to_language: 'Urdu', document_text: 'this is the document text', document_format: 'text', deadline: '25-Nov-2019',
                   title: 'Camp Announcment', description: 'Event going on in camp', categories: 'MISSING', num_claims: 0, form_type: 'N/A', _status: 0},
+                  
                   {user_tarjimly_id: 1, from_language: 'Arabic', to_language: 'Urdu', document: 'location_of_file', document_format: 'jpg', deadline: '25-Dec-2019',
                   title: 'Visa Application', description: 'Information for steps in visa application', categories: 'MISSING', num_claims: 0, form_type: 'Visa Application', _status: 0},
                  
