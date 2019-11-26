@@ -7,6 +7,7 @@ class Request < ApplicationRecord
 
     def update_claims 
         if self.claims.present?
+            raise "requests which have been claimed cannot be deleted"
             errors.add(:base, "request has existing claims")
         end 
     end 

@@ -26,6 +26,8 @@ describe 'Users are able to delete their requests' do
         visit "/requests/#{@curr_id}"
         click_button("Delete Request")
         expect(page).to have_text("Your request 'Doctor Appointment' has been deleted!")
+        expect(flash.now[:notice]).to eq("Your request 'Doctor Appointment' has been deleted!")
+
     end 
     it 'after refreshing page, request should be gone' do 
         visit "/requests/#{@curr_id}"
@@ -39,8 +41,20 @@ describe 'Users are able to delete their requests' do
         @request.claims.equal? @claim
         click_button("Delete Request")
         expect(@request.reload._status).to equal(2)
-        visit "/requests"
-        expect(page).to have_no_content("Doctor Appointment")
     end 
+
+    it 'all associated claims should have updated status' do
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        @request.claims.equal? @claim
+        click_button("Delete Request")
+        expect(@claim.reload._status).to equal(3)
+    end
+
+    it 'has associated claims will raise error stoping complete destroy' do 
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        expect { @request.destroy }.to raise_error
+    end
 end 
 
