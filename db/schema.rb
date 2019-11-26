@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_11_24_022154) do
     t.string "translation_format"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "request_id"
+    t.bigint "request_id"
     t.index ["request_id"], name: "index_claims_on_request_id"
   end
 
