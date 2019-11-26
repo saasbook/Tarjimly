@@ -9,6 +9,9 @@ class RequestsController < ActionController::Base
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
+        if @request._status == 2
+            return not_found
+        end 
     end
     
     def new
@@ -50,7 +53,6 @@ class RequestsController < ActionController::Base
         @request = Request.find(params[:request_id])
         # if catch(:abort) {@request.destroy}
         if !@request.claims.nil? && @request.claims.present?
-            puts("caught an abort")
             @request._status = 2
             @request.save!
             @request.claims.each do |claim|
@@ -62,20 +64,14 @@ class RequestsController < ActionController::Base
         end 
         flash[:notice] = "Your request '#{@request.title}' has been deleted!"
         redirect_to requests_url
-        # if !@request.destroy 
-        #     # @request._status = 2
-        #     puts("there are claims stoping destroy")
-        #     flash[:notice] = "Your request '#{@request.title}' has been deleted!"
-        #     redirect_to requests_url
-        # else 
-        #     @request.destroy 
-        #     flash[:notice] = "Your request '#{@request.title}' has been deleted!"
-        #     redirect_to requests_url
-        # end
     end
 
     private
     def request_params
         params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
+    end
+    def not_found
+        raise ActionController::RoutingError.new('Not Found')
+        render :file => "#{RAILS_ROOT}/public/404.html",  :status => 404
     end
 end

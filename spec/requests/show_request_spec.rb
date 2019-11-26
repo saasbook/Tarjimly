@@ -5,6 +5,8 @@ describe "User viewing details for a specific request" do
     before(:each) do 
         @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1)
         @curr_id = @request.id
+        @request_deleted = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 2)
+        @curr_id_deleted = @request_deleted.id
     end
     it 'should be all submitted translations' do
         get "/requests"
@@ -32,5 +34,8 @@ describe "User viewing details for a specific request" do
         expect(page).to have_content("Translation Language: Arabic")
         expect(page).to have_content("information regarding upcoming doctors appointment")
     end
-   
+    it 'for deleted request should redirect to error page' do 
+        visit "/requests/#{@curr_id_deleted}"
+        page.should have_content('not found')
+    end
 end

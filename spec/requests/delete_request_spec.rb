@@ -26,8 +26,6 @@ describe 'Users are able to delete their requests' do
         visit "/requests/#{@curr_id}"
         click_button("Delete Request")
         expect(page).to have_text("Your request 'Doctor Appointment' has been deleted!")
-        expect(flash.now[:notice]).to eq("Your request 'Doctor Appointment' has been deleted!")
-
     end 
     it 'after refreshing page, request should be gone' do 
         visit "/requests/#{@curr_id}"
