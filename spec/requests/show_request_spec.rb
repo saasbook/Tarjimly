@@ -36,6 +36,6 @@ describe "User viewing details for a specific request" do
     end
     it 'for deleted request should redirect to error page' do 
         visit "/requests/#{@curr_id_deleted}"
-        page.should have_content('not found')
+        page.should have_content("The page you were looking for doesn't exist.")
     end
 end

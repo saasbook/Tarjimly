@@ -71,7 +71,7 @@ class RequestsController < ActionController::Base
         params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
     end
     def not_found
-        raise ActionController::RoutingError.new('Not Found')
-        render :file => "#{RAILS_ROOT}/public/404.html",  :status => 404
+        # raise ActionController::RoutingError.new('Not Found')
+        render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
 end
