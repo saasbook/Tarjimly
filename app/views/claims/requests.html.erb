@@ -1,26 +1,41 @@
-<h3>Pending Requests</h3>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
 
-<%=link_to "Sort by deadline", controller: "claims", action: "requests", sort_by_deadline: true%>
+<div class="container requests-header">
+  <h3>Pending Requests</h3>
 
-<%=form_tag "requests", method: "get" do %>
-<%=label_tag "From Language"%>
-<%=text_field_tag "from_language"%>
-<%=label_tag "To Language"%>
-<%=text_field_tag "to_language"%>
-<%=submit_tag "Filter"%>
-<% end %>
+  <%=form_tag "requests", method: "get" do %>
+    <%=label_tag "From Language"%>
+    <%=text_field_tag "from_language"%>
+    <%=label_tag "To Language"%>
+    <%=text_field_tag "to_language"%>
+    <%=submit_tag "Filter"%>
+  <% end %>
+  <%=link_to "Sort by deadline", controller: "claims", action: "requests", sort_by_deadline: true%>
+</div>
 
-<% @requests.each do |request| %>
-  <li class="requests">
-    Title: <%= request.title %><br />
-    Desc: <%= request.description %><br />
-    From: <%= request.from_language %><br />
-    To: <%= request.to_language %><br />
+<div class="container">
+  <% @requests.each do |request| %>
+    <div class="requests-card">
+      <span class="lead" style="font-weight: 400">
+         <%= request.title %><br />
+      <span class="lead">
+        <%= request.description %><br />
+        From <%= request.from_language %> to  <%= request.to_language %><br />
+      </span>
+      <span class="lead deadline">Due: <%= request.deadline.to_s[0..10] %> </span>
 
-    Format: <%= request.document_format %><br />
-    Number of Claims: <%= request.num_claims %><br />
-    Categories: <%= request.categories %><br />
-    Deadline: <%= request.deadline %>
-  </li>
-  <br />
-<% end %>
+      <div class="tags-containers">
+        <span class="tag tag-pink"><%= request.num_claims%> Claims</span>
+        <% if request.categories%>
+          <%# <% request.categories.each do |c|%>
+            <span class="tag tag-cyan"><%= "#{request.categories}" %></span>
+          <%# <%end%>
+        <%end%>
+        <span class="tag tag-blue"><%= request.document_format %></span>
+      </div>
+
+    </div>
+  <% end %>
+</div>

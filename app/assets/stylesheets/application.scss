@@ -15,6 +15,62 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/* translators/requests view */
+
+.requests-header {
+  text-align: center;
+}
+
+.requests-card {
+  border: .5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+
+  .deadline {
+    color: red;
+  }
+  
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    margin: 3px;
+    border-radius: 5px;
+  }
+
+  .tag-blue{
+    background-color: rgb(190, 225, 237);
+  }
+  .tag-pink{
+    background-color: rgb(245, 203, 209);
+  }
+
+  .tag-cyan{
+    background-color: lightcyan;
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ignore stuff below this line (temporary index page) */
 .aj-stuff {
   .custom-model{
     .modal-header{
