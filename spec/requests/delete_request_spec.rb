@@ -3,10 +3,11 @@ require 'rails_helper'
 
 describe 'Users are able to delete their requests' do 
     before(:each) do 
-        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1)
+        @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_text: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
         @curr_id = @request.id
+        @claim = Claim.create(translator_tarjimly_id: 1, _status: 0, translation_text: 'text', submitted_date: "Nov-25-2019", translation_format: 'pdf', request_id: @curr_id, request: @request)
+        @claim_id = @claim.id
     end
-    
     it 'user requests page should display all submitted requests' do
         visit "/requests"
         click_link("Completed Translations")
@@ -32,5 +33,26 @@ describe 'Users are able to delete their requests' do
         visit "/requests"
         expect(page).to have_no_content("Doctor Appointment")
     end 
+    it 'claimed request should not fully delete' do 
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        @request.claims.equal? @claim
+        click_button("Delete Request")
+        expect(@request.reload._status).to equal(2)
+    end 
+
+    it 'all associated claims should have updated status' do
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        @request.claims.equal? @claim
+        click_button("Delete Request")
+        expect(@claim.reload._status).to equal(3)
+    end
+
+    it 'has associated claims will raise error stoping complete destroy' do 
+        @request.id = @curr_id
+        visit "/requests/#{@curr_id}"
+        expect { @request.destroy }.to raise_error
+    end
 end 
 

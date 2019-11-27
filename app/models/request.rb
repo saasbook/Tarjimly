@@ -1,15 +1,14 @@
 class Request < ApplicationRecord
-    has_many :claims
-    before_destroy :update_claims, prepend: true
+    has_many :claims, dependent: :nullify
     has_many_attached :document_uploads
+    before_destroy :update_claims, prepend: true do 
+        throw(:abort) if errors.present?
+    end 
 
     def update_claims 
-        if !self.claims.nil? && self.claims.present?
-            self._status = 2
-            self.claims.each do |claim|
-                claim._status = 3
-            end
-            return false 
+        if self.claims.present?
+            raise "requests which have been claimed cannot be deleted"
+            errors.add(:base, "request has existing claims")
         end 
     end 
 end
