@@ -15,6 +15,10 @@ Given("I go to the {string} page") do |string|
     visit path_to(string)
   end
 
+  Given("I go to the {string} page for request id {string}") do |string, string2|
+    visit path_to(string, string2)
+  end
+
 When ("I click the {string} button") do |string|
     click_button(string)
 end 

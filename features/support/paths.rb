@@ -9,22 +9,8 @@ module NavigationHelpers
         '/requests/new'
       when 'Claims'
         '/claims'
-      
-  
-      # Add more mappings here.
-      # Here is an example that pulls values out of the Regexp:
-      #
-      #   when /^(.*)'s profile page$/i
-      #     user_profile_path(User.find_by_login($1))
-  
-    #   when /^the edit page for "([^"]*)"$/i
-    #     "/user/#{Request.find_by_title($1).user_tarjimly_id}/requests/#{Request.find_by_title($1).id}/edit"
-      
-    #   when /^the details page for "([^"]*)"$/i
-    #     "/movies/#{ Movie.find_by_title($1).id}"
-  
-    #   when /^the Similar Movies page for "([^"]*)"$/i
-    #     "/movies/#{Movie.find_by_title($1).id}/similar"
+      when 'Show'
+        'requests/4'
   
       else
         begin

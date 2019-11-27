@@ -9,6 +9,9 @@ class RequestsController < ActionController::Base
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
+        if @request._status == 2
+            return not_found
+        end 
     end
     
     def new
@@ -48,7 +51,17 @@ class RequestsController < ActionController::Base
 
     def delete 
         @request = Request.find(params[:request_id])
-        @request.destroy 
+        # if catch(:abort) {@request.destroy}
+        if !@request.claims.nil? && @request.claims.present?
+            @request._status = 2
+            @request.save!
+            @request.claims.each do |claim|
+                claim._status = 3
+                claim.save!
+            end
+        else 
+            @request.destroy
+        end 
         flash[:notice] = "Your request '#{@request.title}' has been deleted!"
         redirect_to requests_url
     end
@@ -56,5 +69,8 @@ class RequestsController < ActionController::Base
     private
     def request_params
         params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
+    end
+    def not_found
+        render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
 end
