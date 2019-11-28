@@ -29,11 +29,11 @@
       <div class="tags-containers">
         <span class="tag tag-pink"><%= request.num_claims%> Claims</span>
         <% if request.categories%>
-          <%# <% request.categories.each do |c|%>
-            <span class="tag tag-cyan"><%= "#{request.categories}" %></span>
-          <%# <%end%>
+          <% request.categories.each do |c| %>
+            <span class="tag tag-blue"><%= "#{c}" %></span>
+          <% end %>
         <%end%>
-        <span class="tag tag-blue"><%= request.document_format %></span>
+        <span class="tag tag-green"><%= request.document_format %></span>
       </div>
 
     </div>
