@@ -7,7 +7,7 @@ class ClaimsController < ActionController::Base
     else
       @requests = Request.all
     end
-    @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]} unless !params.has_key?(:sort_by_deadline)
+    @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]}
   end
 
   def preview
