@@ -1,5 +1,6 @@
 class ClaimsController < ActionController::Base
   helper_method :isHighImpact
+
   def requests
     @user = 1
     if params.has_key?(:from_language)
@@ -17,8 +18,26 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
-    render claims_url
+    #TODO: Should be a validation
+    if !Claim.where({translator_tarjimly_id: 1, request_id: params[:request_id]}).empty?
+      flash[:notice] = "You have already claimed this request"
+      redirect_to view_requests_path
+      return
+    end
+
+    begin
+      ActiveRecord::Base.transaction do
+        Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+        req =  Request.find_by(id: params[:request_id])
+        req.num_claims = req.num_claims + 1
+        req.save
+        end
+      end
+    rescue => e
+      flash[:notice] = "Uh Oh. Something went wrong, please try again."
+      redirect_to view_requests_path
+    end
+    redirect_to claims_url
   end
 
   def index
@@ -53,9 +72,15 @@ class ClaimsController < ActionController::Base
 
   end
 
-  def isHighImpact(from_lang, to_lang)
-    high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0)
+  def isHighImpact(from_lang, to_lang, req_id)
+    high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0).where.not(id: req_id)
     return high_impact_requests.empty?
   end
+
+  # def Unclaim(claim_id)
+  #   claim = Claim.find_by(id: claim_id)
+  #   req =  Request.find_by(id: params[:request_id])
+    
+  # end
 
 end

@@ -38,7 +38,7 @@
       <%=link_to "View Request", controller: "claims", action: "preview", request_id: request.id%>
       <%=form_tag "/claims", method: "post" do %>
         <%=hidden_field_tag "request_id", request.id%>
-        <%=submit_tag "Claim", data: (isHighImpact(request.from_language, request.to_language) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to view it?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary" %>
+        <%=submit_tag "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary" %>
       <% end %>
 
     </div>
