@@ -18,13 +18,13 @@
 <div class="container">
   <% @requests.each do |request| %>
     <div class="requests-card">
-      <span class="lead" style="font-weight: 400">
+      <span class="" style="font-weight: 400">
          <%= request.title %><br />
-      <span class="lead">
+      <span class="">
         <%= request.description %><br />
         From <%= request.from_language %> to  <%= request.to_language %><br />
       </span>
-      <span class="lead deadline">Due: <%= request.deadline.to_s[0..10] %> </span>
+      <span class=" deadline">Due: <%= request.deadline.to_s[0..10] %> </span>
 
       <div class="tags-containers">
         <span class="tag tag-pink"><%= request.num_claims%> Claims</span>
@@ -36,6 +36,13 @@
         <span class="tag tag-green"><%= request.document_format %></span>
       </div>
 
+      <%=link_to "View Request", controller: "claims", action: "preview", request_id: request.id%>
+      <%=form_tag "/claims", method: "post" do %>
+        <%=hidden_field_tag "request_id", request.id%>
+        <%=submit_tag "Claim", data: (isHighImpact(request.from_language, request.to_language) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to view it?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary" %>
+      <% end %>
+
     </div>
+    
   <% end %>
 </div>

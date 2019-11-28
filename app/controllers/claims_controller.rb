@@ -1,4 +1,5 @@
 class ClaimsController < ActionController::Base
+  helper_method :isHighImpact
   def requests
     @user = 1
     if params.has_key?(:from_language)
@@ -16,10 +17,8 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    claim = Claim.create(translator_tarjimly_id: params[:translator_tarjimly_id], _status: params[:_status], request_id: params[:request_id])
-    @request = Request.find_by(:id => params[:request_id])
-    get_high_impact_requests_msg(@request)
-    render "requests/show"
+    Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+    render claims_url
   end
 
   def index
@@ -54,14 +53,9 @@ class ClaimsController < ActionController::Base
 
   end
 
-  private
-  def get_high_impact_requests_msg(claimed_request)
-    high_impact_requests = Request.where(from_language: claimed_request.from_language, to_language: claimed_request.to_language, num_claims: 0)
-    @high_impact_msg = ""
-    if !high_impact_requests.empty?
-      # flash[:notice] = "There are other requests of the same languages with no claims."
-      @high_impact_msg = "There are other requests of the same languages with no claims."
-    end
+  def isHighImpact(from_lang, to_lang)
+    high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0)
+    return high_impact_requests.empty?
   end
 
 end
