@@ -1,5 +1,6 @@
 class ClaimsController < ActionController::Base
   helper_method :isHighImpact
+  helper_method :isAlreadyClaimed
 
   def requests
     @user = 1
@@ -18,24 +19,16 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    #TODO: Should be a validation
-    if !Claim.where({translator_tarjimly_id: 1, request_id: params[:request_id]}).empty?
-      flash[:notice] = "You have already claimed this request"
-      redirect_to view_requests_path
-      return
-    end
-
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
         req =  Request.find_by(id: params[:request_id])
         req.num_claims = req.num_claims + 1
         req.save
-        end
       end
     rescue => e
       flash[:notice] = "Uh Oh. Something went wrong, please try again."
-      redirect_to view_requests_path
+      redirect_to view_requests_url
     end
     redirect_to claims_url
   end
@@ -77,10 +70,9 @@ class ClaimsController < ActionController::Base
     return high_impact_requests.empty?
   end
 
-  # def Unclaim(claim_id)
-  #   claim = Claim.find_by(id: claim_id)
-  #   req =  Request.find_by(id: params[:request_id])
-    
-  # end
+  #TODO: Should be a validation also
+  def isAlreadyClaimed(req_id)
+    return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
+  end
 
 end

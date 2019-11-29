@@ -22,6 +22,10 @@
   text-align: center;
 }
 
+.filter-cont {
+  position: fixed;
+}
+
 .requests-card {
   border: .5px solid rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -31,12 +35,16 @@
   .deadline {
     color: red;
   }
+
+  .tags-container{
+    margin: 5px 0;
+  }
   
   .tag {
     font-size: 12px;
     font-weight: 500;
     padding: 5px;
-    margin: 3px;
+    margin: 10px 0px;
     border-radius: 5px;
   }
 
@@ -51,11 +59,30 @@
     background-color: rgb(208, 249, 208);
   }
 
+  .claim-form {
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-cointainer {
+    display: inline;
+  }
+
+  .card-row {
+    @media only screen and (min-width: 600px) {
+      display: flex;
+      justify-content: space-between;
+
+      .card-col-2 {
+        align-self: flex-end;
+      }
+      .show-on-small {
+        display: none;
+      }
+    }
+  }
+
 }
-
-
-
-
 
 
 
