@@ -3,23 +3,23 @@
 <%= csrf_meta_tags %>
 
 <div class="requests-header">
-  <h3>Pending Requests</h3>
+  <h2 >Pending Requests</h2>
 </div>
 <div class="container">
   <div class="row justify-content-md-center">
-    <div class="col-md-2">
+    <div class="col-md-3">
       <div class="filter-cont">
         <%=form_tag "requests", method: "get" do %>
-          <%=label_tag "From Language"%><br />
-          <%=text_field_tag "from_language"%><br />
-          <%=label_tag "To Language"%><br />
-          <%=text_field_tag "to_language"%><br />
-          <%=submit_tag "Filter"%>
+          <p class="lead filter-labels"%> Document Language: </p>
+          <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
+          <p class="lead filter-labels"%> Translate To: </p>
+          <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
+          <%=submit_tag "Filter", class: "btn btn-primary btn-block"%>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-md-9">
       <% @requests.each do |request| %>
         <div class="requests-card">
           <h4 class="card-title">
@@ -46,7 +46,7 @@
             <div class="card-col-2">
               <%=form_tag "/claims", method: "post", class: "claim-form" do %>
                 <%=hidden_field_tag "request_id", request.id%>
-                <% if !isAlreadyClaimed(request.id) %>
+                <% if isAlreadyClaimed(request.id) %>
                   <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
                 <% else %>
                   <%=link_to "View Your Claim", {controller: "claims", action: "show", claim_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />

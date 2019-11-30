@@ -23,8 +23,17 @@
 }
 
 .filter-cont {
-  position: fixed;
+  padding: 10px;
+  @media only screen and (min-width: 992px) {
+    position: fixed;
+  }
+
+  .filter-labels {
+    margin-bottom: 10px;
+  }
 }
+
+
 
 .requests-card {
   border: .5px solid rgba(0, 0, 0, 0.1);
