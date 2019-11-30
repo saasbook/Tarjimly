@@ -118,6 +118,7 @@ When("I click on {string} from the list of request") do |string|
   end
 end
 
+
 Then("I should be able to find the claim by my id") do
   claim = Claim.last
   expect(claim.translator_tarjimly_id).to eq(1)

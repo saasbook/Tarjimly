@@ -21,7 +21,7 @@
 
     <div class="col-md-9">
       <% @requests.each do |request| %>
-        <div class="requests-card">
+        <div class="requests-card" id="request_<%=request.id%>">
           <h4 class="card-title">
             <%= request.title %>
           </h4>
