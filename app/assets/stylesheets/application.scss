@@ -22,21 +22,34 @@
   text-align: center;
 }
 
+.no-requests{
+  margin-top: 20px;
+  text-align: center;
+}
+
 .filter-cont {
+  margin-top: 15px;
   padding: 10px;
   @media only screen and (min-width: 992px) {
+    border-right: .5px solid #337ab7;
+    padding-right: 3%;
     position: fixed;
   }
 
   .filter-labels {
     margin-bottom: 10px;
   }
+
+  .reset-container {
+    margin-top: 10px;
+    text-align: center;
+  }
 }
 
 
 
 .requests-card {
-  border: .5px solid rgba(0, 0, 0, 0.1);
+  border: .5px solid #d9ecfc;
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
