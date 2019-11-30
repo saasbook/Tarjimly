@@ -16,3 +16,6 @@
   <%=submit_tag "Claim", data: { confirm: 'Your confirm message' }%>
   <% end %>
 </div>
+
+<%= button_to "All Requests", view_requests_path, action: "requests", method: :get %>
+

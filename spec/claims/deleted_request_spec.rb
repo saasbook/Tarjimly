@@ -25,7 +25,7 @@ describe 'Translators dismiss claims deleted by users' do
     it  'should have a link to dismiss deleted requests' do 
         visit "/claims"
         page.should have_selector(:link_or_button, 'Dismiss Claim for Deleted Request')
-        page.should have_selector(:link_or_button, 'Submit Translation')
+        page.should have_selector(:link_or_button, 'Claim Details')
     end 
     it 'should dismiss claim' do 
         visit "/claims"
