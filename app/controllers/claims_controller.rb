@@ -3,11 +3,12 @@ class ClaimsController < ActionController::Base
   helper_method :isAlreadyClaimed
 
   def requests
+    claimed_ids = Claim.where(translator_tarjimly_id: 1).pluck(:request_id)
     @user = 1
     if params.has_key?(:from_language)
-      @requests = Request.where(:from_language => params[:from_language].capitalize, :to_language => params[:to_language].capitalize)
+      @requests = Request.where(:from_language => params[:from_language].capitalize, :to_language => params[:to_language].capitalize).where.not(id: claimed_ids)
     else
-      @requests = Request.all
+      @requests = Request.where.not(id: claimed_ids)
     end
     @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]}
   end
@@ -67,6 +68,9 @@ class ClaimsController < ActionController::Base
 
   def isHighImpact(from_lang, to_lang, req_id)
     high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0).where.not(id: req_id)
+    if Request.find_by_id(req_id).num_claims == 0
+      return true
+    end
     return high_impact_requests.empty?
   end
 
