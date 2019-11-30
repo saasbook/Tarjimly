@@ -1,4 +1,7 @@
 class ClaimsController < ActionController::Base
+  helper_method :isHighImpact
+  helper_method :isAlreadyClaimed
+
   def requests
     @user = 1
     if params.has_key?(:from_language)
@@ -6,7 +9,7 @@ class ClaimsController < ActionController::Base
     else
       @requests = Request.all
     end
-    @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]} unless !params.has_key?(:sort_by_deadline)
+    @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]}
   end
 
   def preview
@@ -16,10 +19,18 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    claim = Claim.create(translator_tarjimly_id: params[:translator_tarjimly_id], _status: params[:_status], request_id: params[:request_id])
-    @request = Request.find_by(:id => params[:request_id])
-    get_high_impact_requests_msg(@request)
-    render "requests/show"
+    begin
+      ActiveRecord::Base.transaction do
+        Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+        req =  Request.find_by(id: params[:request_id])
+        req.num_claims = req.num_claims + 1
+        req.save
+      end
+    rescue => e
+      flash[:notice] = "Uh Oh. Something went wrong, please try again."
+      redirect_to view_requests_url
+    end
+    redirect_to claims_url
   end
 
   def index
@@ -54,14 +65,14 @@ class ClaimsController < ActionController::Base
 
   end
 
-  private
-  def get_high_impact_requests_msg(claimed_request)
-    high_impact_requests = Request.where(from_language: claimed_request.from_language, to_language: claimed_request.to_language, num_claims: 0)
-    @high_impact_msg = ""
-    if !high_impact_requests.empty?
-      # flash[:notice] = "There are other requests of the same languages with no claims."
-      @high_impact_msg = "There are other requests of the same languages with no claims."
-    end
+  def isHighImpact(from_lang, to_lang, req_id)
+    high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0).where.not(id: req_id)
+    return high_impact_requests.empty?
+  end
+
+  #TODO: Should be a validation also
+  def isAlreadyClaimed(req_id)
+    return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
   end
 
 end

@@ -15,6 +15,111 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
+/* translators/requests view */
+
+.requests-header {
+  text-align: center;
+}
+
+.no-requests{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.filter-cont {
+  margin-top: 15px;
+  padding: 10px;
+  @media only screen and (min-width: 992px) {
+    border-right: .5px solid #337ab7;
+    padding-right: 3%;
+    position: fixed;
+  }
+
+  .filter-labels {
+    margin-bottom: 10px;
+  }
+
+  .reset-container {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+
+
+.requests-card {
+  border: .5px solid #d9ecfc;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px;
+
+  .deadline {
+    color: red;
+  }
+
+  .tags-container{
+    margin: 5px 0;
+  }
+  
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    margin: 10px 0px;
+    border-radius: 5px;
+  }
+
+  .tag-blue{
+    background-color: rgb(190, 225, 237);
+  }
+  .tag-pink{
+    background-color: rgb(245, 203, 209);
+  }
+
+  .tag-green{
+    background-color: rgb(208, 249, 208);
+  }
+
+  .claim-form {
+    margin: 0;
+    padding: 0;
+  }
+
+  .button-cointainer {
+    display: inline;
+  }
+
+  .card-row {
+    @media only screen and (min-width: 600px) {
+      display: flex;
+      justify-content: space-between;
+
+      .card-col-2 {
+        align-self: flex-end;
+      }
+      .show-on-small {
+        display: none;
+      }
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ignore stuff below this line (temporary index page) */
 .aj-stuff {
   .custom-model{
     .modal-header{

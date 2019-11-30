@@ -1,35 +1,71 @@
-<h3>Pending Requests</h3>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
 
+<div class="requests-header">
+  <h2 >Pending Requests</h2>
+</div>
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-3">
+      <div class="filter-cont">
+        <%=form_tag "requests", method: "get" do %>
+          <p class="lead filter-labels"%> Document Language: </p>
+          <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
+          <p class="lead filter-labels"%> Translate To: </p>
+          <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
+          <%=submit_tag "Filter", class: "btn btn-primary btn-block"%>
+          <div class="reset-container">
+            <%=link_to "Reset", {controller: "claims", action: "requests"}%>
+          </div>
+        <% end %>
+      </div>
+    </div>
 
-<%=link_to "Sort by deadline", controller: "claims", action: "requests", sort_by_deadline: true%>
+    <div class="col-md-9">
+      <% if @requests.empty? %>
+        <div class="alert alert-info no-requests" role="alert">
+          <p class="lead">No requests matched your filters :(<br/> Please check back later!</p> 
+        </div>
+      <% end %>
+      <% @requests.each do |request| %>
+        <div class="requests-card" id="request_<%=request.id%>">
+          <h4 class="card-title">
+            <%= request.title %>
+          </h4>
+          <p class="card-text">
+            <%= request.description %><br />
+            From <%= request.from_language %> to  <%= request.to_language %><br />
+          </p>
+          <p class="card-text deadline">Deadline: <%= request.deadline.to_s[0..10] %> </p>
+          
+          <div class="card-row">
+            <div class="card-col-1">
+              <div class="tags-container">
+                <span class="tag tag-pink"><%= request.num_claims%> Claims</span>
+                <% if request.categories%>
+                  <% request.categories.each do |c| %>
+                    <span class="tag tag-blue"><%= "#{c}" %></span>
+                  <% end %>
+                <%end%>
+                <span class="tag tag-green"><%= request.document_format.capitalize %></span>
+              </div>
+            </div>
+            <div class="card-col-2">
+              <%=form_tag "/claims", method: "post", class: "claim-form" do %>
+                <%=hidden_field_tag "request_id", request.id%>
+                <% if isAlreadyClaimed(request.id) %>
+                  <%=link_to "View Your Claim", {controller: "claims", action: "show", claim_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
+                <% else %>
+                  <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
+                <% end %>
+                <%=submit_tag "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %>
+              <% end %>
+            </div>
+          </div>
+        </div>
 
-<%=form_tag "requests", method: "get" do %>
-<%=label_tag "From Language"%>
-<%=text_field_tag "from_language"%>
-<%=label_tag "To Language"%>
-<%=text_field_tag "to_language"%>
-<%=submit_tag "Filter"%>
-<% end %>
-
-<% @requests.each do |request| %>
-  <li class="requests" id="request_<%=request.id%>">
-    Title: <%= request.title %><br />
-    Desc: <%= request.description %><br />
-    From: <%= request.from_language %><br />
-    To: <%= request.to_language %><br />
-
-    Format: <%= request.document_format %><br />
-    Number of Claims: <%= request.num_claims %><br />
-    Categories: <%= request.categories %><br />
-    Deadline: <%= request.deadline %><br />
-    <%=link_to "View Request", controller: "claims", action: "preview", request_id: request.id%>
-
-    <%=form_tag "/claims", method: "post" do %>
-    <%=hidden_field_tag "translator_tarjimly_id", @user%>
-    <%=hidden_field_tag "_status", 0%>
-    <%=hidden_field_tag "request_id", request.id%>
-    <%=submit_tag "Claim", confirm: 'Your confirm message'%>
-    <% end %>
-  </li>
-  <br />
-<% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

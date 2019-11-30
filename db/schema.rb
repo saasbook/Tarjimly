@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_24_022154) do
+ActiveRecord::Schema.define(version: 2019_11_27_004455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2019_11_24_022154) do
     t.string "translation_format"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "request_id"
+    t.integer "request_id"
     t.index ["request_id"], name: "index_claims_on_request_id"
   end
 
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_11_24_022154) do
     t.datetime "deadline"
     t.string "title"
     t.string "description"
-    t.string "categories"
+    t.string "categories", array: true
     t.integer "num_claims"
     t.string "form_type"
     t.integer "_status"
