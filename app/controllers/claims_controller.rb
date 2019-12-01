@@ -3,6 +3,7 @@ class ClaimsController < ActionController::Base
   helper_method :isAlreadyClaimed
 
   def requests
+    @claim = Claim.new
     claimed_ids = Claim.where(translator_tarjimly_id: 1).pluck(:request_id)
     @user = 1
     if params.has_key?(:from_language)
@@ -20,6 +21,7 @@ class ClaimsController < ActionController::Base
   end
 
   def create
+    @claim = Claim.new
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
