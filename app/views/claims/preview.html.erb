@@ -8,11 +8,16 @@
   Number of Claims: <%= @request.num_claims %><br />
   Categories: <%= @request.categories %><br />
   Deadline: <%= @request.deadline %><br />
-
-  <%=form_tag "/claims", method: "post" do %>
-  <%=hidden_field_tag "translator_tarjimly_id", @user%>
-  <%=hidden_field_tag "_status", 0%>
-  <%=hidden_field_tag "request_id", @request.id%>
-  <%=submit_tag "Claim", data: { confirm: 'Your confirm message' }%>
-  <% end %>
 </div>
+
+  <div class="card-col-2">
+    <%=simple_form_for @claim, url: create_claim_path, method: :post, class: "claim-form", :remote => true, :authenticity_token => true do |c| %>
+      <%= c.association :request, :collection => Request.all, :selected => @request.id, as: :hidden %>
+      <%=hidden_field_tag "request_id", @request.id%>
+      <%=c.button :submit, "Claim", data: (isHighImpact(@request.from_language, @request.to_language, @request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(@request.id) %>
+    <% end %>
+  </div>
+ 
+
+<%= button_to "All Requests", view_requests_path, action: "requests", method: :get %>
+
