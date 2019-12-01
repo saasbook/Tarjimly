@@ -52,7 +52,6 @@
               </div>
             </div>
             <div class="card-col-2">
-
               <%=simple_form_for @claim, url: create_claim_path, method: "create", class: "claim-form" do |c| %>
                 <%= c.association :request, :collection => Request.all, :selected => request.id, as: :hidden %>
                 <%=hidden_field_tag "request_id", request.id%>

@@ -47,7 +47,7 @@ class ClaimsController < ActionController::Base
   end
 
   def show
-
+    @claim = Claim.find_by_id(params[:claim_id])
   end
 
   def delete
@@ -56,11 +56,13 @@ class ClaimsController < ActionController::Base
       @claim.destroy 
       flash[:notice] = "You have sucessfully dismissed your claim for a deleted request!"
       redirect_to claims_url
-    # else 
-    #   @claim.request.num_claims -= 1
-    #   @claim.destroy 
-    #   flash[:notice] = "You have sucessfully unclaimed this translation!"
-    #   redirect_to claims_url
+    else 
+      @claim.request.num_claims -= 1
+      @claim.request.save!
+      title = @claim.request.title
+      @claim.destroy 
+      flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
+      redirect_to claims_url
     end
 
   end
