@@ -22,7 +22,7 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    @claim = Claim.new
+    # @claim = Claim.new
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
