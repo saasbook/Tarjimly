@@ -17,6 +17,12 @@
       <span class="bold">Deadline: </span><%= @request.deadline.to_s[0..10] %>
     </p>
   </div>
+  <% if @request.document_format == "text"%>
+  <% puts "FORMAT IS #{@request.document_format}"%>
+    <p class="lead document-text"> 
+      <%= @request.document_text %>
+    </p>
+  <% end %>
 
 
   <p class="lead tags-container"> 

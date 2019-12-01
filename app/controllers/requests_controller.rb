@@ -68,7 +68,7 @@ class RequestsController < ActionController::Base
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document_text, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
     end
     def not_found
         render :file => "#{Rails.root}/public/404.html",  :status => 404

@@ -116,9 +116,12 @@
     display: flex;
     justify-content: space-between;
   }
-  // .desc-tags {
-  //   margin: 0;
-  // }
+
+  .document-text {
+    border-radius: 10px;
+    background-color: rgba(0,0,0,0.2);
+  }
+
 }
 
 
