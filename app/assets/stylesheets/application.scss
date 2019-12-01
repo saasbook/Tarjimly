@@ -58,29 +58,6 @@
     color: red;
   }
 
-  .tags-container{
-    margin: 5px 0;
-  }
-  
-  .tag {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px;
-    margin: 10px 0px;
-    border-radius: 5px;
-  }
-
-  .tag-blue{
-    background-color: rgb(190, 225, 237);
-  }
-  .tag-pink{
-    background-color: rgb(245, 203, 209);
-  }
-
-  .tag-green{
-    background-color: rgb(208, 249, 208);
-  }
-
   .claim-form {
     margin: 0;
     padding: 0;
@@ -104,6 +81,44 @@
     }
   }
 
+}
+
+.tags-container{
+  margin: 5px 0;
+  .tag {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 5px;
+    margin: 10px 0px;
+    border-radius: 5px;
+  }
+
+  .tag-blue{
+    background-color: rgb(190, 225, 237);
+  }
+  .tag-pink{
+    background-color: rgb(245, 203, 209);
+  }
+
+  .tag-green{
+    background-color: rgb(208, 249, 208);
+  }
+}
+
+.show-request {
+  .title {
+    color: #337ab7
+  }
+  .bold {
+    font-weight: 400;
+  }
+  .spread{
+    display: flex;
+    justify-content: space-between;
+  }
+  // .desc-tags {
+  //   margin: 0;
+  // }
 }
 
 

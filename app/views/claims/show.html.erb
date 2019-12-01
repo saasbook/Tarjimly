@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+
+
+
+<div class="container show-request">
+  <h2 class="title"> <%= @request.title %></h2>
+  <div class="spread">
+    <p class="lead"> 
+      <span class="bold">Document Language: </span><%= @request.from_language %><br/>
+      <span class="bold">Requested Translation: </span><%= @request.to_language %>
+    </p>
+    <p class="lead"> 
+      <span class="bold">Posted on: </span><%= @request.created_at.to_s[0..10] %><br/>
+      <span class="bold">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+    </p>
+  </div>
+
+
+  <p class="lead tags-container"> 
+    <span class="bold"> Description </span><br/>
+    <%= @request.description %><br/>
+      <% if @request.categories%>
+        <% @request.categories.each do |c| %>
+          <span class="tag tag-blue"><%= "#{c}" %></span>
+        <% end %>
+      <%end%>
+  </p>
+</div>

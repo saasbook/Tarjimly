@@ -36,14 +36,20 @@ class ClaimsController < ActionController::Base
   def index
     @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details 
     @deleted_claims = Claim.where({translator_tarjimly_id: 1, _status: 3})
-    if @deleted_claims.present?
+    if @dexsleted_claims.present?
       flash[:notice] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
 
   end
 
   def show
-
+    cid = params[:claim_id]
+    @claim = Claim.find_by_id(cid)
+    puts "STATUS INCOMING: #{@claim._status}"
+    if !(@claim._status -= 0 || @claim._status == 1)  #Todo check auth also
+      return not_found
+    end 
+    @request = Request.find_by_id(@claim.request_id)
   end
 
   def delete
@@ -73,6 +79,11 @@ class ClaimsController < ActionController::Base
   #TODO: Should be a validation also
   def isAlreadyClaimed(req_id)
     return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
+  end
+
+  private
+  def not_found
+    render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
 
 end
