@@ -68,7 +68,26 @@ class ClaimsController < ActionController::Base
   end
 
   def complete
-
+    begin
+      ActiveRecord::Base.transaction do
+        claim = Claim.find_by(id: params[:claim_id])
+        claim.translation_text = params[:translation_text]
+        claim._status = 1
+        claim.save!
+        
+        #Using associations (is ther a  way to get sinlings?):
+        req = claim.request
+        req.claims.each do |c|
+          if c.id != params[:claim_id]
+            c._status = 2
+            c.save!
+          end
+        end
+        req.save!
+      end
+    rescue => e
+      flash[:notice] = "Uh Oh. Submission unsuccessful, please try again."
+    end
   end
 
   def isHighImpact(from_lang, to_lang, req_id)
@@ -85,5 +104,4 @@ class ClaimsController < ActionController::Base
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
-
 end

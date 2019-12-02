@@ -12,45 +12,42 @@
     <h2 class="page-header-title">Translate Request</h2>
   </div>
 
-
-  <div class= "show-request-container">
-    <div class="info-container">
-      <p class="lead bold blue-header title"> <%= @request.title %></p>
-      <div class="spread">
-        <p class="lead bold langs"> 
-            <%= @request.from_language %>
-            <i class="fa fa-arrow-right sm"></i>
-            <%=@request.to_language %>
-        </p>
-        <p class="lead lead-no-margin bold"> 
-          <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
-        </p>
-      </div>
-      <p class="lead lead-no-margin"> 
-        <%= @request.description %><br/>
-          <% if @request.categories%>
-            <div class="tags-container">
-              <% @request.categories.each do |c| %>
-                <span class="tag tag-blue"><%= "#{c}" %></span>
-              <% end %>
-            </div>
-          <%end%>
+  <div class="info-container">
+    <p class="lead bold blue-header title"> <%= @request.title %></p>
+    <div class="spread">
+      <p class="lead bold langs"> 
+          <%= @request.from_language %>
+          <i class="fa fa-arrow-right sm"></i>
+          <%=@request.to_language %>
+      </p>
+      <p class="lead lead-no-margin bold"> 
+        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
       </p>
     </div>
-
-    <% if @request.document_format == "text"%>
-      <div class="document-container">
-        <p class="lead bold blue-header"> 
-          Document
-        </p>
-        <div class="document-text">
-          <p class="lead lead-small lead-no-margin"> 
-            <%= @request.document_text %>
-          </p>
-        </div>
-      </div>
-    <% end %>
+    <p class="lead lead-no-margin"> 
+      <%= @request.description %><br/>
+        <% if @request.categories%>
+          <div class="tags-container">
+            <% @request.categories.each do |c| %>
+              <span class="tag tag-blue"><%= "#{c}" %></span>
+            <% end %>
+          </div>
+        <%end%>
+    </p>
   </div>
+
+  <% if @request.document_format == "text"%>
+    <div class="document-container">
+      <p class="lead bold blue-header"> 
+        Document
+      </p>
+      <div class="document-text">
+        <p class="lead lead-small lead-no-margin"> 
+          <%= @request.document_text %>
+        </p>
+      </div>
+    </div>
+  <% end %>
 
   <div class="translation-text-container">
     <%= form_for @claim do |f| %>
