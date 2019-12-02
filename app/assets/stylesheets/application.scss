@@ -163,8 +163,8 @@
   border-radius: 10px;
 }
 
-  .info-container {
-    padding: 10px;
+.info-container {
+  padding: 10px;
 
     .langs {
       margin-bottom: 0;
@@ -175,11 +175,29 @@
         margin-right: 2px;
       }
     }
-  }
+}
 
   .document-container{
     border-radius: 10px;
     background-color: rgba(0,0,0,0.05);
+    padding: 10px;
+
+    .document-text {
+      max-height: 40%;
+      overflow-y: scroll;
+    }
+    .lead-small{
+      @media only screen and (min-width: 800px) {
+        font-size: 18px;
+      }
+      font-weight: 400;
+    }
+  }
+
+  .translation-container{
+    margin: 1.5em 0;
+    border-radius: 10px;
+    background-color: rgba(199, 224, 238, 0.424);
     padding: 10px;
 
     .document-text {
