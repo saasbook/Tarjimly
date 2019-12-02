@@ -29,7 +29,7 @@ Feature: claimed request deleted by user
         Then I should see "Camp Announcment"
         Then I should see "Visa Application"
         Then I should see "Requests you claimed no longer require translation. You can dismiss them below!"
-        Then I should see "Dismiss Claim for Deleted Request" and "Submit Translation"
+        Then I should see "Dismiss Claim for Deleted Request" and "Claim Details"
         When I select "Dismiss Claim for Deleted Request"
         Then I should not see "Camp Announcment"
 

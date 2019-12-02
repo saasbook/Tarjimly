@@ -277,6 +277,9 @@ GEM
     selenium-webdriver (3.142.6)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    simple_form (5.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     simplecov (0.16.1)
       docile (~> 1.1)
       json (>= 1.8, < 3)
@@ -349,6 +352,7 @@ DEPENDENCIES
   rspec-rails (= 3.7.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  simple_form
   simplecov
   spring
   spring-watcher-listen (~> 2.0.0)

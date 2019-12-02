@@ -60,20 +60,7 @@ requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'A
                       title: 'Lawyer Meeting', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', categories: ['Legal', 'Medical'], num_claims: 0, form_type: 'N/A', _status: 0}
 ]
 
-# claims_seed = [{translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 1},
-#                {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 5},
-#                {translator_tarjimly_id: 1, _status: 1, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 2},
-#                {translator_tarjimly_id: 1, _status: 2, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 3},
-#                {translator_tarjimly_id: 1, _status: 0, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 4},
-#                {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 6},
-#                {translator_tarjimly_id: 1, _status: 3, submitted_date: 'N/A', translation_text: 'example text translation', translation_format: 'text', request_id: 7}
-# ]
-
 
 requests_seed.each do |r|
   Request.create(r)
 end
-
-# claims_seed.each do |c|
-#   Claim.create(c)
-# end

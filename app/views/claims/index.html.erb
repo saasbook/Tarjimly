@@ -24,7 +24,7 @@
         <td> <%= claim.request.to_language %> </td> 
         <td> <%= claim.request.description %> </td> 
         <td> <%= claim.request.deadline %></td> 
-        <td> <%=link_to "Submit Translation", claim_path(claim_id: claim.id), action: "show", method: :get %>
+        <td> <%=link_to "Claim Details", claim_path(claim_id: claim.id), action: "show", method: :get %>
       </tr>
       <% end %>
 
