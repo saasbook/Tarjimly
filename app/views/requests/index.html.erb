@@ -10,11 +10,11 @@
 
 <div id="filter-btn">
   <%if @status == 0%>
-    <button class="filter-btn-active" onclick="window.location = '/requests?status=0'">Pending Translations</button>
-    <button class="filter-btn" onclick="window.location = '/requests?status=1'">Completed Translations</button>
+    <button id="pending-translation" class="filter-btn-active" onclick="window.location = '/requests?status=0'">Pending Translations</button>
+    <button id="completed-translation" class="filter-btn" onclick="window.location = '/requests?status=1'">Completed Translations</button>
   <%else%>
-    <button class="filter-btn" onclick="window.location = '/requests?status=0'">Pending Translations</button>
-    <button class="filter-btn-active" onclick="window.location = '/requests?status=1'">Completed Translations</button>
+    <button id="pending-translation" class="filter-btn" onclick="window.location = '/requests?status=0'">Pending Translations</button>
+    <button id="completed-translation" class="filter-btn-active" onclick="window.location = '/requests?status=1'">Completed Translations</button>
   <%end%>
   <button id="new_request_button" class="new-request-btn" onclick="window.location = '/requests/new'">New Request</button>
   <%#= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button" %>
@@ -72,56 +72,3 @@
     </div>
   </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
-<button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
-<p id="notice"><%= flash[:notice] %></p>
-
-
-<table class=" table table-striped">
-  <thead>
-    <tr>
-      <th> Title </th>
-      <th> Request Language </th>
-      <th> Translation Language </th>
-      <th> Status </th>
-      <th> Categories </th>
-      <th> Deadline </th>
-  </thead>
-
-  <tbody>
-    <% @requests.each do |request| %>
-      <tr>  
-        <td> <%= link_to "#{request.title}", request_path(request_id: request.id) %>  </td>
-        <td> <%= request.from_language %> </td>
-        <td> <%= request.to_language %> </td>
-        <td> <%= request._status %> </td>
-        <td> <%= request.categories %> </td>
-        <td> <%= request.deadline %> </td>
-      </tr>
-      <% end %>
-
-    </tbody>
-  </table>
-  
-
-

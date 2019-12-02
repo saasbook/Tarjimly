@@ -131,6 +131,10 @@ When("I click on {string}") do |string|
   end
 end
 
+When("I click on button {string}") do |string|
+  click_on string
+end
+
 Then("I should be notified of requests with no claims in the same from and to languages") do
   expect(page).to have_content("There are other requests of the same languages with no claims.")
 end

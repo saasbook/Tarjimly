@@ -26,7 +26,7 @@ Feature: delete a requested translation
 
     Scenario: successfully deleting a translation
         Given I go to the "Requests" page
-        And I select "Pending Translations"
+        And I click on "Pending Translations"
         When I select "Camp Announcment"
         And I click the "Delete Request" button
         Then I should be on the "/requests" path

@@ -19,7 +19,7 @@ Feature: view previously submitted request
 
     Scenario: visiting request's details page
         Given I go to the "Requests" page
-        And I select "Pending Translations"
+        And I click on "Pending Translations"
         When I select "Camp Announcment"
         Then I should see "Details for Camp Announcment"
         Then I should see "Request Language" and "Translation Language"
@@ -27,7 +27,7 @@ Feature: view previously submitted request
 
     Scenario: return to all requests
         Given I go to the "Requests" page
-        And I select "Pending Translations"
+        And I click on "Pending Translations"
         When I select "Camp Announcment"
         When I click the "All Requests" button
         Then I should be on the "/requests" path
