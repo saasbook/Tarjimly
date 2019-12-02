@@ -22,7 +22,6 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    # @claim = Claim.new
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
@@ -49,7 +48,6 @@ class ClaimsController < ActionController::Base
   def show
     cid = params[:claim_id]
     @claim = Claim.find_by_id(cid)
-    puts "STATUS INCOMING: #{@claim._status}"
     if !(@claim._status -= 0 || @claim._status == 1)  #Todo check auth also
       return not_found
     end 
@@ -77,22 +75,25 @@ class ClaimsController < ActionController::Base
     begin
       ActiveRecord::Base.transaction do
         claim = Claim.find_by(id: params[:claim_id])
-        claim.translation_text = params[:translation_text]
+        claim.translation_format = "text"
+        claim.translation_text = params[:claim][:translation_text]
         claim._status = 1
         claim.save!
         
-        #Using associations (is ther a  way to get sinlings?):
         req = claim.request
         req.claims.each do |c|
-          if c.id != params[:claim_id]
+          if c.id.to_i != params[:claim_id].to_i
             c._status = 2
             c.save!
           end
         end
+        req._status = 1
         req.save!
+        redirect_to claim_path(claim_id: params[:claim_id])
       end
     rescue => e
       flash[:notice] = "Uh Oh. Submission unsuccessful, please try again."
+      puts e
     end
   end
 

@@ -1,6 +1,8 @@
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
+<p id="notice"><%= flash[:notice] %></p>
+
 
 
 <div class="container">
@@ -30,7 +32,7 @@
               <% if @request._status==0%>
                 <span class="tag tag-big tag-orange"> Pending</span>
               <% elsif @request._status==1 %>
-                <span class="tag tag-big tag-green"> Completed</span>
+                <span class="tag tag-big tag-green"> Completed </i></span>
               <% end %>
             </div>
         <%end%>
@@ -50,16 +52,31 @@
     </div>
   <% end %>
 
-  <div class="translation-text-container">
-    <%= form_for @claim do |f| %>
-      <div class="form-group">
-        <%= f.label :Translation, "Your Translation", class: "lead bold blue-header pad-left" %> 
-        <%= f.text_area(:translation_text, required: true, rows: 10, class: "form-control curve") %><br>
+  <% if @claim._status == 1%>
+    <div class="document-container">
+      <p class="lead bold blue-header"> 
+        Your Translation
+      </p>
+      <div class="document-text">
+        <p class="lead lead-small lead-no-margin"> 
+          <%= @claim.translation_text %>
+        </p>
       </div>
-      <div class="form-group">
-        <%= f.submit "Submit Translation", class: "btn btn-primary" %>
-      </div>
-    <% end %>
-    <%= button_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'} %>
+    </div>
+  <% else %>
+    <div class="translation-text-container">
+      <%= form_for @claim do |f| %>
+        <div class="form-group">
+          <%= f.label :Translation, "Your Translation", class: "lead bold blue-header pad-left" %> 
+          <%= f.text_area(:translation_text, required: true, rows: 10, class: "form-control curve") %><br>
+        </div>
+        <div class="form-group">
+          <%= f.submit "Submit Translation", class: "btn btn-primary" %>
+          <%= link_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary" %>
+        </div>
+      <% end %>
+    <%end%>
   </div>
+
+  
 </div>
