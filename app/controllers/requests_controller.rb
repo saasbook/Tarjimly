@@ -1,9 +1,8 @@
 class RequestsController < ActionController::Base
     def index
         @user = 1
-        status = params[:status] || 0
-
-        @requests = Request.where(user_tarjimly_id: @user, _status: status)
+        @status = params[:status] || 0
+        @requests = Request.where(user_tarjimly_id: @user, _status: @status)
     end
 
     def show 

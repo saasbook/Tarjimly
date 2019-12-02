@@ -1,3 +1,97 @@
+<p id="notice"><%= flash[:notice] %></p>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+
+<div class="requests-header">
+  <h2 >My Requests</h2>
+</div>
+
+<div id="filter-btn">
+  <%if @status == 0%>
+    <button class="filter-btn-active" onclick="window.location = '/requests?status=0'">Pending Translations</button>
+    <button class="filter-btn" onclick="window.location = '/requests?status=1'">Completed Translations</button>
+  <%else%>
+    <button class="filter-btn" onclick="window.location = '/requests?status=0'">Pending Translations</button>
+    <button class="filter-btn-active" onclick="window.location = '/requests?status=1'">Completed Translations</button>
+  <%end%>
+  <button id="new_request_button" class="new-request-btn" onclick="window.location = '/requests/new'">New Request</button>
+  <%#= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button" %>
+</div>
+
+<%# HEADING TITLES FOR BRANDON TO FINISH %>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-9">
+
+      <% if @requests.empty? %>
+        <div class="requests-card-index">
+          <h4 class="card-title">
+            No Translations Available
+          </h4>
+        </div>
+      <% end %>
+
+      <% @requests.each do |request| %>
+        <div class="requests-card-index" id="request_<%=request.id%>">
+          <h4 class="card-title">
+            <%= link_to "#{request.title}", request_path(request_id: request.id) %>
+          </h4>
+          <p class="card-text">
+            <%= request.description %><br />
+          </p>
+          <h5>
+            From <%= request.from_language %> to  <%= request.to_language %><br />
+          </h5>
+          <p class="card-text request-submitted-at">Submitted: <%= request.created_at.to_s[0..10] %> </p>
+          <p class="card-text deadline">Deadline: <%= request.deadline.to_s[0..10] %> </p>
+          <div class="card-row">
+            <div class="card-col-1">
+              <div class="tags-container">
+                <% if request.categories%>
+                  <% request.categories.each do |c| %>
+                    <span class="tag tag-blue"><%= "#{c}" %></span>
+                  <% end %>
+                <%end%>
+                <span class="tag tag-green"><%= request.document_format.capitalize %></span>
+                <% if request.num_claims > 0 %>
+                  <span class="tag tag-pink">Currently Being Translated</span>
+                <%end%>
+              </div>
+            </div>
+            <div class="card-col-2">
+              <%=form_tag "/claims", method: "post", class: "claim-form" do %>
+                <%=hidden_field_tag "request_id", request.id%>
+<!--                <%#=link_to "Submit Translation", {controller: "claims", action: "show", claim_id: claim.request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />-->
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
 <button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
@@ -30,4 +124,5 @@
     </tbody>
   </table>
   
-<%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button" %>
+
+
