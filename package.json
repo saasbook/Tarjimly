@@ -2,9 +2,13 @@
   "name": "TarjimlyDocs",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "^4.2.0",
     "bootstrap": "^4.3.1",
     "jquery": "^3.4.1",
     "jquery-ui-dist": "^1.12.1",
     "popper.js": "^1.16.0"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.9.0"
   }
 }

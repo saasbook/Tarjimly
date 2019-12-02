@@ -22,38 +22,4 @@
 //= require_tree .
 //= require popper
 //= require data-confirm-modal
-//= require twitter/bootstrap/rails/confirm
-
-$("a[data-confirm]").each(function (_, link) {
-    var $link = $(link);
-    var data = $link.data();
-    data = $.extend({}, {
-        "confirmFade": true,
-        "confirmTitle": "Call to Buzz"
-    }, data);
-    if ($link.data("method") == "delete") {
-        data = $.extend({}, {
-            "confirmTitle": "Warning",
-            "confirmCancel": "Cancel",
-            "confirmCancelClass": "btn-cancel",
-            "confirmProceed": "Delete",
-            "confirmProceedClass": "btn-danger"
-        }, data);
-
-    }
-    $link.data(data);
-});
-
-$('.alert').alert('close')
-
-$('#delete_link').confirmModal({ backdrop: 'static', keyboard: false });
-
-
-$(document).ready(function () {
-    $.fn.twitter_bootstrap_confirmbox.defaults = {
-        title: null, // if title equals null window.top.location.origin is used
-        cancel: "Cancel",
-        proceed: "OK",
-        proceed_class: "btn proceed btn-primary"
-    }
-});
+//= require confirm-modal
