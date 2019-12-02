@@ -192,6 +192,13 @@
       }
       font-weight: 400;
     }
+    .lead-small-xs{
+      @media only screen and (min-width: 800px) {
+        font-size: 15px;
+      }
+      font-size: 13px;
+      font-weight: 400;
+    }
   }
 
   .translation-container{
