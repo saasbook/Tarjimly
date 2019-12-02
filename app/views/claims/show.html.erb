@@ -5,33 +5,53 @@
 
 
 
-<div class="container show-request">
-  <h2 class="title"> <%= @request.title %></h2>
-  <div class="spread">
-    <p class="lead"> 
-      <span class="bold">Document Language: </span><%= @request.from_language %><br/>
-      <span class="bold">Requested Translation: </span><%= @request.to_language %>
+
+<div class="container">
+  <div class= "show-request-container show-request ">
+    <h2 class="title"> <%= @request.title %></h2>
+    <div class="spread">
+      <p class="lead bold langs"> 
+          <%= @request.from_language %>
+          <i class="fa fa-arrow-right sm"></i>
+          <%=@request.to_language %>
+      </p>
+      <p class="lead lead-no-margin bold"> 
+        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+      </p>
+    </div>
+    <p class="lead tags-container"> 
+      <%= @request.description %><br/>
+        <% if @request.categories%>
+          <% @request.categories.each do |c| %>
+            <span class="tag tag-blue"><%= "#{c}" %></span>
+          <% end %>
+        <%end%>
     </p>
-    <p class="lead"> 
-      <span class="bold">Posted on: </span><%= @request.created_at.to_s[0..10] %><br/>
-      <span class="bold">Deadline: </span><%= @request.deadline.to_s[0..10] %>
-    </p>
+
+    <% if @request.document_format == "text"%>
+      <div class="document-container">
+        <p class="lead bold blue-header"> 
+          Document
+        </p>
+        <div class="document-text">
+          <p class="lead lead-small lead-no-margin"> 
+            <%= @request.document_text %>
+          </p>
+      </div>
+    <% end %>
   </div>
-  <% if @request.document_format == "text"%>
-  <% puts "FORMAT IS #{@request.document_format}"%>
-    <p class="lead document-text"> 
-      <%= @request.document_text %>
-    </p>
-  <% end %>
 
+  <div class="translation-text-container">
+    <%= form_for @claim do |f| %>
+      <div class="form-group">
+        <%= f.label :Translation, "Translation", class: "lead bold blue-header" %> <br/>
+        <span> Paste you translation here, or upload a file </span>
+        <%= f.text_area(:translation_text, required: true, rows: 10, class: "form-control") %><br>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
 
-  <p class="lead tags-container"> 
-    <span class="bold"> Description </span><br/>
-    <%= @request.description %><br/>
-      <% if @request.categories%>
-        <% @request.categories.each do |c| %>
-          <span class="tag tag-blue"><%= "#{c}" %></span>
-        <% end %>
-      <%end%>
-  </p>
 </div>
