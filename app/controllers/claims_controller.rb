@@ -41,7 +41,7 @@ class ClaimsController < ActionController::Base
     @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details 
     @deleted_claims = Claim.where({translator_tarjimly_id: 1, _status: 3})
     if @deleted_claims.present?
-      flash[:notice] = "Requests you claimed no longer require translation. You can dismiss them below!"
+      flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
 
   end
@@ -54,7 +54,7 @@ class ClaimsController < ActionController::Base
     @claim = Claim.find(params[:claim_id])
     if @claim._status == 3
       @claim.destroy 
-      flash[:notice] = "You have sucessfully dismissed your claim for a deleted request!"
+      flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
       redirect_to claims_url
     else 
       @claim.request.num_claims -= 1

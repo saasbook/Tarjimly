@@ -403,3 +403,16 @@
       }
   }
 }
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-warning;
+}
+.alert-success {
+  @extend .alert-success;
+}
+.alert-info {
+  @extend .alert-info;
+}
