@@ -13,7 +13,7 @@
   </div>
 
   <div class="info-container">
-    <p class="lead bold blue-header title"> <%= @request.title %></p>
+      <span class="lead bold blue-header title"> <%= @request.title %> </span>
     <div class="spread">
       <p class="lead bold langs"> 
           <%= @request.from_language %>
@@ -24,14 +24,19 @@
         <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
       </p>
     </div>
-    <p class="lead lead-no-margin"> 
+    <p class="lead lead-no-margin" style="margin-bottom: 10px"> 
       <%= @request.description %><br/>
         <% if @request.categories%>
-          <div class="tags-container">
-            <% @request.categories.each do |c| %>
-              <span class="tag tag-blue"><%= "#{c}" %></span>
-            <% end %>
-          </div>
+            <div class="tags-container">
+              <% @request.categories.each do |c| %>
+                <span class="tag tag-big tag-blue"><%= "#{c}" %></span>
+              <% end %>
+              <% if @request._status==0%>
+                <span class="tag tag-big tag-orange"> Pending</span>
+              <% elsif @request._status==1 %>
+                <span class="tag tag-big tag-green"> Completed</span>
+              <% end %>
+            </div>
         <%end%>
     </p>
   </div>

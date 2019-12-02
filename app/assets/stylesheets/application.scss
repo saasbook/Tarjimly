@@ -94,25 +94,39 @@
 
 .tags-container{
   margin: 5px 0;
-  .tag {
-    font-size: 12px;
-    font-weight: 500;
-    padding: 5px;
-    margin: 10px 0px;
-    border-radius: 5px;
-  }
-
-  .tag-blue{
-    background-color: rgb(190, 225, 237);
-  }
-  .tag-pink{
-    background-color: rgb(245, 203, 209);
-  }
-
-  .tag-green{
-    background-color: rgb(208, 249, 208);
+}
+.tag {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+.tag-big {
+  @media only screen and (min-width: 800px) {
+    font-size: 14px;
   }
 }
+
+.tag-blue{
+  background-color: rgb(190, 225, 237);
+}
+.tag-pink{
+  background-color: rgb(245, 203, 209);
+}
+.tag-orange{
+  background-color: rgb(251, 236, 218);
+}
+.tag-green{
+  background-color: rgb(208, 249, 208);
+}
+.tag-purple{
+  background-color: lavender;
+}
+.tag-grey{
+  background-color:rgba(0,0,0,0.07);
+}
+
 
 /* Show Request Styling */
 .blue-header{
@@ -127,10 +141,13 @@
 }
 .title {
   @media only screen and (min-width: 800px) {
-    font-size: 22px;
+    font-size: 24px;
   }
   color: #337ab7;
   margin: 5px 0;
+  margin-right: 5px;
+  font-weight: bolder;
+
 }
 .bold {
   font-weight: 400;
@@ -187,6 +204,11 @@
 .spread {
   display: flex;
   justify-content: space-between;
+}
+
+.spread-vertical {
+  display: flex;
+  align-content: center;
 }
 
 .lead-no-margin {
