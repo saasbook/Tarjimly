@@ -20,7 +20,6 @@ class RequestsController < ActionController::Base
     
     def create
         @request = Request.new(request_params)
-
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
@@ -50,7 +49,6 @@ class RequestsController < ActionController::Base
 
     def delete 
         @request = Request.find(params[:request_id])
-        # if catch(:abort) {@request.destroy}
         if !@request.claims.nil? && @request.claims.present?
             @request._status = 2
             @request.save!

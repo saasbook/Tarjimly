@@ -54,15 +54,12 @@
               </div>
             </div>
             <div class="card-col-2">
-              <%=form_tag "/claims", method: "post", class: "claim-form" do %>
+              <%=simple_form_for @claim, url: create_claim_path, method: "create", class: "claim-form" do |c| %>
+                <%= c.association :request, :collection => Request.all, :selected => request.id, as: :hidden %>
                 <%=hidden_field_tag "request_id", request.id%>
-                <% if isAlreadyClaimed(request.id) %>
-                  <%=link_to "View Your Claim", {controller: "claims", action: "show", claim_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
-                <% else %>
-                  <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
-                <% end %>
-                <%=submit_tag "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %>
+                <%=c.button :submit, "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %>
               <% end %>
+              <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
             </div>
           </div>
         </div>

@@ -29,17 +29,17 @@ Feature: claimed request deleted by user
         Then I should see "Camp Announcment"
         Then I should see "Visa Application"
         Then I should see "Requests you claimed no longer require translation. You can dismiss them below!"
-        Then I should see "Dismiss Deleted Request." and "Submit Translation"
-        When I select "Dismiss Deleted Request."
+        Then I should see "Dismiss Deleted Request" and "View Claim"
+        When I select "Dismiss Deleted Request"
         Then I should not see "Camp Announcment"
 
     Scenario: dismissed claims are not displayed
         Given I go to the "Claims" page
-        When I select "Dismiss Deleted Request."
+        When I select "Dismiss Deleted Request"
         Then I should not see "Camp Announcment"
         Then I should see "You have sucessfully dismissed your claim for a deleted request!"
         When I refesh the page
-        Then I should not see "Dismiss Deleted Request."
+        Then I should not see "Dismiss Deleted Request"
         Then I should not see "You have sucessfully dismissed your claim for a deleted request!"
         Then I should not see "Requests you claimed no longer require translation. You can dismiss them below!"
 
