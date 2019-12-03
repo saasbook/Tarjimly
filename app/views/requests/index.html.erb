@@ -9,7 +9,7 @@
 </div>
 
 <div id="filter-btn">
-  <%if @status == 0%>
+  <%if @status.to_i == 0%>
     <button id="pending-translation" class="filter-btn-active" onclick="window.location = '/requests?status=0'">Pending Translations</button>
     <button id="completed-translation" class="filter-btn" onclick="window.location = '/requests?status=1'">Completed Translations</button>
   <%else%>
