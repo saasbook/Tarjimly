@@ -11,17 +11,17 @@
   </div>
 
   <div class="info-container">
-      <span class="lead bold blue-header title"> <%= @request.title %> </span>
     <div class="spread">
-      <p class="lead bold langs"> 
-          <%= @request.from_language %>
-          <i class="fa fa-arrow-right sm"></i>
-          <%=@request.to_language %>
-      </p>
-      <p class="lead lead-no-margin bold"> 
+      <span class="lead bold title"> <%= @request.title %> </span>
+      <p class="lead lead-no-margin bold mg-tb-5"> 
         <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
       </p>
     </div>
+    <p class="lead bold langs"> 
+        <%= @request.from_language %>
+        <i class="fa fa-arrow-right sm"></i>
+        <%=@request.to_language %>
+    </p>
     <p class="lead lead-no-margin" style="margin-bottom: 10px"> 
       <%= @request.description %><br/>
         <% if @request.categories%>
@@ -41,7 +41,7 @@
 
     <div class="document-container">
       <% if @request.document_format == "text"%>
-        <p class="lead bold blue-header"> 
+        <p class="lead blue-header"> 
           Document
         </p>
         <div class="document-text">
@@ -50,7 +50,7 @@
           </p>
         </div>
       <% else %>
-        <p class="lead bold blue-header"> 
+        <p class="lead blue-header"> 
           Documents
         </p>
         <div class="document-text">
@@ -65,7 +65,7 @@
 
   <% if @claim._status == 1%>
     <div class="translation-container">
-      <p class="lead bold blue-header"> 
+      <p class="lead blue-header"> 
         Your Translation
       </p>
       <div class="document-text">

@@ -30,19 +30,21 @@
       <% end %>
       <% @requests.each do |request| %>
         <div class="requests-card" id="request_<%=request.id%>">
-          <h4 class="card-title">
-            <%= request.title %>
-          </h4>
-          <div class="spread card-subs">
-            <p class="langs"> 
-                <%= request.from_language %>
-                <i class="fa fa-arrow-right sm"></i>
-                <%=request.to_language %>
-            </p>
-            <p class="lead-no-margin"> 
-              <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
+          <div class="spread">
+            <h4 class="card-title">
+              <%= request.title %>
+            </h4>
+            <p class="lead-no-margin card-subs pad-top-5"> 
+                <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
             </p>
           </div>
+
+          <p class="langs card-subs"> 
+              <%= request.from_language %>
+              <i class="fa fa-arrow-right sm"></i>
+              <%=request.to_language %>
+          </p>
+
           <p class="card-text">
             <%= request.description %><br />
           </p>

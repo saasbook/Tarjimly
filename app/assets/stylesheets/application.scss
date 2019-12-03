@@ -44,6 +44,10 @@
   margin-left: 10px;
 }
 
+.pad-top-5 {
+  padding-top: 5px;
+}
+
 .filter-cont {
   margin-top: 15px;
   padding: 10px;
@@ -150,20 +154,18 @@
 
 
 /* Show Request Styling */
-.blue-header{
-  margin-top: 0;
-  padding-top: 0;
-  margin-bottom: 5px;
-  color: #337ab7;
-}
 
 .m-bt-30 {
   margin-bottom: 30px;
+}
+.mg-tb-5 {
+  margin-top: 5px;
 }
 .title {
   @media only screen and (min-width: 800px) {
     font-size: 24px;
   }
+  font-size: 18px;
   color: #337ab7;
   margin: 5px 0;
   margin-right: 5px;
@@ -176,7 +178,13 @@
 .blue {
   color: #337ab7;
 }
-
+.blue-header{
+  margin-top: 0;
+  padding-top: 0;
+  margin-bottom: 5px;
+  color: #337ab7;
+  font-weight: 400;
+}
 
 .curve {
   border-radius: 10px;
@@ -186,7 +194,7 @@
   padding: 10px;
 }
 .langs {
-  margin-bottom: 0;
+  margin-bottom: 5px;
   .sm {
     font-size: 1.5rem;
     width: 10px;
