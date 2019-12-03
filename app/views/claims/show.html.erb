@@ -1,8 +1,9 @@
 
-
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+<%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 <%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
-<%= javascript_include_tag "confirm-modal.js" %>
+<%= csrf_meta_tags %>
+<%# <%= csp_meta_tag%> 
+
   
   <%= button_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'} %>

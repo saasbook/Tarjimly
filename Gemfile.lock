@@ -63,7 +63,7 @@ GEM
     autoprefixer-rails (9.7.3)
       execjs
     aws-eventstream (1.0.3)
-    aws-partitions (1.247.0)
+    aws-partitions (1.248.0)
     aws-sdk-core (3.82.0)
       aws-eventstream (~> 1.0, >= 1.0.2)
       aws-partitions (~> 1, >= 1.239.0)
@@ -362,7 +362,7 @@ DEPENDENCIES
   twitter-bootstrap-rails-confirm (~> 1.0, >= 1.0.4)
   uglifier (~> 4.2.0)
   web-console (>= 3.3.0)
-  webpacker (~> 4.x)
+  webpacker
 
 RUBY VERSION
    ruby 2.6.3p62
