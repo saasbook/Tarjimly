@@ -7,8 +7,7 @@ environment.plugins.append(
         $: 'jquery',
         jQuery: 'jquery',
         'window.jQuery': 'jquery',
-        Popper: ['popper.js', 'default'],
-        // Rails: ['@rails/ujs']
+        Popper: ['popper.js', 'default']
     })
 )
 

@@ -14,23 +14,19 @@
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+import 'jquery'
+import 'bootstrap'
+import 'popper.js'
+import 'bootstrap/dist/js/bootstrap';
+
 
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
-require("channels")
 require("jquery")
+require("popper.js")
 require("data-confirm-modal")
-require("popper")
-require("bootstrap")
-require("jquery_ujs")
-require("claim")
 
-require("direct_uploads.js")
-require("bootstrap-sprockets")
-
-require("formvalidation/formValidation")
-require("formvalidation/bootstrap4.min")
 
 console.log('Hello World from Webpacker')
 

@@ -2,7 +2,7 @@ $("#confirm_delete").confirm({
     text: "Are you sure you want to delete that comment?",
     title: "Confirmation required",
     confirm: function (button) {
-        delete ();
+        //  nothing to do
     },
     cancel: function (button) {
         // nothing to do
