@@ -11,7 +11,17 @@ class RequestsController < ActionController::Base
         @request = Request.find_by_id(rid)
         if @request._status == 2
             return not_found
-        end 
+        end
+
+        @claim = nil
+        if @request._status == 1
+            @request.claims.each do |c|
+                if c._status == 1
+                    @claim = c
+                end
+            end
+        end
+
     end
     
     def new
