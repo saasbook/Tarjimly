@@ -83,7 +83,7 @@
         </div>
         <div class="form-group">
           <%= f.submit "Submit Translation", class: "btn btn-primary" %>
-          <%= link_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary" %>
+          <%= link_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary pad-left" %>
         </div>
       <% end %>
     <%end%>

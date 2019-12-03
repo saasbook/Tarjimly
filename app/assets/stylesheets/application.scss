@@ -36,6 +36,14 @@
   text-align: center;
 }
 
+.pad-container {
+  margin: 1.5em 10px;
+}
+
+.pad-left {
+  margin-left: 10px;
+}
+
 .filter-cont {
   margin-top: 15px;
   padding: 10px;
@@ -168,9 +176,7 @@
 .blue {
   color: #337ab7;
 }
-.pad-left {
-  padding-left: 10px;
-}
+
 
 .curve {
   border-radius: 10px;
@@ -193,6 +199,7 @@
     border-radius: 10px;
     background-color: rgba(0,0,0,0.05);
     padding: 10px;
+    margin:10px;
 
     .document-text {
       max-height: 40%;
@@ -214,7 +221,7 @@
   }
 
   .translation-container{
-    margin: 1.5em 0;
+    margin: 1.5em 10px;
     border-radius: 10px;
     background-color: rgba(199, 224, 238, 0.424);
     padding: 10px;
@@ -234,8 +241,7 @@
 
 
 .translation-text-container {
-  margin-top: 20px;
-  // padding: 10px;
+  margin: 1.5em 10px;
 }
 
 .spread {
