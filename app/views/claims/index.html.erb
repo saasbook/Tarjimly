@@ -1,25 +1,12 @@
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span></button>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <%= value %>
    </div>
 <% end %>
-
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-<%= stylesheet_link_tag '//ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/le-frog/jquery-ui.min.css' %>
-<%= javascript_include_tag "confirm-modal.js" %>
-
-
- <%# <script src="/jquery-3.4.1.js"></script> %>
-<%# <%= stylesheet_link_tag "/jquery-ui-1.12.1.custom/jquery-ui.min.css" %> 
-  <%# <script src="/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
-  <script src="//code.jquery.com/jquery.min.js"></script>
-  <script src="alert.lib.js"></script> %>
-
 <%= csrf_meta_tags %>
-
     
   <table class=" table table-striped">
   <thead>

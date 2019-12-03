@@ -24,6 +24,7 @@ require("data-confirm-modal")
 require("popper")
 require("bootstrap")
 require("jquery_ujs")
+require("claim")
 
 require("direct_uploads.js")
 require("bootstrap-sprockets")
