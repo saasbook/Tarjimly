@@ -19,7 +19,6 @@
 //= require bootstrap.min
 //= require direct_uploads.js
 //= require bootstrap-sprockets
-//= require_tree .
 //= require popper
 //= require data-confirm-modal
 //= require confirm-modal
