@@ -58,18 +58,31 @@
 
 
 .requests-card {
-  border: .5px solid #d9ecfc;
+  border: .5px solid rgba(0,0,0,0.05);
   border-radius: 5px;
   padding: 10px;
   margin: 10px;
 
-  .deadline {
-    color: red;
+  .card-subs {
+    font-weight: 400;
+    font-size: larger;
   }
 
-  .claim-form {
-    margin: 0;
+  .card-title {
+    color: #337ab7;
+    margin-top:5px;
+    margin-bottom:5px;
+  }
+
+  .card-text {
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding: 0;
+
+  }
+
+  .new_claim {
+    margin-bottom: 0;
   }
 
   .button-cointainer {
@@ -112,7 +125,7 @@
   background-color: rgb(190, 225, 237);
 }
 .tag-pink{
-  background-color: rgb(245, 203, 209);
+  background-color: rgb(246, 215, 220);
 }
 .tag-orange{
   background-color: rgb(251, 236, 218);
@@ -165,16 +178,15 @@
 
 .info-container {
   padding: 10px;
-
-    .langs {
-      margin-bottom: 0;
-      .sm {
-        font-size: 1.5rem;
-        width: 10px;
-        color: #337ab7;
-        margin-right: 2px;
-      }
-    }
+}
+.langs {
+  margin-bottom: 0;
+  .sm {
+    font-size: 1.5rem;
+    width: 10px;
+    color: #337ab7;
+    margin-right: 2px;
+  }
 }
 
   .document-container{
