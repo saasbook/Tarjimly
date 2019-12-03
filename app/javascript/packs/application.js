@@ -19,14 +19,12 @@ import 'bootstrap'
 import 'popper.js'
 import 'bootstrap/dist/js/bootstrap';
 
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("jquery")
 require("popper.js")
 require("data-confirm-modal")
-
 
 console.log('Hello World from Webpacker')
 
