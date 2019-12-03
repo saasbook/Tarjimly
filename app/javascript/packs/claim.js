@@ -10,7 +10,7 @@ $("#confirm_delete").confirm({
     confirmButton: "Yes I am",
     cancelButton: "No",
     post: true,
-    confirmButtonClass: "btn-danger",
+    confirmButtonClass: "btn-primary",
     cancelButtonClass: "btn-default",
     dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
 });
