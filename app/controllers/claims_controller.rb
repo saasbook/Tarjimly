@@ -1,6 +1,7 @@
 class ClaimsController < ActionController::Base
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
+  helper_method :getDaysLeft
 
   def requests
     @claim = Claim.new
@@ -37,7 +38,7 @@ class ClaimsController < ActionController::Base
   end
 
   def index
-    @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details 
+    @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details
     @dismiss_claims = Claim.where({translator_tarjimly_id: 1, _status: [2, 3]})
     if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
@@ -53,21 +54,21 @@ class ClaimsController < ActionController::Base
     @claim = Claim.find_by_id(cid)
     if !(@claim._status -= 0 || @claim._status == 1)  #Todo check auth also
       return not_found
-    end 
+    end
     @request = Request.find_by_id(@claim.request_id)
   end
 
   def delete
     @claim = Claim.find(params[:claim_id])
     if @claim._status == 3
-      @claim.destroy 
+      @claim.destroy
       flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
       redirect_to claims_url
-    else 
+    else
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
-      @claim.destroy 
+      @claim.destroy
       flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
@@ -82,7 +83,7 @@ class ClaimsController < ActionController::Base
         claim.translation_text = params[:claim][:translation_text]
         claim._status = 1
         claim.save!
-        
+
         req = claim.request
         req.claims.each do |c|
           if c.id.to_i != params[:claim_id].to_i
@@ -113,8 +114,26 @@ class ClaimsController < ActionController::Base
     return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
   end
 
+  def getDaysLeft(request)
+    days_left = ((request.deadline - request.created_at).to_i)/86400
+
+    if days_left == -1
+      return "1 day ago", true
+    elsif days_left < 0
+      return (-1*days_left).to_s + " days ago", true
+    elsif days_left == 0
+      return "Today", true
+    elsif days_left == 1
+      return "1 day", true
+    else
+      return days_left.to_s + " days", false
+    end
+  end
+
   private
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
 end
+
+#
