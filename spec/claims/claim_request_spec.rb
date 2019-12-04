@@ -31,7 +31,7 @@ describe 'Translators can claim requests' do
         click_on 'Claim'
         visit "/claims"
         expect(page).to have_text("Doctor Appointment")
-        page.should have_selector(:link_or_button, 'Claim Details')
+        page.should have_selector(:link_or_button, 'Translate')
     end 
 
     it 'all requests should not show requests which have been claimed' do 

@@ -60,7 +60,7 @@
             <div class="card-col-2">
               <%=form_tag "/claims", method: "post", class: "claim-form" do %>
                 <%=hidden_field_tag "request_id", claim.request.id%>
-                <%=link_to "View Claim", {controller: "claims", action: "show", claim_id: claim.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
+                <%=link_to "Translate", {controller: "claims", action: "show", claim_id: claim.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
               <% end %>
             </div>
           </div>
