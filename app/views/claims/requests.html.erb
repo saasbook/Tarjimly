@@ -2,10 +2,10 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<div class="requests-header">
-  <h2 >Pending Requests</h2>
-</div>
 <div class="container">
+  <div class="page-header-container">
+    <h2 class="page-header-title">Pending Requests</h2>
+  </div>
   <div class="row justify-content-md-center">
     <div class="col-md-3">
       <div class="filter-cont">
@@ -30,14 +30,24 @@
       <% end %>
       <% @requests.each do |request| %>
         <div class="requests-card" id="request_<%=request.id%>">
-          <h4 class="card-title">
-            <%= request.title %>
-          </h4>
+          <div class="spread">
+            <h4 class="card-title">
+              <%= request.title %>
+            </h4>
+            <p class="lead-no-margin card-subs pad-top-5"> 
+                <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
+            </p>
+          </div>
+
+          <p class="langs card-subs"> 
+              <%= request.from_language %>
+              <i class="fa fa-arrow-right sm"></i>
+              <%=request.to_language %>
+          </p>
+
           <p class="card-text">
             <%= request.description %><br />
-            From <%= request.from_language %> to  <%= request.to_language %><br />
           </p>
-          <p class="card-text deadline">Deadline: <%= request.deadline.to_s[0..10] %> </p>
           
           <div class="card-row">
             <div class="card-col-1">
@@ -48,16 +58,16 @@
                     <span class="tag tag-blue"><%= "#{c}" %></span>
                   <% end %>
                 <%end%>
-                <span class="tag tag-green"><%= request.document_format.capitalize %></span>
+                <span class="tag tag-purple"><%= request.document_format %></span>
               </div>
             </div>
             <div class="card-col-2">
-              <%=simple_form_for @claim, url: create_claim_path, method: "create", class: "claim-form" do |c| %>
+              <%=simple_form_for @claim, url: create_claim_path, method: "create" do |c| %>
                 <%= c.association :request, :collection => Request.all, :selected => request.id, as: :hidden %>
                 <%=hidden_field_tag "request_id", request.id%>
+                <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
                 <%=c.button :submit, "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %>
               <% end %>
-              <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary" %> <br class="show-on-small" />
             </div>
           </div>
         </div>

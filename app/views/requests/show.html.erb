@@ -1,35 +1,89 @@
-  <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<p id="notice"><%= flash[:notice] %></p>
 
 
-  <h3>Details for <%= @request.title %> </h3>
-  <p><%=@high_impact_msg%></p>
 
-  <li class="requests">
-    Title: <%= @request.title %><br />
-    <li>
-    Request Language: <%= @request.from_language %><br />
-    <li>
-    Translation Language: <%= @request.to_language %><br />
-    <li>
-    Status: <%= @request._status %><br />
-    <li>
-    Categories: <%= @request.categories %><br />
-    <li>
-    Description: <%= @request.description %>
-    <li>
-    Deadline: <%= @request.deadline %>
-  </li>
-  <li>Format: <%= @request.document_format %></li>
-  <% if @request.document_format=="text"%>
-    <li><%= "Document Text: " + @request.document_text %></li>
+<div class="container">
+  <div class="page-header-container">
+    <h2 class="page-header-title">View Request</h2>
+  </div>
+
+  <div class="info-container">
+    <div class="spread">
+      <span class="lead bold title"> <%= @request.title %> </span>
+      <p class="lead lead-no-margin bold mg-tb-5"> 
+        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+      </p>
+    </div>
+    <p class="lead bold langs"> 
+        <%= @request.from_language %>
+        <i class="fa fa-arrow-right sm"></i>
+        <%=@request.to_language %>
+    </p>
+    <p class="lead lead-no-margin" style="margin-bottom: 10px"> 
+      <%= @request.description %><br/>
+        <% if @request.categories%>
+            <div class="tags-container">
+              <% @request.categories.each do |c| %>
+                <span class="tag tag-big tag-blue"><%= "#{c}" %></span>
+              <% end %>
+              <% if @request._status==0%>
+                <span class="tag tag-big tag-orange"> Pending</span>
+              <% elsif @request._status==1 %>
+                <span class="tag tag-big tag-green"> Completed </i></span>
+              <% end %>
+            </div>
+        <%end%>
+    </p>
+  </div>
+
+    <div class="document-container">
+      <% if @request.document_format == "text"%>
+        <p class="lead blue-header"> 
+          Document
+        </p>
+        <div class="document-text">
+          <p class="lead lead-small lead-no-margin"> 
+              <%= @request.document_text %>
+          </p>
+        </div>
+      <% else %>
+        <p class="lead blue-header"> 
+          Documents
+        </p>
+        <div class="document-text">
+          <p class="lead lead-small-xs lead-no-margin"> 
+            <% @request.document_uploads.each do |file| %>
+              <i class="fa fa-file sm blue" style="margin-left: 7px"></i> <%= link_to(file.filename, file, target: "_blank") %><br/>
+             <% end %>
+          </p>
+        </div>
+      <%end%>
+    </div>
+
+  <% if @request._status == 1%>
+    <div class="translation-container">
+      <p class="lead blue-header"> 
+        Your Translation
+      </p>
+      <div class="document-text">
+        <p class="lead lead-small lead-no-margin"> 
+          <%= @claim.nil? ? nil : @claim.translation_text %>
+        </p>
+      </div>
+    </div>
+    <div class="pad-container">
+      <%= button_to "Back to All Requests", requests_path, action: "index", method: :get, class: "btn btn-primary" %>
+    </div>
   <% else %>
-    <li> Document Files:</li>
-    <% @request.document_uploads.each do |file| %>
-      <li><%= link_to(file.filename, file, target: "_blank") %></li>
-    <% end %>
-  <% end %>
-
-<%= button_to "All Requests", requests_path, action: "index", method: :get %>
-<%= button_to "Delete Request", delete_request_path(request_id: @request.id), request_id: @request.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to delete this request?', title: 'Confirm Request Deletion', commit: 'YES', cancel: 'NO'} %>
+    <div class="pending-translation-message lead lead-small">
+      Our translators are busy at work on your request! Please check back after your deadline.
+    </div>
+    <div class="pad-container" style="display:flex">
+      <%= button_to "Delete Request", delete_request_path(request_id: @request.id), request_id: @request.id, action: "delete", method: :delete, data: { confirm: 'Are you sure you want to delete this request?', title: 'Confirm Request Deletion', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
+      <%= link_to "Back to All Requests", requests_path, action: "index", method: :get, class:"pad-left", style:"padding-top:7px" %>
+    </div>
+  <%end%>
+</div>

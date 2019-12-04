@@ -1,9 +1,9 @@
 class RequestsController < ActionController::Base
     def index
         @user = 1
-        status = params[:status] || 0
+        @status = params[:status] || 0
 
-        @requests = Request.where(user_tarjimly_id: @user, _status: status)
+        @requests = Request.where(user_tarjimly_id: @user, _status: @status)
     end
 
     def show 
@@ -11,7 +11,17 @@ class RequestsController < ActionController::Base
         @request = Request.find_by_id(rid)
         if @request._status == 2
             return not_found
-        end 
+        end
+
+        @claim = nil
+        if @request._status == 1
+            @request.claims.each do |c|
+                if c._status == 1
+                    @claim = c
+                end
+            end
+        end
+
     end
     
     def new
@@ -66,7 +76,7 @@ class RequestsController < ActionController::Base
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
+        params.require(:request).permit(:from_language, :to_language, :deadline, :document_text, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
     end
     def not_found
         render :file => "#{Rails.root}/public/404.html",  :status => 404
