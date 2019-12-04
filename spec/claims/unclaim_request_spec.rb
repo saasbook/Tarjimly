@@ -21,10 +21,10 @@ describe 'Translators are able to unclaim translation requests' do
         click_button("Unclaim Request")
         expect(page.current_path).to eq "/claims"
     end 
-    it 'should have confirmation of deltion message' do 
+    it 'should have confirmation of deletion message' do
         visit "/claims/#{@claim_id}"
         click_button("Unclaim Request")
-        expect(page).to have_text("You have sucessfully unclaimed the translation for Passport Application!")
+        expect(page).to have_text("You have successfully unclaimed the translation for Passport Application!")
     end 
     it 'claim should not be present after deleting' do 
         visit "/claims/#{@claim_id}"

@@ -64,14 +64,14 @@ class ClaimsController < ActionController::Base
     @claim = Claim.find(params[:claim_id])
     if @claim._status == 3
       @claim.destroy
-      flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
+      flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
     else
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
       @claim.destroy
-      flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
+      flash[:notice] = "You have successfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
 
