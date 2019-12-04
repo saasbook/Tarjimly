@@ -11,6 +11,7 @@
     "data-confirm-modal": "^1.6.2",
     "jquery": "^3.4.1",
     "jquery-confirm": "^3.3.4",
+    "jquery-ui": "^1.12.1",
     "jquery-ui-dist": "^1.12.1",
     "jquery-ujs": "^1.2.2",
     "myclabs.jquery.confirm": "^2.7.0",

@@ -23,31 +23,35 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("jquery")
+require("jquery-ui")
 require("popper.js")
 require("data-confirm-modal")
 require("./claim.js")
 
+require("bootstrap")
+// require("direct_uploads.js")
+
 console.log('Hello World from Webpacker')
 
-$(".confirm").confirm({
-    text: "Are you sure you want to delete that comment?",
-    title: "Confirmation required",
-    confirm: function (button) {
-        // delete ();
-    },
-    cancel: function (button) {
-        // nothing to do
-    },
-    confirmButton: "Yes I am",
-    cancelButton: "No",
-    post: true,
-    confirmButtonClass: "btn-primary",
-    cancelButtonClass: "btn-default",
-    dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
-});
+// $(".confirm").confirm({
+//     text: "Are you sure you want to delete that comment?",
+//     title: "Confirmation required",
+//     confirm: function (button) {
+//         // delete ();
+//     },
+//     cancel: function (button) {
+//         // nothing to do
+//     },
+//     confirmButton: "Yes I am",
+//     cancelButton: "No",
+//     post: true,
+//     confirmButtonClass: "btn-primary",
+//     cancelButtonClass: "btn-default",
+//     dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
+// });
 
-// $.rails.allowAction = function (link) {
-//     if (link.data("confirm") == undefined) {
+// // $.rails.allowAction = function (link) {
+// //     if (link.data("confirm") == undefined) {
 //         return true;
 //     }
 //     $.rails.showConfirmationDialog(link);

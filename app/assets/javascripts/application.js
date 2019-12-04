@@ -21,3 +21,4 @@
 //= require bootstrap-sprockets
 //= require popper
 //= require data-confirm-modal
+//= require claim
