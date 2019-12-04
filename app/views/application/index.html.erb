@@ -12,3 +12,15 @@
       <%= button_to "Translator Homepage", claims_path, action: "index", method: :get, class: "btn btn-warning" %>
   </div>
 </div>
+
+<div class="login">
+  <h1> Tarjimly Login </h1>
+  <%= form_tag auth_login_path do %>
+    <%= label_tag :email %>
+    <%= text_field_tag :email %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+    <%= submit_tag "Sign in" %>
+  <%= end%>
+  <%# call application method - authorize  %>
+</div>

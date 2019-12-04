@@ -1,6 +1,10 @@
-class RequestsController < ActionController::Base
+class RequestsController < ApplicationController
+    before_action :authorize 
+    before_action :user_auth 
+    helper_method :user_auth
+
     def index
-        @user = 1
+        @user = @userID
         @status = params[:status] || 0
 
         @requests = Request.where(user_tarjimly_id: @user, _status: @status)
@@ -45,7 +49,7 @@ class RequestsController < ActionController::Base
         end
         @request.document_format = upload_format
 
-        @request.user_tarjimly_id = 1 #TODO: Should be based on auth
+        @request.user_tarjimly_id = @userID
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db
 
@@ -60,6 +64,10 @@ class RequestsController < ActionController::Base
 
     def delete 
         @request = Request.find(params[:request_id])
+        if @request.user_tarjimly_id != @userID
+            render not_found 
+        end
+        
         if !@request.claims.nil? && @request.claims.present?
             @request._status = 2
             @request.save!
@@ -80,5 +88,8 @@ class RequestsController < ActionController::Base
     end
     def not_found
         render :file => "#{Rails.root}/public/404.html",  :status => 404
+    end
+    def user_auth
+        @userID = session[:tarjimlyID]
     end
 end

@@ -1,10 +1,13 @@
-class ClaimsController < ActionController::Base
+class ClaimsController < ApplicationController
+  before_action :authorize 
+  before_action :translator_auth
+  helper_method :translator_auth
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
 
   def requests
     @claim = Claim.new
-    claimed_ids = Claim.where(translator_tarjimly_id: 1).pluck(:request_id)
+    claimed_ids = Claim.where(translator_tarjimly_id: @translatorID).pluck(:request_id)
     @user = 1
     if params.has_key?(:from_language)
       @requests = Request.where(:from_language => params[:from_language].capitalize, :to_language => params[:to_language].capitalize).where.not(id: claimed_ids)
@@ -24,7 +27,7 @@ class ClaimsController < ActionController::Base
   def create
     begin
       ActiveRecord::Base.transaction do
-        Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
         req =  Request.find_by(id: params[:request_id])
         req.num_claims = req.num_claims + 1
         req.save
@@ -37,12 +40,12 @@ class ClaimsController < ActionController::Base
   end
 
   def index
-    @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details 
-    @dismiss_claims = Claim.where({translator_tarjimly_id: 1, _status: [2, 3]})
-    if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
+    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [0, 1]}) 
+    @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
+    if Claim.where({translator_tarjimly_id: @translatorID, _status: 3}).present?
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
-    if Claim.where({translator_tarjimly_id: 1, _status: 2}).present?
+    if Claim.where({translator_tarjimly_id: @translatorID, _status: 2}).present?
       flash[:alert] = "Requests you claimed have been submitted by another translator. You can dismiss them below!"
     end
 
@@ -51,7 +54,10 @@ class ClaimsController < ActionController::Base
   def show
     cid = params[:claim_id]
     @claim = Claim.find_by_id(cid)
-    if !(@claim._status -= 0 || @claim._status == 1)  #Todo check auth also
+    if @claim.translator_tarjimly_id != @tarjimlyID
+      flash[:alert] = "You are not authorized to view this claim!"
+      redirect_to claims_url
+    if !(@claim._status -= 0 || @claim._status == 1)  
       return not_found
     end 
     @request = Request.find_by_id(@claim.request_id)
@@ -59,6 +65,9 @@ class ClaimsController < ActionController::Base
 
   def delete
     @claim = Claim.find(params[:claim_id])
+    if @claim.translator_tarjimly_id != @translatorID
+      return not_found 
+    end
     if @claim._status == 3
       @claim.destroy 
       flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
@@ -71,7 +80,6 @@ class ClaimsController < ActionController::Base
       flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
-
   end
 
   def complete
@@ -117,4 +125,7 @@ class ClaimsController < ActionController::Base
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
+  def translator_auth
+    @translatorID = session[:tarjimlyID]
+  end 
 end
