@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/translators/requests' => 'claims#requests', :as => 'view_requests'
   get '/translators/requests/:request_id' => 'claims#preview', :as => 'preview_request'
 
+  post '/auth' => 'auth#login', :as => 'validate_login'
 
   root 'application#index'
 

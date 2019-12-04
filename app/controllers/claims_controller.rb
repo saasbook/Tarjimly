@@ -1,9 +1,11 @@
 class ClaimsController < ApplicationController
-  before_action :authorize 
-  before_action :translator_auth
-  helper_method :translator_auth
+  # before_action :authorize 
+  # before_action :translator_auth
+  # helper_method :translator_auth
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
+      @translatorID = session[:tarjimlyID]
+
 
   def requests
     @claim = Claim.new
@@ -125,7 +127,10 @@ class ClaimsController < ApplicationController
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
-  def translator_auth
-    @translatorID = session[:tarjimlyID]
-  end 
+
+  # def translator_auth
+  #   @translatorID = session[:tarjimlyID]
+  # end 
+  end
+
 end

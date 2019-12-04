@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-    before_action :authorize 
+    # before_action :authorize 
     before_action :user_auth 
     helper_method :user_auth
 
