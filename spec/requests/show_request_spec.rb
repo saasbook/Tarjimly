@@ -24,7 +24,7 @@ describe "User viewing details for a specific request" do
 
     it 'clicking all requests wil redirect to index page' do 
         visit "/requests/#{@curr_id}"
-        click_button("All Requests")
+        click_button("Back to All Requests")
         expect(page.current_path).to eq "/requests"
     end 
 

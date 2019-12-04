@@ -3,8 +3,8 @@ require 'rails_helper'
 
 describe 'Translators dismiss claims deleted by users' do 
     before(:each) do 
-        @request1 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', deadline: '2019-05-05', user_tarjimly_id: 1)
-        @request2 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Visa Application', deadline: '2019-05-05', user_tarjimly_id: 1)
+        @request1 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: "text", deadline: '2019-05-05', user_tarjimly_id: 1)
+        @request2 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Visa Application', document_format: "text", deadline: '2019-05-05', user_tarjimly_id: 1)
         @request1_id = @request1.id
         @request2_id = @request2.id
         @claim = Claim.create(translator_tarjimly_id: 1, _status: 3, submitted_date: "Nov-25-2019", request_id: @request1_id)

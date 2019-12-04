@@ -25,7 +25,7 @@ describe 'Translators can preview a request before claiming' do
     it 'should return to all requests after viewing' do 
         visit "/translators/requests/#{@request1_id}"
         page.should have_selector(:link_or_button, 'All Requests')
-        click_button("All Requests")
+        click_button("Back to All Requests")
         expect(page.current_path).to eq "/translators/requests"
     end
 end 
