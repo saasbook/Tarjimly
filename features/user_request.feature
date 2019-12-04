@@ -18,11 +18,10 @@ Feature: display all my submitted requests
     And I go to the "Requests" page
 
   Scenario: see all pending requests
-    When I select "Pending Translations"
     Then I should see "Camp Announcment Flyer"
     And I should see "Doctor Notes"
 
-  Scenario: see all completed requests
-    When I select "Completed Translations"
-    Then I should see "Camp Announcment"
-    And I should see "Visa Application"
+# Scenario: see all completed requests
+#   When I click the "Completed Translations" button
+#   Then I should see "Camp Announcment"
+#   And I should see "Visa Application"

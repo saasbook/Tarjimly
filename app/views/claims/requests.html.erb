@@ -1,3 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= value %>
+   </div>
+<% end %>
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
@@ -67,6 +73,7 @@
                 <%=hidden_field_tag "request_id", request.id%>
                 <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
                 <%=c.button :submit, "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %>
+
               <% end %>
             </div>
           </div>

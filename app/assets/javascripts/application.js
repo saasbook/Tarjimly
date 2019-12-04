@@ -13,8 +13,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require_tree .
-//= require data-confirm-modal
 //= require jquery3
 //= require bootstrap
 //= require jquery_ujs
@@ -22,3 +20,5 @@
 //= require direct_uploads.js
 //= require bootstrap-sprockets
 //= require popper
+//= require data-confirm-modal
+//= require claim

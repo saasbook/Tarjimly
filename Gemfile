@@ -28,6 +28,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'bootstrap', '~> 4.0.0'
+gem 'twitter-bootstrap-rails-confirm', '~> 1.0', '>= 1.0.4'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -59,14 +61,14 @@ group :test do
 end
 gem 'simplecov', :require => false
 
-gem 'jquery-rails'
 gem 'haml'
 gem 'rails-controller-testing'
 gem "table_print"
-gem 'data-confirm-modal', github: 'ifad/data-confirm-modal', branch: 'bootstrap2'
+gem 'data-confirm-modal'
 gem 'rails-observers'
 gem 'rspec'   
 gem 'rspec-mocks'
 gem 'aws-sdk-s3'
 gem 'rack-flash3'
+gem 'webpacker'
 gem "font-awesome-rails"

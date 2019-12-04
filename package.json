@@ -2,8 +2,25 @@
   "name": "TarjimlyDocs",
   "private": true,
   "dependencies": {
-    "bootstrap": "^4.3.1",
+    "@rails/actioncable": "^6.0.1",
+    "@rails/activestorage": "^6.0.1",
+    "@rails/ujs": "^6.0.1",
+    "@rails/webpacker": "^4.2.0",
+    "boostrap": "^2.0.0",
+    "bootstrap": "^4.4.1",
+    "data-confirm-modal": "^1.6.2",
     "jquery": "^3.4.1",
-    "popper.js": "^1.16.0"
+    "jquery-confirm": "^3.3.4",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-dist": "^1.12.1",
+    "jquery-ujs": "^1.2.2",
+    "myclabs.jquery.confirm": "^2.7.0",
+    "popper.js": "^1.16.0",
+    "turbolinks": "^5.2.0",
+    "webpack": "^4.41.2",
+    "webpack-jquery-ui": "^2.0.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3.9.0"
   }
 }

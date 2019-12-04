@@ -111,8 +111,20 @@
   }
 }
 
+// popups
+.btn-commit{
+  color: #337ab7;
+
+}
+
+.modal-title{
+    color: #337ab7;
+    font-size: 18px;
+    font-weight: 500;
+}
 
 /* translators/requests view */
+
 
 .requests-header {
   text-align: center;
@@ -412,11 +424,11 @@
 
 /* Ignore stuff below this line (temporary index page) */
 .aj-stuff {
-  .custom-model{
-    .modal-header{
-      color: red
-    }
-  }
+  // .custom-model{
+  //   .modal-header{
+  //     color: red
+  //   }
+  // }
 
   .animate-me {
     -webkit-animation: bgcolorchange 4s infinite; /* Chrome, Safari, Opera */ 
@@ -693,4 +705,17 @@
           transform:rotate(360deg);
       }
   }
+}
+.alert-alert {
+  @extend .alert-danger;
+}
+
+.alert-notice {
+  @extend .alert-warning;
+}
+.alert-success {
+  @extend .alert-success;
+}
+.alert-info {
+  @extend .alert-info;
 }
