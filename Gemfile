@@ -69,3 +69,4 @@ gem 'rspec'
 gem 'rspec-mocks'
 gem 'aws-sdk-s3'
 gem 'rack-flash3'
+gem "font-awesome-rails"

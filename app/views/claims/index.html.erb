@@ -40,18 +40,10 @@
           <h5>
             From <%= claim.request.from_language %> to  <%= claim.request.to_language %><br />
           </h5>
-          <% if (((claim.request.deadline - claim.request.created_at).to_i)/86400) < 0%>
-            <p class="card-text deadline">This was due <%= (-1*(((claim.request.deadline - claim.request.created_at).to_i)/86400)).to_s[0..10] %> days ago.</p>
-          <%end%>
-          <% if (((claim.request.deadline - claim.request.created_at).to_i)/86400) == 0%>
-              <p class="card-text deadline">This is due today </p>
-          <%end%>
-          <% if (((claim.request.deadline - claim.request.created_at).to_i)/86400) == 1%>
-            <p class="card-text deadline">This is due today </p>
-          <%end%>
-          <% if (((claim.request.deadline - claim.request.created_at).to_i)/86400) > 1%>
-            <p class="card-text deadline">This is due in <%= (((claim.request.deadline - claim.request.created_at).to_i)/86400).to_s[0..10] %> days.</p>
-          <%end%>
+
+          <p class="card-text">
+            <%=getDaysLeft(claim.request)%>
+          </p>
 
           <div class="card-row">
             <div class="card-col-1">

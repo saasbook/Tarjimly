@@ -1,6 +1,7 @@
 class ClaimsController < ActionController::Base
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
+  helper_method :getDaysLeft
 
   def requests
     @claim = Claim.new
@@ -22,7 +23,6 @@ class ClaimsController < ActionController::Base
   end
 
   def create
-    # @claim = Claim.new
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: 1, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
@@ -40,14 +40,19 @@ class ClaimsController < ActionController::Base
   def index
     @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details 
     @deleted_claims = Claim.where({translator_tarjimly_id: 1, _status: 3})
-    if @deleted_claims.present?
+    if @dexsleted_claims.present?
       flash[:notice] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
 
   end
 
   def show
-    @claim = Claim.find_by_id(params[:claim_id])
+    cid = params[:claim_id]
+    @claim = Claim.find_by_id(cid)
+    if !(@claim._status -= 0 || @claim._status == 1)  #Todo check auth also
+      return not_found
+    end 
+    @request = Request.find_by_id(@claim.request_id)
   end
 
   def delete
@@ -68,7 +73,29 @@ class ClaimsController < ActionController::Base
   end
 
   def complete
-
+    begin
+      ActiveRecord::Base.transaction do
+        claim = Claim.find_by(id: params[:claim_id])
+        claim.translation_format = "text"
+        claim.translation_text = params[:claim][:translation_text]
+        claim._status = 1
+        claim.save!
+        
+        req = claim.request
+        req.claims.each do |c|
+          if c.id.to_i != params[:claim_id].to_i
+            c._status = 2
+            c.save!
+          end
+        end
+        req._status = 1
+        req.save!
+        redirect_to claim_path(claim_id: params[:claim_id])
+      end
+    rescue => e
+      flash[:notice] = "Uh Oh. Submission unsuccessful, please try again."
+      puts e
+    end
   end
 
   def isHighImpact(from_lang, to_lang, req_id)
@@ -84,4 +111,26 @@ class ClaimsController < ActionController::Base
     return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
   end
 
+  def getDaysLeft(request)
+    days_left = ((request.deadline - request.created_at).to_i)/86400
+
+    if days_left == -1
+    return "1 day ago", true
+    elsif days_left < 0
+      return (-1*days_left).to_s + " days ago", true
+    elsif days_left == 0
+      return "Today", true
+    elsif days_left == 1
+      return "1 day", true
+    else
+      return days_left.to_s + " days", false
+    end
+  end
+
+  private
+  def not_found
+    render :file => "#{Rails.root}/public/404.html",  :status => 404
+  end
 end
+
+#

@@ -1,24 +1,70 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
-Things you may want to cover:
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
-* Ruby version
+[![Build Status](https://travis-ci.com/cassidyhardin/TarjimlyDocs.svg?branch=master)](https://travis-ci.com/cassidyhardin/TarjimlyDocs)
 
-* System dependencies
+## TarjimlyDocs
 
-* Configuration
+TarjimlyDocs provides refugees, and aid workers a platform where they can upload documents to be connected with our volunteer translators, who are able to claim translations and perform translations from anywhere around the world. 
 
-* Database creation
+### System dependencies
 
-* Database initialization
+Our app has been built in Ruby on Rails, with postgrsql
 
-* How to run the test suite
+`ruby 2.6.3`
 
-* Services (job queues, cache servers, search engines, etc.)
+`rails 6.0.0`
 
-* Deployment instructions
+`brew install postgresql`
 
-* ...
+`brew start sql`
+
+To ensure our program will execute correctly ensure you have the right versions, and necessary gems installed 
+
+`rvm gemset empty`
+
+`gem install bundler`
+
+`bundle install`
+
+### Database creation and initialization
+
+`rake db:create`
+
+`rake db:migrate`
+
+`rake db:seed`
+
+### **How to run the test suite**
+
+`bundle exec rake` 
+
+Will execute all tests in both cucumber and rspec 
+
+`cucumber` 
+
+features tests 
+
+`rspec` 
+
+unit testing of features 
+
+
+
+### Deployment
+
+Our app is deployed in heroku, and can be accessed at [http://heroku.com/tarjimlydocs](http://heroku.com/tarjimlydocs) however you are also able to run it locally 
+
+`rails server`
+
+### Contibutors 
+Ahmad Jawaid 
+Cassidy Hardin 
+Ahmad Ibrahim 
+Ken Opamurataqongse
+Brandon Scolieri
+Arda Sozer
+Mariam Abughosh
