@@ -25,7 +25,7 @@ require("@rails/activestorage").start()
 require("jquery")
 require("popper.js")
 require("data-confirm-modal")
-require("claim")
+require("./claim.js")
 
 console.log('Hello World from Webpacker')
 
