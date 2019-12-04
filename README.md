@@ -1,24 +1,77 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## TarjimlyDocs
 
-Things you may want to cover:
+TarjimlyDocs provides refugees, and aid workers a platform where they can upload documents to be connected with our volunteer translators, who are able to claim translations and perform translations from anywhere around the world. 
 
-* Ruby version
+### System dependencies
 
-* System dependencies
+Our app has been built in Ruby on Rails, with postgrsql
 
-* Configuration
+`ruby 2.6.3`
 
-* Database creation
+`rails 6.0.0`
 
-* Database initialization
+`brew install postgresql`
 
-* How to run the test suite
+`brew start sql`
 
-* Services (job queues, cache servers, search engines, etc.)
+To ensure our program will execute correctly ensure you have the right versions, and necessary gems installed 
 
-* Deployment instructions
+`rvm gemset empty`
 
-* ...
+`gem install bundler`
+
+`bundle install`
+
+### Database creation and initialization
+
+`rake db:create`
+
+`rake db:migrate`
+
+`rake db:seed`
+
+### **How to run the test suite**
+
+`bundle exec rake` 
+
+Will execute all tests in both cucumber and rspec 
+
+`cucumber` 
+
+features tests 
+
+`rspec` 
+
+unit testing of features 
+
+Code Climate Maintainability 
+
+    [![Maintainability](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/maintainability)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/maintainability)
+
+Code Climate Test Coverage 
+
+    [![Test Coverage](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/test_coverage)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/test_coverage)
+
+Travis 
+
+    [![Build Status](https://travis-ci.com/cassidyhardin/TarjimlyDocs.svg?branch=master)](https://travis-ci.com/cassidyhardin/TarjimlyDocs)
+
+### Deployment
+
+Our app is deployed in heroku, and can be accessed at [http://heroku.com/tarjimlydocs](http://heroku.com/tarjimlydocs) however you are also able to run it locally 
+
+`rails server`
+
+### Contibutors 
+
+Cassidy Hardin 
+
+Ahmad Jawaid 
+
+Ahmad Ibrahim 
+
+Ken Opamurataqongse
+
+Brandon Scolieri
