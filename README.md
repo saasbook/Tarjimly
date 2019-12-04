@@ -48,11 +48,11 @@ unit testing of features
 
 Code Climate Maintainability 
 
-    [![Maintainability](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/maintainability)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
 
 Code Climate Test Coverage 
 
-    [![Test Coverage](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/test_coverage)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
 
 Travis 
 
@@ -65,13 +65,10 @@ Our app is deployed in heroku, and can be accessed at [http://heroku.com/tarjiml
 `rails server`
 
 ### Contibutors 
-
-Cassidy Hardin 
-
 Ahmad Jawaid 
-
+Cassidy Hardin 
 Ahmad Ibrahim 
-
 Ken Opamurataqongse
-
 Brandon Scolieri
+Arda Sozer
+Mariam Abughosh
