@@ -71,3 +71,4 @@ gem 'rspec-mocks'
 gem 'aws-sdk-s3'
 gem 'rack-flash3'
 gem 'webpacker'
+gem "font-awesome-rails"

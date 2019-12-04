@@ -1,23 +1,72 @@
-<div class="requests" id="request_<%=@request.id%>">
-  Title: <%= @request.title %><br />
-  Desc: <%= @request.description %><br />
-  From: <%= @request.from_language %><br />
-  To: <%= @request.to_language %><br />
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<p id="notice"><%= flash[:notice] %></p>
 
-  Format: <%= @request.document_format %><br />
-  Number of Claims: <%= @request.num_claims %><br />
-  Categories: <%= @request.categories %><br />
-  Deadline: <%= @request.deadline %><br />
-</div>
+<div class="container" id="request_<%=@request.id%>">
+  <div class="page-header-container">
+    <h2 class="page-header-title">Preview Request</h2>
+  </div>
 
-  <div class="card-col-2">
+  <div class="info-container">
+
+     <div class="spread">
+      <span class="lead bold title"> <%= @request.title %> </span>
+      <p class="lead lead-no-margin bold mg-tb-5"> 
+        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+      </p>
+    </div>
+
+    <p class="lead bold langs"> 
+        <%= @request.from_language %>
+        <i class="fa fa-arrow-right sm"></i>
+        <%=@request.to_language %>
+    </p>
+
+    <p class="lead lead-no-margin" style="margin-bottom: 10px"> 
+      <%= @request.description %><br/>
+        <% if @request.categories%>
+            <div class="tags-container">
+              <% @request.categories.each do |c| %>
+                <span class="tag tag-big tag-blue"><%= "#{c}" %></span>
+              <% end %>
+              <span class="tag tag-big tag-pink"><%= @request.num_claims%> Claims</span>
+            </div>
+        <%end%>
+    </p>
+  </div>
+
+  <div class="document-container">
+    <% if @request.document_format == "text"%>
+      <p class="lead blue-header"> 
+        Document
+      </p>
+      <div class="document-text">
+        <p class="lead lead-small lead-no-margin"> 
+            <%= @request.document_text %>
+        </p>
+      </div>
+    <% else %>
+      <p class="lead blue-header"> 
+        Documents
+      </p>
+      <div class="document-text">
+        <p class="lead lead-small-xs lead-no-margin"> 
+          <% @request.document_uploads.each do |file| %>
+            <i class="fa fa-file sm blue" style="margin-left: 7px"></i> <%= link_to(file.filename, file, target: "_blank") %><br/>
+            <% end %>
+        </p>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="pad-container">
     <%=simple_form_for @claim, url: create_claim_path, method: :post, class: "claim-form", :remote => true, :authenticity_token => true do |c| %>
       <%= c.association :request, :collection => Request.all, :selected => @request.id, as: :hidden %>
       <%=hidden_field_tag "request_id", @request.id%>
       <%=c.button :submit, "Claim", data: (isHighImpact(@request.from_language, @request.to_language, @request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(@request.id) %>
+      <%= link_to "Back to All Requests", view_requests_path, action: "requests", method: :get, class: "pad-left" %>
     <% end %>
-  </div>
- 
-
-<%= button_to "All Requests", view_requests_path, action: "requests", method: :get %>
+  </div>  
+</div>
 

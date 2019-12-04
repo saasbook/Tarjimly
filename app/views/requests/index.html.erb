@@ -8,34 +8,92 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<button> <%= link_to "Pending Translations", requests_path(status: 0) %> </button>
-<button> <%= link_to "Completed Translations", requests_path(status: 1) %> </button>
 
+<div class="flex-container">
+    <div class="flex-sidebar">
+      <%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button", class:"btn btn-primary btn-block" %>
+      <div class="profile-container">
+        <h3> Ahmad Jawaid </h3>
+        <h4 class="blue pad-bt-5"> Aid Worker </h4>
+        <h4> Member Since: August, 2018 </h4>
+        <h4> Total Requests: <span class="badge">10</span> </h4>
+      </div>
+      <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
+      <div class="notifications-container">
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
+        </div>
+        <div class="n-wrapper n-green bold lead lead-no-margin">
+          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
+        </div>
+      </div>
 
-<table class=" table table-striped">
-  <thead>
-    <tr>
-      <th> Title </th>
-      <th> Request Language </th>
-      <th> Translation Language </th>
-      <th> Status </th>
-      <th> Categories </th>
-      <th> Deadline </th>
-  </thead>
-
-  <tbody>
-    <% @requests.each do |request| %>
-      <tr>  
-        <td> <%= link_to "#{request.title}", request_path(request_id: request.id) %>  </td>
-        <td> <%= request.from_language %> </td>
-        <td> <%= request.to_language %> </td>
-        <td> <%= request._status %> </td>
-        <td> <%= request.categories %> </td>
-        <td> <%= request.deadline %> </td>
-      </tr>
-      <% end %>
-
-    </tbody>
-  </table>
-  
-<%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button" %>
+    </div>
+    <div class="flex-body">
+      <div class="page-header-container" >
+        <h2 class="page-header-title" >Your Requests</h2>
+      </div>
+      <div class="pad-container">
+        <%= link_to "Pending Translations", requests_path(status: 0) %>
+        <%= link_to "Completed Translations", requests_path(status: 1) %>
+        </div>
+      <% @requests.each do |request| %>
+          <div class="requests-card mg-top-15" id="request_<%=request.id%>">
+            <div class="spread">
+              <h4 class="card-title">
+                <%= request.title %>
+              </h4>
+              <p class="lead-no-margin card-subs pad-top-5"> 
+                  <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
+              </p>
+            </div>
+            <p class="langs card-subs"> 
+                <%= request.from_language %>
+                <i class="fa fa-arrow-right sm"></i>
+                <%=request.to_language %>
+            </p>
+            <p class="card-text">
+              <%= request.description %><br />
+            </p>
+            <div class="card-row">
+              <div class="card-col-1">
+                <div class="tags-container">
+                  <% if request.categories%>
+                    <% request.categories.each do |c| %>
+                      <span class="tag tag-blue"><%= "#{c}" %></span>
+                    <% end %>
+                  <%end%>
+                  <% if request._status==0%>
+                      <span class="tag tag-orange"> Pending</span>
+                    <% elsif request._status==1 %>
+                      <span class="tag tag-green"> Completed </i></span>
+                    <% end %>
+                </div>
+              </div>
+              <div class="card-col-2">
+                <%= button_to "View", request_path(request_id: request.id), action: "show", method: :get, class:"btn btn-primary", style: "margin: 5px 0 0 0" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

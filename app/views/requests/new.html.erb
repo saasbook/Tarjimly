@@ -13,10 +13,22 @@
   <h1 style="text-align: center; padding: 20px 0"> My New Request </h1>
   <%= form_for @request do |r| %>
     <div class="form-group">
-      <%= r.label :from_language %>
+      <%= r.label :document_language %>
       <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
-      <%= r.label :to_language %>
+      <%= r.label :Translate_to %>
       <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <% if @format == "text"%>
+        <%= r.label :Document_To_Translate %><br>
+        <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
+        <%= link_to "Upload File Instead",  {controller: "requests", action: "new", format: "upload"}, method: :get %>
+      <% else %>
+        <%= r.label :document_uploads %><br>
+        <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
+        <%= link_to "Enter Text Instead", {controller: "requests", action: "new"}, method: :get %>
+      <% end %>
     </div>
 
     <div class="form-group">
@@ -29,17 +41,6 @@
       <%= r.text_field(:description, required: true, class: "form-control") %>
     </div>
 
-    <div class="form-group">
-      <% if @format == "text"%>
-        <%= r.label :document_text %><br>
-        <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
-        <%= link_to "Upload File Instead", new_request_path(format: "upload"), method: :get %>
-      <% else %>
-        <%= r.label :document_uploads %><br>
-        <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
-        <%= link_to "Enter Text Instead", new_request_path(format: "text"), method: :get %>
-      <% end %>
-    </div>
 
     <%= r.hidden_field :format, value: @format %>
 
