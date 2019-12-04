@@ -62,7 +62,7 @@
         </div>
       <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
-        <div class="deleted-requests-card" id="request_<%=deleted_claim.id%>">
+        <div class="requests-card mg-top-15" id="request_<%=deleted_claim.id%>">
           <h4 class="card-title">
             <%= deleted_claim.request.title %>
           </h4>
@@ -74,7 +74,7 @@
             </div>
             <div class="card-col-2">
               <%=hidden_field_tag "request_id", deleted_claim.request.id%>
-              <%=link_to "Dismiss Deleted Request", delete_claim_path(claim_id: deleted_claim.id), action: "delete", method: :delete, data: { confirm: 'This request has been deleted, and no longer requires translation! It will no longer show up in your claims', title: 'Confirm Request Deletion', commit: 'OKAY' } %>
+              <%=link_to "Dismiss Deleted Request", delete_claim_path(claim_id: deleted_claim.id), action: "delete", method: :delete, style:"text-decoration: none" %>
             </div>
           </div>
         </div>
