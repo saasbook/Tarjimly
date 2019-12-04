@@ -15,9 +15,9 @@
         <h3> Ahmad Jawaid </h3>
         <h4 class="blue pad-bt-5"> Aid Worker </h4>
         <h4> Member Since: August, 2018 </h4>
-        <h4> Total Requests: <span class="badge">10</span> </h4>
+        <h4> Total Requests: <span class="badge"><%= @total_count %></span> </h4>
       </div>
-      <%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button", class:"btn btn-primary btn-block" %>
+      
       <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
       <div class="notifications-container">
         <div class="n-wrapper n-green bold lead lead-no-margin">
@@ -48,13 +48,34 @@
 
     </div>
     <div class="flex-body">
-      <div class="page-header-container" >
-        <h2 class="page-header-title" >Your Requests</h2>
-      </div>
-      <div class="pad-container">
-        <%= link_to "Pending Translations", requests_path(status: 0) %>
-        <%= link_to "Completed Translations", requests_path(status: 1) %>
+      <div class="spread mg-10" >
+        <h3 class="section-header-big">
+          <% if @status.is_a?(String) && @status.to_i == 0%>
+            Pending Requests
+          <% elsif @status.is_a?(String) && @status.to_i == 1%>
+            Completed Requests
+          <% else %>
+            Your Requests
+          <% end %>
+        </h3>
+        <div class="flex">
+          <%= button_to "New Request", new_request_path, action: "new", method: :get, id: "new_request_button", class:"btn btn-primary", style:"margin-right: 10px "%>
+          <label class="dropdown">
+            <div class="dd-button">
+              Filter
+            </div>
+            <input type="checkbox" class="dd-input" id="test">
+
+            <ul class="dd-menu">
+              <li><%= link_to "All Requests", requests_path() %></li>
+              <li><%= link_to "Pending Requests", requests_path(status: 0) %></li>
+              <li><%= link_to "Completed Requests", requests_path(status: 1) %></li>
+            </ul>
+          </label>
         </div>
+      </div>
+
+      <div class="request-list">
       <% @requests.each do |request| %>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">
             <div class="spread">
@@ -94,6 +115,7 @@
             </div>
           </div>
         <% end %>
+      </div>
     </div>
   </div>
 </div>
