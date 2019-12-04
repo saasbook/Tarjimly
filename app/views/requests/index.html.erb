@@ -20,30 +20,10 @@
       
       <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
       <div class="notifications-container">
-        <div class="n-wrapper n-green bold lead lead-no-margin">
+        <div class="n-wrapper n-blue bold lead lead-no-margin">
           Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
         </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
-        </div>
-        <div class="n-wrapper n-green bold lead lead-no-margin">
-          Your request "New Camp Speech" was successfully translated!<br/> Check it out <a href="">here</a>. 
-        </div>
+        
       </div>
 
     </div>
@@ -76,6 +56,11 @@
       </div>
 
       <div class="request-list">
+      <% if @requests.empty? %>
+        <div class="pending-translation-message">
+          No results matched your criteria. 
+        </div>
+      <% end %>
       <% @requests.each do |request| %>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">
             <div class="spread">
