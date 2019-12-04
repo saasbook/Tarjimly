@@ -29,6 +29,23 @@ require("claim")
 
 console.log('Hello World from Webpacker')
 
+$(".confirm").confirm({
+    text: "Are you sure you want to delete that comment?",
+    title: "Confirmation required",
+    confirm: function (button) {
+        // delete ();
+    },
+    cancel: function (button) {
+        // nothing to do
+    },
+    confirmButton: "Yes I am",
+    cancelButton: "No",
+    post: true,
+    confirmButtonClass: "btn-primary",
+    cancelButtonClass: "btn-default",
+    dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
+});
+
 // $.rails.allowAction = function (link) {
 //     if (link.data("confirm") == undefined) {
 //         return true;
