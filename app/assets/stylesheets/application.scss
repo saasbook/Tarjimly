@@ -90,12 +90,14 @@
 }
 
 .flex-container {
-  display: flex;
+  @media only screen and (min-width: 700px) {
+    display: flex;
+  }
   height: 100vh;
 
   .flex-sidebar {
     padding: 15px;
-    flex: 0 .1 300px;
+    flex: 0 .3 300px;
     min-width: 250px;
     border-right: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
