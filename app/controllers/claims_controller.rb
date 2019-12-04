@@ -38,8 +38,10 @@ class ClaimsController < ActionController::Base
   end
 
   def index
-    @claims = Claim.where({translator_tarjimly_id: 1, _status: [0, 1]}) #TODO translator_tarjimly_id log in details
+    @status = params[:status] || [0,1]
+    @claims = Claim.where({translator_tarjimly_id: 1, _status: @status}) #TODO translator_tarjimly_id log in details
     @dismiss_claims = Claim.where({translator_tarjimly_id: 1, _status: [2, 3]})
+    @total_count = Claim.where({translator_tarjimly_id: 1, _status: 1}).count
     if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
@@ -62,14 +64,14 @@ class ClaimsController < ActionController::Base
     @claim = Claim.find(params[:claim_id])
     if @claim._status == 3
       @claim.destroy
-      flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
+      flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
     else
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
       @claim.destroy
-      flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
+      flash[:notice] = "You have successfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
 

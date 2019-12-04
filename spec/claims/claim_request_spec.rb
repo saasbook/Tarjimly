@@ -20,10 +20,10 @@ describe 'Translators can claim requests' do
         expect(page.current_path).to eq "/claims"
     end 
 
-    it 'should display confirmation message for sucessfully claimed request' do 
+    it 'should display confirmation message for successfully claimed request' do
         visit "/translators/requests/#{@request1_id}"
         click_on 'Claim'
-        # expect(page).to have_text("You have sucessfully claimed Doctor Appointment Translation")
+        # expect(page).to have_text("You have successfully claimed Doctor Appointment Translation")
     end
 
     it 'claimed page should have new claim' do 
