@@ -47,9 +47,9 @@
             <input type="checkbox" class="dd-input" id="test">
 
             <ul class="dd-menu">
-              <li><%= link_to "All Requests", requests_path() %></li>
-              <li><%= link_to "Pending Requests", requests_path(status: 0) %></li>
-              <li><%= link_to "Completed Requests", requests_path(status: 1) %></li>
+              <li><%= link_to "All Claims", claims_path() %></li>
+              <li><%= link_to "Pending Claims", claims_path(status: 0) %></li>
+              <li><%= link_to "Completed Claims", claims_path(status: 1) %></li>
             </ul>
           </label>
         </div>
@@ -109,12 +109,7 @@
                 </div>
               </div>
               <div class="card-col-2">
-                <div class="card-col-2">
-                  <%=form_tag "/claims", method: "post", class: "claim-form" do %>
-                    <%=hidden_field_tag "request_id", claim.request.id%>
-                    <%=button_to "Translate", {controller: "claims", action: "show", claim_id: claim.id} , class: "btn btn-primary", style: "margin-top: 5px" %> <br class="show-on-small" />
-                  <% end %>
-                </div>
+                <%= link_to claim._status.to_i == 1 ? "View" : "Translate", {controller: "claims", action: "show", claim_id: claim.id} , class: "btn btn-primary", style: "margin-top: 5px" %> <br class="show-on-small" />
               </div>
             </div>
           </div>
