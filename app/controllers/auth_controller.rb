@@ -6,10 +6,14 @@ class AuthController < ApplicationController
                     "ahmadjawaid@berkeley.edu" => "556", 
                     "ahmadibrahim@berkeley.edu" => "789"}
     
+    # official session valirables not storing 
+
+
     def login 
         email_id = params[:email]
         passward = params[:passward]
         puts email_id
+        # cannot validate passwords in this manner 
         if @@users_login[:email_id] = passward
             session[:tarjimlyID] = @@users_tid[:email_id]
             if session[:tarjimlyID] > 500 
