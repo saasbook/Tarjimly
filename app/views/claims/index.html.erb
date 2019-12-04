@@ -56,6 +56,11 @@
       </div>
 
       <div class="request-list">
+      <% if @dismiss_claims.empty? && @claims.empty? %>
+        <div class="pending-translation-message">
+          No results matched your criteria. 
+        </div>
+      <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
         <div class="deleted-requests-card" id="request_<%=deleted_claim.id%>">
           <h4 class="card-title">
