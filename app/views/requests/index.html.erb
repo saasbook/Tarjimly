@@ -20,7 +20,7 @@
       
       <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
       <div class="notifications-container">
-        <div class="n-wrapper n-green bold lead lead-no-margin">
+        <div class="n-wrapper n-blue bold lead lead-no-margin">
           Your request "Government Forms" was successfully translated! <br/>Check it out <a href="">here</a>. 
         </div>
         <div class="n-wrapper n-green bold lead lead-no-margin">
@@ -76,6 +76,11 @@
       </div>
 
       <div class="request-list">
+      <% if @requests.empty? %>
+        <div class="pending-translation-message">
+          No results matched your criteria. 
+        </div>
+      <% end %>
       <% @requests.each do |request| %>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">
             <div class="spread">
@@ -83,7 +88,7 @@
                 <%= request.title %>
               </h4>
               <p class="lead-no-margin card-subs pad-top-5"> 
-                  <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
+                  <span class="blue">Deadline: </span><%= getDaysLeft(request) %>
               </p>
             </div>
             <p class="langs card-subs"> 

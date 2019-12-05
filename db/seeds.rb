@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
 requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'Arabic', document_text: 'His next patient was a Farsi-speaking man who was in severe pain. The doctor, unable to communicate with the patient directly or to reach an on-the-ground-translator provided by the NGO, had a difficult decision to make: ask the ailing patient to wait in a long queue or use the Tarjimly app.
                   As he opted to use the translating app, the doctor was immediately connected to a Tarjimly translator on a phone call. Through the conversation with the doctor, the patient, and the translator, they discovered that the patient suffered from severe kidney and stomach pains due to kidney stones.
                   With this information on hand, the doctor quickly searched for the patient’s medical history. He found that the man had an appointment scheduled earlier in the day for the same pain, but at another clinic. As they gathered additional information, the Tarjimly translator asked the patient if he had come in for his previous appointment.
@@ -76,6 +77,13 @@ requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'A
                  
                   {user_tarjimly_id: 5, from_language: 'English', to_language: 'Arabic', document_text: 'this is the document text', document_format: 'text', deadline: '25-Dec-2019',
                       title: 'Lawyer Meeting', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', categories: ['Legal', 'Medical'], num_claims: 0, form_type: 'N/A', _status: 0}
+=======
+requests_seed = [{user_tarjimly_id: 1, from_language: 'English', to_language: 'Arabic', document_text: 'this is the document text', document_format: 'text', deadline: '25-Nov-2019',
+                  title: 'Camp Announcment', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', categories: ['Legal', 'Medical'], num_claims: 0, form_type: 'N/A', _status: 0},
+                 
+                  {user_tarjimly_id: 1, from_language: 'English', to_language: 'Arabic', document_text: 'this is the document text', document_format: 'text', deadline: '25-Nov-2019',
+                      title: 'University Application', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', categories: ['Legal', 'Medical'], num_claims: 0, form_type: 'University Application', _status: 0}
+>>>>>>> 4b0161e5ce30e7596a6f3d701f8a21cd9b3d14a3
 ]
 
 

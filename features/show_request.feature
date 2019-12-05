@@ -18,16 +18,16 @@ Feature: view previously submitted request
             | 142                    | 0       | Arabic         | example text     | text               | 4          |
 
     Scenario: visiting request's details page
-        Given I go to the "Requests" page
-        When I select "Camp Announcment"
-        Then I should see "Details for Camp Announcment"
-        Then I should see "Request Language" and "Translation Language"
+        Given I am on the "requests" page
+        When I click button "View" from the list of request
+        Then I should see "Event going on in camp"
+        Then I should see "English" and "Arabic"
         Then I should see "Deadline"
 
     Scenario: return to all requests
-        Given I go to the "Requests" page
-        When I select "Camp Announcment"
-        When I click the "All Requests" button
+        Given I am on the "requests" page
+        When I click button "View" from the list of request
+        When I select "Back to All Requests"
         Then I should be on the "/requests" path
 
     Scenario: if request has been deleted will display 404 not found page

@@ -24,14 +24,14 @@ describe "User viewing details for a specific request" do
 
     it 'clicking all requests wil redirect to index page' do 
         visit "/requests/#{@curr_id}"
-        click_button("All Requests")
+        click_link("Back to All Requests")
         expect(page.current_path).to eq "/requests"
     end 
 
     it 'should have infotmation about the specifics of the request' do 
         visit "/requests/#{@curr_id}"
-        expect(page).to have_content("Request Language: English")
-        expect(page).to have_content("Translation Language: Arabic")
+        expect(page).to have_content("English")
+        expect(page).to have_content("Arabic")
         expect(page).to have_content("information regarding upcoming doctors appointment")
     end
     it 'for deleted request should redirect to error page' do 
