@@ -20,7 +20,7 @@ describe "Creating a new request" do
     expect(response).to render_template(:new)
   end
 
-  it "should be able to fill in fields succcessfully" do
+  it "should be able to fill in fields successfully" do
     within("#new_request") do
       fill_in 'request_title', with: 'Rspec Test'
       fill_in 'request_description', with: 'Rspec Test Description'
@@ -53,7 +53,7 @@ describe "Creating a new request" do
       select 'Arabic', from: 'request_to_language'
     end
     click_button 'Create Request'
-    click_link 'Rspec Upload Test'
+    click_button 'View'
     expect(page).to have_text('pdf')
   end
 

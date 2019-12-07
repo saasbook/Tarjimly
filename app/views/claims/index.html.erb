@@ -5,42 +5,126 @@
    </div>
 <% end %>
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
-<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
-    
-  <table class=" table table-striped">
-  <thead>
-    <tr>
-      <th> Title </th>
-      <th> Request Language </th>
-      <th> Translation Language </th>
-      <th> Description </th>
-      <th> Deadline </th>
-  </thead>
 
-  <tbody>
-  <% @claims.each do |claim| %>
-      <tr>  
-        <td> <%= claim.request.title %>  </td>
-        <td> <%= claim.request.from_language %> </td>
-        <td> <%= claim.request.to_language %> </td> 
-        <td> <%= claim.request.description %> </td> 
-        <td> <%= claim.request.deadline %></td> 
-        <td> <%=link_to "Claim Details", claim_path(claim_id: claim.id), action: "show", method: :get %>
-      </tr>
+
+<div class="flex-container">
+    <div class="flex-sidebar">
+      <div class="profile-container">
+        <h3> Ahmad Jawaid </h3>
+        <h4 class="blue pad-bt-5"> Translator </h4>
+        <h4> Member Since: August, 2018 </h4>
+        <h4> Completed Translations: <span class="badge"><%= @total_count %></span> </h4>
+      </div>
+      
+      <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
+      <div class="notifications-container">
+        <div class="n-wrapper n-blue bold lead lead-no-margin">
+          Your successfully submitted "Government Forms" translation! 
+        </div>
+        
+      </div>
+
+    </div>
+    <div class="flex-body">
+      <div class="spread mg-10" >
+        <h3 class="section-header-big">
+          <% if @status.is_a?(String) && @status.to_i == 0%>
+            Pending Claims
+          <% elsif @status.is_a?(String) && @status.to_i == 1%>
+            Completed Claims
+          <% else %>
+            Your Claims
+          <% end %>
+        </h3>
+        <div class="flex">
+          <%= button_to "View Request Listing", view_requests_path, action: "requests", method: :get, class:"btn btn-primary", style:"margin-right: 10px "%>
+          <label class="dropdown">
+            <div class="dd-button">
+              Filter
+            </div>
+            <input type="checkbox" class="dd-input" id="test">
+
+            <ul class="dd-menu">
+              <li><%= link_to "All Claims", claims_path() %></li>
+              <li><%= link_to "Pending Claims", claims_path(status: 0) %></li>
+              <li><%= link_to "Completed Claims", claims_path(status: 1) %></li>
+            </ul>
+          </label>
+        </div>
+      </div>
+
+      <div class="request-list">
+      <% if @dismiss_claims.empty? && @claims.empty? %>
+        <div class="pending-translation-message">
+          No results matched your criteria. 
+        </div>
       <% end %>
-
-    <% @dismiss_claims.each do |dismiss_claim| %>
-      <tr>  
-        <td class="row table-secondary"> <%=dismiss_claim.request.title %>  </td>
-        <td class="row table-secondary"> <%= dismiss_claim.request.from_language %> </td>
-        <td class="row table-secondary"> <%= dismiss_claim.request.to_language %> </td>
-        <td class="row table-secondary"> <%= dismiss_claim.request.description %> </td>
-        <td class="row table-secondary"> <%= dismiss_claim.request.deadline %> </td>
-        <td class="row table-secondary"> <%=link_to "Dismiss Claim for Deleted Request", delete_claim_path(claim_id: dismiss_claim.id), action: "delete", method: :delete, data: { confirm: 'This request has been deleted, and no longer requires translation! It will no longer show up in your claims', title: 'Confirm Request Deletion', commit: 'OKAY' } %>
-      </tr>
+      <% @dismiss_claims.each do |deleted_claim| %>
+        <div class="requests-card mg-top-15" id="request_<%=deleted_claim.id%>">
+          <h4 class="card-title">
+            <%= deleted_claim.request.title %>
+          </h4>
+          <div class="card-row">
+            <div class="card-col-1">
+              <p class="deadline">
+                This request was deleted.
+              </p>
+            </div>
+            <div class="card-col-2">
+              <%=hidden_field_tag "request_id", deleted_claim.request.id%>
+              <%=link_to "Dismiss Deleted Request", delete_claim_path(claim_id: deleted_claim.id), action: "delete", method: :delete, style:"text-decoration: none" %>
+            </div>
+          </div>
+        </div>
       <% end %>
+      <% @claims.each do |claim| %>
+          <% request = claim.request%>
+          <div class="requests-card mg-top-15" id="request_<%=request.id%>">
+            <div class="spread">
+              <h4 class="card-title">
+                <%= request.title %>
+              </h4>
+              <p class="lead-no-margin card-subs pad-top-5"> 
+                  <span class="blue">Deadline: </span><%= request.deadline.to_s[0..10] %>
+              </p>
+            </div>
+            <p class="langs card-subs"> 
+                <%= request.from_language %>
+                <i class="fa fa-arrow-right sm"></i>
+                <%=request.to_language %>
+            </p>
+            <p class="card-text">
+              <%= request.description %><br />
+            </p>
+            <div class="card-row">
+              <div class="card-col-1">
+                <div class="tags-container">
+                  <% if request.categories%>
+                    <% request.categories.each do |c| %>
+                      <span class="tag tag-blue"><%= "#{c}" %></span>
+                    <% end %>
+                  <%end%>
+                  <% if request._status==0%>
+                      <span class="tag tag-orange"> Pending</span>
+                    <% elsif request._status==1 %>
+                      <span class="tag tag-green"> Completed </i></span>
+                    <% end %>
+                </div>
+              </div>
+              <div class="card-col-2">
+                <%= link_to claim._status.to_i == 1 ? "View" : "Translate", {controller: "claims", action: "show", claim_id: claim.id} , class: "btn btn-primary", style: "margin-top: 5px" %> <br class="show-on-small" />
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 
-    </tbody>
 
-  </table>
+
+
+

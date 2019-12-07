@@ -2,12 +2,16 @@ class RequestsController < ApplicationController
     # before_action :authorize 
     before_action :user_auth 
     helper_method :user_auth
+    helper_method :getDaysLeft
 
     def index
         @user = @userID
-        @status = params[:status] || 0
+        @status = params[:status] || [0, 1]
+
 
         @requests = Request.where(user_tarjimly_id: @user, _status: @status)
+
+        @total_count = Request.where(user_tarjimly_id: @user).count
     end
 
     def show 
@@ -80,6 +84,22 @@ class RequestsController < ApplicationController
         end 
         flash[:notice] = "Your request '#{@request.title}' has been deleted!"
         redirect_to requests_url
+    end
+
+    def getDaysLeft(request)
+        days_left = ((request.deadline - request.created_at).to_i)/86400
+
+        if days_left == -1
+            return "1 day ago", true
+        elsif days_left < 0
+            return (-1*days_left).to_s + " days ago", true
+        elsif days_left == 0
+            return "Today", true
+        elsif days_left == 1
+            return "1 day", true
+        else
+            return days_left.to_s + " days", false
+        end
     end
 
     private

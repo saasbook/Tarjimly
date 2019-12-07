@@ -8,7 +8,6 @@ Feature: delete a requested translation
 
         Given the following requests exist:
             | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title            | description | categories    | num_claims | form_type | _status |
-            | 1                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
             | 1                | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Flyer       | information | Refugee, Camp | 0          | N/A       | 0       |
             | 1                | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application | information | Visa          | 2          | Visa      | 0       |
             | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
@@ -25,8 +24,8 @@ Feature: delete a requested translation
 
 
     Scenario: successfully deleting a translation
-        Given I go to the "Requests" page
-        When I select "Camp Announcment"
+        Given I am on the "requests" page
+        When I click button "View" from the list of request
         And I click the "Delete Request" button
         Then I should be on the "/requests" path
         Then I should see confirmation of deleting "Camp Announcment"

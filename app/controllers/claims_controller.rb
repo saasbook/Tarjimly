@@ -4,8 +4,9 @@ class ClaimsController < ApplicationController
   # helper_method :translator_auth
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
-      @translatorID = session[:tarjimlyID]
+  @translatorID = session[:tarjimlyID]
 
+  helper_method :getDaysLeft
 
   def requests
     @claim = Claim.new
@@ -42,9 +43,17 @@ class ClaimsController < ApplicationController
   end
 
   def index
+<<<<<<< HEAD
     @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [0, 1]}) 
     @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
     if Claim.where({translator_tarjimly_id: @translatorID, _status: 3}).present?
+=======
+    @status = params[:status] || [0,1]
+    @claims = Claim.where({translator_tarjimly_id: 1, _status: @status}) #TODO translator_tarjimly_id log in details
+    @dismiss_claims = Claim.where({translator_tarjimly_id: 1, _status: [2, 3]})
+    @total_count = Claim.where({translator_tarjimly_id: 1, _status: 1}).count
+    if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
+>>>>>>> 0f6f2c4e4b99f79b6575aae52e3b221e0357914c
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
     if Claim.where({translator_tarjimly_id: @translatorID, _status: 2}).present?
@@ -61,7 +70,7 @@ class ClaimsController < ApplicationController
       redirect_to claims_url
     if !(@claim._status -= 0 || @claim._status == 1)  
       return not_found
-    end 
+    end
     @request = Request.find_by_id(@claim.request_id)
   end
 
@@ -71,15 +80,15 @@ class ClaimsController < ApplicationController
       return not_found 
     end
     if @claim._status == 3
-      @claim.destroy 
-      flash[:info] = "You have sucessfully dismissed your claim for a deleted request!"
+      @claim.destroy
+      flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
-    else 
+    else
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
-      @claim.destroy 
-      flash[:notice] = "You have sucessfully unclaimed the translation for #{title}!"
+      @claim.destroy
+      flash[:notice] = "You have successfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
   end
@@ -92,7 +101,7 @@ class ClaimsController < ApplicationController
         claim.translation_text = params[:claim][:translation_text]
         claim._status = 1
         claim.save!
-        
+
         req = claim.request
         req.claims.each do |c|
           if c.id.to_i != params[:claim_id].to_i
@@ -123,6 +132,22 @@ class ClaimsController < ApplicationController
     return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
   end
 
+  def getDaysLeft(request)
+    days_left = ((request.deadline - request.created_at).to_i)/86400
+
+    if days_left == -1
+      return "1 day ago", true
+    elsif days_left < 0
+      return (-1*days_left).to_s + " days ago", true
+    elsif days_left == 0
+      return "Today", true
+    elsif days_left == 1
+      return "1 day", true
+    else
+      return days_left.to_s + " days", false
+    end
+  end
+
   private
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
@@ -134,3 +159,5 @@ class ClaimsController < ApplicationController
   end
 
 end
+
+#
