@@ -1,13 +1,10 @@
 class ClaimsController < ApplicationController
-  # before_action :authorize 
-  # before_action :translator_auth
-  # helper_method :translator_auth
+  helper_method :getDaysLeft
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
 
-  helper_method :getDaysLeft
-
   def requests
+    @translatorID = session[:tarjimlyID]
     @claim = Claim.new
     claimed_ids = Claim.where(translator_tarjimly_id: @translatorID).pluck(:request_id)
     @user = 1
@@ -27,6 +24,7 @@ class ClaimsController < ApplicationController
   end
 
   def create
+    @translatorID = session[:tarjimlyID]
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
@@ -56,6 +54,7 @@ class ClaimsController < ApplicationController
   end
 
   def show
+    @translatorID = session[:tarjimlyID]
     cid = params[:claim_id]
     @claim = Claim.find_by_id(cid)
     if @claim.translator_tarjimly_id != @tarjimlyID
@@ -68,6 +67,7 @@ class ClaimsController < ApplicationController
   end
 
   def delete
+    @translatorID = session[:tarjimlyID]
     @claim = Claim.find(params[:claim_id])
     if @claim.translator_tarjimly_id != @translatorID
       return not_found 
@@ -108,7 +108,6 @@ class ClaimsController < ApplicationController
       end
     rescue => e
       flash[:notice] = "Uh Oh. Submission unsuccessful, please try again."
-      puts e
     end
   end
 
@@ -140,15 +139,19 @@ class ClaimsController < ApplicationController
     end
   end
 
+
   private
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
-
-  # def translator_auth
-  #   @translatorID = session[:tarjimlyID]
-  # end 
+  
+  def find_translator
+    if session[:tarjimlyID].empty?
+      flash[:alert] = "You must be logged into view this page"
+      redirect_to root_path
+    end 
   end
+end
 
 end
 
