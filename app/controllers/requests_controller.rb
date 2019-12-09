@@ -104,7 +104,7 @@ class RequestsController < ApplicationController
     def authorize
         if !current_user
             flash[:alert] = "You must be logged in to view this page! Please login below!! "
-            redirect_to '/auth' 
+            redirect_to '/auth', :flash => { :notice => "You must be logged in to view this page! Please login below!!" }
         end
     end
 
