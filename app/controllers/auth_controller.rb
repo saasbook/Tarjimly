@@ -28,6 +28,11 @@ class AuthController < ApplicationController
         end
     end 
 
+    def logout 
+        session[:tarjimlyID] = nil
+        redirect_to root_path
+    end
+
     private 
     def login(tarjimly_id)
         # FIX THIS - if translator
