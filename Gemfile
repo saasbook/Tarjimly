@@ -21,6 +21,7 @@ gem 'simple_form'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
+gem 'activerecord-session_store'
 
 
 # Use CoffeeScript for .coffee assets and views
