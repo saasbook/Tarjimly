@@ -43,7 +43,7 @@ class ClaimsController < ApplicationController
     @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status}) #TODO translator_tarjimly_id log in details
     @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
     @total_count = Claim.where({translator_tarjimly_id: @translatorID, _status: 1}).count
-    if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
+    if Claim.where({translator_tarjimly_id: @translatorID , _status: 3}).present?
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
     if Claim.where({translator_tarjimly_id: @translatorID, _status: 2}).present?
@@ -55,9 +55,10 @@ class ClaimsController < ApplicationController
     @translatorID = session[:tarjimlyID]
     cid = params[:claim_id]
     @claim = Claim.find_by_id(cid)
-    if @claim.translator_tarjimly_id != @tarjimlyID
+    if @claim.translator_tarjimly_id != @translatorID
       flash[:alert] = "You are not authorized to view this claim!"
       redirect_to claims_url
+    end
     if !(@claim._status -= 0 || @claim._status == 1)  
       return not_found
     end
@@ -74,14 +75,13 @@ class ClaimsController < ApplicationController
       @claim.destroy
       flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
-    else
+    end
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
       @claim.destroy
-      flash[:notice] = "You have successfully unclaimed the translation for #{title}!"
+      flash[:notice] = "You have successfully unclaimed the translation  #{title}!"
       redirect_to claims_url
-    end
   end
 
   def complete
@@ -139,6 +139,7 @@ class ClaimsController < ApplicationController
 
 
   private
+
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
@@ -151,6 +152,6 @@ class ClaimsController < ApplicationController
   end
 end
 
-end
+
 
 #

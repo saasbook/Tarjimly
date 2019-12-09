@@ -5,10 +5,10 @@ class RequestsController < ApplicationController
     helper_method :getDaysLeft
 
     def index
-        @user = @userID
+        @userID = session[:tarjimlyID]
         @status = params[:status] || [0, 1]
-        @requests = Request.where(user_tarjimly_id: @user, _status: @status)
-        @total_count = Request.where(user_tarjimly_id: @user).count
+        @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
+        @total_count = Request.where(user_tarjimly_id: @userID).count
     end
 
     def show 
@@ -33,13 +33,13 @@ class RequestsController < ApplicationController
     end
     
     def create
+        @userID = session[:tarjimlyID]
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
             return
         end
-
         upload_format = params[:request][:format] || "text"
         if upload_format != "text"
             filename_string = @request.document_uploads.first.filename.to_s
@@ -57,16 +57,14 @@ class RequestsController < ApplicationController
         else
           flash[:alert] = "Uh Oh! There was an error creating your request."
         end 
-
     end
 
     def delete 
+        @userID = session[:tarjimlyID]
         @request = Request.find(params[:request_id])
         if @request.user_tarjimly_id != @userID
             render not_found 
-        end
-        
-        if !@request.claims.nil? && @request.claims.present?
+        elsif !@request.claims.nil? && @request.claims.present?
             @request._status = 2
             @request.save!
             @request.claims.each do |claim|
@@ -82,7 +80,6 @@ class RequestsController < ApplicationController
 
     def getDaysLeft(request)
         days_left = ((request.deadline - request.created_at).to_i)/86400
-
         if days_left == -1
             return "1 day ago", true
         elsif days_left < 0
