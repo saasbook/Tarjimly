@@ -27,6 +27,8 @@ class AuthController < ApplicationController
         #   [ :success, JSON.parse(response.to_str) ]
             tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
             session[:user_id] = tarjimly_id
+            cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
+
             if login(tarjimly_id)
                 redirect_to :controller => 'requests', :action => 'index' 
             else 
