@@ -7,9 +7,8 @@ class AuthController < ApplicationController
             'https://tarjim.ly/api/mobile/v1/auth/login', 
             {:email => params[:email], :password => params[:password]}
         )
-
         case response.code
-        when 400
+        when 401
           [ :error, JSON.parse(response.to_str) ]
           flash[:alert] = "Unsucessful Login! Please Try Again."
         when 200
