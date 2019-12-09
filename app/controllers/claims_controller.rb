@@ -75,13 +75,14 @@ class ClaimsController < ApplicationController
       @claim.destroy
       flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
-    end
+    else
       @claim.request.num_claims -= 1
       @claim.request.save!
       title = @claim.request.title
       @claim.destroy
       flash[:notice] = "You have successfully unclaimed the translation  #{title}!"
       redirect_to claims_url
+    end
   end
 
   def complete

@@ -18,11 +18,9 @@ gem 'uglifier', '~> 4.2.0'
 gem 'simple_form'
 
 # auth gems 
-gem 'jwt'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
-gem 'activerecord-session_store'
 
 
 # Use CoffeeScript for .coffee assets and views
