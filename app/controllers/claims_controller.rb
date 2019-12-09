@@ -43,23 +43,16 @@ class ClaimsController < ApplicationController
   end
 
   def index
-<<<<<<< HEAD
-    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [0, 1]}) 
-    @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
-    if Claim.where({translator_tarjimly_id: @translatorID, _status: 3}).present?
-=======
     @status = params[:status] || [0,1]
     @claims = Claim.where({translator_tarjimly_id: 1, _status: @status}) #TODO translator_tarjimly_id log in details
     @dismiss_claims = Claim.where({translator_tarjimly_id: 1, _status: [2, 3]})
     @total_count = Claim.where({translator_tarjimly_id: 1, _status: 1}).count
     if Claim.where({translator_tarjimly_id: 1, _status: 3}).present?
->>>>>>> 0f6f2c4e4b99f79b6575aae52e3b221e0357914c
       flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
     if Claim.where({translator_tarjimly_id: @translatorID, _status: 2}).present?
       flash[:alert] = "Requests you claimed have been submitted by another translator. You can dismiss them below!"
     end
-
   end
 
   def show
@@ -134,7 +127,6 @@ class ClaimsController < ApplicationController
 
   def getDaysLeft(request)
     days_left = ((request.deadline - request.created_at).to_i)/86400
-
     if days_left == -1
       return "1 day ago", true
     elsif days_left < 0

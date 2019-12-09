@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   #Login
-  get '/login' => 'application#login', :as => 'application_login'
+  post '/auth' => 'auth#authenticate', :as => 'validate_login'
 
   #User Pages
   get '/requests' => 'requests#index', :as => 'requests'
@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   get '/translators/requests' => 'claims#requests', :as => 'view_requests'
   get '/translators/requests/:request_id' => 'claims#preview', :as => 'preview_request'
 
-  post '/auth' => 'auth#login', :as => 'validate_login'
 
   root 'application#index'
 

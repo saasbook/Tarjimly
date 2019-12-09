@@ -20,6 +20,8 @@ gem 'simple_form'
 # auth gems 
 gem 'jwt'
 gem 'bcrypt'
+gem 'rest-client'
+gem 'json'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

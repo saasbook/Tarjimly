@@ -1,3 +1,7 @@
+require 'rest-client'
+require 'json'
+
+
 class AuthController < ApplicationController 
     @@users_login = {"cassidyhardin@berkeley.edu" => "its4am", 
                 "ahmadjawaid@berkeley.edu" => "ajisthebest", 
@@ -9,26 +13,37 @@ class AuthController < ApplicationController
     # official session valirables not storing 
 
 
-    def login 
-        email_id = params[:email]
-        passward = params[:passward]
-        puts email_id
-        # cannot validate passwords in this manner 
-        if @@users_login[:email_id] = passward
-            session[:tarjimlyID] = @@users_tid[:email_id]
-            if session[:tarjimlyID] > 500 
-                redirect_to :controller => 'claim', :action => 'index' 
+    def authenticate
+        response = RestClient.post(
+            'https://tarjim.ly/api/mobile/v1/auth/login', 
+            {:email => params[:email], :password => params[:password]}
+        )
+
+        case response.code
+        when 400
+          [ :error, JSON.parse(response.to_str) ]
+          flash[:alert] = "Unsucessful Login! Please Try Again."
+        when 200
+        #   [ :success, JSON.parse(response.to_str) ]
+            tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
+            session[:user_id] = tarjimly_id
+            if login(tarjimly_id)
+                redirect_to :controller => 'requests', :action => 'index' 
             else 
-                redirect_to :controller => 'request', :action => 'index' 
-            end 
-        elsif !@@users_login.has_key? email_id
-            puts "helllooooooooo"
-            flash[:alert] = "Invalid Email! Please log in again!"
-            redirect_to '/'
+                redirect_to :controller => 'claims', :action => 'index' 
+            end
+        else
+          fail "Invalid response #{response.to_str} received."
+        end
+    end 
+
+    private 
+    def login(tarjimly_id)
+        # FIX THIS - if translator
+        if tarjimly_id == 364494
+            return true
         else 
-            session[:tarjimlyID] = @@users_tid[:email_id]
-            flash[:alert] = "Invlaid Passward please try again!"
-            redirect_to "/claims"
-        end 
+            return false
+        end
     end 
 end
