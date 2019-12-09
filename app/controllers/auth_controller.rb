@@ -1,17 +1,6 @@
 require 'rest-client'
 require 'json'
-
-
 class AuthController < ApplicationController 
-    @@users_login = {"cassidyhardin@berkeley.edu" => "its4am", 
-                "ahmadjawaid@berkeley.edu" => "ajisthebest", 
-                    "ahmadibrahim@berkeley.edu" => "iwanttosleep"}
-    @@users_tid = {"cassidyhardin@berkeley.edu" => "123", 
-                    "ahmadjawaid@berkeley.edu" => "556", 
-                    "ahmadibrahim@berkeley.edu" => "789"}
-    
-    # official session valirables not storing 
-
 
     def authenticate
         response = RestClient.post(
@@ -26,7 +15,7 @@ class AuthController < ApplicationController
         when 200
         #   [ :success, JSON.parse(response.to_str) ]
             @tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
-            sessions[:user_id] = @tarjimly_id
+            session[:tarjimlyID] = @tarjimly_id
             cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
 
             if login(@tarjimly_id)

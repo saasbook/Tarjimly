@@ -22,6 +22,8 @@ gem 'jwt'
 gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
+gem 'activerecord-session_store'
+
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
