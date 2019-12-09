@@ -25,11 +25,11 @@ class AuthController < ApplicationController
           flash[:alert] = "Unsucessful Login! Please Try Again."
         when 200
         #   [ :success, JSON.parse(response.to_str) ]
-            tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
-            session[:user_id] = tarjimly_id
+            @tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
+            sessions[:user_id] = @tarjimly_id
             cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
 
-            if login(tarjimly_id)
+            if login(@tarjimly_id)
                 redirect_to :controller => 'requests', :action => 'index' 
             else 
                 redirect_to :controller => 'claims', :action => 'index' 

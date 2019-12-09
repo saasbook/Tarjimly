@@ -7,10 +7,7 @@ class RequestsController < ApplicationController
     def index
         @user = @userID
         @status = params[:status] || [0, 1]
-
-
         @requests = Request.where(user_tarjimly_id: @user, _status: @status)
-
         @total_count = Request.where(user_tarjimly_id: @user).count
     end
 
@@ -20,7 +17,6 @@ class RequestsController < ApplicationController
         if @request._status == 2
             return not_found
         end
-
         @claim = nil
         if @request._status == 1
             @request.claims.each do |c|
@@ -29,7 +25,6 @@ class RequestsController < ApplicationController
                 end
             end
         end
-
     end
     
     def new
@@ -52,7 +47,6 @@ class RequestsController < ApplicationController
             upload_format = upload_format[1..-1]
         end
         @request.document_format = upload_format
-
         @request.user_tarjimly_id = @userID
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db

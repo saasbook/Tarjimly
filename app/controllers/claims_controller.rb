@@ -4,7 +4,7 @@ class ClaimsController < ApplicationController
   # helper_method :translator_auth
   helper_method :isHighImpact
   helper_method :isAlreadyClaimed
-  @translatorID = session[:tarjimlyID]
+  @translatorID = sessions[:tarjimlyID]
 
   helper_method :getDaysLeft
 
