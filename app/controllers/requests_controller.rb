@@ -1,8 +1,6 @@
 class RequestsController < ApplicationController
-    # before_action :authorize 
-    before_action :user_auth 
-    helper_method :user_auth
-    helper_method :getDaysLeft
+    before_action :authorize 
+    helper_method :getDaysLeft, :current_user 
 
     def index
         @userID = session[:tarjimlyID]
@@ -93,14 +91,24 @@ class RequestsController < ApplicationController
         end
     end
 
+    def current_user
+        # TODO get details/info on particular user
+        if session[:tarjimlyID]
+          @current_user ||= session[:tarjimlyID] 
+        else 
+          flash[:alert] = "You must be logged in to view this page! Please login below!! "
+        end
+      end
+    
+      def authorize
+        redirect_to '/auth' unless current_user
+      end
+
     private
     def request_params
         params.require(:request).permit(:from_language, :to_language, :deadline, :document_text, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
     end
     def not_found
         render :file => "#{Rails.root}/public/404.html",  :status => 404
-    end
-    def user_auth
-        @userID = session[:tarjimlyID]
     end
 end

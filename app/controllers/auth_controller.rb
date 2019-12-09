@@ -30,6 +30,7 @@ class AuthController < ApplicationController
 
     def logout 
         session[:tarjimlyID] = nil
+        session.clear
         redirect_to root_path
     end
 

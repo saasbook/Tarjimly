@@ -1,5 +1,7 @@
 class ClaimsController < ApplicationController
-  helper_method :getDaysLeft, :isHighImpact,  :isAlreadyClaimed
+  before_action :authorize
+  helper_method :getDaysLeft, :isHighImpact,  :isAlreadyClaimed, :current_translator
+
 
   def requests
     @translatorID = session[:tarjimlyID]
@@ -136,6 +138,19 @@ class ClaimsController < ApplicationController
     else
       return days_left.to_s + " days", false
     end
+  end
+
+  def current_translator
+    # TODO get details/info on particular user
+    if session[:tarjimlyID]
+      @current_translator ||= session[:tarjimlyID] 
+    else 
+      flash[:alert] = "You must be logged in to view this page! Please login below!! "
+    end
+  end
+
+  def authorize
+    redirect_to '/auth' unless current_translator
   end
 
 
