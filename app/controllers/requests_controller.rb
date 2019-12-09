@@ -94,15 +94,19 @@ class RequestsController < ApplicationController
     def current_user
         # TODO get details/info on particular user
         if session[:tarjimlyID]
-          @current_user ||= session[:tarjimlyID] 
-        else 
-          flash[:alert] = "You must be logged in to view this page! Please login below!! "
-        end
-      end
+            @current_user ||= session[:tarjimlyID] 
+          else 
+            flash[:alert] = "You must be logged in to view this page! Please login below!! "
+            return false
+          end
+    end
     
-      def authorize
-        redirect_to '/auth' unless current_user
-      end
+    def authorize
+        if !current_user
+            flash[:alert] = "You must be logged in to view this page! Please login below!! "
+            redirect_to '/auth' 
+        end
+    end
 
     private
     def request_params

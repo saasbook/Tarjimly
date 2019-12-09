@@ -146,6 +146,7 @@ class ClaimsController < ApplicationController
       @current_translator ||= session[:tarjimlyID] 
     else 
       flash[:alert] = "You must be logged in to view this page! Please login below!! "
+      return false
     end
   end
 

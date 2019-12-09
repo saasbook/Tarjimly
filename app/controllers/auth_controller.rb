@@ -13,7 +13,6 @@ class AuthController < ApplicationController
           [ :error, JSON.parse(response.to_str) ]
           flash[:alert] = "Unsucessful Login! Please Try Again."
         when 200
-        #   [ :success, JSON.parse(response.to_str) ]
             @tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
             session[:tarjimlyID] = @tarjimly_id
             cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}

@@ -1,3 +1,14 @@
+ <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+ <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+    </div>
+<% end %>
+
+
 <div class="aj-stuff">
   <div class="play">
     <header>
@@ -24,3 +35,10 @@
   <% end %>
   <%# call application method - authorize  %>
 </div>
+
+ <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+    </div>
+<% end %>
