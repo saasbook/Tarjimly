@@ -1,7 +1,5 @@
 class ClaimsController < ApplicationController
-  helper_method :getDaysLeft
-  helper_method :isHighImpact
-  helper_method :isAlreadyClaimed
+  helper_method :getDaysLeft, :isHighImpact,  :isAlreadyClaimed
 
   def requests
     @translatorID = session[:tarjimlyID]
