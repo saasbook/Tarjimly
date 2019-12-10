@@ -23,6 +23,7 @@ require 'rails_helper'
         click_button('Sign In')
         expect(page.current_path).to eq "/claims"
     end
+
     it 'aid workers should be routed to their requests page' do 
         visit "/"
         fill_in 'Email', with: "cassihardin@gmail.com"
@@ -30,10 +31,24 @@ require 'rails_helper'
         click_button('Sign In')
         expect(page.current_path).to eq "/requests"
     end
+
     it 'unsucessful logins should be unauthorized' do 
         visit "/"
         fill_in 'Email', with: "cassihardin@gmail.com"
         fill_in 'Password', with: ""
+        click_button('Sign In')
+        expect(page.current_path).to eq "/"
+        expect(page).to have_text("Unsucessful Login! Please Try Again.")
+    end
+    
+    it 'after logging in, should be able to log out' do 
+        visit "/"
+        fill_in 'Email', with: "cassihardin@gmail.com"
+        fill_in 'Password', with: "tarjimlydocs19"
+        click_button('Sign In')
+        page.should have_selector(:link_or_button, 'Sign Out')
+        click_link('Sign Out')
+        expect(page).to have_content("You have successfully logged out!")
         expect(page.current_path).to eq "/"
     end
 
