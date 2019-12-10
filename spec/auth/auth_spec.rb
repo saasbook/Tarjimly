@@ -22,7 +22,7 @@ require 'rails_helper'
         fill_in 'Password', with: "tarjimlydocs19"
         click_button('Sign In')
         expect(page.current_path).to eq "/claims"
-        expect(last_response.status).to eq 200
+        # response.status.should be(200)
     end
     it 'aid workers should be routed to their requests page' do 
         visit "/"
@@ -30,7 +30,6 @@ require 'rails_helper'
         fill_in 'Password', with: "tarjimlydocs19"
         click_button('Sign In')
         expect(page.current_path).to eq "/requests"
-        expect(last_response.status).to eq 200
     end
 
 
