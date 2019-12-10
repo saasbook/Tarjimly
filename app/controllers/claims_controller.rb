@@ -118,7 +118,6 @@ class ClaimsController < ActionController::Base
 
   def getDaysLeft(request)
     days_left = ((request.deadline - request.created_at).to_i)/86400
-
     if days_left == -1
       return "1 day ago", true
     elsif days_left < 0
