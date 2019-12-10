@@ -82,7 +82,7 @@ class ClaimsController < ApplicationController
       @claim.request.save!
       title = @claim.request.title
       @claim.destroy
-      flash[:notice] = "You have successfully unclaimed the translation  #{title}!"
+      flash[:notice] = "You have successfully unclaimed the translation for #{title}!"
       redirect_to claims_url
     end
   end
