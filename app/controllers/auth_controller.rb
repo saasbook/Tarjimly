@@ -7,6 +7,14 @@ class AuthController < ApplicationController
             'https://tarjim.ly/api/mobile/v1/auth/login', 
             {:email => params[:email], :password => params[:password]}
         )
+        puts("response body")
+        puts(JSON.parse(response.body))
+        puts("response headers")
+        puts((response.headers))
+        puts("response request")
+        puts((response.request))
+        puts("response raw headers")
+        puts((response.raw_headers))
         case response.code
         when 401
           [ :error, JSON.parse(response.to_str) ]
@@ -14,9 +22,7 @@ class AuthController < ApplicationController
         when 200
             @tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
             session[:tarjimlyID] = @tarjimly_id
-            puts(@tarjimlyID)
             cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
-
             if login(@tarjimly_id)
                 redirect_to :controller => 'requests', :action => 'index' 
             else 
