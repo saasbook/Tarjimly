@@ -52,7 +52,7 @@ features tests
 
 unit testing of features 
 
-### **Accessibility Testing **
+### Accessibility Testing 
 
 Accessibility testing can be performed across TarjimlyDocs. We are constantly improving our code to be more accessible to all users! 
 
