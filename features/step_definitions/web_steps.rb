@@ -35,6 +35,11 @@ end
 #   fill_in(field, with: "))
 # end
 
+When("I fill in {string} with {string} and {string} with {string}") do |string, string2, string3, string4|
+  fill_in string, with: string2
+  fill_in string3, with: string4
+end
+
 When("I select {string} from {string}") do |value, field|
   select(value, from: field)
 end
