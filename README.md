@@ -63,7 +63,7 @@ Rspec Integration testing for accessibility can be found within `spec/accessibil
 
 ### Deployment
 
-Our app is deployed in heroku, and can be accessed at [http://heroku.com/tarjimlydocs](http://heroku.com/tarjimlydocs) however you are also able to run it locally 
+Our app is deployed in heroku, and can be accessed at [http://tarjimly-docs.herokuapp.com/](http://tarjimly-docs.herokuapp.com/) however you are also able to run it locally 
 
 `rails server`
 
