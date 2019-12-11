@@ -51,3 +51,17 @@ end
 When("I refesh the page") do
   visit current_path 
 end
+
+Given("I am signed in as a translator") do 
+  visit path_to("Home")
+  fill_in("Email", with: "cassidyhardin@berkeley.edu")
+  fill_in("Password", with: "tarjimlydocs19")
+  click_button("Sign In")
+end
+
+Given("I am signed in as a user") do 
+  visit path_to("Home")
+  fill_in("Email", with: "cassihardin@gmail.com")
+  fill_in("Password", with: "tarjimlydocs19")
+  click_button("Sign In")
+end

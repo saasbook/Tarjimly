@@ -6,18 +6,20 @@ Feature: claimed request deleted by user
 
     Background: current pending translations
 
+        Given I am signed in as a translator
+
         Given the following requests exist:
             | id | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title            | description | categories    | num_claims | form_type | _status |
-            | 1  | 1                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
-            | 2  | 1                | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Flyer       | information | Refugee, Camp | 1          | N/A       | 0       |
-            | 3  | 1                | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application | information | Visa          | 2          | Visa      | 0       |
-            | 4  | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
+            | 1  | 364494           | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
+            | 2  | 364494           | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Flyer       | information | Refugee, Camp | 1          | N/A       | 0       |
+            | 3  | 364494           | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application | information | Visa          | 2          | Visa      | 0       |
+            | 4  | 364494           | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes     | information | Child, Doctor | 1          | N/A       | 0       |
 
         Given the following claims exist:
             | id | translator_tarjimly_id | _status | submitted_date | translation_text | translation_format | request_id |
-            | 1  | 1                      | 3       | Arabic         | example text     | text               | 1          |
-            | 2  | 1                      | 1       | Urdu           | example text     | text               | 2          |
-            | 3  | 1                      | 0       | English        | example text     | text               | 3          |
+            | 1  | 364495                 | 3       | Arabic         | example text     | text               | 1          |
+            | 2  | 364495                 | 1       | Urdu           | example text     | text               | 2          |
+            | 3  | 364495                 | 0       | English        | example text     | text               | 3          |
 
     Scenario: visiting translator's claimed translations
         Given I go to the "Claims" page
