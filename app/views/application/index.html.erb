@@ -36,6 +36,7 @@
        <%= text_field_tag :email %><br/>
        <%= label_tag :password %><br/>
        <%= password_field_tag :password %><br/><br/>
+       <%= hidden_field(:time_zone, value: nil) %>
        <%= submit_tag "Sign In", class:"btn btn-info"%><br/>
       <% end %>
       </div>

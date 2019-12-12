@@ -22,3 +22,4 @@
 //= require popper
 //= require data-confirm-modal
 //= require claim
+//= require jsTimezoneDetect

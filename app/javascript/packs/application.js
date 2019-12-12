@@ -27,50 +27,8 @@ require("jquery-ui")
 require("popper.js")
 require("data-confirm-modal")
 require("./claim.js")
+require("jsTimezoneDetect")
 
 require("bootstrap")
-// require("direct_uploads.js")
 
 console.log('Hello World from Webpacker')
-
-// $(".confirm").confirm({
-//     text: "Are you sure you want to delete that comment?",
-//     title: "Confirmation required",
-//     confirm: function (button) {
-//         // delete ();
-//     },
-//     cancel: function (button) {
-//         // nothing to do
-//     },
-//     confirmButton: "Yes I am",
-//     cancelButton: "No",
-//     post: true,
-//     confirmButtonClass: "btn-primary",
-//     cancelButtonClass: "btn-default",
-//     dialogClass: "modal-dialog modal-lg" // Bootstrap classes for large modal
-// });
-
-// // $.rails.allowAction = function (link) {
-// //     if (link.data("confirm") == undefined) {
-//         return true;
-//     }
-//     $.rails.showConfirmationDialog(link);
-//     return false;
-// }
-// //User click confirm button
-// $.rails.confirmed = function (link) {
-//     link.data("confirm", null);
-//     link.trigger("click.rails");
-// }
-// //Display the confirmation dialog
-// $.rails.showConfirmationDialog = function (link) {
-//     var message = link.data("confirm");
-//     $.fn.SimpleModal({
-//         model: "modal",
-//         title: "Please confirm",
-//         contents: message
-//     }).addButton("Confirm", "button primary", function () {
-//         $.rails.confirmed(link);
-//         this.hideModal();
-//     }).addButton("Cancel", "button secondary").showModal();
-// }
