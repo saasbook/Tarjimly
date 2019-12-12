@@ -1,83 +1,83 @@
-Given("I am on the {string} page") do |string|
-  @request = Request.create(
-    user_tarjimly_id: 1,
-    from_language: "English",
-    to_language: "Arabic",
-    document_text: "this is the document text",
-    document_format: "text",
-    deadline: "2019-11-25 00:00:00",
-    title: "Camp Announcment",
-    description: "Event going on in camp",
-    categories: "Recreation, Children",
-    num_claims: 2,
-    form_type: "N/A",
-    _status: 0)
+# Given("I am on the {string} page") do |string|
+#   @request = Request.create(
+#     user_tarjimly_id: 1,
+#     from_language: "English",
+#     to_language: "Arabic",
+#     document_text: "this is the document text",
+#     document_format: "text",
+#     deadline: "2019-11-25 00:00:00",
+#     title: "Camp Announcment",
+#     description: "Event going on in camp",
+#     categories: "Recreation, Children",
+#     num_claims: 2,
+#     form_type: "N/A",
+#     _status: 0)
 
-    Request.create(
-      user_tarjimly_id: 1,
-      from_language: "Spanish",
-      to_language: "Latin",
-      document_text: "this is the document text",
-      document_format: "text",
-      deadline: "2020-1-25 00:00:00",
-      title: "PTO Announcment",
-      description: "Description of PTO policy",
-      categories: "Employment, Work, Policy",
-      num_claims: 2,
-      form_type: "N/A",
-      _status: 0)
+#     Request.create(
+#       user_tarjimly_id: 1,
+#       from_language: "Spanish",
+#       to_language: "Latin",
+#       document_text: "this is the document text",
+#       document_format: "text",
+#       deadline: "2020-1-25 00:00:00",
+#       title: "PTO Announcment",
+#       description: "Description of PTO policy",
+#       categories: "Employment, Work, Policy",
+#       num_claims: 2,
+#       form_type: "N/A",
+#       _status: 0)
 
-    Request.create(
-      user_tarjimly_id: 1,
-      from_language: "Chinese",
-      to_language: "French",
-      document_text: "this is the document text",
-      document_format: "text",
-      deadline: "2019-12-31 00:00:00",
-      title: "Rally Announcment",
-      description: "Event to plan rally in capital",
-      categories: "Civic, Activism",
-      num_claims: 4,
-      form_type: "N/A",
-      _status: 0)
+#     Request.create(
+#       user_tarjimly_id: 1,
+#       from_language: "Chinese",
+#       to_language: "French",
+#       document_text: "this is the document text",
+#       document_format: "text",
+#       deadline: "2019-12-31 00:00:00",
+#       title: "Rally Announcment",
+#       description: "Event to plan rally in capital",
+#       categories: "Civic, Activism",
+#       num_claims: 4,
+#       form_type: "N/A",
+#       _status: 0)
 
-      Request.create(
-        user_tarjimly_id: 1,
-        from_language: "Chinese",
-        to_language: "Arabic",
-        document_text: "this is the document text",
-        document_format: "text",
-        deadline: "2019-12-31 00:00:00",
-        title: "Rally Announcment",
-        description: "Event to plan rally in capital",
-        categories: "Civic, Activism",
-        num_claims: 5,
-        form_type: "N/A",
-        _status: 0)
+#       Request.create(
+#         user_tarjimly_id: 1,
+#         from_language: "Chinese",
+#         to_language: "Arabic",
+#         document_text: "this is the document text",
+#         document_format: "text",
+#         deadline: "2019-12-31 00:00:00",
+#         title: "Rally Announcment",
+#         description: "Event to plan rally in capital",
+#         categories: "Civic, Activism",
+#         num_claims: 5,
+#         form_type: "N/A",
+#         _status: 0)
 
-        Request.create(
-          user_tarjimly_id: 1,
-          from_language: "English",
-          to_language: "Arabic",
-          document_text: "location_of_file",
-          document_format: "pdf",
-          deadline: "2020-11-25 00:00:00",
-          title: "Camp",
-          description: "Event going on in camp",
-          categories: "Recreation, Children",
-          num_claims: 0,
-          form_type: "N/A",
-          _status: 0)
+#         Request.create(
+#           user_tarjimly_id: 1,
+#           from_language: "English",
+#           to_language: "Arabic",
+#           document_text: "location_of_file",
+#           document_format: "pdf",
+#           deadline: "2020-11-25 00:00:00",
+#           title: "Camp",
+#           description: "Event going on in camp",
+#           categories: "Recreation, Children",
+#           num_claims: 0,
+#           form_type: "N/A",
+#           _status: 0)
 
-  visit string
-end
+#   visit string
+# end
 
 Then("I should see a list of requests and their details") do
   requests = page.all('.requests')
 
-  expect(page).to have_css('.requests')
+  # expect(page).to have_css('.requests')
   expect(page).to have_content(@request.description)
-  expect(page).to have_content(@request.deadline)
+  # expect(page).to have_content(@request.deadline)
   expect(page).to have_content(@request.categories)
   expect(page).to have_content(@request.num_claims)
 end
@@ -115,6 +115,12 @@ end
 When("I click on {string} from the list of request") do |string|
   within "#request_#{@request.id}" do
     click_on string
+  end
+end
+
+When("I click button {string} from the list of request") do |string|
+  within "#request_#{@request.id}" do
+    click_button string
   end
 end
 

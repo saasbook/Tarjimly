@@ -3,9 +3,13 @@ require 'rails_helper'
 
 describe 'Translators are able to unclaim translation requests' do 
     before(:each) do 
+        visit "/"
+        fill_in 'Email', with: "cassidyhardin@berkeley.edu"
+        fill_in 'Password', with: "tarjimlydocs19"
+        click_button('Sign In')
         @request = Request.create(from_language: 'English', to_language: 'Arabic', document_format: "text", description: 'information regarding upcoming doctors appointment',  title: 'Passport Application', document_text: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
         @curr_id = @request.id
-        @claim = Claim.create(translator_tarjimly_id: 1, _status: 0, translation_text: 'text', submitted_date: "Nov-25-2019", translation_format: 'pdf', request_id: @curr_id, request: @request)
+        @claim = Claim.create(translator_tarjimly_id: 364495, _status: 0, translation_text: 'text', submitted_date: "Nov-25-2019", translation_format: 'pdf', request_id: @curr_id, request: @request)
         @claim_id = @claim.id
     end
     it 'should have an unclaim button on the details page' do 
@@ -21,10 +25,10 @@ describe 'Translators are able to unclaim translation requests' do
         click_button("Unclaim Request")
         expect(page.current_path).to eq "/claims"
     end 
-    it 'should have confirmation of deltion message' do 
+    it 'should have confirmation of deletion message' do
         visit "/claims/#{@claim_id}"
         click_button("Unclaim Request")
-        expect(page).to have_text("You have sucessfully unclaimed the translation for Passport Application!")
+        expect(page).to have_content("You have successfully unclaimed the translation for Passport Application!")
     end 
     it 'claim should not be present after deleting' do 
         visit "/claims/#{@claim_id}"

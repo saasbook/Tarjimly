@@ -17,7 +17,7 @@ Feature: create a new request
     And I check "request_categories_legal"
     And I click the "Create Request" button
     Then I should be on the "/requests" path
-    And I select "Pending Translations"
+#    And I select "Pending Translations"
     And I should see "Cucumber Test Request"
     And I should see "Legal"
 

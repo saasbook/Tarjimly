@@ -52,11 +52,18 @@ features tests
 
 unit testing of features 
 
+### Accessibility Testing 
+
+Accessibility testing can be performed across TarjimlyDocs. We are constantly improving our code to be more accessible to all users! 
+
+`axe http://localhost:3000/`
+
+Rspec Integration testing for accessibility can be found within `spec/accessibility_spec.rb` 
 
 
 ### Deployment
 
-Our app is deployed in heroku, and can be accessed at [http://heroku.com/tarjimlydocs](http://heroku.com/tarjimlydocs) however you are also able to run it locally 
+Our app is deployed in heroku, and can be accessed at [http://tarjimly-docs.herokuapp.com/](http://tarjimly-docs.herokuapp.com/) however you are also able to run it locally 
 
 `rails server`
 

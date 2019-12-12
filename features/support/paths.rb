@@ -11,6 +11,8 @@ module NavigationHelpers
         '/claims'
       when 'Show'
         'requests/4'
+      when 'Home'
+        '/'
   
       else
         begin

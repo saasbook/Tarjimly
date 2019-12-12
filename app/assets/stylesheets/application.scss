@@ -24,6 +24,46 @@
     color: #337ab7;
   }
 }
+// login column 
+
+.login-page {
+  @media only screen and (min-width: 700px) {
+    display: flex;
+  }
+  .login{
+    color: #337ab7;
+    font-size: 20px;
+    font-weight: 500;
+  }
+  .login-info {
+    color: #134774;
+    font-size: 15px;
+    font-weight: 200;
+  }
+  .login-details {
+  
+    float: right;
+    // width: 150px;
+    padding: 15px;
+    flex: 0 .3 200px;
+    min-width: 250px;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    overflow-y: scroll;
+  
+    display: flex;
+    flex-flow: column;
+    
+  }
+  .login-title {
+    padding: 5px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column;
+    margin-right: 150px;
+  }
+
+}
+
 
 .temp-nav {
   position: fixed;
@@ -310,6 +350,10 @@
   font-weight: 400;
 }
 
+.red {
+  color: red;
+}
+
 .curve {
   border-radius: 10px;
 }
@@ -537,11 +581,7 @@
 
 /* Ignore stuff below this line (temporary index page) */
 .aj-stuff {
-  // .custom-model{
-  //   .modal-header{
-  //     color: red
-  //   }
-  // }
+
 
   .animate-me {
     -webkit-animation: bgcolorchange 4s infinite; /* Chrome, Safari, Opera */ 
@@ -797,6 +837,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    float: left;
+    width: 100%;
   }
 
   .spiny {

@@ -20,6 +20,8 @@ module TarjimlyDocs
     config.active_support.escape_html_entities_in_json = true
     config.active_record.observers = :request_observer
     config.middleware.use ActionDispatch::Flash
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore
 
   end
 end
