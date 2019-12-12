@@ -83,8 +83,12 @@
               <h4 class="card-title">
                 <%= request.title %>
               </h4>
-              <p class="lead-no-margin card-subs pad-top-5"> 
-                  <span class="blue">Deadline: </span><%= getDaysLeft(request) %>
+              <p class="lead-no-margin card-subs pad-top-5">
+                <% if getDaysLeft(request)[1]%>
+                  <span class="blue">Deadline: </span> <span class="red"> <%= getDaysLeft(request)[0] %> </span>
+                <% else %>
+                  <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                <%end%>
               </p>
             </div>
             <p class="langs card-subs"> 
@@ -106,7 +110,7 @@
                   <% if request._status==0%>
                       <span class="tag tag-orange"> Pending</span>
                     <% elsif request._status==1 %>
-                      <span class="tag tag-green"> Completed </i></span>
+                      <span class="tag tag-green"> Completed</span>
                     <% end %>
                 </div>
               </div>
