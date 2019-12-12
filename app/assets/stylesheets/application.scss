@@ -29,7 +29,7 @@
 // login column 
 
 .login-page {
-  @media only screen and (min-width: 700px) {
+  @media only screen and (min-width: 800px) {
     display: flex;
   }
   .login{
@@ -67,17 +67,69 @@
 }
 
 
-.temp-nav {
+.tarjimly-nav {
   position: fixed;
   top: 0;
   width: 100vw;
-  height: 60px;
+  height: 55px;
   display: flex;
   align-content: center;
   background-color: #337ab7;
   color: white;
-  padding:15px;
   z-index: 2;
+  padding: 10px 15px;
+  @media only screen and (min-width: 800px) {
+    padding-left: 75px;
+  }
+
+}
+
+.flex-container {
+  @media only screen and (min-width: 800px) {
+    display: flex;
+  }
+  height: 100vh;
+  padding-top: 55px;
+
+  .flex-sidebar {
+    padding: 15px;
+    flex: 0 .5 400px;
+    
+    // border-right: 1px solid rgba(0,0,0,0.1);
+    overflow-y: scroll;
+    background-color: rgba(0, 0, 0, 0.03);
+
+    display: flex;
+    flex-flow: column;
+    @media only screen and (min-width: 800px) {
+      max-width: 340px;
+      padding: 25px;
+      padding-left: 75px;
+      padding-right: 40px;
+    }
+    
+    
+  }
+
+  .flex-body {
+    
+    padding: 15px;
+    flex: 1 1 auto;
+    overflow-y: scroll;
+    @media only screen and (min-width: 800px) {
+      padding-right: 75px;
+      padding-left: 30px;
+    }
+
+    display: flex;
+    flex-flow: column;
+
+    .request-list {
+      overflow-y: scroll;
+      margin-bottom: 10px;
+    }
+
+  }
 }
 
 .profile-container {
@@ -132,52 +184,7 @@
   }
 }
 
-.flex-container {
-  @media only screen and (min-width: 700px) {
-    display: flex;
-  }
-  height: 100vh;
 
-  .flex-sidebar {
-    padding: 15px;
-    flex: 0 .5 400px;
-    
-    // border-right: 1px solid rgba(0,0,0,0.1);
-    overflow-y: scroll;
-    background-color: rgba(0, 0, 0, 0.03);
-
-    display: flex;
-    flex-flow: column;
-    @media only screen and (min-width: 700px) {
-      max-width: 340px;
-      padding: 25px;
-      padding-left: 75px;
-      padding-right: 40px;
-    }
-    
-    
-  }
-
-  .flex-body {
-    
-    padding: 15px;
-    flex: 1 1 auto;
-    overflow-y: scroll;
-    @media only screen and (min-width: 700px) {
-      padding-right: 75px;
-      padding-left: 30px;
-    }
-
-    display: flex;
-    flex-flow: column;
-
-    .request-list {
-      overflow-y: scroll;
-      margin-bottom: 10px;
-    }
-
-  }
-}
 
 .flex {
   display: flex;
