@@ -3,6 +3,12 @@ require 'rails_helper'
 
 # RSpec.describe RequestsController, :type => :controller do 
 describe "Navigating to a new request " do 
+  before(:each) do 
+    visit "/"
+    fill_in 'Email', with: "cassihardin@gmail.com"
+    fill_in 'Password', with: "tarjimlydocs19"
+    click_button('Sign In')
+  end
   it "should find the new request button" do
       visit "/requests"
       click_button 'New Request'
@@ -12,12 +18,11 @@ end
 
 describe "Creating a new request" do
   before(:each) do 
+    visit "/"
+    fill_in 'Email', with: "cassihardin@gmail.com"
+    fill_in 'Password', with: "tarjimlydocs19"
+    click_button('Sign In')
     visit "/requests/new"
-  end
-
-  it "should render the response template" do
-    get "/requests/new"
-    expect(response).to render_template(:new)
   end
 
   it "should be able to fill in fields successfully" do

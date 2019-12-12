@@ -6,16 +6,18 @@ Feature: view previously submitted request
 
     Background: existing requested translations
 
+        Given I am signed in as a user
+
         Given the following requests exist:
             | id | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title                  | description | categories    | num_claims | form_type | _status |
-            | 1  | 1                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 0       |
-            | 2  | 1                | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
-            | 3  | 1                | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 0       |
-            | 4  | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 2          | N/A       | 2       |
+            | 1  | 364494           | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 0       |
+            | 2  | 364494           | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
+            | 3  | 364494           | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 0       |
+            | 4  | 364494           | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 2          | N/A       | 2       |
 
         Given the following claims exist:
             | translator_tarjimly_id | _status | submitted_date | translation_text | translation_format | request_id |
-            | 142                    | 0       | Arabic         | example text     | text               | 4          |
+            | 364495                 | 0       | Arabic         | example text     | text               | 4          |
 
     Scenario: visiting request's details page
         Given I am on the "requests" page

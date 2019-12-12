@@ -35,6 +35,11 @@ end
 #   fill_in(field, with: "))
 # end
 
+When("I fill in {string} with {string} and {string} with {string}") do |string, string2, string3, string4|
+  fill_in string, with: string2
+  fill_in string3, with: string4
+end
+
 When("I select {string} from {string}") do |value, field|
   select(value, from: field)
 end
@@ -45,4 +50,18 @@ end
 
 When("I refesh the page") do
   visit current_path 
+end
+
+Given("I am signed in as a translator") do 
+  visit path_to("Home")
+  fill_in("Email", with: "cassidyhardin@berkeley.edu")
+  fill_in("Password", with: "tarjimlydocs19")
+  click_button("Sign In")
+end
+
+Given("I am signed in as a user") do 
+  visit path_to("Home")
+  fill_in("Email", with: "cassihardin@gmail.com")
+  fill_in("Password", with: "tarjimlydocs19")
+  click_button("Sign In")
 end

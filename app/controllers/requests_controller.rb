@@ -1,11 +1,12 @@
-class RequestsController < ActionController::Base
-    helper_method :getDaysLeft
-    def index
-        @user = 1
-        @status = params[:status] || [0,1]
-        @requests = Request.where(user_tarjimly_id: @user, _status: @status)
+class RequestsController < ApplicationController
+    before_action :authorize 
+    helper_method :getDaysLeft, :current_user 
 
-        @total_count = Request.where(user_tarjimly_id: @user).count
+    def index
+        @userID = session[:tarjimlyID]
+        @status = params[:status] || [0, 1]
+        @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
+        @total_count = Request.where(user_tarjimly_id: @userID).count
     end
 
     def show 
@@ -14,7 +15,6 @@ class RequestsController < ActionController::Base
         if @request._status == 2
             return not_found
         end
-
         @claim = nil
         if @request._status == 1
             @request.claims.each do |c|
@@ -23,7 +23,6 @@ class RequestsController < ActionController::Base
                 end
             end
         end
-
     end
     
     def new
@@ -32,13 +31,13 @@ class RequestsController < ActionController::Base
     end
     
     def create
+        @userID = session[:tarjimlyID]
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
             return
         end
-
         upload_format = params[:request][:format] || "text"
         if upload_format != "text"
             filename_string = @request.document_uploads.first.filename.to_s
@@ -46,8 +45,7 @@ class RequestsController < ActionController::Base
             upload_format = upload_format[1..-1]
         end
         @request.document_format = upload_format
-
-        @request.user_tarjimly_id = 1 #TODO: Should be based on auth
+        @request.user_tarjimly_id = @userID
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db
 
@@ -57,12 +55,14 @@ class RequestsController < ActionController::Base
         else
           flash[:alert] = "Uh Oh! There was an error creating your request."
         end 
-
     end
 
     def delete 
+        @userID = session[:tarjimlyID]
         @request = Request.find(params[:request_id])
-        if !@request.claims.nil? && @request.claims.present?
+        if @request.user_tarjimly_id != @userID
+            render not_found 
+        elsif !@request.claims.nil? && @request.claims.present?
             @request._status = 2
             @request.save!
             @request.claims.each do |claim|
@@ -78,7 +78,6 @@ class RequestsController < ActionController::Base
 
     def getDaysLeft(request)
         days_left = ((request.deadline - request.created_at).to_i)/86400
-
         if days_left == -1
             return "1 day ago", true
         elsif days_left < 0
@@ -89,6 +88,23 @@ class RequestsController < ActionController::Base
             return "1 day", true
         else
             return days_left.to_s + " days", false
+        end
+    end
+
+    def current_user
+        # TODO get details/info on particular user
+        if session[:tarjimlyID]
+            @current_user ||= session[:tarjimlyID] 
+          else 
+            flash[:alert] = "You must be logged in to view this page! Please login below!! "
+            return false
+          end
+    end
+    
+    def authorize
+        if !current_user
+            flash[:alert] = "You must be logged in to view this page! Please login below!! "
+            redirect_to '/auth', :flash => { :notice => "You must be logged in to view this page! Please login below!!" }
         end
     end
 

@@ -1,14 +1,48 @@
-<div class="aj-stuff">
-  <div class="play">
-    <header>
-    <h1 data-text="Tarjimly Docs">
-      <span class="glitch1" data-text="Tarjimly Docs" aria-hidden></span>
-      <span class="glitch2" data-text="Tarjimly Docs" aria-hidden></span>
-      Tarjimly Docs
-    </h1>
-    </header>
-      <%= button_to "User Homepage", requests_path, action: "index", method: :get, class: "btn btn-primary" %><br/>
-      <%= button_to "Translator See Available Requests", view_requests_path, action: "requests", method: :get, class: "btn btn-danger" %><br />
-      <%= button_to "Translator Homepage", claims_path, action: "index", method: :get, class: "btn btn-warning" %>
+ <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+ <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= value %>
+    </div>
+<% end %>
+
+<div class="login-page">
+<div class="login title">
+  <div class="aj-stuff">
+    <div class="play">
+      <header>
+      <h1 data-text="Tarjimly Docs">
+        <span class="glitch1" data-text="Tarjimly Docs" aria-hidden></span>
+        <span class="glitch2" data-text="Tarjimly Docs" aria-hidden></span>
+        Tarjimly Docs
+      </h1>
+      </header>
+        <%= button_to "User Homepage", requests_path, action: "index", method: :get, class: "btn btn-primary" %><br/>
+        <%= button_to "Translator See Available Requests", view_requests_path, action: "requests", method: :get, class: "btn btn-danger" %><br />
+        <%= button_to "Translator Homepage", claims_path, action: "index", method: :get, class: "btn btn-warning" %>
+    </div>
+    </div>
+  </div>
+
+  <div class="login-details">
+
+   <div class="login">
+      <h1> Tarjimly Login </h1> <br/>
+      <div class="login-info">
+      <%= form_tag validate_login_path do %>
+        <%= label_tag :email%><br/>
+       <%= text_field_tag :email %><br/>
+       <%= label_tag :password %><br/>
+       <%= password_field_tag :password %><br/><br/>
+       <%= submit_tag "Sign In", class:"btn btn-info"%><br/>
+      <% end %>
+      </div>
+    <%# call application method - authorize  %>
+    </div>
+    <br/>
+   <a href="https://www.tarjim.ly/howitworks" class="btn btn-primary">Sign Up</a>
   </div>
 </div>
+

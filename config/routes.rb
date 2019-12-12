@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
   #Login
-  get '/login' => 'application#login', :as => 'application_login'
+  post '/auth' => 'auth#authenticate', :as => 'validate_login'
+  get '/auth' => 'auth#logout', :as => 'logout'
+
 
   #User Pages
   get '/requests' => 'requests#index', :as => 'requests'

@@ -11,9 +11,19 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-    <div class="notice"><%= flash[:notice] %></div>
-  <% end %>
+  <h1> testing nav bar </h1>
+
     <%= yield %>
   </body>
+
+   <%# <body>
+    <% if current_user %>
+      <%# <%= current_user.email %>
+      <%# <%= link_to "Sign out", '/signout'  %> 
+    <%# <% end %> 
+<%#  %>
+  <%# </body> %>
+
+
+
 </html>
