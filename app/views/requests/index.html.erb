@@ -60,9 +60,14 @@
 
       <div class="request-list">
       <% if @requests.empty? %>
-        <div class="pending-translation-message">
-          No results matched your criteria. 
-        </div>
+        <%if @status.is_a?(String) && @status.to_i == 1 %>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no completed requests at the moment, please check back later! 
+          </div>
+        <%else%>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no pending requests at the moment, get started by making a <a href="/requests/new" class="alert-link">new request</a>!
+        <%end%>
       <% end %>
       <% @requests.each do |request| %>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">

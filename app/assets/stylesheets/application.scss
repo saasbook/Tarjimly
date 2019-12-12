@@ -145,6 +145,7 @@
   .flex-sidebar {
     padding: 15px;
     flex: 0 .5 400px;
+    
     // border-right: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.03);
@@ -152,8 +153,9 @@
     display: flex;
     flex-flow: column;
     @media only screen and (min-width: 700px) {
+      max-width: 340px;
       padding: 25px;
-      padding-left: 5%;
+      padding-left: 75px;
       padding-right: 40px;
     }
   }
@@ -164,7 +166,7 @@
     flex: 1 1 auto;
     overflow-y: scroll;
     @media only screen and (min-width: 700px) {
-      padding-right: 5%;
+      padding-right: 75px;
       padding-left: 30px;
     }
 
@@ -339,6 +341,10 @@
 .mg-tb-5 {
   margin-top: 5px;
 }
+.mg-tp-20 {
+  margin-top: 20px;
+}
+
 .title {
   @media only screen and (min-width: 800px) {
     font-size: 24px;
