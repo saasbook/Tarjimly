@@ -58,8 +58,8 @@
 
       <div class="request-list">
       <% if @dismiss_claims.empty? && @claims.empty? %>
-        <div class="pending-translation-message">
-          No results matched your criteria. 
+        <div class="alert alert-warning mg-tp-20" role="alert">
+          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link">request listing</a>.
         </div>
       <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
