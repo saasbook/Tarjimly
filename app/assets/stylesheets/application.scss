@@ -89,11 +89,11 @@
   h3 {
     margin: 0;
     margin-bottom: 3px;
-    color: #337ab7;
+    // color: #337ab7;
   }
   h4 {
     margin: 0;
-    margin-bottom: 3px;
+    margin-bottom: 10px;
     font-weight: 400;
     font-size: 16px;
   }
@@ -506,9 +506,16 @@
 .mg-bt-10 {
   margin-bottom: 10px;
 }
+.mg-bt-15 {
+  margin-bottom: 15px;
+}
 
 .mg-10 {
   margin: 10px ;
+}
+
+.bold-2{
+  font-weight: 500 !important;
 }
 
 .section-header-big{
