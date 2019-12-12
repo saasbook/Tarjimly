@@ -27,7 +27,6 @@ require("jquery-ui")
 require("popper.js")
 require("data-confirm-modal")
 require("./claim.js")
-require("jsTimezoneDetect")
 
 require("bootstrap")
 

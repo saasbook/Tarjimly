@@ -77,7 +77,7 @@ class RequestsController < ApplicationController
     end
 
     def getDaysLeft(request)
-        days_left = ((request.deadline - request.created_at).to_i)/86400
+        days_left = ((request.deadline.time.in_time_zone(session[:time_zone]) - request.created_at.time.in_time_zone(session[:time_zone])).to_i)/86400
         if days_left == -1
             return "1 day ago", true
         elsif days_left < 0

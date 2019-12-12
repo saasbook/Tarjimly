@@ -36,14 +36,20 @@
        <%= text_field_tag :email %><br/>
        <%= label_tag :password %><br/>
        <%= password_field_tag :password %><br/><br/>
-       <%= hidden_field(:time_zone, value: nil) %>
+       <%= hidden_field(:user_time_zone, value: nil ) %>
+          <script type="text/javascript">
+            $(document).set_time_zone(function(){
+            document.getElementById('user_time_zone').value = jstz.determine().name();
+            })
+          </script>
        <%= submit_tag "Sign In", class:"btn btn-info"%><br/>
       <% end %>
       </div>
-    <%# call application method - authorize  %>
     </div>
     <br/>
    <a href="https://www.tarjim.ly/howitworks" class="btn btn-primary">Sign Up</a>
   </div>
 </div>
+
+
 

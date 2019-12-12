@@ -22,6 +22,8 @@ gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
 gem 'activerecord-session_store'
+gem 'detect_timezone_rails'
+
 
 # time zone
 source 'https://rails-assets.org' do
