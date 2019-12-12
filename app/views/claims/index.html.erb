@@ -7,9 +7,8 @@
     <div class="flex-sidebar">
       <div class="profile-container">
         <h3> Ahmad Jawaid </h3>
-        <h4 class="blue pad-bt-5"> Translator </h4>
-        <h4> Member Since: August, 2018 </h4>
-        <h4> Completed Translations: <span class="badge"><%= @total_count %></span> </h4>
+        <h4 class="bold-2"> Translator </h4>
+        <h4>Completed Translations: <span class="badge"><%= @total_count %></span> </h4>
         <%=link_to "Sign Out", :controller => "auth", :action => :logout, method: :get, class: "btn btn-primary" %>
 
       </div>
