@@ -85,7 +85,7 @@
   margin-bottom: 1em;
   padding-bottom: 1.7em;
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  border-radius: 10px;
+  border-radius: 5px;
   h3 {
     margin: 0;
     margin-bottom: 3px;
@@ -302,7 +302,8 @@
   font-size: 12px;
   font-weight: 500;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 2px;
+  margin-right: 3px;
 }
 .tag-big {
   @media only screen and (min-width: 800px) {
@@ -368,7 +369,7 @@
 }
 
 .curve {
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .info-container {
@@ -385,7 +386,7 @@
 }
 
 .grey-container{
-  border-radius: 10px 10px;
+  border-radius: 5px 10px;
   padding: 5px;
   margin:10px;
   .grey-container-buttons {
@@ -409,7 +410,7 @@
 }
 
   .document-container{
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgba(0,0,0,0.05);
     padding: 10px;
     margin:10px;
@@ -435,18 +436,25 @@
 
   .pending-translation-message {
     margin: 1.5em 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgb(251, 236, 218);
     padding: 10px;
     font-size: 16px;
     font-weight: 400;
     text-align: center;
-
+  }
+  .no-message {
+    border-radius: 5px;
+    background-color: rgb(251, 236, 218);
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
   }
 
   .translation-container{
     margin: 1.5em 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     background-color: rgba(199, 224, 238, 0.424);
     padding: 10px;
 
@@ -488,6 +496,9 @@
 
 .mg-bt-5 {
   margin-bottom: 5px;
+}
+.mg-bt-10 {
+  margin-bottom: 10px;
 }
 
 .mg-10 {
