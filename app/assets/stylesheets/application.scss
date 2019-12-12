@@ -17,6 +17,8 @@
 @import "bootstrap";
 @import "font-awesome";
 
+
+
 .page-header-container {
   text-align: center;
   margin: 2em 0;
@@ -142,20 +144,29 @@
 
   .flex-sidebar {
     padding: 15px;
-    flex: 0 .3 300px;
-    min-width: 250px;
+    flex: 0 .5 400px;
     // border-right: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
     background-color: rgba(0, 0, 0, 0.03);
 
     display: flex;
     flex-flow: column;
+    @media only screen and (min-width: 700px) {
+      padding: 25px;
+      padding-left: 5%;
+      padding-right: 40px;
+    }
   }
 
   .flex-body {
-    padding: 5px;
+    
+    padding: 15px;
     flex: 1 1 auto;
     overflow-y: scroll;
+    @media only screen and (min-width: 700px) {
+      padding-right: 5%;
+      padding-left: 30px;
+    }
 
     display: flex;
     flex-flow: column;
@@ -237,6 +248,7 @@
   border-radius: 4px;
   padding: 20px;
   margin: 10px;
+  margin-bottom: 20px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.05);
   
