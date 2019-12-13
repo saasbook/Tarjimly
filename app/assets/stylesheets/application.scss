@@ -1088,7 +1088,7 @@ input[type="checkbox"]:checked + label {
 }
 
 .alert-notice {
-  @extend .alert-primary;
+  @extend .alert-info;
 }
 .alert-success {
   @extend .alert-success;
