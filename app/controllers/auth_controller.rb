@@ -11,7 +11,7 @@ class AuthController < ApplicationController
             )
 
         rescue RestClient::Exception
-            flash[:alert] = "Unsucessful Login! Please Try Again."
+            flash[:notice] = "Unsucessful Login! Please Try Again."
             redirect_to root_path
             return
         end
@@ -23,7 +23,7 @@ class AuthController < ApplicationController
             )
         rescue RestClient::Exception => e
             puts(e.response)
-            flash[:alert] = "Unable to authenticate Tarjimly User, please try again."
+            flash[:notice] = "Unable to authenticate Tarjimly User, please try again."
             redirect_to root_path
             return
         end
