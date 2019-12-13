@@ -118,8 +118,13 @@ When("I click on {string} from the list of request") do |string|
   end
 end
 
-When("I click button {string} from the list of request") do |string|
-  within "#request_#{@request.id}" do
+# When("I click button {string} from the list of request") do |string|
+#   within "#request_#{@request.id}" do
+#     click_button string
+#   end
+# end
+When("I click button {string} for {string}") do |string, string1|
+  within "#request_#{string1}" do
     click_button string
   end
 end

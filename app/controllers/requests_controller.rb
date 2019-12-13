@@ -1,7 +1,6 @@
 class RequestsController < ApplicationController
     before_action :authorize 
     helper_method :getDaysLeft, :current_user, :format_id  
-
     def index
         @name = session[:name]
         @joinedDate = session[:joined_date]
