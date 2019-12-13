@@ -113,9 +113,8 @@
 .flex-container {
   @media only screen and (min-width: 800px) {
     display: flex;
-    padding-top: 60px;
+    height: 100vh;
   }
-  height: 100vh;
 
   .flex-sidebar {
     padding: 15px;
