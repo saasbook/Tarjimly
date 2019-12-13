@@ -1,4 +1,15 @@
- <%= stylesheet_link_tag "main", media: "all", "data-turbolinks-track" => true %>
+<% if session[:tarjimlyID] != nil%>
+    <% if session[:role] == 'Translator'%>
+        <script type="text/javascript">
+          window.location.href="/claims"  
+        </script>
+    <% else%>
+    <script type="text/javascript">
+          window.location.href="/requests"
+        </script>
+    <% end %>
+  <% end %>
+<%= stylesheet_link_tag "main", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
  <div class="home">
