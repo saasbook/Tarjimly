@@ -42,7 +42,7 @@
           <% end %>
         </h3>
         <div class="flex">
-          <%= button_to "View Request Listing", view_requests_path, action: "requests", method: :get, class:"btn btn-primary", style:"margin-right: 10px "%>
+          <%= button_to "View Request List", view_requests_path, action: "requests", method: :get, class:"btn btn-primary", style:"margin-right: 10px "%>
           <label class="dropdown">
             <div class="dd-button">
               Filter
@@ -61,7 +61,7 @@
       <div class="request-list">
       <% if @dismiss_claims.empty? && @claims.empty? %>
         <div class="alert alert-warning mg-tp-20" role="alert">
-          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link">request listing</a>.
+          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link"> request list</a>.
         </div>
       <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
@@ -90,11 +90,13 @@
                 <%= request.title %>
               </h4>
               <p class="lead-no-margin card-subs pad-top-5">
-                <% if getDaysLeft(request)[1]%>
-                  <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
-                <% else %>
-                  <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
-                <%end%>
+                <% if claim._status.to_i != 1%>
+                  <% if getDaysLeft(request)[1]%>
+                    <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
+                  <% else %>
+                    <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                  <%end%>
+                <% end %>
               </p>
             </div>
             <p class="langs card-subs"> 
