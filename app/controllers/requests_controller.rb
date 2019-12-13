@@ -6,7 +6,7 @@ class RequestsController < ApplicationController
         @userID = session[:tarjimlyID]
         @status = params[:status] || [0, 1]
         @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
-        @total_count = Request.where(user_tarjimly_id: @userID).count
+        @total_count = Request.where(user_tarjimly_id: @userID, _status: [0,1]).count
     end
 
     def show 
