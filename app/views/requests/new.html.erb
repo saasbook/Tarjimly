@@ -14,18 +14,14 @@
     <h2 class="page-header-title">New Request</h2>
   </div>
   <%= form_for @request do |r| %>
-    <div class="form-group">
-      <%= r.label :document_language %>
-      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
-      <%= r.label :Translate_to %>
-      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
-    </div>
+    
 
     <div class="form-group">
       <% if @format == "text"%>
-        <%= r.label :Document, class:"lead lead-no-margin blue bold" %><br>
-        <%= r.text_area(:document_text,  rows: 5, required: true, direct_upload: true, class: "form-control") %><br>
-        <%= link_to "Upload File Instead",  {controller: "requests", action: "new", format: "upload"}, method: :get %>
+        <span class="lead form-title"> Document</span><br/>
+        <span class="lead form-subtitle"> Paste your document here or <%= link_to "upload files",  {controller: "requests", action: "new", format: "upload"}, method: :get, class: "bold-3" %> instead. </span>
+        <%= r.text_area(:document_text,  rows: 5, required: true, direct_upload: true, class: "form-control mg-tb-5") %><br>
+        
       <% else %>
         <%= r.label :documents, class:"lead lead-no-margin blue bold" %><br>
         <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
@@ -33,31 +29,40 @@
       <% end %>
     </div>
 
-    <div class="form-group">
-      <%= r.label :title, class:"lead lead-no-margin blue bold" %><br>
-      <%= r.text_field(:title, required: true, class: "form-control") %>
-    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <%= r.label :title, class:"lead lead-no-margin blue bold" %><br>
+          <%= r.text_field(:title, required: true, class: "form-control") %>
+        </div>
 
-    <div class="form-group">
-      <%= r.label :Instructions, class:"lead lead-no-margin blue bold" %><br>
-      <%= r.text_area(:description, rows: 5, required: true, class: "form-control") %>
-    </div>
+        <div class="form-group">
+          <%= r.label :Instructions, class:"lead lead-no-margin blue bold" %><br>
+          <%= r.text_area(:description, rows: 5, required: true, class: "form-control") %>
+        </div>
+        <%= r.hidden_field :format, value: @format %>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <span class="lead form-title"> Document Language: </span>
+          <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
+          <span class="lead form-title"> To Language: </span>
+          <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
+        </div>
+        <div class="form-group">
+          <%= r.label :deadline, class:"lead lead-no-margin blue bold" %><br>
+          <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
+        </div>
 
-
-    <%= r.hidden_field :format, value: @format %>
-
-    <div class="form-group">
-      <%= r.label :deadline, class:"lead lead-no-margin blue bold" %><br>
-      <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
-    </div>
-
-    <div class="form-group">
-      <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
-      <%= r.label :categories, class:"lead lead-no-margin blue bold" %><br>
-      <% @categories.each do |c| %>
-          <%= r.check_box :categories, { multiple: true }, c, false %>
-          <%= r.label c %>
-      <% end %>
+        <div class="form-group">
+          <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
+          <%= r.label :categories, class:"lead lead-no-margin blue bold" %><br>
+          <% @categories.each do |c| %>
+              <%= r.check_box :categories, { multiple: true }, c, false %>
+              <%= r.label c %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
     <div class="form-group">
