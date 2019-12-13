@@ -12,6 +12,9 @@ class RequestsController < ApplicationController
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
+        if !@request
+            return not_found
+        end
         if @request._status == 2
             return not_found
         end

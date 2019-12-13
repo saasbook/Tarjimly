@@ -119,16 +119,15 @@ When("I click on {string} from the list of request") do |string|
 end
 
 When("I click button {string} from the list of request") do |string|
-  within "#request_#{@request.id}" do
-    click_button string
-  end
+  # within "#request_#{@request.id}" do
+  click_button string
+  # end
 end
 
 
 Then("I should be able to find the claim by my id") do
   claim = Claim.last
-  expect(claim.translator_tarjimly_id).to eq(1)
-  expect(claim.request_id).to eq(@request.id)
+  expect(claim.translator_tarjimly_id).to eq(364495)
 end
 
 When("I click on {string}") do |string|
