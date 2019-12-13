@@ -89,7 +89,7 @@
               </h4>
               <p class="lead-no-margin card-subs pad-top-5">
                 <% if getDaysLeft(request)[1]%>
-                  <span class="blue">Deadline: </span> <span class="red"> <%= getDaysLeft(request)[0] %> </span>
+                  <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
                 <% else %>
                   <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
                 <%end%>
