@@ -11,10 +11,20 @@
   </head>
 
   <body>
-  <div class="tarjimly-nav">
-      <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
-      <a href="/requests" class="">My Requests</a>
-   </div> 
+    <% if session[:role].nil? || session[:role].empty? %>
+        <div ></div>
+    <% elsif session[:role] == "Translator" %>
+      <div class="tarjimly-nav">
+          <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
+          <a href="/claims" class="">My Claims</a>
+      </div>
+    <% else %>
+      <div class="tarjimly-nav">
+          <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
+          <a href="/requests" class="">My Requests</a>
+      </div>
+    <% end %>
+     
 
 <%# <h1> there should be text displaying right now  </h1> %>
   <% flash.each do |key, value| %>
