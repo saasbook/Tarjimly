@@ -17,7 +17,7 @@ class AuthController < ApplicationController
         session[:tarjimlyID] = @tarjimly_id
         cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
         if login(@tarjimly_id)
-            redirect_to :controller => 'requests', :action => 'index' 
+            redirect_to :controller => 'requests', :action => 'index'
          else 
             redirect_to :controller => 'claims', :action => 'index' 
         end
