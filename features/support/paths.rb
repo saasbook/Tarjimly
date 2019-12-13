@@ -5,6 +5,10 @@ module NavigationHelpers
         
       when 'Requests'
         '/requests'
+      when 'requests'
+        '/requests'
+      when '/requests'
+        '/requests'
       when 'new_request'
         '/requests/new'
       when 'Claims'
@@ -13,6 +17,8 @@ module NavigationHelpers
         'requests/4'
       when 'Home'
         '/'
+      when 'translators/requests'
+        '/translators/requests'
   
       else
         begin
