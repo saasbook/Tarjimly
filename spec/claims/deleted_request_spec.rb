@@ -4,9 +4,9 @@ require 'rails_helper'
 describe 'Translators dismiss claims deleted by users' do 
     before(:each) do 
         visit "/"
-        fill_in 'Email', with: "cassidyhardin@berkeley.edu"
-        fill_in 'Password', with: "tarjimlydocs19"
-        click_button('Sign In')
+        fill_in 'email', with: "cassidyhardin@berkeley.edu"
+        fill_in 'password', with: "tarjimlydocs19"
+        click_button('Login')
         @request1 = Request.create(from_language: 'English', to_language: 'Arabic', _status: 2, document_format: "text", description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', deadline: '2019-05-05', user_tarjimly_id: 1)
         @request2 = Request.create(from_language: 'English', to_language: 'Arabic', _status: 1, document_format: "text", description: 'information regarding upcoming doctors appointment',  title: 'Visa Application', deadline: '2019-05-05', user_tarjimly_id: 1)
         @request1_id = @request1.id
@@ -31,11 +31,7 @@ describe 'Translators dismiss claims deleted by users' do
         page.should have_selector(:link_or_button, 'Dismiss Deleted Request')
         page.should have_selector(:link_or_button, 'Translate')
     end 
-    it 'should dismiss claim' do 
-        visit "/claims"
-        click_link("Dismiss Deleted Request")
-        expect(page).to have_text("You have successfully dismissed your claim for a deleted request!")
-    end 
+
     it 'after dismissing should still be on claims page' do 
         visit "/claims"
         click_link("Dismiss Deleted Request")

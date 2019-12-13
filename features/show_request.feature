@@ -21,14 +21,14 @@ Feature: view previously submitted request
 
     Scenario: visiting request's details page
         Given I am on the "requests" page
-        When I click button "View" from the list of request
-        Then I should see "Event going on in camp"
+        When I click button "View" for "1"
+        Then I should see "Camp Announcment"
         Then I should see "English" and "Arabic"
         Then I should see "Deadline"
 
     Scenario: return to all requests
         Given I am on the "requests" page
-        When I click button "View" from the list of request
+        When I click button "View" for "2"
         When I select "Back to All Requests"
         Then I should be on the "/requests" path
 

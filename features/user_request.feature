@@ -8,12 +8,14 @@ Feature: display all my submitted requests
 
   Background: requests have been created
 
+    Given I am signed in as a user
+
     Given the following requests exist:
       | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title                  | description | categories    | num_claims | form_type | _status |
-      | 1                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 1       |
-      | 1                | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
-      | 1                | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 1       |
-      | 1                | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
+      | 364494           | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 1       |
+      | 364494           | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Announcment Flyer | information | Refugee, Camp | 0          | N/A       | 0       |
+      | 364494           | Arabic        | English     | example text  | text            | 2019-12-09 | Visa Application       | information | Visa          | 2          | Visa      | 1       |
+      | 364494           | Urdu          | English     | example text  | text            | 2019-11-01 | Doctor Notes           | information | Child, Doctor | 1          | N/A       | 0       |
 
     And I go to the "Requests" page
 
