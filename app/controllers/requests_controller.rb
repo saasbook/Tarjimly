@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
     before_action :authorize 
-    helper_method :getDaysLeft, :current_user 
+    helper_method :getDaysLeft, :current_user, :format_id  
 
     def index
         @userID = session[:tarjimlyID]
@@ -99,6 +99,17 @@ class RequestsController < ApplicationController
             flash[:alert] = "You must be logged in to view this page! Please login below!! "
             return false
           end
+    end
+
+    def format_id(s)
+        s = s.downcase
+        s_list = s.split(" ")
+        new_s = ""
+        s_list.each do |i|
+            new_s += "_"
+            new_s += i
+        end
+        return new_s
     end
     
     def authorize
