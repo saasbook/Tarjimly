@@ -13,5 +13,9 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 Rails.application.config.assets.precompile += %w( application.css )
+Rails.application.config.assets.precompile += %w( main.scss )
+Rails.application.config.assets.precompile += %w( main.js )
+
+
 Rails.application.config.assets.precompile += %w( jquery.js )
 Rails.application.config.assets.precompile += %w( confirm-modal.js )
