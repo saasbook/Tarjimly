@@ -52,9 +52,9 @@
           <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
         </div>
         <div class="form-group">
-          <%= r.label :deadline, class:"lead lead-no-margin blue bold" %><br>
-          <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
-        </div>
+      <%= r.label :deadline %><br>
+      <%= r.date_field(:deadline, min: Date.today.in_time_zone(session[:time_zone]), required: true, class: "form-control") %>
+    </div>
 
         <div class="form-group">
           <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
@@ -63,6 +63,7 @@
               <%= r.check_box :categories, { multiple: true }, c, false %>
               <%= r.label "categories#{format_id(c)}", c %>
           <% end %>
+
 
         </div>
       </div>

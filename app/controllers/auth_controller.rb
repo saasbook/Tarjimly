@@ -1,5 +1,6 @@
 require 'rest-client'
 require 'json'
+
 class AuthController < ApplicationController 
 
     def authenticate
@@ -8,30 +9,41 @@ class AuthController < ApplicationController
                 'https://tarjim.ly/api/mobile/v1/auth/login', 
                 {:email => params[:email], :password => params[:password]}
             )
+
         rescue RestClient::Exception
             flash[:alert] = "Unsucessful Login! Please Try Again."
             redirect_to root_path
             return
         end
         @tarjimly_id = JSON.parse(response.body)["tarjimly_id"]
+        begin
+            user_response = RestClient.get(
+                'https://tarjim.ly/api/mobile/v1/users/metadata', 
+                {:cookies => response.cookies}
+            )
+        rescue RestClient::Exception => e
+            puts(e.response)
+            flash[:alert] = "Unable to authenticate Tarjimly User, please try again."
+            redirect_to root_path
+            return
+        end
+        session[:name] = JSON.parse(user_response.body)['fb_first_name'] + " " +  JSON.parse(user_response.body)['fb_last_name']
+        session[:email] = JSON.parse(user_response.body)['email']
+        session[:role] = JSON.parse(user_response.body)['user_role']
+        session[:joined_date] = JSON.parse(user_response.body)['createdAt']
         session[:tarjimlyID] = @tarjimly_id
+        session[:time_zone] = Ziptz.new.time_zone_name(JSON.parse(user_response.body)['ip_postal'])
         cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
-        if login(@tarjimly_id)
-            redirect_to :controller => 'requests', :action => 'index'
-         else 
+        if session[:role] == "Translator"
             redirect_to :controller => 'claims', :action => 'index' 
+         else 
+            redirect_to :controller => 'requests', :action => 'index' 
         end
     end 
 
     def logout 
-        flash[:ntoice] = "You have successfully logged out!"
         session.clear
+        cookies.clear
         redirect_to root_path
     end
-
-    private 
-    def login(tarjimly_id)
-        # FIX THIS - if translator
-        return tarjimly_id == 364494 ? true : false
-    end 
 end

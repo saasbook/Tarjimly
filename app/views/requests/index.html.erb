@@ -6,8 +6,8 @@
 <div class="flex-container pad-for-nav">
     <div class="flex-sidebar">
       <div class="profile-container">
-        <h3> Cassidy Hardin </h3>
-        <h4 class="bold-2"> Aid Worker </h4>
+        <h3> <%=@name%> </h3>
+        <h4 class="bold-2"> <%=@role%> </h4>
         <h4> Total Requests: <span class="badgey"><%= @total_count %></span> </h4>
         <%=link_to "Sign Out", :controller => "auth", :action => :logout, method: :get, class: "btn btn-primary" %>
 
@@ -16,10 +16,13 @@
       <h3 class="section-header pad-left mg-bt-10"> Notifications </h3>
       <div class="notifications-container">
           <% flash.each do |key, value| %>
+          <% if key != 'alert'%>
               <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <%= value %>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <%= value %>
               </div>
+            <%end%>
+
           <% end %>
           <% if flash.nil? || flash.empty? %>
             <div class="alert alert-warning" role="alert">

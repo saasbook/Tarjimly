@@ -20,7 +20,8 @@
     <div class="spread">
       <span class="lead bold title"> <%= @request.title %> </span>
       <p class="lead lead-no-margin bold mg-tb-5"> 
-        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+      
+        <span class="blue">Deadline: </span><%= @request.deadline.time.in_time_zone(session[:time_zone]).to_s[0..10] %>
       </p>
     </div>
     <p class="lead bold langs"> 
