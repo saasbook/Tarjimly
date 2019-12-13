@@ -23,6 +23,8 @@ gem 'rest-client'
 gem 'json'
 gem 'activerecord-session_store'
 gem 'detect_timezone_rails'
+gem 'ziptz'
+
 
 
 # time zone

@@ -24,7 +24,6 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    @translatorID = session[:tarjimlyID]
     begin
       ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
@@ -40,26 +39,28 @@ class ClaimsController < ApplicationController
   end
 
   def index
-    @translatorID = session[:tarjimlyID]
+    @name = session[:name]
+    @joinedDate = session[:joined_date]
+    @role = session[:role]
     @status = params[:status] || [0,1]
     @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status}) #TODO translator_tarjimly_id log in details
     @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
     @total_count = Claim.where({translator_tarjimly_id: @translatorID, _status: 1}).count
     if Claim.where({translator_tarjimly_id: @translatorID , _status: 3}).present?
-      flash[:alert] = "Requests you claimed no longer require translation. You can dismiss them below!"
+      flash[:notice] = "Requests you claimed no longer require translation. You can dismiss them below!"
     end
     if Claim.where({translator_tarjimly_id: @translatorID, _status: 2}).present?
-      flash[:alert] = "Requests you claimed have been submitted by another translator. You can dismiss them below!"
+      flash[:notice] = "Requests you claimed have been submitted by another translator. You can dismiss them below!"
     end
   end
 
   def show
-    @translatorID = session[:tarjimlyID]
     cid = params[:claim_id]
     @claim = Claim.find_by_id(cid)
-    if @claim.translator_tarjimly_id != @translatorID
-      flash[:alert] = "You are not authorized to view this claim!"
+    if @claim.nil? || @claim.translator_tarjimly_id != @translatorID
+      flash[:alert] = "You are not authorized to view this claim."
       redirect_to claims_url
+      return
     end
     if !(@claim._status -= 0 || @claim._status == 1)  
       return not_found
@@ -68,14 +69,12 @@ class ClaimsController < ApplicationController
   end
 
   def delete
-    @translatorID = session[:tarjimlyID]
     @claim = Claim.find(params[:claim_id])
     if @claim.translator_tarjimly_id != @translatorID
       return not_found 
     end
     if @claim._status == 3
       @claim.destroy
-      flash[:info] = "You have successfully dismissed your claim for a deleted request!"
       redirect_to claims_url
     else
       @claim.request.num_claims -= 1
@@ -108,7 +107,7 @@ class ClaimsController < ApplicationController
         redirect_to claim_path(claim_id: params[:claim_id])
       end
     rescue => e
-      flash[:notice] = "Uh Oh. Submission unsuccessful, please try again."
+      flash[:alert] = "Uh Oh. Submission unsuccessful, please try again."
     end
   end
 
@@ -122,7 +121,7 @@ class ClaimsController < ApplicationController
 
   #TODO: Should be a validation also
   def isAlreadyClaimed(req_id)
-    return !Claim.where({translator_tarjimly_id: 1, request_id: req_id}).empty? #TODO: Auth
+    return !Claim.where({translator_tarjimly_id: @translatorID, request_id: req_id}).empty? 
   end
 
   def getDaysLeft(request)
@@ -140,32 +139,24 @@ class ClaimsController < ApplicationController
     end
   end
 
-  def current_translator
-    # TODO get details/info on particular user
-    if session[:tarjimlyID]
-      @current_translator ||= session[:tarjimlyID] 
+  def authorize
+    if @translatorID.present?
+      return
+    elsif session[:tarjimlyID].nil?
+      flash[:alert] = "You must be logged into view this page"
+      redirect_to '/auth' 
+    elsif session[:role] != "Translator"
+      flash[:alert] = "You must be authorized to view this page"
+      redirect_to requests_path
     else 
-      flash[:alert] = "You must be logged in to view this page! Please login below!! "
-      return false
+      @translatorID = session[:tarjimlyID] 
     end
   end
-
-  def authorize
-    redirect_to '/auth' unless current_translator
-  end
-
 
   private
 
   def not_found
     render :file => "#{Rails.root}/public/404.html",  :status => 404
-  end
-  
-  def find_translator
-    if session[:tarjimlyID].empty?
-      flash[:alert] = "You must be logged into view this page"
-      redirect_to root_path
-    end 
   end
 end
 

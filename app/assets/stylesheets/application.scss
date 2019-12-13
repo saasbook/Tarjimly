@@ -870,7 +870,7 @@
 }
 
 .alert-notice {
-  @extend .alert-warning;
+  @extend .alert-primary;
 }
 .alert-success {
   @extend .alert-success;

@@ -1,12 +1,6 @@
- <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
- <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= value %>
-    </div>
-<% end %>
 
 <div class="login-page">
 <div class="login title">
@@ -36,12 +30,6 @@
        <%= text_field_tag :email %><br/>
        <%= label_tag :password %><br/>
        <%= password_field_tag :password %><br/><br/>
-       <%= hidden_field(:user_time_zone, value: nil ) %>
-          <script type="text/javascript">
-            $(document).set_time_zone(function(){
-            document.getElementById('user_time_zone').value = jstz.determine().name();
-            })
-          </script>
        <%= submit_tag "Sign In", class:"btn btn-info"%><br/>
       <% end %>
       </div>

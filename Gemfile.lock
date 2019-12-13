@@ -345,6 +345,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.2.2)
+    ziptz (2.1.2)
 
 PLATFORMS
   ruby
@@ -394,6 +395,7 @@ DEPENDENCIES
   uglifier (~> 4.2.0)
   web-console (>= 3.3.0)
   webpacker
+  ziptz
 
 RUBY VERSION
    ruby 2.6.3p62

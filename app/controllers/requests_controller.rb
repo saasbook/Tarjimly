@@ -3,7 +3,9 @@ class RequestsController < ApplicationController
     helper_method :getDaysLeft, :current_user 
 
     def index
-        @userID = session[:tarjimlyID]
+        @name = session[:name]
+        @joinedDate = session[:joined_date]
+        @role = session[:role]
         @status = params[:status] || [0, 1]
         @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
         @total_count = Request.where(user_tarjimly_id: @userID).count
@@ -12,6 +14,11 @@ class RequestsController < ApplicationController
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
+        if @request.nil? || @request.user_tarjimly_id != @user
+            flash[:alert] = "You are not authorized to view this request!"
+            redirect_to requests_url
+            return
+          end
         if @request._status == 2
             return not_found
         end
@@ -31,7 +38,6 @@ class RequestsController < ApplicationController
     end
     
     def create
-        @userID = session[:tarjimlyID]
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
@@ -49,7 +55,6 @@ class RequestsController < ApplicationController
         @request.num_claims = 0 #TODO: Should be daault in db
         @request._status = 0  #TODO: Should be daault in db
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
-
         if @request.save
           flash[:success] = "Successfully created your request."
           redirect_to requests_url
@@ -59,7 +64,6 @@ class RequestsController < ApplicationController
     end
 
     def delete 
-        @userID = session[:tarjimlyID]
         @request = Request.find(params[:request_id])
         if @request.user_tarjimly_id != @userID
             render not_found 
@@ -92,22 +96,19 @@ class RequestsController < ApplicationController
         end
     end
 
-    def current_user
-        # TODO get details/info on particular user
-        if session[:tarjimlyID]
-            @current_user ||= session[:tarjimlyID] 
-          else 
-            flash[:alert] = "You must be logged in to view this page! Please login below!! "
-            return false
-          end
-    end
-    
     def authorize
-        if !current_user
-            flash[:alert] = "You must be logged in to view this page! Please login below!! "
-            redirect_to '/auth', :flash => { :notice => "You must be logged in to view this page! Please login below!!" }
+        if @userID.present?
+            return
+        elsif session[:tarjimlyID].nil?
+          flash[:alert] = "You must be logged into view this page"
+          redirect_to '/auth' 
+        elsif session[:role] == "Translator"
+          flash[:alert] = "You must be authorized to view this page"
+          redirect_to claims_path
+        else 
+          @userID = session[:tarjimlyID] 
         end
-    end
+      end
 
     private
     def request_params
