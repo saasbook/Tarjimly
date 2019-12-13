@@ -14,8 +14,8 @@ class RequestsController < ApplicationController
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
-        if @request.nil? || @request.user_tarjimly_id != @user
-            flash[:alert] = "You are not authorized to view this request!"
+        if @request.nil? || @request.user_tarjimly_id != @userID
+            flash[:alert] = "You are not authorized to view this request."
             redirect_to requests_url
             return
           end
