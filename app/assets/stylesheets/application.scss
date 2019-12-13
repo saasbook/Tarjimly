@@ -157,6 +157,98 @@
   }
 }
 
+
+.flex-container-2 {
+  @media only screen and (min-width: 800px) {
+    height: 100vh;
+  }
+  display: flex;
+  flex-flow: column;
+
+  .flex-header {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    @media only screen and (min-width: 800px) {
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 11%;
+    }
+    
+
+  }
+  .flex-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    margin-bottom: 10px;
+    @media only screen and (min-width: 800px) {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  }
+
+}
+
+
+.filter-cont {
+  @media only screen and (max-width: 800px) {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-content: center;
+    height: 250px;
+    .expand-button {
+      width: 100%;
+    }
+  }
+
+  @media only screen and (min-width: 800px) {
+    display: flex;
+    align-content: center;
+    text-align: left;
+    .fix-size {
+      width: 150px;
+    }
+    .mg-left-20 {
+      margin-left: 20px;
+    }
+  }
+
+
+  .filter-labels {
+    margin-left: 20px;
+    margin-right: 10px;
+    color: #337ab7;
+
+  }
+
+  
+
+  .mg-top {
+    @media only screen and (max-width: 800px) {
+      margin-top: 10px;
+    }
+  }
+
+}
+.align-center {
+  align-self: center;
+}
+
+.left-title {
+  @media only screen and (min-width: 800px) {
+    display: flex;
+    align-content: center;
+    text-align: left;
+  }
+
+  text-align: center;
+  color: #337ab7;
+}
+
 .profile-container {
   padding: 10px;
   margin-bottom: 1em;
@@ -255,24 +347,7 @@
 }
 
 
-.filter-cont {
-  margin-top: 15px;
-  padding: 10px;
-  @media only screen and (min-width: 992px) {
-    border-right: .5px solid #337ab7;
-    padding-right: 3%;
-    position: fixed;
-  }
 
-  .filter-labels {
-    margin-bottom: 10px;
-  }
-
-  .reset-container {
-    margin-top: 10px;
-    text-align: center;
-  }
-}
 
 
 
@@ -561,6 +636,7 @@
   margin-top: 10px;
   color: #337ab7;
 }
+
 
 
 

@@ -8,31 +8,35 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<div class="container pad-for-nav">
-  <div class="page-header-container">
-    <h2 class="page-header-title">Pending Requests</h2>
+<div class="flex-container-2 pad-for-nav">
+  <div class="flex-header">
+      <div class="left-title">
+        <h2 class="align-center">Pending Requests</h2>
+      </div>
+
+
+      <%=form_tag "requests", method: "get", class:"filter-cont" do %>
+        <span class="lead lead-no-margin bold filter-labels align-center"%> From: </span>
+        <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control fix-size align-center") %>
+        <span class="lead lead-no-margin bold filter-labels align-center"%> To: </span>
+        <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control fix-size align-center") %>
+        <%=submit_tag "Filter", class: "btn btn-primary mg-left-20 align-center mg-tp expand-button"%>
+        <%=link_to "Reset", {controller: "claims", action: "requests"}, class:"mg-left-20 align-center mg-tp"%>
+      <% end %>
   </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-3">
-      <div class="filter-cont">
-        <%=form_tag "requests", method: "get" do %>
-          <p class="lead filter-labels"%> Document Language: </p>
-          <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
-          <p class="lead filter-labels"%> Translate To: </p>
-          <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
-          <%=submit_tag "Filter", class: "btn btn-primary btn-block"%>
-          <div class="reset-container">
-            <%=link_to "Reset", {controller: "claims", action: "requests"}%>
+
+
+    <div class="flex-body">
+      <% if @requests.empty? %>
+        <% if @no_pending_reqs%>
+          <div class="alert alert-warning" role="alert">
+            There are no pending requests at the moment. Please check back later!
+          </div>
+        <% else %>
+          <div class="alert alert-warning" role="alert">
+            No pending requests matched your filters. Please check back later!
           </div>
         <% end %>
-      </div>
-    </div>
-
-    <div class="col-md-9">
-      <% if @requests.empty? %>
-        <div class="alert alert-info no-requests" role="alert">
-          <p class="lead">No requests matched your filters :(<br/> Please check back later!</p>
-        </div>
       <% end %>
       <% @requests.each do |request| %>
         <div class="requests-card" id="request_<%=request.id%>">
@@ -86,5 +90,4 @@
 
       <% end %>
     </div>
-  </div>
 </div>
