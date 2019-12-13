@@ -78,7 +78,7 @@
         </p>
       </div>
     </div>
-      <%= button_to "Back to Your Claims", claims_path, action: "index", method: :get, class:"btn btn-primary pad-left"%>
+      <%= button_to "Back to My Claims", claims_path, action: "index", method: :get, class:"btn btn-primary pad-left"%>
   <% else %>
     <div class="translation-text-container">
       <%= form_for @claim do |f| %>
@@ -90,7 +90,10 @@
           <%= f.submit "Submit Translation", class: "btn btn-primary" %>
         </div>
       <% end %>
+      <div style="display: flex">
       <%= button_to "Unclaim Request", delete_claim_path(claim_id: @claim.id), claim_id: @claim.id,  class: 'btn btn-link destroy', action: "delete", method: :delete, data: { confirm: 'Are you sure you want to unclaim this request?', title: 'Confirm Unclaim Request', commit: 'YES', cancel: 'NO'} %>
+      <%= button_to "Back to My Claims", claims_path, action: "index", method: :get, class: 'btn btn-link' %>
+      </div>
     <%end%>
   </div>  
 </div>
