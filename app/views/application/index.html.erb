@@ -1,12 +1,6 @@
- <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
- <% flash.each do |key, value| %>
-    <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <%= value %>
-    </div>
-<% end %>
 
 <div class="login-page">
 <div class="login title">
@@ -39,10 +33,11 @@
        <%= submit_tag "Sign In", class:"btn btn-info"%><br/>
       <% end %>
       </div>
-    <%# call application method - authorize  %>
     </div>
     <br/>
    <a href="https://www.tarjim.ly/howitworks" class="btn btn-primary">Sign Up</a>
   </div>
 </div>
+
+
 

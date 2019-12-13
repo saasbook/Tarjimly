@@ -22,3 +22,12 @@
 //= require popper
 //= require data-confirm-modal
 //= require claim
+//= require detect_timezone
+//= require jquery.detect_timezone
+//= require jstimezonedetect
+
+
+
+$(document).ready(function () {
+    $('#your_input_id').set_timezone();
+});

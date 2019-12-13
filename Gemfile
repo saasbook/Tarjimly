@@ -22,6 +22,15 @@ gem 'bcrypt'
 gem 'rest-client'
 gem 'json'
 gem 'activerecord-session_store'
+gem 'detect_timezone_rails'
+gem 'ziptz'
+
+
+
+# time zone
+source 'https://rails-assets.org' do
+  gem 'rails-assets-jsTimezoneDetect'
+end
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
