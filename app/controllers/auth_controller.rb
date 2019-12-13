@@ -33,7 +33,7 @@ class AuthController < ApplicationController
         session[:joined_date] = JSON.parse(user_response.body)['createdAt']
         session[:tarjimlyID] = @tarjimly_id
         session[:time_zone] = Ziptz.new.time_zone_name(JSON.parse(user_response.body)['ip_postal'])
-        cookies[:login] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
+        cookies[:key] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
         if session[:role] == "Translator"
             redirect_to :controller => 'claims', :action => 'index' 
          else 
