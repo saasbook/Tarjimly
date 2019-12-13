@@ -1100,6 +1100,6 @@ input[type="checkbox"]:checked + label {
   @extend .alert-success;
 }
 .alert-info {
-  @extend .alert-info;
+  @extend .alert-danger;
 }
 
