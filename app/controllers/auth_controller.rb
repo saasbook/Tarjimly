@@ -9,7 +9,6 @@ class AuthController < ApplicationController
                 'https://tarjim.ly/api/mobile/v1/auth/login', 
                 {:email => params[:email], :password => params[:password]}
             )
-
         rescue RestClient::Exception
             flash[:info] = "Unsucessful login, please try again."
             redirect_to root_path
