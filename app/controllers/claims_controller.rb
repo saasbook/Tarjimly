@@ -116,7 +116,11 @@ class ClaimsController < ApplicationController
     if Request.find_by_id(req_id).num_claims == 0
       return true
     end
-    return high_impact_requests.empty?
+    if high_impact_requests.empty?
+      return true, nil
+    else
+      return false, high_impact_requests.first.id
+    end
   end
 
   #TODO: Should be a validation also
