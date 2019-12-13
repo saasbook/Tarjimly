@@ -4,9 +4,9 @@ require 'rails_helper'
 describe 'Translators can claim requests' do 
     before(:each) do
         visit "/"
-        fill_in 'Email', with: "cassidyhardin@berkeley.edu"
-        fill_in 'Password', with: "tarjimlydocs19"
-        click_button('Sign In')
+        fill_in 'email', with: "cassidyhardin@berkeley.edu"
+        fill_in 'password', with: "tarjimlydocs19"
+        click_button('Login')
         @request1 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment', document_format: "text", title: 'Doctor Appointment', deadline: '2019-05-05', user_tarjimly_id: 1, num_claims: 0)
         @request2 = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment', document_format: "text", title: 'Visa Application', deadline: '2019-05-05', user_tarjimly_id: 1,  num_claims: 2)
         @request1_id = @request1.id
