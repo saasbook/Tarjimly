@@ -4,9 +4,9 @@ require 'rails_helper'
 describe "User viewing details for a specific request" do 
     before(:each) do 
         visit "/"
-        fill_in 'Email', with: "cassihardin@gmail.com"
-        fill_in 'Password', with: "tarjimlydocs19"
-        click_button('Sign In')
+        fill_in 'email', with: "cassihardin@gmail.com"
+        fill_in 'password', with: "tarjimlydocs19"
+        click_button('Login')
 
         @request = Request.create(from_language: 'English', to_language: 'Arabic', description: 'information regarding upcoming doctors appointment',  title: 'Doctor Appointment', document_format: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 364494)
         @curr_id = @request.id
