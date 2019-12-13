@@ -9,9 +9,9 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload'%>
 <%= csrf_meta_tags %>
 
-<div class="container">
+<div class="container pad-for-nav">
   <div class="page-header-container">
-    <h2 class="page-header-title">Translate Request</h2>
+    <h2 class="page-header-title">Translate Claim</h2>
   </div>
 
   <div class="info-container">
@@ -78,6 +78,7 @@
         </p>
       </div>
     </div>
+      <%= button_to "Back to Your Claims", claims_path, action: "index", method: :get, class:"btn btn-primary pad-left"%>
   <% else %>
     <div class="translation-text-container">
       <%= form_for @claim do |f| %>

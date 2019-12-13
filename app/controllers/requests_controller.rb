@@ -1,6 +1,6 @@
 class RequestsController < ApplicationController
     before_action :authorize 
-    helper_method :getDaysLeft, :current_user 
+    helper_method :getDaysLeft, :current_user, :format_id  
 
     def index
         @name = session[:name]
@@ -8,14 +8,14 @@ class RequestsController < ApplicationController
         @role = session[:role]
         @status = params[:status] || [0, 1]
         @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
-        @total_count = Request.where(user_tarjimly_id: @userID).count
+        @total_count = Request.where(user_tarjimly_id: @userID, _status: [0,1]).count
     end
 
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
-        if @request.nil? || @request.user_tarjimly_id != @user
-            flash[:alert] = "You are not authorized to view this request!"
+        if @request.nil? || @request.user_tarjimly_id != @userID
+            flash[:alert] = "You are not authorized to view this request."
             redirect_to requests_url
             return
           end
@@ -96,6 +96,27 @@ class RequestsController < ApplicationController
         end
     end
 
+    def current_user
+        # TODO get details/info on particular user
+        if session[:tarjimlyID]
+            @current_user ||= session[:tarjimlyID] 
+          else 
+            flash[:alert] = "You must be logged in to view this page! Please login below!! "
+            return false
+          end
+    end
+
+    def format_id(s)
+        s = s.downcase
+        s_list = s.split(" ")
+        new_s = ""
+        s_list.each do |i|
+            new_s += "_"
+            new_s += i
+        end
+        return new_s
+    end
+    
     def authorize
         if @userID.present?
             return

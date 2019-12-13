@@ -11,7 +11,7 @@
 
 
 
-<div class="container">
+<div class="container pad-for-nav">
   <div class="page-header-container">
     <h2 class="page-header-title">View Request</h2>
   </div>
@@ -20,8 +20,9 @@
     <div class="spread">
       <span class="lead bold title"> <%= @request.title %> </span>
       <p class="lead lead-no-margin bold mg-tb-5"> 
-      
+        <% if @request._status.to_i != 1%>
         <span class="blue">Deadline: </span><%= @request.deadline.time.in_time_zone(session[:time_zone]).to_s[0..10] %>
+        <% end %>
       </p>
     </div>
     <p class="lead bold langs"> 
@@ -73,7 +74,7 @@
   <% if @request._status == 1%>
     <div class="translation-container">
       <p class="lead blue-header"> 
-        Your Translation
+        Translation
       </p>
       <div class="document-text">
         <p class="lead lead-small lead-no-margin"> 

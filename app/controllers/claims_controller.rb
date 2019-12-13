@@ -7,7 +7,7 @@ class ClaimsController < ApplicationController
     @translatorID = session[:tarjimlyID]
     @claim = Claim.new
     claimed_ids = Claim.where(translator_tarjimly_id: @translatorID).pluck(:request_id)
-    @user = 1
+    @no_pending_reqs =  Request.where.not(id: claimed_ids).empty?   
     if params.has_key?(:from_language)
       @requests = Request.where(:from_language => params[:from_language].capitalize, :to_language => params[:to_language].capitalize).where.not(id: claimed_ids, _status: 2)
     else
