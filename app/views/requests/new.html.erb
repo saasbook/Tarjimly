@@ -8,14 +8,13 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-
-<div class="container pad-for-nav">
-  <div class="page-header-container">
+<div class="pad-for-nav bg-gray">
+<div class="container">
+  <div class="request-details">
     <h2 class="page-header-title">New Request</h2>
-  </div>
   <%= form_for @request do |r| %>
     
-
+  <div class="">
     <div class="form-group">
       <% if @format == "text"%>
         <span class="lead form-title"> Document</span><br/>
@@ -28,9 +27,10 @@
         <%= link_to "Enter Text Instead", {controller: "requests", action: "new"}, method: :get %>
       <% end %>
     </div>
+    </div>
 
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-6 pad">
         <div class="form-group">
           <%= r.label :title, class:"lead lead-no-margin blue bold" %><br>
           <%= r.text_field(:title, required: true, class: "form-control") %>
@@ -38,11 +38,11 @@
 
         <div class="form-group">
           <%= r.label :Instructions, class:"lead lead-no-margin blue bold" %><br>
-          <%= r.text_area(:description, rows: 5, required: true, class: "form-control") %>
+          <%= r.text_area(:description, rows: 9, required: true, class: "form-control") %>
         </div>
         <%= r.hidden_field :format, value: @format %>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-6 pad">
         <div class="form-group">
           <span class="lead form-title"> Document Language: </span>
           <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
@@ -68,10 +68,11 @@
       </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group mg-tp-20" style="text-align: center">
       <%= r.submit class: "btn btn-primary" %>
       <%= link_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary" %>
     </div>
   <% end %>
-
+  </div>
+</div>
 </div>
