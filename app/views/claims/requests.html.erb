@@ -81,7 +81,7 @@
                 <%=hidden_field_tag "request_id", request.id%>
                 <%=link_to "Preview Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
                 <% impact, impactID =  isHighImpact(request.from_language, request.to_language, request.id)%>
-                <%=c.button :submit, "Claim", data: (impact ? nil : {confirm: "We found other requests with the same language pair but no claims :( Check it out #{link_to "here", {controller: "claims", action: "preview", request_id: impactID}}.  Would you like to continue with this claim still?", title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
+                <%=c.button :submit, "Claim", data: (impact ? nil : {confirm: "We found #{link_to "another request", {controller: "claims", action: "preview", request_id: impactID}} with the same language pair but no claims :(  Would you like to continue with this claim still?", title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
               <% end %>
             </div>
           </div>
