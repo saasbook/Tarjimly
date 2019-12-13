@@ -14,17 +14,19 @@
   <div class="tarjimly-nav">
       <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
       <a href="/requests" class="">My Requests</a>
-  </div>
+   </div> 
 
-          <% flash.each do |key, value| %>
-              <% if key == 'alert' %>
-              <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <%= value %>
-                </div>
-              <%end%>
-          <% end %>
-              <%= yield %>
+<%# <h1> there should be text displaying right now  </h1> %>
+  <% flash.each do |key, value| %>
+      <% if key == 'alert' %>
+        <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= value %>
+        </div>
+      <%end%>
+    <% end %>
+
+  <%= yield %>
 
   </body>
 </html>

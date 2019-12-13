@@ -1085,6 +1085,12 @@ input[type="checkbox"]:checked + label {
 }
 .alert-alert {
   @extend .alert-danger;
+  @media only screen and (min-width: 800px) {
+    position: fixed;
+    top: 60px;
+    z-index: 2;
+    width: 100%
+  }
 }
 
 .alert-notice {
@@ -1096,3 +1102,4 @@ input[type="checkbox"]:checked + label {
 .alert-info {
   @extend .alert-info;
 }
+
