@@ -68,18 +68,38 @@
 
 
 .tarjimly-nav {
-  position: fixed;
-  top: 0;
   width: 100vw;
-  height: 55px;
+  height: 60px;
   display: flex;
   align-content: center;
   background-color: #337ab7;
   color: white;
-  z-index: 2;
   padding: 10px 15px;
+  justify-content: space-between;
   @media only screen and (min-width: 800px) {
-    padding-left: 75px;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    padding-left: 40px;
+    padding-right: 75px;
+  }
+
+  a {
+    color: white;
+    opacity: .9;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: .3s;
+    font-size: 21px;
+    font-weight: 300;
+    padding-bottom: 2px;
+    align-self: center;
+    @media only screen and (min-width: 800px) {
+      padding-right: 10px;
+    }
+  }
+  a:hover {
+    opacity: 1;
   }
 
 }
@@ -87,13 +107,14 @@
 .flex-container {
   @media only screen and (min-width: 800px) {
     display: flex;
+    padding-top: 60px;
   }
   height: 100vh;
-  padding-top: 55px;
 
   .flex-sidebar {
     padding: 15px;
     flex: 0 .5 400px;
+    align-content: center;
     
     // border-right: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
@@ -103,9 +124,8 @@
     flex-flow: column;
     @media only screen and (min-width: 800px) {
       max-width: 340px;
-      padding: 25px;
-      padding-left: 75px;
-      padding-right: 40px;
+      padding: 25px 40px;
+
     }
     
     
@@ -517,6 +537,14 @@
 
 .mg-10 {
   margin: 10px ;
+}
+
+.pad-10 {
+  padding: 10px;
+}
+
+.border-bottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .bold-2{
