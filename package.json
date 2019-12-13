@@ -23,8 +23,9 @@
     "webpack-jquery-ui": "^2.0.1"
   },
   "engines": {
-    "node": "10.16.3",
-    "yarn": "1.21.1"
+    "npm": "6.9.0",
+    "node": "10.x",
+    "yarn": "1.x"
   },
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"
