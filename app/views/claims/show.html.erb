@@ -78,7 +78,7 @@
         </p>
       </div>
     </div>
-      <%= link_to "Back to Your Claims", claims_path, action: "index", method: :get, class:"pad-left"%>
+      <%= button_to "Back to Your Claims", claims_path, action: "index", method: :get, class:"btn btn-primary pad-left"%>
   <% else %>
     <div class="translation-text-container">
       <%= form_for @claim do |f| %>
