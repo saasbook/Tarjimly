@@ -18,8 +18,7 @@ class AuthController < ApplicationController
                 'https://tarjim.ly/api/mobile/v1/users/metadata', 
                 {:cookies => response.cookies})
         rescue RestClient::Exception => e
-            flash[:info] = "Unable to authenticate Tarjimly User, please try again."
-            redirect_to root_path
+            redirect_to root_path, flash: {info: "Unable to authenticate Tarjimly User, please try again."}
             return
         end
         session[:name] = JSON.parse(user_response.body)['fb_first_name'] + " " +  JSON.parse(user_response.body)['fb_last_name']
