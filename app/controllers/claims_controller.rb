@@ -111,10 +111,7 @@ class ClaimsController < ApplicationController
 
   def isHighImpact(from_lang, to_lang, req_id)
     high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0).where.not(id: req_id)
-    if Request.find_by_id(req_id).num_claims == 0
-      return true
-    end
-    if high_impact_requests.empty?
+    if Request.find_by_id(req_id).num_claims == 0 || high_impact_requests.empty?
       return true, nil
     else
       return false, high_impact_requests.first.id
