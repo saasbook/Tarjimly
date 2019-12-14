@@ -19,12 +19,10 @@ describe 'Translators dismiss claims deleted by users' do
         @claim2 = Claim.create(translator_tarjimly_id: 364495, _status: 2, submitted_date: "N/A", translation_format: "text", request_id: @request2_id)
         @curr2_id = @claim2.id
     end
-    
     it  'should have a link to dismiss submitted translations' do 
         visit "/claims"
         page.should have_selector(:link_or_button, 'Dismiss Deleted Request')
     end 
-
     it 'after dismissing should still be on claims page' do 
         visit "/claims"
         click_link("Dismiss Deleted Request")
