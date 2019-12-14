@@ -95,14 +95,14 @@ class RequestsController < ApplicationController
           end
     end
 
-    def format_id(s)
-        s_list = s.downcase.split(" ")
-        new_s = ""
-        s_list.each do |i|
-            new_s += "_#{i}"
-        end
-        return new_s
-    end
+    # def format_id(s)
+    #     s_list = s.downcase.split(" ")
+    #     new_s = ""
+    #     s_list.each do |i|
+    #         new_s += "_#{i}"
+    #     end
+    #     return new_s
+    # end
     
     def authorize
         if @userID.present?
