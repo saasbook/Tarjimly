@@ -10,8 +10,8 @@
 
 <div class="pad-for-nav bg-gray">
 <div class="container">
-  <div class="request-details">
     <h2 class="page-header-title">New Request</h2>
+  <div class="request-details">
   <%= form_for @request do |r| %>
     
   <div class="">
@@ -30,6 +30,29 @@
     </div>
 
     <div class="row">
+    <div class="col-sm-6 pad">
+        <div class="form-group">
+          <span class="lead form-title"> Document Language: </span>
+          <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
+        </div>
+        <div class="form-group">
+          <span class="lead form-title"> To Language: </span>
+          <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
+        </div>
+        <div class="form-group">
+          <%= r.label :deadline, class:"lead lead-no-margin blue bold" %><br>
+          <%= r.date_field(:deadline, min: Date.today.in_time_zone(session[:time_zone]), required: true, class: "form-control") %>
+        </div>
+
+        <div class="form-group">
+          <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
+          <%= r.label :categories, class:"lead lead-no-margin blue bold" %><br>
+          <% @categories.each do |c| %>
+              <%= r.check_box :categories, { multiple: true }, c, false %>
+              <%= r.label "categories#{format_id(c)}", c %>
+          <% end %>
+        </div>
+      </div>
       <div class="col-sm-6 pad">
         <div class="form-group">
           <%= r.label :title, class:"lead lead-no-margin blue bold" %><br>
@@ -42,33 +65,10 @@
         </div>
         <%= r.hidden_field :format, value: @format %>
       </div>
-      <div class="col-sm-6 pad">
-        <div class="form-group">
-          <span class="lead form-title"> Document Language: </span>
-          <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
-        </div>
-        <div class="form-group">
-          <span class="lead form-title"> To Language: </span>
-          <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
-        </div>
-        <div class="form-group">
-      <%= r.label :deadline %><br>
-      <%= r.date_field(:deadline, required: true, class: "form-control") %>
-    </div>
-
-        <div class="form-group">
-          <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
-          <%= r.label :categories, class:"lead lead-no-margin blue bold" %><br>
-          <% @categories.each do |c| %>
-              <%= r.check_box :categories, { multiple: true }, c, false %>
-              <%= r.label "categories#{format_id(c)}", c %>
-          <% end %>
-
-
-        </div>
+      
       </div>
-    </div>
 
+    </div>
     <div class="form-group mg-tp-20" style="text-align: center">
       <%= r.submit class: "btn btn-primary" %>
       <%= link_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary" %>
