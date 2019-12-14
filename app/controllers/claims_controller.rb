@@ -2,7 +2,6 @@ class ClaimsController < ApplicationController
   before_action :authorize
   helper_method :getDaysLeft, :isHighImpact, :isAlreadyClaimed, :current_translator
 
-
   def requests
     @translatorID = session[:tarjimlyID]
     @claim = Claim.new
