@@ -31,5 +31,5 @@ Feature: view previously submitted request
 
     Scenario: if request has been deleted will display 404 not found page
         Given I go to the "Show" page
-        Then I should see "The page you were looking for doesn't exist."
+        Then I should see "You are not authorized to view this request!"
 

@@ -26,6 +26,6 @@ Feature: delete a requested translation
         When I click button "View" from the list of request
         And I click the "Delete Request" button
         Then I should be on the "/requests" path
-        Then I should see confirmation of deleting "Camp Flyer"
+        Then I should see "Your request 'Camp Announcment' has been deleted!"
         When I refesh the page
         Then I should not see "Camp Flyer"

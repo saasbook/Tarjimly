@@ -1,4 +1,4 @@
-# Feature: View Requests
+ Feature: View Requests
 
   Background: current pending transactions
 
@@ -14,5 +14,5 @@
 
   Scenario: Translator views request details
     Given I go to the "Translator Requests" page
-    When I select "View Request"
+    When I select "Preview Request"
     Then I should see "French" and "Urdu"
