@@ -96,9 +96,6 @@ class RequestsController < ApplicationController
     def authorize
         if @userID.present?
             return
-        elsif session[:tarjimlyID].nil?
-          flash[:alert] = "You must be logged into view this page"
-          redirect_to '/auth' 
         elsif session[:role] == "Translator"
           flash[:alert] = "You must be authorized to view this page"
           redirect_to claims_path
