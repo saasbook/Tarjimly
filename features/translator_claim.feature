@@ -1,4 +1,4 @@
- Feature: Claim Request
+Feature: Claim Request
 
   Background: current pending transactions
 

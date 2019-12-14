@@ -5,7 +5,6 @@ Given /the following requests exist/ do |requests_table|
 end
 
 Then ("I should see {string}") do |string|
-  # page.should have_content(string)
   expect(page).to have_content(string)
 end
 

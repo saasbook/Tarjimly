@@ -17,7 +17,6 @@ class ClaimsController < ApplicationController
 
   def preview
     @claim = Claim.new
-    @user = 1
     @request = Request.find_by(:id => params[:request_id])
     @all_requests = Request.all
   end
