@@ -13,8 +13,11 @@ describe 'Translators profile has information' do
         @request2_id = @request2.id
         @claim = Claim.create(translator_tarjimly_id: 364495, _status: 3, submitted_date: "Nov-25-2019", translation_format: "text", request_id: @request1_id)
         @claim2 = Claim.create(translator_tarjimly_id: 364495, _status: 0, submitted_date: "Nov-25-2019", translation_format: "text", request_id: @request2_id)
+        @claim3 = Claim.create(translator_tarjimly_id: 364495, _status: 7, submitted_date: "Nov-25-2019", translation_format: "text", request_id: @request2_id)
+
         @curr_id = @claim.id
         @curr2_id = @claim2.id
+        @curr3_id = @claim3.id
     end
 
     it 'should display profile information' do 
@@ -22,5 +25,21 @@ describe 'Translators profile has information' do
         expect(page).to have_content("Cass Hardin")
         expect(page).to have_content("Translator")
         expect(page).to have_content("Completed Translations: 0")
+    end
+    it 'restrict access to only translator pages' do 
+        visit "requests"
+        expect(page).to have_content("You must be authorized to view this page")
+        expect(page.current_path).to eq "/claims"
+    end
+    it 'should not be able to view claims not belonging to me' do 
+        visit "claims/6865"
+        expect(page).to have_content("You are not authorized to view this claim.")
+        expect(page.current_path).to eq "/claims"
+    end
+    it 'claims with in valid status should not have pages' do 
+        visit "claims/#{@curr3_id}"
+        expect(response.status).to eq(404)
+        # expect(page).to have_content("The page you were looking for doesn't exist (404)")
+        # expect(page.current_path).to eq "/claims"
     end
 end
