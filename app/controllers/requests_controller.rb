@@ -84,17 +84,6 @@ class RequestsController < ApplicationController
             return days_left.to_s + " days", false
         end
     end
-
-    def current_user
-        # TODO get details/info on particular user
-        if session[:tarjimlyID]
-            @current_user ||= session[:tarjimlyID] 
-          else 
-            flash[:alert] = "You must be logged in to view this page! Please login below!! "
-            return false
-          end
-    end
-
     def format_id(s)
         s_list = s.downcase.split(" ")
         new_s = ""

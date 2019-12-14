@@ -56,7 +56,7 @@ class ClaimsController < ApplicationController
       flash[:alert] = "You are not authorized to view this claim."
       redirect_to claims_url
       return
-    end
+    endw
     @request = Request.find_by_id(@claim.request_id)
   end
 
