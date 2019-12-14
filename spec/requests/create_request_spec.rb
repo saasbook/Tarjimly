@@ -26,17 +26,15 @@ describe "Creating a new request" do
   end
 
   it "should be able to fill in fields successfully" do
-    within("#new_request") do
-      fill_in 'request_title', with: 'Rspec Test'
-      fill_in 'request_description', with: 'Rspec Test Description'
-      fill_in 'request_document_text', with: 'Rspec Test Document'
-      fill_in 'request_deadline', with: '2097-08-08'
-      select 'English', from: 'request_from_language'
-      select 'Arabic', from: 'request_to_language'
-    end
-    click_button 'Create Request'
+    fill_in 'request_title', with: 'Rspec Test'
+    fill_in 'request_description', with: 'Rspec Test Description'
+    fill_in 'request_document_text', with: 'Rspec Test Document'
+    fill_in 'request_deadline', with: '2097-08-08'
+    select 'English', from: 'request_from_language'
+    select 'Arabic', from: 'request_to_language'
+    click_button('Create Request')
     puts(page.current_path)
-    expect(page).to have_current_path('/requests/new')
+    expect(page).to have_current_path('/requests')
   end
 
   it "should fail" do
@@ -59,9 +57,7 @@ describe "Creating a new request" do
       select 'Arabic', from: 'request_to_language'
     end
     click_button 'Create Request'
-    puts(page.current_path)
-    visit current_path
-    puts(page.current_path)
+
     # page.should have_selector(:link_or_button, 'View')
    
 
