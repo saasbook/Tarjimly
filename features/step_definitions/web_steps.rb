@@ -34,7 +34,8 @@ Given("I go to the {string} page") do |string|
   end
 
   Then("I should be on the {string} page") do |string|
-    visit path_to(string)
+
+    page.current_path.equal? (path_to(string))
   end
 
   Given("I go to the {string} page for request id {string}") do |string, string2|
