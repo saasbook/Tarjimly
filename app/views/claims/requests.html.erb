@@ -80,9 +80,8 @@
                 <%= c.association :request, :collection => Request.all, :selected => request.id, as: :hidden %>
                 <%=hidden_field_tag "request_id", request.id%>
                 <%=link_to "Preview Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
-                <%# <%=c.button :submit, "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
-                <%=c.button :submit, "Claim", data: {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
-
+                <% impact, impactID =  isHighImpact(request.from_language, request.to_language, request.id)%>
+                <%=c.button :submit, "Claim", data: (impact ? nil : {confirm: "We found #{link_to "another request", {controller: "claims", action: "preview", request_id: impactID}} with the same language pair but no claims :(  Would you like to continue with this claim still?", title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
               <% end %>
             </div>
           </div>
