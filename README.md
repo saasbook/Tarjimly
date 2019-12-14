@@ -75,9 +75,15 @@ Our app is deployed in heroku, and can be accessed at [http://tarjimly-docs.hero
 
 ### Contibutors 
 Ahmad Jawaid 
+
 Cassidy Hardin 
+
 Ahmad Ibrahim 
+
 Ken Opamurataqongse
-Brandon Scolieri
-Arda Sozer
+
 Mariam Abughosh
+
+Brandon Scolieri
+
+Arda Sozer
