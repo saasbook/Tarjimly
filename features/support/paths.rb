@@ -13,6 +13,8 @@ module NavigationHelpers
         '/requests/new'
       when 'Claims'
         '/claims'
+      when 'Translator Requests'
+        '/translators/requests'
       when 'Show'
         'requests/4'
       when 'Home'
