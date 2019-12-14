@@ -1,8 +1,8 @@
 # README
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/maintainability)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/test_coverage)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/test_coverage)
 
 [![Build Status](https://travis-ci.com/cassidyhardin/TarjimlyDocs.svg?branch=master)](https://travis-ci.com/cassidyhardin/TarjimlyDocs)
 
@@ -17,6 +17,12 @@ Our app has been built in Ruby on Rails, with postgrsql
 `ruby 2.6.3`
 
 `rails 6.0.0`
+
+`npm 6.9.0`
+
+`node 10.16.3`
+
+`yarn 1.21.1`
 
 `brew install postgresql`
 
@@ -69,9 +75,15 @@ Our app is deployed in heroku, and can be accessed at [http://tarjimly-docs.hero
 
 ### Contibutors 
 Ahmad Jawaid 
+
 Cassidy Hardin 
+
 Ahmad Ibrahim 
+
 Ken Opamurataqongse
-Brandon Scolieri
-Arda Sozer
+
 Mariam Abughosh
+
+Brandon Scolieri
+
+Arda Sozer
