@@ -22,6 +22,8 @@ Our app has been built in Ruby on Rails, with postgrsql
 
 `node 10.16.3`
 
+`yarn 1.21.1`
+
 `brew install postgresql`
 
 `brew start sql`
