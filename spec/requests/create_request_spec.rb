@@ -33,7 +33,6 @@ describe "Creating a new request" do
     select 'English', from: 'request_from_language'
     select 'Arabic', from: 'request_to_language'
     click_button('Create Request')
-    puts(page.current_path)
     expect(page).to have_current_path('/requests')
   end
 
@@ -46,7 +45,7 @@ describe "Creating a new request" do
   end
 
   it "should be able to upload a file" do
-    click_link("upload files")
+    click_link("Upload File Instead")
     test_file = File.join(Rails.root, "test/fixtures/files/test.pdf")
     within("#new_request") do
       fill_in 'request_title', with: 'Rspec Upload Test'

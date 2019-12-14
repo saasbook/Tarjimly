@@ -36,10 +36,6 @@ class RequestsController < ApplicationController
     end
     
     def create
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
 
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
