@@ -1,16 +1,14 @@
 require 'rails_helper'
   describe 'Requires Authentication To View Pages ' do
-    it 'cannot view translator claims if not logges in' do 
+    it 'cannot view translator claims if not logged in' do 
         visit "claims"
-        expect(page).to have_content("You must be logged into view this page")
-        page.should have_sselector(:link_or_button, 'sign up')
+        expect(page.current_path).to eq "/"
     end
 
-    # it 'should sucessfully login translator' do 
-    #     visit "/"
-    #     fill_in 'email', with: "cassidyhardin@berkeley.edu"
-    #     fill_in 'password', with: "tarjimlydocs19"
-    #     click_button('Login')
-    #     expect(page.status_code).to eq(200)
-    # end
+    it 'cannot view requests if not logged in' do 
+        visit "requests"
+        expect(page.current_path).to eq "/"
+    end
+
+
 end

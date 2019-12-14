@@ -61,7 +61,7 @@ class RequestsController < ApplicationController
     def delete 
         @request = Request.find(params[:request_id])
         if @request.user_tarjimly_id != @userID
-            render not_found 
+            redirect_to requests_url
         elsif !@request.claims.nil? && @request.claims.present?
             @request._status = 2
             @request.save!
@@ -96,6 +96,9 @@ class RequestsController < ApplicationController
     def authorize
         if @userID.present?
             return
+        elsif session[:tarjimlyID].nil?
+          flash[:alert] = "You must be logged into view this page"
+          redirect_to '/auth' 
         elsif session[:role] == "Translator"
           flash[:alert] = "You must be authorized to view this page"
           redirect_to claims_path
@@ -107,8 +110,5 @@ class RequestsController < ApplicationController
     private
     def request_params
         params.require(:request).permit(:from_language, :to_language, :deadline, :document_text, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
-    end
-    def not_found
-        render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
 end

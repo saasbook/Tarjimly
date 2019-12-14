@@ -63,7 +63,7 @@ class ClaimsController < ApplicationController
   def delete
     @claim = Claim.find(params[:claim_id])
     if @claim.translator_tarjimly_id != @translatorID
-      return not_found 
+      redirect_to claims_url
     end
     if @claim._status == 3
       @claim.destroy
@@ -134,17 +134,14 @@ class ClaimsController < ApplicationController
   def authorize
     if @translatorID.present?
       return
+    elsif session[:tarjimlyID].nil?
+      flash[:alert] = "You must be logged into view this page"
+      redirect_to '/auth' 
     elsif session[:role] != "Translator"
       flash[:alert] = "You must be authorized to view this page"
       redirect_to requests_path
     else 
       @translatorID = session[:tarjimlyID] 
     end
-  end
-
-  private
-
-  def not_found
-    render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
 end
