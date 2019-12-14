@@ -1,8 +1,8 @@
 # README
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/maintainability)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/maintainability)
 
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/test_coverage)](https://codeclimate.com/github/codeclimate/codeclimate/test_coverage)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/9c4dc71cb58527d700bd/test_coverage)](https://codeclimate.com/github/cassidyhardin/TarjimlyDocs/test_coverage)
 
 [![Build Status](https://travis-ci.com/cassidyhardin/TarjimlyDocs.svg?branch=master)](https://travis-ci.com/cassidyhardin/TarjimlyDocs)
 
