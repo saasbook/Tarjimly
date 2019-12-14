@@ -38,8 +38,6 @@ describe 'Translators profile has information' do
     end
     it 'claims with in valid status should not have pages' do 
         visit "claims/#{@curr3_id}"
-        expect(response.status).to eq(404)
-        # expect(page).to have_content("The page you were looking for doesn't exist (404)")
-        # expect(page.current_path).to eq "/claims"
+        expect(page).to have_content("You are not authorized to view this claim.")
     end
 end

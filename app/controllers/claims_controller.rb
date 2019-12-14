@@ -52,13 +52,10 @@ class ClaimsController < ApplicationController
 
   def show
     @claim = Claim.find_by_id(params[:claim_id])
-    if @claim.nil? || @claim.translator_tarjimly_id != @translatorID
+    if @claim.nil? || @claim.translator_tarjimly_id != @translatorID || !(@claim._status == 0 || @claim._status == 1)  
       flash[:alert] = "You are not authorized to view this claim."
       redirect_to claims_url
       return
-    end
-    if !(@claim._status -= 0 || @claim._status == 1)  
-      return not_found
     end
     @request = Request.find_by_id(@claim.request_id)
   end

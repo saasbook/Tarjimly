@@ -11,6 +11,7 @@ require 'rails_helper'
         fill_in 'email', with: "cassidyhardin@berkeley.edu"
         fill_in 'password', with: "tarjimlydocs19"
         click_button('Login')
+        expect(page.status_code).to eq(200)
     end
 
     it 'translators should be routed to their claims page' do 
@@ -41,6 +42,7 @@ require 'rails_helper'
         fill_in 'password', with: ""
         click_button('Login')
         expect(page.current_path).to eq "/"
+        expect(page.status_code).to eq(200)
         expect(page).to have_text("Unsucessful login, please try again.")
     end
     

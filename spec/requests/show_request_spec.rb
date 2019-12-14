@@ -45,10 +45,11 @@ describe "User viewing details for a specific request" do
     end
     it 'for deleted request should redirect to error page' do 
         visit "/requests/#{@curr_id_deleted}"
-        page.should have_content("The page you were looking for doesn't exist.")
+        expect(page).to have_content("You are not authorized to view this request!")
+
     end
     it 'if request was deleted response should be 404' do 
         visit "/requests/#{@curr_id_deleted}"
-        expect(page.status_code).to eq(404)
+        expect(page).to have_content("You are not authorized to view this request!")
     end
 end

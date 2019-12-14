@@ -12,13 +12,10 @@ class RequestsController < ApplicationController
     def show 
         rid = params[:request_id]
         @request = Request.find_by_id(rid)
-        if @request.nil? || @request.user_tarjimly_id != @userID
+        if @request.nil? || @request.user_tarjimly_id != @userID || @request._status == 2
             flash[:alert] = "You are not authorized to view this request!"
             redirect_to requests_url
             return
-          end
-        if @request._status == 2
-            return not_found
         end
         @claim = nil
         if @request._status == 1
@@ -36,7 +33,6 @@ class RequestsController < ApplicationController
     end
     
     def create
-
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
