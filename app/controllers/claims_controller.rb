@@ -40,7 +40,6 @@ class ClaimsController < ApplicationController
 
   def index
     @name = session[:name]
-    @joinedDate = session[:joined_date]
     @role = session[:role]
     @status = params[:status] || [0,1]
     @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status}) #TODO translator_tarjimly_id log in details

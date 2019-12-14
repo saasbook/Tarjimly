@@ -3,7 +3,6 @@ class RequestsController < ApplicationController
     helper_method :getDaysLeft, :current_user, :format_id  
     def index
         @name = session[:name]
-        @joinedDate = session[:joined_date]
         @role = session[:role]
         @status = params[:status] || [0, 1]
         @requests = Request.where(user_tarjimly_id: @userID, _status: @status)

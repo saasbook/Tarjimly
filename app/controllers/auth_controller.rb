@@ -25,7 +25,6 @@ class AuthController < ApplicationController
         session[:name] = JSON.parse(user_response.body)['fb_first_name'] + " " +  JSON.parse(user_response.body)['fb_last_name']
         session[:email] = JSON.parse(user_response.body)['email']
         session[:role] = JSON.parse(user_response.body)['user_role']
-        session[:joined_date] = JSON.parse(user_response.body)['createdAt']
         session[:tarjimlyID] = JSON.parse(response.body)["tarjimly_id"]
         session[:time_zone] = Ziptz.new.time_zone_name(JSON.parse(user_response.body)['ip_postal'])
         cookies[:key] = { :tarjimly_user => response.cookies, :expires => Time.now + 3600}
