@@ -56,7 +56,7 @@ class ClaimsController < ApplicationController
       flash[:alert] = "You are not authorized to view this claim."
       redirect_to claims_url
       return
-    endw
+    end
     @request = Request.find_by_id(@claim.request_id)
   end
 
@@ -151,7 +151,3 @@ class ClaimsController < ApplicationController
     render :file => "#{Rails.root}/public/404.html",  :status => 404
   end
 end
-
-
-
-#
