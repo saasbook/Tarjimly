@@ -136,6 +136,12 @@ When("I click on {string}") do |string|
   end
 end
 
+When("I click on {string} in id {string}") do |string, id|
+  within "#request_#{id}" do
+    click_on string
+  end
+end
+
 Then("I should be notified of requests with no claims in the same from and to languages") do
-  expect(page).to have_content("There are other requests of the same languages with no claims.")
+  expect(page).to have_content("Would you like to continue with this claim still?")
 end
