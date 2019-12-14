@@ -1,79 +1,61 @@
-<% flash.each do |key, value| %>
-  <div class="alert alert-<%= key %> alert-dismissible" role="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <%= value %>
-   </div>
-<% end %>
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<div class="pad-for-nav bg-gray">
 <div class="container">
-    <h2 class="page-header-title">New Request</h2>
-  <div class="request-details">
+  <h1 style="text-align: center; padding: 20px 0"> My New Request </h1>
   <%= form_for @request do |r| %>
-    
-  <div class="">
+    <div class="form-group">
+      <%= r.label :from_language %>
+      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
+      <%= r.label :to_language %>
+      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= r.label :title %><br>
+      <%= r.text_field(:title, required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= r.label :description %><br>
+      <%= r.text_field(:description, required: true, class: "form-control") %>
+    </div>
+
     <div class="form-group">
       <% if @format == "text"%>
-        <span class="lead form-title"> Document</span><br/>
-        <span class="lead form-subtitle"> Paste your document here or <%= link_to "upload files",  {controller: "requests", action: "new", format: "upload"}, method: :get, class: "bold-3" %> instead. </span>
-        <%= r.text_area(:document_text,  rows: 5, required: true, direct_upload: true, class: "form-control mg-tb-5") %><br>
-        
+        <%= r.label :document_text %><br>
+        <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
+        <%= link_to "Upload File Instead", new_request_path(format: "upload"), method: :get %>
       <% else %>
-        <%= r.label :documents, class:"lead lead-no-margin blue bold" %><br>
+        <%= r.label :document_uploads %><br>
         <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %><br>
-        <%= link_to "Enter Text Instead", {controller: "requests", action: "new"}, method: :get %>
+        <%= link_to "Enter Text Instead", new_request_path(format: "text"), method: :get %>
       <% end %>
     </div>
+
+    <%= r.hidden_field :format, value: @format %>
+
+    <div class="form-group">
+      <%= r.label :deadline %><br>
+      <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
     </div>
 
-    <div class="row">
-    <div class="col-sm-6 pad">
-        <div class="form-group">
-          <span class="lead form-title"> Document Language: </span>
-          <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
-        </div>
-        <div class="form-group">
-          <span class="lead form-title"> To Language: </span>
-          <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
-        </div>
-        <div class="form-group">
-          <%= r.label :deadline, class:"lead lead-no-margin blue bold" %><br>
-          <%= r.date_field(:deadline, min: Date.today.in_time_zone(session[:time_zone]), required: true, class: "form-control") %>
-        </div>
-
-        <div class="form-group">
-          <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
-          <%= r.label :categories, class:"lead lead-no-margin blue bold" %><br>
-          <% @categories.each do |c| %>
-              <%= r.check_box :categories, { multiple: true }, c, false %>
-              <%= r.label "categories#{format_id(c)}", c %>
-          <% end %>
-        </div>
-      </div>
-      <div class="col-sm-6 pad">
-        <div class="form-group">
-          <%= r.label :title, class:"lead lead-no-margin blue bold" %><br>
-          <%= r.text_field(:title, required: true, class: "form-control") %>
-        </div>
-
-        <div class="form-group">
-          <%= r.label :Instructions, class:"lead lead-no-margin blue bold" %><br>
-          <%= r.text_area(:description, rows: 9, required: true, class: "form-control") %>
-        </div>
-        <%= r.hidden_field :format, value: @format %>
-      </div>
-      
-      </div>
-
+    <div class="form-group">
+      <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
+      <%= r.label :categories %><br>
+      <% @categories.each do |c| %>
+          <%= r.check_box :categories, { multiple: true }, c, false %>
+          <%= r.label c %>
+      <% end %>
     </div>
-    <div class="form-group mg-tp-20" style="text-align: center">
-      <%= r.submit class: "btn btn-primary" %>
-      <%= link_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-outline-primary" %>
+
+    <div class="form-group">
+      <%= r.submit data: { confirm: 'Do you details look correct?' }, class: "btn btn-primary" %>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= button_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
   </div>
-</div>
 </div>
