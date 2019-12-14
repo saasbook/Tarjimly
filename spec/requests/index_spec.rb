@@ -23,4 +23,14 @@ describe 'AidWorker profile has information' do
         expect(page).to have_content("AidWorker")
         expect(page).to have_content("Total Requests: 1")
     end
+    it 'restrict access to only translator pages' do 
+        visit "claims"
+        expect(page).to have_content("You must be authorized to view this page")
+        expect(page.current_path).to eq "/requests"
+    end
+    it 'should not be able to view claims not belonging to me' do 
+        visit "requests/6865"
+        expect(page).to have_content("You are not authorized to view this request!")
+        expect(page.current_path).to eq "/requests"
+    end
 end

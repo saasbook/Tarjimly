@@ -3,7 +3,6 @@ class ClaimsController < ApplicationController
   helper_method :getDaysLeft, :isHighImpact, :isAlreadyClaimed, :current_translator
 
   def requests
-    @translatorID = session[:tarjimlyID]
     @claim = Claim.new
     claimed_ids = Claim.where(translator_tarjimly_id: @translatorID).pluck(:request_id)
     @no_pending_reqs =  Request.where.not(id: claimed_ids).empty?   
@@ -52,15 +51,11 @@ class ClaimsController < ApplicationController
   end
 
   def show
-    cid = params[:claim_id]
-    @claim = Claim.find_by_id(cid)
-    if @claim.nil? || @claim.translator_tarjimly_id != @translatorID
+    @claim = Claim.find_by_id(params[:claim_id])
+    if @claim.nil? || @claim.translator_tarjimly_id != @translatorID || !(@claim._status == 0 || @claim._status == 1)  
       flash[:alert] = "You are not authorized to view this claim."
       redirect_to claims_url
       return
-    end
-    if !(@claim._status -= 0 || @claim._status == 1)  
-      return not_found
     end
     @request = Request.find_by_id(@claim.request_id)
   end
@@ -91,7 +86,6 @@ class ClaimsController < ApplicationController
         claim.translation_text = params[:claim][:translation_text]
         claim._status = 1
         claim.save!
-
         req = claim.request
         req.claims.each do |c|
           if c.id.to_i != params[:claim_id].to_i
