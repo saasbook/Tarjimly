@@ -67,10 +67,6 @@ class RequestsController < ApplicationController
     end
 
     def delete 
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
-        puts "WAZZZAAAAAA"
         @request = Request.find(params[:request_id])
         if @request.user_tarjimly_id != @userID
             render not_found 
