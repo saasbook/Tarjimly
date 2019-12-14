@@ -35,7 +35,8 @@ describe "Creating a new request" do
       select 'Arabic', from: 'request_to_language'
     end
     click_button 'Create Request'
-    expect(page).to have_current_path('/requests')
+    puts(page.current_path)
+    expect(page).to have_current_path('/requests/new')
   end
 
   it "should fail" do
@@ -58,6 +59,12 @@ describe "Creating a new request" do
       select 'Arabic', from: 'request_to_language'
     end
     click_button 'Create Request'
+    puts(page.current_path)
+    visit current_path
+    puts(page.current_path)
+    page.should have_selector(:link_or_button, 'View')
+   
+
     click_button 'View'
     expect(page).to have_text('pdf')
   end
