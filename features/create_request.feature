@@ -17,15 +17,14 @@ Feature: create a new request
     And I fill in "request[title]" with "Cucumber Test Title"
     And I fill in "request_description" with "Cucumber Test Description"
     And I click the "Create Request" button
-  # Then I should be on the "/requests" path
-  #    And I select "Pending Translations"
-  # And I should see "Cucumber Test Title"
-  # And I should see "Legal"
+    Then I should be on the "/requests" path
+    And I should see "Cucumber Test Title"
+    And I should see "Legal"
 
   Scenario: forget to fill in a field
     When I fill in "request_title" with "Cucumber Test Request"
     And I click the "Create Request" button
-# Then I should be on the "/requests/new" path
+    Then I should be on the "/requests/new" path
 
 # Scenario: upload a file
 #   When I select "Upload File Instead"

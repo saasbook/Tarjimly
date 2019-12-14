@@ -40,7 +40,7 @@ class RequestsController < ApplicationController
         puts "WAZZZAAAAAA"
         puts "WAZZZAAAAAA"
         puts "WAZZZAAAAAA"
-        
+
         @request = Request.new(request_params)
         #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
@@ -67,6 +67,10 @@ class RequestsController < ApplicationController
     end
 
     def delete 
+        puts "WAZZZAAAAAA"
+        puts "WAZZZAAAAAA"
+        puts "WAZZZAAAAAA"
+        puts "WAZZZAAAAAA"
         @request = Request.find(params[:request_id])
         if @request.user_tarjimly_id != @userID
             render not_found 
