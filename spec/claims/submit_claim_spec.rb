@@ -21,25 +21,6 @@ describe 'About to translate' do
         fill_in 'claim_translation_text', with: 'Rspec Translation Test Submission'
         click_button("Submit Translation")
         expect(page).to have_current_path("/claims/#{@claim_id}")          
-        # expect(page).to have_content('Completed') 
     end 
-    
-    # it 'claim should not be present after deleting' do 
-    #     visit "/claims/#{@claim_id}"
-    #     click_button("Unclaim Request")
-    #     visit "/claims"
-    #     expect(page).to have_no_content("Passport Application")
-    # end 
-    # it 'should be able to reclaim from translator requests page after unclaiming' do 
-    #     visit "/claims/#{@claim_id}"
-    #     click_button("Unclaim Request")
-    #     visit "/translators/requests"
-    #     expect(page).to have_text("Passport Application")
-    # end 
-    # it 'number of claims for the request should have decreased' do 
-    #     visit "/claims/#{@claim_id}"
-    #     click_button("Unclaim Request")
-    #     expect(@request.reload.num_claims).to equal(0)
-    # end
 end
     
