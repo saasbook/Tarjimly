@@ -3,7 +3,7 @@
 <%= csrf_meta_tags %>
 <p id="notice"><%= flash[:notice] %></p>
 
-<div class="container" id="request_<%=@request.id%>">
+<div class="container pad-for-nav" id="request_<%=@request.id%>">
   <div class="page-header-container">
     <h2 class="page-header-title">Preview Request</h2>
   </div>
@@ -64,7 +64,8 @@
     <%=simple_form_for @claim, url: create_claim_path, method: :post, class: "claim-form", :remote => true, :authenticity_token => true do |c| %>
       <%= c.association :request, :collection => Request.all, :selected => @request.id, as: :hidden %>
       <%=hidden_field_tag "request_id", @request.id%>
-      <%=c.button :submit, "Claim", data: (isHighImpact(@request.from_language, @request.to_language, @request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(@request.id) %>
+      <% impact, impactID =  isHighImpact(@request.from_language, @request.to_language, @request.id)%>
+      <%=c.button :submit, "Claim", data: (impact ? nil : {confirm: "We found #{link_to "another request", {controller: "claims", action: "preview", request_id: impactID}} with the same language pair but no claims :(     Would you like to continue with this claim still?", title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(@request.id) %> 
       <%= link_to "Back to All Requests", view_requests_path, action: "requests", method: :get, class: "pad-left" %>
     <% end %>
   </div>  

@@ -3,18 +3,17 @@
 <%= csrf_meta_tags %>
 
 
-<div class="flex-container">
+<div class="flex-container pad-for-nav">
     <div class="flex-sidebar">
       <div class="profile-container">
-        <h3> <%=@name%></h3>
-        <h4 class="blue pad-bt-5">  <%=@role%> </h4>
-        <h4> Member Since: <%=@joinedDate.to_date.strftime("%B %d, %Y")%> </h4>
-        <h4> Total Requests: <span class="badge"><%= @total_count %></span> </h4>
+        <h3> <%=@name%> </h3>
+        <h4 class="bold-2"> <%=@role%> </h4>
+        <h4> Total Requests: <span class="badgey"><%= @total_count %></span> </h4>
         <%=link_to "Sign Out", :controller => "auth", :action => :logout, method: :get, class: "btn btn-primary" %>
 
       </div>
       
-      <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
+      <h3 class="section-header pad-left mg-bt-10"> Notifications </h3>
       <div class="notifications-container">
           <% flash.each do |key, value| %>
           <% if key != 'alert'%>
@@ -24,6 +23,11 @@
               </div>
             <%end%>
 
+          <% end %>
+          <% if flash.nil? || flash.empty? %>
+            <div class="alert alert-warning" role="alert">
+              You have no new notifications.
+            </div>
           <% end %>
       </div>
 
@@ -36,7 +40,7 @@
           <% elsif @status.is_a?(String) && @status.to_i == 1%>
             Completed Requests
           <% else %>
-            Your Requests
+            My Requests
           <% end %>
         </h3>
         <div class="flex">
@@ -58,9 +62,14 @@
 
       <div class="request-list">
       <% if @requests.empty? %>
-        <div class="pending-translation-message">
-          No results matched your criteria. 
-        </div>
+        <%if @status.is_a?(String) && @status.to_i == 1 %>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no completed requests at the moment, please check back later! 
+          </div>
+        <%else%>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no pending requests at the moment, get started by making a <a href="/requests/new" class="alert-link">new request</a>!
+        <%end%>
       <% end %>
       <% @requests.each do |request| %>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">
@@ -69,7 +78,9 @@
                 <%= request.title %>
               </h4>
               <p class="lead-no-margin card-subs pad-top-5">
-                <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                <% if request._status.to_i != 1%>
+                  <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                <% end%>
               </p>
             </div>
             <p class="langs card-subs"> 
@@ -81,7 +92,7 @@
               <%= request.description %><br />
             </p>
             <div class="card-row">
-              <div class="card-col-1">
+              <div class="">
                 <div class="tags-container">
                   <% if request.categories%>
                     <% request.categories.each do |c| %>

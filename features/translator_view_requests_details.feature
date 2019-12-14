@@ -1,4 +1,4 @@
-Feature: View Requests
+# Feature: View Requests
 
   Background: current pending transactions
 
@@ -16,4 +16,3 @@ Feature: View Requests
     Given I go to the "Translator Requests" page
     When I select "View Request"
     Then I should see "French" and "Urdu"
-

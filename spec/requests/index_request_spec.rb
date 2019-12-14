@@ -5,9 +5,9 @@ describe "User viewing their requests " do
     # @AHMAD ADD PARAMATERS FOR THE FILTERING OF REQUESTS 
     before(:each) do 
         visit "/"
-        fill_in 'Email', with: "cassihardin@gmail.com"
-        fill_in 'Password', with: "tarjimlydocs19"
-        click_button('Sign In')
+        fill_in 'email', with: "cassihardin@gmail.com"
+        fill_in 'password', with: "tarjimlydocs19"
+        click_button('Login')
     end 
 
     it 'should be all to see pending requests' do

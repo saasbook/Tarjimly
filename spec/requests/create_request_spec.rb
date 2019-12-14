@@ -5,9 +5,9 @@ require 'rails_helper'
 describe "Navigating to a new request " do 
   before(:each) do 
     visit "/"
-    fill_in 'Email', with: "cassihardin@gmail.com"
-    fill_in 'Password', with: "tarjimlydocs19"
-    click_button('Sign In')
+    fill_in 'email', with: "cassihardin@gmail.com"
+    fill_in 'password', with: "tarjimlydocs19"
+    click_button('Login')
   end
   it "should find the new request button" do
       visit "/requests"
@@ -19,9 +19,9 @@ end
 describe "Creating a new request" do
   before(:each) do 
     visit "/"
-    fill_in 'Email', with: "cassihardin@gmail.com"
-    fill_in 'Password', with: "tarjimlydocs19"
-    click_button('Sign In')
+    fill_in 'email', with: "cassihardin@gmail.com"
+    fill_in 'password', with: "tarjimlydocs19"
+    click_button('Login')
     visit "/requests/new"
   end
 
@@ -47,7 +47,7 @@ describe "Creating a new request" do
   end
 
   it "should be able to upload a file" do
-    click_link("Upload File Instead")
+    click_link("upload files")
     test_file = File.join(Rails.root, "test/fixtures/files/test.pdf")
     within("#new_request") do
       fill_in 'request_title', with: 'Rspec Upload Test'

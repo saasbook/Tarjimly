@@ -39,7 +39,6 @@ Feature: claimed request deleted by user
         Given I go to the "Claims" page
         When I select "Dismiss Deleted Request"
         Then I should not see "Camp Announcment"
-        Then I should see "You have successfully dismissed your claim for a deleted request!"
         When I refesh the page
         Then I should not see "Dismiss Deleted Request"
         Then I should not see "You have successfully dismissed your claim for a deleted request!"

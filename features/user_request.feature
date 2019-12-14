@@ -8,6 +8,8 @@ Feature: display all my submitted requests
 
   Background: requests have been created
 
+    Given I am signed in as a user
+
     Given the following requests exist:
       | user_tarjimly_id      | from_language | to_language | document_text | document_format | deadline   | title                  | description | categories    | num_claims | form_type | _status |
       | 364494                | English       | Arabic      | example text  | text            | 2019-11-09 | Camp Announcment       | information | Refugee, Camp | 1          | N/A       | 1       |

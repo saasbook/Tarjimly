@@ -6,6 +6,8 @@ Feature: delete a requested translation
 
     Background: current pending transactions
 
+        Given I am signed in as a user
+
         Given the following requests exist:
             | user_tarjimly_id | from_language | to_language | document_text | document_format | deadline   | title            | description | categories    | num_claims | form_type | _status |
             | 364494           | English       | Urdu        | example text  | text            | 2019-11-10 | Camp Announcment | information | Refugee, Camp | 1          | N/A       | 0       |
@@ -24,6 +26,6 @@ Feature: delete a requested translation
         When I click button "View" from the list of request
         And I click the "Delete Request" button
         Then I should be on the "/requests" path
-        Then I should see confirmation of deleting "Camp Announcment"
+        Then I should see confirmation of deleting "Camp Flyer"
         When I refesh the page
-        Then I should not see "Camp Announcment"
+        Then I should not see "Camp Flyer"

@@ -8,31 +8,35 @@
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
 
-<div class="container">
-  <div class="page-header-container">
-    <h2 class="page-header-title">Pending Requests</h2>
+<div class="flex-container-2 pad-for-nav">
+  <div class="flex-header">
+      <div class="left-title">
+        <h2 class="align-center">Browse Requests</h2>
+      </div>
+
+
+      <%=form_tag "requests", method: "get", class:"filter-cont" do %>
+        <span class="lead lead-no-margin bold filter-labels align-center"%> From: </span>
+        <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control fix-size align-center") %>
+        <span class="lead lead-no-margin bold filter-labels align-center"%> To: </span>
+        <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control fix-size align-center") %>
+        <%=submit_tag "Filter", class: "btn btn-primary mg-left-20 align-center mg-tp expand-button"%>
+        <%=link_to "Reset", {controller: "claims", action: "requests"}, class:"mg-left-20 align-center mg-tp"%>
+      <% end %>
   </div>
-  <div class="row justify-content-md-center">
-    <div class="col-md-3">
-      <div class="filter-cont">
-        <%=form_tag "requests", method: "get" do %>
-          <p class="lead filter-labels"%> Document Language: </p>
-          <%=select_tag("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
-          <p class="lead filter-labels"%> Translate To: </p>
-          <%=select_tag("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), prompt: "Select Language", class: "form-control") %><br />
-          <%=submit_tag "Filter", class: "btn btn-primary btn-block"%>
-          <div class="reset-container">
-            <%=link_to "Reset", {controller: "claims", action: "requests"}%>
+
+
+    <div class="flex-body">
+      <% if @requests.empty? %>
+        <% if @no_pending_reqs%>
+          <div class="alert alert-warning" role="alert">
+            There are no pending requests at the moment. Please check back later!
+          </div>
+        <% else %>
+          <div class="alert alert-warning" role="alert">
+            No pending requests matched your filters. Please check back later!
           </div>
         <% end %>
-      </div>
-    </div>
-
-    <div class="col-md-9">
-      <% if @requests.empty? %>
-        <div class="alert alert-info no-requests" role="alert">
-          <p class="lead">No requests matched your filters :(<br/> Please check back later!</p>
-        </div>
       <% end %>
       <% @requests.each do |request| %>
         <div class="requests-card" id="request_<%=request.id%>">
@@ -42,7 +46,7 @@
             </h4>
             <p class="lead-no-margin card-subs pad-top-5">
               <% if getDaysLeft(request)[1]%>
-                <span class="blue">Deadline: </span> <span class="red"> <%= getDaysLeft(request)[0] %> </span>
+                <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
               <% else %>
                 <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
               <%end%>
@@ -75,10 +79,9 @@
               <%=simple_form_for @claim, url: create_claim_path, method: "create" do |c| %>
                 <%= c.association :request, :collection => Request.all, :selected => request.id, as: :hidden %>
                 <%=hidden_field_tag "request_id", request.id%>
-                <%=link_to "View Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
-                <%# <%=c.button :submit, "Claim", data: (isHighImpact(request.from_language, request.to_language, request.id) ? nil : {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
-                <%=c.button :submit, "Claim", data: {confirm: 'We found other requests with the same language pair but no claims :( Would you like to continue with this claim still?', title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
-
+                <%=link_to "Preview Request", {controller: "claims", action: "preview", request_id: request.id} , class: "btn btn-outline-primary", style: "padding-left: 0px" %> <br class="show-on-small" />
+                <% impact, impactID =  isHighImpact(request.from_language, request.to_language, request.id)%>
+                <%=c.button :submit, "Claim", data: (impact ? nil : {confirm: "We found #{link_to "another request", {controller: "claims", action: "preview", request_id: impactID}} with the same language pair but no claims :(  Would you like to continue with this claim still?", title: 'Confirm Claim', commit: 'YES', cancel: 'NO'}), class: "btn btn-primary", disabled: isAlreadyClaimed(request.id) %> 
               <% end %>
             </div>
           </div>
@@ -86,5 +89,4 @@
 
       <% end %>
     </div>
-  </div>
 </div>

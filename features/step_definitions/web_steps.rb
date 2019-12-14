@@ -10,8 +10,30 @@ module WithinHelpers
 end
 World(WithinHelpers)
 
+Given("I am signed in as a translator") do 
+  visit path_to("Home")
+  fill_in("email", with: "cassidyhardin@berkeley.edu")
+  fill_in("password", with: "tarjimlydocs19")
+  click_button("Login")
+end
+
+Given("I am signed in as a user") do 
+  visit path_to("Home")
+  fill_in("email", with: "cassihardin@gmail.com")
+  fill_in("password", with: "tarjimlydocs19")
+  click_button("Login")
+end
+
 
 Given("I go to the {string} page") do |string|
+    visit path_to(string)
+  end
+
+  Given("I am on the {string} page") do |string|
+    visit path_to(string)
+  end
+
+  Then("I should be on the {string} page") do |string|
     visit path_to(string)
   end
 
@@ -52,16 +74,4 @@ When("I refesh the page") do
   visit current_path 
 end
 
-Given("I am signed in as a translator") do 
-  visit path_to("Home")
-  fill_in("Email", with: "cassidyhardin@berkeley.edu")
-  fill_in("Password", with: "tarjimlydocs19")
-  click_button("Sign In")
-end
 
-Given("I am signed in as a user") do 
-  visit path_to("Home")
-  fill_in("Email", with: "cassihardin@gmail.com")
-  fill_in("Password", with: "tarjimlydocs19")
-  click_button("Sign In")
-end

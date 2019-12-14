@@ -1,4 +1,4 @@
-Feature: Claim Request
+# Feature: Claim Request
 
   Background: current pending transactions
 
@@ -16,3 +16,12 @@ Feature: Claim Request
     Given I go to the "Translator Requests" page
     When I click button "Claim" from the list of request
     Then I should be able to find the claim by my id
+#   Background:  translations
+
+#     Given I am signed in as a translator
+
+
+#   Scenario: Translator starts a new claim
+#     Given I am on the "translators/requests" page
+#     When I click on "Claim" from the list of request
+#     Then I should be able to find the claim by my id

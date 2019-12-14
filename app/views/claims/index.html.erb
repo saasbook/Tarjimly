@@ -3,18 +3,17 @@
 <%= csrf_meta_tags %>
 
 
-<div class="flex-container">
+<div class="flex-container pad-for-nav">
     <div class="flex-sidebar">
       <div class="profile-container">
         <h3> <%=@name%> </h3>
-        <h4 class="blue pad-bt-5"> <%=@role%>  </h4>
-        <h4> Member Since: <%=@joinedDate.to_date.strftime("%B %d, %Y")%>  </h4>
-        <h4> Completed Translations: <span class="badge"><%= @total_count %></span> </h4>
+        <h4 class="bold-2"> <%=@role%> </h4>
+        <h4>Completed Translations: <span class="badgey"><%= @total_count %></span> </h4>
         <%=link_to "Sign Out", :controller => "auth", :action => :logout, method: :get, class: "btn btn-primary" %>
 
       </div>
         
-      <h3 class="section-header pad-left mg-bt-5"> Notifications </h3>
+      <h3 class="section-header pad-left mg-bt-10"> Notifications </h3>
       <div class="notifications-container">
           <% flash.each do |key, value| %>
           <% if key != 'alert'%>
@@ -24,21 +23,26 @@
               </div>
             <%end%>
           <% end %>
+          <% if flash.nil? || flash.empty? %>
+            <div class="alert alert-warning" role="alert">
+              You have no new notifications.
+            </div>
+          <% end %>
       </div>
     </div>
     <div class="flex-body">
-      <div class="spread mg-10" >
+      <div class="spread pad-10 border-bottom" >
         <h3 class="section-header-big">
           <% if @status.is_a?(String) && @status.to_i == 0%>
             Pending Claims
           <% elsif @status.is_a?(String) && @status.to_i == 1%>
             Completed Claims
           <% else %>
-            Your Claims
+            My Claims
           <% end %>
         </h3>
         <div class="flex">
-          <%= button_to "View Request Listing", view_requests_path, action: "requests", method: :get, class:"btn btn-primary", style:"margin-right: 10px "%>
+          <%= button_to "Browse Requests", view_requests_path, action: "requests", method: :get, class:"btn btn-primary", style:"margin-right: 10px "%>
           <label class="dropdown">
             <div class="dd-button">
               Filter
@@ -56,8 +60,8 @@
 
       <div class="request-list">
       <% if @dismiss_claims.empty? && @claims.empty? %>
-        <div class="pending-translation-message">
-          No results matched your criteria. 
+        <div class="alert alert-warning mg-tp-20" role="alert">
+          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link"> request list</a>.
         </div>
       <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
@@ -86,11 +90,13 @@
                 <%= request.title %>
               </h4>
               <p class="lead-no-margin card-subs pad-top-5">
-                <% if getDaysLeft(request)[1]%>
-                  <span class="blue">Deadline: </span> <span class="red"> <%= getDaysLeft(request)[0] %> </span>
-                <% else %>
-                  <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
-                <%end%>
+                <% if claim._status.to_i != 1%>
+                  <% if getDaysLeft(request)[1]%>
+                    <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
+                  <% else %>
+                    <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                  <%end%>
+                <% end %>
               </p>
             </div>
             <p class="langs card-subs"> 

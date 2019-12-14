@@ -4,9 +4,9 @@ require 'rails_helper'
 describe 'Translators are able to unclaim translation requests' do 
     before(:each) do 
         visit "/"
-        fill_in 'Email', with: "cassidyhardin@berkeley.edu"
-        fill_in 'Password', with: "tarjimlydocs19"
-        click_button('Sign In')
+        fill_in 'email', with: "cassidyhardin@berkeley.edu"
+        fill_in 'password', with: "tarjimlydocs19"
+        click_button('Login')
         @request = Request.create(from_language: 'English', to_language: 'Arabic', document_format: "text", description: 'information regarding upcoming doctors appointment',  title: 'Passport Application', document_text: 'pdf', deadline: '2019-05-05', user_tarjimly_id: 1, _status: 1, num_claims: 1)
         @curr_id = @request.id
         @claim = Claim.create(translator_tarjimly_id: 364495, _status: 0, translation_text: 'text', submitted_date: "Nov-25-2019", translation_format: 'pdf', request_id: @curr_id, request: @request)

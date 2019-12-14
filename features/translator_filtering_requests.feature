@@ -1,4 +1,4 @@
-Feature: View Filtered Requests
+# Feature: View Filtered Requests
 
   Background: current pending transactions
 
