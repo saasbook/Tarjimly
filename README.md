@@ -18,6 +18,8 @@ Our app has been built in Ruby on Rails, with postgrsql
 
 `rails 6.0.0`
 
+`npm 6.9.0`
+
 `brew install postgresql`
 
 `brew start sql`
