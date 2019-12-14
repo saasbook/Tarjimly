@@ -17,4 +17,10 @@ describe 'Translators profile has information' do
         @curr2_id = @claim2.id
     end
 
-    it 'should display name'
+    it 'should display profile information' do 
+        visit "claims"
+        expect(page).to have_content("Cass Hardin")
+        expect(page).to have_content("Translator")
+        expect(page).to have_content("Completed Translations: 0")
+    end
+end
