@@ -52,6 +52,7 @@
     min-width: 250px;
     border-left: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
   
     display: flex;
     flex-flow: column;
@@ -123,6 +124,7 @@
     
     // border-right: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     background-color: rgba(0, 0, 0, 0.03);
 
     display: flex;
@@ -141,6 +143,7 @@
     padding: 15px;
     flex: 1 1 auto;
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     @media only screen and (min-width: 800px) {
       padding-right: 75px;
       padding-left: 30px;
@@ -151,6 +154,7 @@
 
     .request-list {
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
       margin-bottom: 10px;
     }
 
@@ -183,6 +187,7 @@
     padding: 15px;
     overflow-y: scroll;
     overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
     margin-bottom: 10px;
     @media only screen and (min-width: 800px) {
       padding-left: 10%;
@@ -293,6 +298,7 @@
 
 .notifications-container {
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   padding-top: 0px;
 
   .n-wrapper {
@@ -535,6 +541,7 @@
 
   .grey-container-cards {
     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
     max-height: 70vh;
   }
 }
@@ -548,6 +555,7 @@
     .document-text {
       max-height: 40%;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
     .lead-small{
       @media only screen and (min-width: 800px) {
@@ -591,6 +599,7 @@
     .document-text {
       max-height: 40%;
       overflow-y: scroll;
+      -webkit-overflow-scrolling: touch;
     }
     .lead-small{
       @media only screen and (min-width: 800px) {
