@@ -12,7 +12,7 @@ TarjimlyDocs provides refugees, and aid workers a platform where they can upload
 
 ### System dependencies
 
-Our app has been built in Ruby on Rails, with postgrsql
+Our app has been built in Ruby on Rails, with postgrsql and yarn. Please ensure you have the following versions.
 
 `ruby 2.6.3`
 
