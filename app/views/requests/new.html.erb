@@ -3,28 +3,11 @@
 <%= csrf_meta_tags %>
 
 <div class="container">
-  <h1 style="text-align: center; padding: 20px 0"> My New Request </h1>
+  <h1 class="page-header-title" style="margin: 2.5em 0 1em 0"> New Request </h1>
   <%= form_for @request do |r| %>
     <div class="form-group">
-      <%= r.label :from_language %>
-      <%= r.select("from_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
-      <%= r.label :to_language %>
-      <%= r.select("to_language", raw("<option>Arabic</option><option>English</option><option>Farsi</option><option>Greek</option>"), required: true, class: "form-control") %>
-    </div>
-
-    <div class="form-group">
-      <%= r.label :title %><br>
-      <%= r.text_field(:title, required: true, class: "form-control") %>
-    </div>
-
-    <div class="form-group">
-      <%= r.label :description %><br>
-      <%= r.text_field(:description, required: true, class: "form-control") %>
-    </div>
-
-    <div class="form-group">
       <% if @format == "text"%>
-        <%= r.label :document_text %><br>
+        <%= r.label :document %><br>
         <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %><br>
         <%= link_to "Upload File Instead", new_request_path(format: "upload"), method: :get %>
       <% else %>
@@ -33,6 +16,27 @@
         <%= link_to "Enter Text Instead", new_request_path(format: "text"), method: :get %>
       <% end %>
     </div>
+
+    <div class="form-group">
+          <%= r.label :from_language %><br>
+          <%= r.select("from_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true }) %>
+        </div>
+        <div class="form-group">
+          <%= r.label :to_language %><br>
+          <%= r.select("to_language", options_for_select([ "Arabic", "English", "Farsi", "Greek" ]), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
+        </div>
+
+    <div class="form-group">
+      <%= r.label :title %><br>
+      <%= r.text_field(:title, required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= r.label :instructions %><br>
+      <%= r.text_field(:description, required: true, class: "form-control") %>
+    </div>
+
+    
 
     <%= r.hidden_field :format, value: @format %>
 
@@ -51,7 +55,7 @@
     </div>
 
     <div class="form-group">
-      <%= r.submit data: { confirm: 'Do you details look correct?' }, class: "btn btn-primary" %>
+      <%= r.submit class: "btn btn-primary" %>
     </div>
   <% end %>
 
