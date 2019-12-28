@@ -53,8 +53,6 @@ class RequestsController < ApplicationController
         end
         @request.document_format = upload_format
         @request.user_tarjimly_id = @userID
-        @request.num_claims = 0 #TODO: Should be daault in db
-        @request._status = 0  #TODO: Should be daault in db
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
         if @request.save
           flash[:success] = "Successfully created your request."

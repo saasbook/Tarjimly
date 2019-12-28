@@ -10,9 +10,9 @@ class CreateRequests < ActiveRecord::Migration[6.0]
       t.string :title
       t.string :description
       t.string :categories
-      t.integer :num_claims
+      t.integer :num_claims,  :default => 0
       t.string :form_type
-      t.integer :_status
+      t.integer :_status,  :default => 0
 
       t.timestamps
     end

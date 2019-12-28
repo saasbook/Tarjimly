@@ -5,7 +5,6 @@
 #     3 - Deleted by the User
 #     4 - Unclaimed
 
-
 class ClaimsController < ApplicationController
   before_action :authorize
   helper_method :getDaysLeft, :isHighImpact, :isAlreadyClaimed, :current_translator
@@ -31,7 +30,7 @@ class ClaimsController < ApplicationController
   def create
     begin
       ActiveRecord::Base.transaction do
-        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) 
         req =  Request.find_by(id: params[:request_id])
         req.num_claims = req.num_claims + 1
         req.save
@@ -47,7 +46,7 @@ class ClaimsController < ApplicationController
     @name = session[:name]
     @role = session[:role]
     @status = params[:status] || [0,1]
-    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status}) #TODO translator_tarjimly_id log in details
+    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status})
     @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
     @total_count = Claim.where({translator_tarjimly_id: @translatorID, _status: 1}).count
     if Claim.where({translator_tarjimly_id: @translatorID , _status: 3}).present?
