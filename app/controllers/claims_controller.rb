@@ -1,3 +1,11 @@
+# CLAIM STATUSES
+#     0 - In Progress 
+#     1 - Submitted
+#     2 - Submitted by another Translator
+#     3 - Deleted by the User
+#     4 - Unclaimed
+
+
 class ClaimsController < ApplicationController
   before_action :authorize
   helper_method :getDaysLeft, :isHighImpact, :isAlreadyClaimed, :current_translator
@@ -100,45 +108,6 @@ class ClaimsController < ApplicationController
   rescue ActiveRecord::RecordInvalid 
       flash[:alert] = "Uh Oh. Submission unsuccessful, please try again."
   end
-
-
-  # def complete
-  #   puts "HEY HEY HEY HEY HEY HEY HYE"
-  #   puts (params[:claim_id])
-  #   claim = Claim.find_by(id: params[:claim_id])
-  #   puts (claim.id)
-  #   puts(claim._status)
-  #   begin
-  #     ActiveRecord::Base.transaction do
-  #       claim = Claim.find_by(id: params[:claim_id])
-  #       puts(claim)
-  #       outs "heuwfhiuwehfiuwehfiuwehfiuwhefwihefkhksndjknfnknfenk"
-  #       claim.translation_format = "text"
-  #       claim.translation_text = params[:claim][:translation_text]
-  #       puts "HEHUEHUFIHUEIFHIUEHFEUHFKUEDFKE"
-  #       puts(claim.translation_text)
-  #       claim._status = 1
-  #       if claim.save
-  #         puts "saved"
-  #       else 
-  #         puts " FUCK FUCK FUCK FUCK"
-  #       end
-  #       req = claim.request
-  #       # req.claims.each do |c|
-  #       #   if c.id.to_i != params[:claim_id].to_i
-  #       #     c._status = 2
-  #       #     c.save!
-  #       #   end
-  #       # end
-  #       req._status = 1
-  #       req.save!
-  #       redirect_to claim_path(claim_id: params[:claim_id])
-  #     end
-
-  #   rescue => e
-  #     flash[:alert] = "Uh Oh. Submission unsuccessful, please try again."
-  #   end
-  # end
 
   def isHighImpact(from_lang, to_lang, req_id)
     high_impact_requests = Request.where(from_language: from_lang, to_language: to_lang, num_claims: 0).where.not(id: req_id)

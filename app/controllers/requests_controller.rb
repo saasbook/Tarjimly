@@ -1,3 +1,9 @@
+# REQUEST STATUSES
+#     0 - Pending 
+#     1 - Complete and Notified 
+#     2 - Deleted by User
+#     3 - Complete but waiting notification
+
 class RequestsController < ApplicationController
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
