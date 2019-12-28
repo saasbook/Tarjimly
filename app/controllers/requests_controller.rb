@@ -7,6 +7,12 @@
 class RequestsController < ApplicationController
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
+    validates :title, presence: true
+    validates :from_language, presence: true
+    validates :to_language, presence: true
+    validates :description, presence: true
+    validates :deadline, presence: true
+    
     def index
         @name = session[:name]
         @role = session[:role]
@@ -40,7 +46,6 @@ class RequestsController < ApplicationController
     
     def create
         @request = Request.new(request_params)
-        #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
             return
