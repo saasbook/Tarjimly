@@ -28,18 +28,17 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    begin
-      ActiveRecord::Base.transaction do
+    ActiveRecord::Base.transaction do
         Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) 
         req =  Request.find_by(id: params[:request_id])
-        req.num_claims = req.num_claims + 1
+        existing_claims = req.num_claims
+        req.num_claims = existing_claims + 1
         req.save
-      end
-    rescue => e
+        redirect_to claims_url
+    end
+  rescue ActiveRecord::RecordInvalid 
       flash[:notice] = "Uh Oh. Something went wrong, please try again."
       redirect_to view_requests_url
-    end
-    redirect_to claims_url
   end
 
   def index

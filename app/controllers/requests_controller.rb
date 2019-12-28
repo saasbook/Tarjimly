@@ -5,6 +5,8 @@
 #     3 - Complete but waiting notification
 
 class RequestsController < ApplicationController
+    include ActiveModel::Validations
+
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
     validates :title, presence: true
@@ -17,7 +19,7 @@ class RequestsController < ApplicationController
         @name = session[:name]
         @role = session[:role]
         @status = params[:status] || [0, 1]
-        @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 0)
         @total_count = Request.where(user_tarjimly_id: @userID, _status: [0,1]).count
     end
 
