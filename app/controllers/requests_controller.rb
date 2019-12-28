@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-    before_action :authorize 
+    before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
     def index
         @name = session[:name]
@@ -106,6 +106,17 @@ class RequestsController < ApplicationController
           @userID = session[:tarjimlyID] 
         end
       end
+    
+      def completed
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 3)
+        if @requests.present?
+            @requests.each do |request|
+                flash[:success] = "Your request #{view_context.link_to(request.title,  request_path(request_id: request.id))} has been translated!".html_safe
+                request._status = 1
+                request.save!
+            end 
+        end 
+    end
 
     private
     def request_params
