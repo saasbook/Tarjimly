@@ -5,10 +5,10 @@
 #     3 - Complete but waiting notification
 
 class RequestsController < ApplicationController
-    include ActiveModel::Validations
 
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
+    include ActiveModel::Validations
     validates :title, presence: true
     validates :from_language, presence: true
     validates :to_language, presence: true
@@ -59,6 +59,7 @@ class RequestsController < ApplicationController
             upload_format = upload_format[1..-1]
         end
         @request.document_format = upload_format
+        puts @userID
         @request.user_tarjimly_id = @userID
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
         if @request.save
@@ -116,9 +117,9 @@ class RequestsController < ApplicationController
         else 
           @userID = session[:tarjimlyID] 
         end
-      end
+    end
     
-      def completed
+    def completed
         @requests = Request.where(user_tarjimly_id: @userID, _status: 3)
         if @requests.present?
             @requests.each do |request|
@@ -126,6 +127,8 @@ class RequestsController < ApplicationController
                 request._status = 1
                 request.save!
             end 
+        else
+            return 
         end 
     end
 
