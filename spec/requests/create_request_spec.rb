@@ -51,7 +51,7 @@ describe "Creating a new request" do
       fill_in 'request_title', with: 'Rspec Upload Test'
       fill_in 'request_description', with: 'Rspec Test Description'
       fill_in 'request_deadline', with: '2097-08-08'
-      attach_file('request_document_uploads', test_file)
+      attach_file('request_document_uploads', test_file, visible: false, disabled: true)
       select 'English', from: 'request_from_language'
       select 'Arabic', from: 'request_to_language'
     end
