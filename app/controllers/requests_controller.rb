@@ -8,12 +8,12 @@ class RequestsController < ApplicationController
 
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
-    # include ActiveModel::Validations
-    # validates :title, presence: true
-    # validates :from_language, presence: true
-    # validates :to_language, presence: true
-    # validates :description, presence: true
-    # validates :deadline, presence: true
+    include ActiveModel::Validations
+    validates :title, presence: true
+    validates :from_language, presence: true
+    validates :to_language, presence: true
+    validates :description, presence: true
+    validates :deadline, presence: true
     
     def index
         @name = session[:name]
