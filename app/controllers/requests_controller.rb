@@ -8,12 +8,12 @@ class RequestsController < ApplicationController
 
     before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
-    include ActiveModel::Validations
-    validates :title, presence: true
-    validates :from_language, presence: true
-    validates :to_language, presence: true
-    validates :description, presence: true
-    validates :deadline, presence: true
+    # include ActiveModel::Validations
+    # validates :title, presence: true
+    # validates :from_language, presence: true
+    # validates :to_language, presence: true
+    # validates :description, presence: true
+    # validates :deadline, presence: true
     
     def index
         @name = session[:name]
@@ -42,7 +42,8 @@ class RequestsController < ApplicationController
     end
     
     def new
-        @format = params[:format] || "text"
+        @format = params[:document_format] || "text"
+        puts params[:document_format] 
         @request = Request.new
     end
     
@@ -52,7 +53,7 @@ class RequestsController < ApplicationController
             redirect_to new_request_url
             return
         end
-        upload_format = params[:request][:format] || "text"
+        upload_format = params[:request][:document_format] || "text"
         if upload_format != "text"
             filename_string = @request.document_uploads.first.filename.to_s
             upload_format =  File.extname(filename_string)
