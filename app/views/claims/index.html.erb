@@ -31,7 +31,7 @@
       </div>
     </div>
     <div class="flex-body">
-      <div class="spread pad-10 border-bottom" >
+      <div class="spread pad-10" >
         <h3 class="section-header-big">
           <% if @status.is_a?(String) && @status.to_i == 0%>
             Pending Claims
@@ -61,7 +61,7 @@
       <div class="request-list">
       <% if @dismiss_claims.empty? && @claims.empty? %>
         <div class="alert alert-warning mg-tp-20" role="alert">
-          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link"> request list</a>.
+          You have no <%= @status.is_a?(String) && @status.to_i == 1 ? "completed" : ""%> claims at the moment. Get started by claiming a new request from the <a href="/translators/requests" class="alert-link"> request list</a>!
         </div>
       <% end %>
       <% @dismiss_claims.each do |deleted_claim| %>
