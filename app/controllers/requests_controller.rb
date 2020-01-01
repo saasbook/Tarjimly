@@ -43,7 +43,6 @@ class RequestsController < ApplicationController
     
     def new
         @format = params[:document_format] || "text"
-        puts params[:document_format] 
         @request = Request.new
     end
     
@@ -60,7 +59,6 @@ class RequestsController < ApplicationController
             upload_format = upload_format[1..-1]
         end
         @request.document_format = upload_format
-        puts @userID
         @request.user_tarjimly_id = @userID
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
         if @request.save

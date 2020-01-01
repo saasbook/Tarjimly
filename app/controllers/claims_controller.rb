@@ -92,7 +92,6 @@ class ClaimsController < ApplicationController
       claim._status = 1
       claim.save!
       req = claim.request
-      puts "hello"
       req.claims.each do |c|
         if c.id.to_i != params[:claim_id].to_i
           c._status = 2
