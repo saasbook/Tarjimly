@@ -1,11 +1,25 @@
+# REQUEST STATUSES
+#     0 - Pending 
+#     1 - Complete and Notified 
+#     2 - Deleted by User
+#     3 - Complete but waiting notification
+
 class RequestsController < ApplicationController
-    before_action :authorize 
+
+    before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
+    include ActiveModel::Validations
+    validates :title, presence: true
+    validates :from_language, presence: true
+    validates :to_language, presence: true
+    validates :description, presence: true
+    validates :deadline, presence: true
+    
     def index
         @name = session[:name]
         @role = session[:role]
         @status = params[:status] || [0, 1]
-        @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 0)
         @total_count = Request.where(user_tarjimly_id: @userID, _status: [0,1]).count
     end
 
@@ -28,18 +42,17 @@ class RequestsController < ApplicationController
     end
     
     def new
-        @format = params[:format] || "text"
+        @format = params[:document_format] || "text"
         @request = Request.new
     end
     
     def create
         @request = Request.new(request_params)
-        #TODO: should be a validation and include rest
         if @request.nil? || @request.deadline.nil?
             redirect_to new_request_url
             return
         end
-        upload_format = params[:request][:format] || "text"
+        upload_format = params[:request][:document_format] || "text"
         if upload_format != "text"
             filename_string = @request.document_uploads.first.filename.to_s
             upload_format =  File.extname(filename_string)
@@ -47,8 +60,6 @@ class RequestsController < ApplicationController
         end
         @request.document_format = upload_format
         @request.user_tarjimly_id = @userID
-        @request.num_claims = 0 #TODO: Should be daault in db
-        @request._status = 0  #TODO: Should be daault in db
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
         if @request.save
           flash[:success] = "Successfully created your request."
@@ -105,7 +116,20 @@ class RequestsController < ApplicationController
         else 
           @userID = session[:tarjimlyID] 
         end
-      end
+    end
+    
+    def completed
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 3)
+        if @requests.present?
+            @requests.each do |request|
+                flash[:success] = "Your request #{view_context.link_to(request.title,  request_path(request_id: request.id))} has been translated!".html_safe
+                request._status = 1
+                request.save!
+            end 
+        else
+            return 
+        end 
+    end
 
     private
     def request_params

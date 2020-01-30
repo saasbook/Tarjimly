@@ -15,8 +15,7 @@ class AuthController < ApplicationController
         end
         begin
             user_response = RestClient.get(
-                'https://tarjim.ly/api/mobile/v1/users/metadata', 
-                {:cookies => response.cookies})
+                'https://tarjim.ly/api/mobile/v1/users/metadata', {:cookies => response.cookies})
         rescue RestClient::Exception => e
             redirect_to root_path, flash: {info: "Unable to authenticate Tarjimly User, please try again."}
             return
