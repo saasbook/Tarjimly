@@ -17,7 +17,9 @@
 @import "bootstrap";
 @import "font-awesome";
 
-
+body {
+  background-color: rgb(250, 250, 252);
+}
 
 .page-header-container {
   text-align: center;
@@ -88,11 +90,11 @@
 
   a {
     color: white;
-    opacity: .8;
+    opacity: .95;
     text-decoration: none;
     letter-spacing: 1px;
-    transition: .3s;
-    font-size: 18px;
+    transition: .1s;
+    font-size: 16px;
     padding-bottom: 2px;
     align-self: center;
     @media only screen and (min-width: 800px) {
@@ -122,10 +124,11 @@
     flex: 0 .5 400px;
     align-content: center;
     
-    // border-right: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
-    background-color: rgba(0, 0, 0, 0.03);
+    background-color: white;
+    box-shadow: 4px 0 5px -2px  rgba(0,0,0,0.05);
 
     display: flex;
     flex-flow: column;
@@ -171,17 +174,19 @@
 
   .flex-header {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: white;
+    box-shadow: 0 3px 14px rgba(0,0,0,0.05);
     padding: 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
     @media only screen and (min-width: 800px) {
       text-align: left;
       display: flex;
       justify-content: space-between;
       padding: 20px 11%;
     }
-    
-
   }
+
+
   .flex-body {
     flex: 1;
     padding: 15px;
@@ -377,7 +382,7 @@
   border-radius: 4px;
   padding: 20px;
   margin: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   background-color: white;
   box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.05);
   
