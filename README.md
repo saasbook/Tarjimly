@@ -28,7 +28,7 @@ Our app has been built in Ruby on Rails, with postgrsql and yarn. Please ensure 
 
 `brew install postgresql`
 
-`brew start sql`
+`brew services start postgresql`
 
 To ensure our program will execute correctly ensure you have the right versions, and necessary gems installed 
 
