@@ -22,6 +22,8 @@ Our app has been built in Ruby on Rails, with postgrsql and yarn. Please ensure 
 
 `node 10.16.3`
 
+`npm install node@10.16.3`
+
 `yarn 1.21.1`
 
 `brew install postgresql`
