@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
     validates :to_language, presence: true
     validates :description, presence: true
     validates :deadline, presence: true
+    validates :email, presence: true
     
     def index
         @name = session[:name]
