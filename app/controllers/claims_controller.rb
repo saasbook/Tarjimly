@@ -100,6 +100,7 @@ class ClaimsController < ApplicationController
       end
       req._status = 3
       req.save!
+      RequestMailer.completed_request
       redirect_to claim_path(claim_id: params[:claim_id])
     end 
   rescue ActiveRecord::RecordInvalid 

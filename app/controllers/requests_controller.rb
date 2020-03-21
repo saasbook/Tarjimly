@@ -14,6 +14,7 @@ class RequestsController < ApplicationController
     validates :to_language, presence: true
     validates :description, presence: true
     validates :deadline, presence: true
+    validates :email, presence: true
     
     def index
         @name = session[:name]
@@ -61,6 +62,7 @@ class RequestsController < ApplicationController
         @request.document_format = upload_format
         @request.user_tarjimly_id = @userID
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
+        @request.email = session[:email]
         if @request.save
           flash[:success] = "Successfully created your request."
           redirect_to requests_url

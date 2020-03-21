@@ -3,6 +3,9 @@ class RequestObserver < ActiveRecord::Observer
     def after_update(request)
         if request._status == 3
             puts "EMAIL SENT OUT TO AIDWORKER BECAUSE TRANSLATOR SUBMITTED DOCUMENT FOR THE DOCUMENT CALLED: #{request.title}"
+            puts "TARJIMLY NAME "
+            # puts "#{session[:email]}"
         end
+
     end
 end 
