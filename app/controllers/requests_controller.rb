@@ -61,6 +61,7 @@ class RequestsController < ApplicationController
         @request.document_format = upload_format
         @request.user_tarjimly_id = @userID
         @request.deadline = @request.deadline.time.in_time_zone("UTC")
+        @request.email = session[:email]
         if @request.save
           flash[:success] = "Successfully created your request."
           redirect_to requests_url
