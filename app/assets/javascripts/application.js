@@ -14,9 +14,7 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery3
-//= require bootstrap
 //= require jquery_ujs
-//= require bootstrap.min
 //= require direct_uploads.js
 //= require bootstrap-sprockets
 //= require popper
