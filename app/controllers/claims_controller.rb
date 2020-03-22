@@ -100,7 +100,7 @@ class ClaimsController < ApplicationController
       end
       req._status = 3
       req.save!
-      RequestMailer.with(claim: claim).completed_request
+      RequestMailer.completed_request.deliver
       puts "SHOULD HAVE CALLED MAILER"
       puts ""
       puts ""
