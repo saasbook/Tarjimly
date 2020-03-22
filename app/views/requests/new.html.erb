@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
           <%= r.label :to_language %><br>
-          <%= r.select("to_language", options_for_select(@languages), {prompt: "Select Language"}, {class: "form-control", required: true}) %>
+          <%= r.select("to_language", options_for_select(@languages), {prompt: "Select Language"}, {class: "form-control",  :multiple => true, required: true}) %>
         </div>
 
     <div class="form-group">

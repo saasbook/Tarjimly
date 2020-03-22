@@ -42,29 +42,35 @@ class RequestsController < ApplicationController
     end
     
     def create
-        @request = Request.new(request_params)
-        #TODO: should be a validation and include rest
-        if @request.nil? || @request.deadline.nil?
-            redirect_to new_request_url
-            return
-        end
-        upload_format = params[:request][:format] || "text"
-        if upload_format != "text"
-            filename_string = @request.document_uploads.first.filename.to_s
-            upload_format =  File.extname(filename_string)
-            upload_format = upload_format[1..-1]
-        end
-        @request.document_format = upload_format
-        @request.user_tarjimly_id = @userID
-        @request.num_claims = 0 #TODO: Should be daault in db
-        @request._status = 0  #TODO: Should be daault in db
-        @request.deadline = @request.deadline.time.in_time_zone("UTC")
-        if @request.save
-          flash[:success] = "Successfully created your request."
-          redirect_to requests_url
-        else
-          flash[:alert] = "Uh Oh! There was an error creating your request."
+       
+        params[:request]['to_language'].each do |to_lang|
+            if to_lang.nil? || to_lang.empty?
+                next
+            end
+            @request = Request.new(request_params)
+            @request.to_language = to_lang
+            #TODO: should be a validation and include rest
+            if @request.nil? || @request.deadline.nil?
+                redirect_to new_request_url
+                return
+            end
+            upload_format = params[:request][:format] || "text"
+            if upload_format != "text"
+                filename_string = @request.document_uploads.first.filename.to_s
+                upload_format =  File.extname(filename_string)
+                upload_format = upload_format[1..-1]
+            end
+            @request.document_format = upload_format
+            @request.user_tarjimly_id = @userID
+            @request.num_claims = 0 #TODO: Should be daault in db
+            @request._status = 0  #TODO: Should be daault in db
+            @request.deadline = @request.deadline.time.in_time_zone("UTC")
+            if !@request.save
+                flash[:alert] = "Uh Oh! There was an error creating your request."
+            end
         end 
+        flash[:success] = "Successfully created your request."
+        redirect_to requests_url
     end
 
     def delete 
