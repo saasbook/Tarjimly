@@ -18,7 +18,7 @@
 @import "font-awesome";
 
 body {
-  background-color: rgb(250, 250, 252);
+  background-color: rgb(250, 250, 250);
 }
 
 .page-header-container {
@@ -638,6 +638,10 @@ body {
   margin-top: 15px;
 }
 
+.mg-top-5 {
+  margin-top: 5px;
+}
+
 .mg-bt-5 {
   margin-bottom: 5px;
 }
@@ -650,6 +654,10 @@ body {
 
 .mg-10 {
   margin: 10px ;
+}
+
+.pad-bt-5 {
+  padding-bottom: 5px;
 }
 
 .pad-10 {
@@ -812,6 +820,11 @@ input[type="checkbox"]:checked + label {
   display: block;
   margin: -10px -20px;
   padding: 10px 20px;
+}
+
+
+.btn.dropdown-toggle:focus {
+  outline: none !important;
 }
 
 .alert-alert {
