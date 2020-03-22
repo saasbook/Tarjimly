@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_071403) do
+ActiveRecord::Schema.define(version: 2020_03_21_030722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2019_12_09_071403) do
   end
 
   create_table "claims", force: :cascade do |t|
-    t.integer "translator_tarjimly_id"
-    t.integer "_status"
+    t.integer "translator_tarjimly_id", null: false
+    t.integer "_status", default: 0
     t.datetime "submitted_date"
     t.string "translation_text"
     t.string "translation_format"
@@ -58,11 +58,12 @@ ActiveRecord::Schema.define(version: 2019_12_09_071403) do
     t.string "title"
     t.string "description"
     t.string "categories", array: true
-    t.integer "num_claims"
+    t.integer "num_claims", default: 0
     t.string "form_type"
-    t.integer "_status"
+    t.integer "_status", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
   end
 
   create_table "sessions", force: :cascade do |t|

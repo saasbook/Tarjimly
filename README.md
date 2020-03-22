@@ -16,19 +16,21 @@ Our app has been built in Ruby on Rails, with postgrsql and yarn. Please ensure 
 
 `ruby 2.6.3`
 
-`rails 6.0.0`
+`rails 6.0.1`
 
-`npm 6.9.0`
+`npm 6.13.7`
 
-`node 10.16.3`
+`node 13.11.0`
+
+`npm install node@10.16.3`
 
 `yarn 1.21.1`
 
 `brew install postgresql`
 
-`brew start sql`
+`brew services start postgresql`
 
-To ensure our program will execute correctly ensure you have the right versions, and necessary gems installed 
+To ensure our program will execute correctly ensure you have the right versions, and necessary gems installed, by running the following commands:
 
 `rvm gemset empty`
 
@@ -37,6 +39,8 @@ To ensure our program will execute correctly ensure you have the right versions,
 `bundle install`
 
 ### Database creation and initialization
+
+After you have the correct installed and started postgresql, install the local database to be able to run our app locally
 
 `rake db:create`
 

@@ -1,14 +1,28 @@
 require 'rest-client'
 require 'json'
+# REQUEST STATUSES
+#     0 - Pending 
+#     1 - Complete and Notified 
+#     2 - Deleted by User
+#     3 - Complete but waiting notification
 
 class RequestsController < ApplicationController
-    before_action :authorize 
+
+    before_action :authorize, :completed
     helper_method :getDaysLeft, :current_user, :format_id  
+    include ActiveModel::Validations
+    validates :title, presence: true
+    validates :from_language, presence: true
+    validates :to_language, presence: true
+    validates :description, presence: true
+    validates :deadline, presence: true
+    validates :email, presence: true
+    
     def index
         @name = session[:name]
         @role = session[:role]
         @status = params[:status] || [0, 1]
-        @requests = Request.where(user_tarjimly_id: @userID, _status: @status)
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 0)
         @total_count = Request.where(user_tarjimly_id: @userID, _status: [0,1]).count
     end
 
@@ -45,8 +59,7 @@ class RequestsController < ApplicationController
             # pair[0] = ""
             # @categories.push JSON.parse(pair)['language']
         # end
-        
-        @format = params[:format] || "text"
+        @format = params[:document_format] || "text"
         @request = Request.new
     end
     
@@ -76,7 +89,7 @@ class RequestsController < ApplicationController
             if !@request.save
                 flash[:alert] = "Uh Oh! There was an error creating your request."
             end
-        end 
+        end
         flash[:success] = "Successfully created your request."
         redirect_to requests_url
     end
@@ -128,7 +141,20 @@ class RequestsController < ApplicationController
         else 
           @userID = session[:tarjimlyID] 
         end
-      end
+    end
+    
+    def completed
+        @requests = Request.where(user_tarjimly_id: @userID, _status: 3)
+        if @requests.present?
+            @requests.each do |request|
+                flash[:success] = "Your request #{view_context.link_to(request.title,  request_path(request_id: request.id))} has been translated!".html_safe
+                request._status = 1
+                request.save!
+            end 
+        else
+            return 
+        end 
+    end
 
     private
     def request_params

@@ -1,3 +1,10 @@
+# CLAIM STATUSES
+#     0 - In Progress 
+#     1 - Submitted
+#     2 - Submitted by another Translator
+#     3 - Deleted by the User
+#     4 - Unclaimed
+
 class ClaimsController < ApplicationController
   before_action :authorize
   helper_method :getDaysLeft, :isHighImpact, :isAlreadyClaimed, :current_translator
@@ -21,25 +28,24 @@ class ClaimsController < ApplicationController
   end
 
   def create
-    begin
-      ActiveRecord::Base.transaction do
-        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) #TODO: Translator should be based on auth, status should be default
+    ActiveRecord::Base.transaction do
+        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) 
         req =  Request.find_by(id: params[:request_id])
-        req.num_claims = req.num_claims + 1
+        existing_claims = req.num_claims
+        req.num_claims = existing_claims + 1
         req.save
-      end
-    rescue => e
+        redirect_to claims_url
+    end
+  rescue ActiveRecord::RecordInvalid 
       flash[:notice] = "Uh Oh. Something went wrong, please try again."
       redirect_to view_requests_url
-    end
-    redirect_to claims_url
   end
 
   def index
     @name = session[:name]
     @role = session[:role]
     @status = params[:status] || [0,1]
-    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status}) #TODO translator_tarjimly_id log in details
+    @claims = Claim.where({translator_tarjimly_id: @translatorID, _status: @status})
     @dismiss_claims = Claim.where({translator_tarjimly_id: @translatorID, _status: [2, 3]})
     @total_count = Claim.where({translator_tarjimly_id: @translatorID, _status: 1}).count
     if Claim.where({translator_tarjimly_id: @translatorID , _status: 3}).present?
@@ -79,27 +85,26 @@ class ClaimsController < ApplicationController
   end
 
   def complete
-    begin
-      ActiveRecord::Base.transaction do
-        claim = Claim.find_by(id: params[:claim_id])
-        claim.translation_format = "text"
-        claim.translation_text = params[:claim][:translation_text]
-        claim._status = 1
-        claim.save!
-        req = claim.request
-        req.claims.each do |c|
-          if c.id.to_i != params[:claim_id].to_i
-            c._status = 2
-            c.save!
-          end
+    ActiveRecord::Base.transaction do 
+      claim = Claim.find_by(id: params[:claim_id])
+      claim.translation_format = "text"
+      claim.translation_text = params[:claim][:translation_text]
+      claim._status = 1
+      claim.save!
+      req = claim.request
+      req.claims.each do |c|
+        if c.id.to_i != params[:claim_id].to_i
+          c._status = 2
+          c.save!
         end
-        req._status = 1
-        req.save!
-        redirect_to claim_path(claim_id: params[:claim_id])
       end
-    rescue => e
+      req._status = 3
+      req.save!
+      RequestMailer.completed_request
+      redirect_to claim_path(claim_id: params[:claim_id])
+    end 
+  rescue ActiveRecord::RecordInvalid 
       flash[:alert] = "Uh Oh. Submission unsuccessful, please try again."
-    end
   end
 
   def isHighImpact(from_lang, to_lang, req_id)
