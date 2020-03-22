@@ -37,12 +37,20 @@ class RequestsController < ApplicationController
             pair[0] = ""
             @languages.push JSON.parse(pair)['language']
         end
+        # TODO: NEED END POINT FOR THE CATEGORY OPTIONS IN TARJIMLY SERVER
+
+        # response_two = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
+        # @categories = Array.new
+        # response_two.body.scan(/[^}]*}/).each do |pair|
+            # pair[0] = ""
+            # @categories.push JSON.parse(pair)['language']
+        # end
+        
         @format = params[:format] || "text"
         @request = Request.new
     end
     
     def create
-       
         params[:request]['to_language'].each do |to_lang|
             if to_lang.nil? || to_lang.empty?
                 next
