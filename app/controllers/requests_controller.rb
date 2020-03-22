@@ -1,3 +1,6 @@
+require 'rest-client'
+require 'json'
+
 class RequestsController < ApplicationController
     before_action :authorize 
     helper_method :getDaysLeft, :current_user, :format_id  
@@ -28,6 +31,12 @@ class RequestsController < ApplicationController
     end
     
     def new
+        response = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
+        @languages = Array.new
+        response.body.scan(/[^}]*}/).each do |pair|
+            pair[0] = ""
+            @languages.push JSON.parse(pair)['language']
+        end
         @format = params[:format] || "text"
         @request = Request.new
     end
