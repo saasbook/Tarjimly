@@ -86,6 +86,7 @@ gem 'rails-observers'
 gem 'rspec'   
 gem 'rspec-mocks'
 gem 'aws-sdk-s3'
+gem 'aws-sdk'
 gem 'rack-flash3'
 gem 'webpacker'
 gem "font-awesome-rails"

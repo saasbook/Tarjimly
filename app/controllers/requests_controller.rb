@@ -1,3 +1,5 @@
+require 'rest-client'
+require 'json'
 # REQUEST STATUSES
 #     0 - Pending 
 #     1 - Complete and Notified 
@@ -43,32 +45,53 @@ class RequestsController < ApplicationController
     end
     
     def new
+        response = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
+        @languages = Array.new
+        response.body.scan(/[^}]*}/).each do |pair|
+            pair[0] = ""
+            @languages.push JSON.parse(pair)['language']
+        end
+        # TODO: NEED END POINT FOR THE CATEGORY OPTIONS IN TARJIMLY SERVER
+
+        # response_two = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
+        # @categories = Array.new
+        # response_two.body.scan(/[^}]*}/).each do |pair|
+            # pair[0] = ""
+            # @categories.push JSON.parse(pair)['language']
+        # end
         @format = params[:document_format] || "text"
         @request = Request.new
     end
     
     def create
-        @request = Request.new(request_params)
-        if @request.nil? || @request.deadline.nil?
-            redirect_to new_request_url
-            return
+        params[:request]['to_language'].each do |to_lang|
+            if to_lang.nil? || to_lang.empty?
+                next
+            end
+            @request = Request.new(request_params)
+            @request.to_language = to_lang
+            #TODO: should be a validation and include rest
+            if @request.nil? || @request.deadline.nil?
+                redirect_to new_request_url
+                return
+            end
+            upload_format = params[:request][:format] || "text"
+            if upload_format != "text"
+                filename_string = @request.document_uploads.first.filename.to_s
+                upload_format =  File.extname(filename_string)
+                upload_format = upload_format[1..-1]
+            end
+            @request.document_format = upload_format
+            @request.user_tarjimly_id = @userID
+            @request.num_claims = 0 #TODO: Should be daault in db
+            @request._status = 0  #TODO: Should be daault in db
+            @request.deadline = @request.deadline.time.in_time_zone("UTC")
+            if !@request.save
+                flash[:alert] = "Uh Oh! There was an error creating your request."
+            end
         end
-        upload_format = params[:request][:document_format] || "text"
-        if upload_format != "text"
-            filename_string = @request.document_uploads.first.filename.to_s
-            upload_format =  File.extname(filename_string)
-            upload_format = upload_format[1..-1]
-        end
-        @request.document_format = upload_format
-        @request.user_tarjimly_id = @userID
-        @request.deadline = @request.deadline.time.in_time_zone("UTC")
-        @request.email = session[:email]
-        if @request.save
-          flash[:success] = "Successfully created your request."
-          redirect_to requests_url
-        else
-          flash[:alert] = "Uh Oh! There was an error creating your request."
-        end 
+        flash[:success] = "Successfully created your request."
+        redirect_to requests_url
     end
 
     def delete 
