@@ -17,12 +17,12 @@
         <div ></div>
     <% elsif session[:role] == "Translator" %>
       <div class="tarjimly-nav">
-          <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
+          <%= image_tag "logo.png", style: "height: 100%"%>
           <a href="/claims" class="">My Claims</a>
       </div>
     <% else %>
       <div class="tarjimly-nav">
-          <a href="https://tarjimly.org" target="_blank" style="height: 100%"><%= image_tag "logo.png", style: "height: 100%"%></a>
+          <%= image_tag "logo.png", style: "height: 100%"%>
           <a href="/requests" class="">My Requests</a>
       </div>
     <% end %>
