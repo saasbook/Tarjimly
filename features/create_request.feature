@@ -11,7 +11,7 @@ Feature: create a new request
   Scenario: successfully create a new request
     When I fill in "request_document_text" with "Cucumber Test Text"
     And I select "English" from "request_from_language"
-    And I select "Arabic" from "request_to_language"
+    And I select "Afar" from "request_to_language"
     And I fill in "request_deadline" with "2097-08-08"
     And I check "request_categories_legal"
     And I fill in "request_title" with "Cucumber Test Title"
@@ -24,7 +24,7 @@ Feature: create a new request
   Scenario: forget to fill in a field
     When I fill in "request_title" with "Cucumber Test Request"
     And I click the "Create Request" button
-    Then I should be on the "/requests/new" path
+    Then I should be on the "/requests" path
 
 # Scenario: upload a file
 #   When I select "Upload File Instead"
