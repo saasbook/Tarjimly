@@ -160,12 +160,7 @@
             <%#  <%= link_to "Enter Text Instead", new_request_path(document_format: "text"), method: :get %>
             <%# <% end %>
           </div>
-           <script>
-            $(function () {
-              $('.selectpicker').selectpicker();
-            });
-            $.fn.selectpicker.Constructor.BootstrapVersion = '4';
-          </script>
+           
 
 
           <div class="form-group">
@@ -197,3 +192,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  $(function () {
+    $('.selectpicker').selectpicker();
+  });
+  $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+</script>

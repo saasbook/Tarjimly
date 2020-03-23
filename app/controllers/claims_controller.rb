@@ -19,7 +19,15 @@ class ClaimsController < ApplicationController
       @requests = Request.where.not(id: claimed_ids)
     end
     @requests = @requests.sort_by{ |r| [r.deadline, r.num_claims]}
-  end
+
+
+    response = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
+    @languages = Array.new
+    response.body.scan(/[^}]*}/).each do |pair|
+        pair[0] = ""
+        @languages.push JSON.parse(pair)['language']
+    end
+end
 
   def preview
     @claim = Claim.new
