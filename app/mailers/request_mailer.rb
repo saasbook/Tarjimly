@@ -12,8 +12,13 @@ class RequestMailer < ApplicationMailer
         @request = Request.find_by_id(@claim.request_id)
         user_email = @request.email
         @url = 'https://tarjimly-docs.com'
-        # attatchments.inline['tarjimly_footer.jpg'] = File.read('/images/tarjimlyfooter.jpg')
-        mail(to: user_email, subject: "Your request '#{@request.title}' has been completed!")
+        attachments.inline['logo-2.png'] = File.read('app/assets/images/logo-2.png')
+        # image_tag attachments['tarjimly'].url
+        @to_lang = @request.to_language
+        @from_lang = @request.from_language
+        @title = @request.title 
+
+        mail(to: user_email, subject: "Your request '#{@request.title}' has been completed!" )
     end
 
 end

@@ -1,18 +1,31 @@
 
-<!DOCTYPE html>
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
 <html>
   <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    h1 {color:blue;}
+    p {color:black;}
+  </style>
+  <center>
+  <%= image_tag(attachments['logo-2.png'].url) %>
+  </center>
   </head>
   <body>
+     
     <h1> Hello </h1>
     <p>
-      Your translation request @request.title has been successfully completed! <br>
+      Your requested translation @title from @from_lang to @to_lang has been completed by our translators! You can view, and download the translation on TarjimlyDocs by logging in bellow!
+      <br>
     </p>
     <p>
-      To view the completed translation please click  <a href="https://tarjimilydocs/requests/#{@request.id}" > here </a>
-      
+    <center>
+       <a href="https://tarjimilydocs/requests/#{@request.id}", class:"login100-form-btn" > TarjimlyDocs </a>
+      </center>   
     </p>
-    # <%= image_tag attachments['tarjimly_footer.jpg'].url >
   </body>
 </html>
