@@ -9,4 +9,3 @@ class ClaimDeadlineMailer < ApplicationMailer
         mail(to: translator_email, subject: "Your claimed request #{@request.title} is due in 24 Hours!")
     end
 end
-xss
