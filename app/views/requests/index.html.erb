@@ -133,9 +133,25 @@
       </div>
        <%= form_for @request do |r| %>
         <div class="modal-body">
+         
+         <div class="form-group">
+            <%= r.label(:from_language, "From Lanaguage", {class:"pad-bt-5"})%><br>
+            <%= r.select("from_language", options_for_select(@languages), {prompt: "Select Language"}, {class: "form-control selectpicker", required: true, "data-live-search": true, "data-live-search-placeholder": "Search Languages" }) %>
+          </div>
+          <div class="form-group">
+            <%= r.label(:to_language, "To Language(s)", {class:"pad-bt-5"})%><br>
+            <%= r.select("to_language", options_for_select(@languages), {}, {class: "form-control selectpicker", multiple: true, required: true, "data-live-search": true, "data-live-search-placeholder": "Search Languages" }) %>
+          </div>
+
+           <div class="form-group">
+            <%= r.label :title %><br>
+            <%= r.text_field(:title, required: true, class: "form-control") %>
+          </div>
+         
           <div class="form-group">
           <%#  <% if @format == "text"%>
-              <%= r.label :document %><br>
+              <%= r.label(:document, {class:"no-mg-tb"})%>
+              <small class="form-text text-muted no-mg-tb mg-bt-5"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. </small> 
               <%= r.text_area(:document_text, rows: 5,  required: true, direct_upload: true,  contenteditable:"true", class: "form-control") %>
               <%# <%= link_to "Upload File Instead", new_request_path(document_format: "upload"), method: :get %>
             <%# <% else %>
@@ -144,31 +160,20 @@
             <%#  <%= link_to "Enter Text Instead", new_request_path(document_format: "text"), method: :get %>
             <%# <% end %>
           </div>
-          
-          <div class="form-group">
-            <%= r.label(:from_language, {class:"pad-bt-5"})%><br>
-            <%= r.select("from_language", options_for_select(@languages), {prompt: "Select Language"}, {class: "form-control selectpicker", required: true }) %>
-          </div>
-          <div class="form-group">
-            <%= r.label(:to_language, {class:"pad-bt-5"})%><br>
-            <%= r.select("to_language", options_for_select(@languages), {}, {class: "form-control selectpicker", multiple: true, required: true}) %>
-          </div>
-          <script>
+           <script>
             $(function () {
               $('.selectpicker').selectpicker();
             });
+            $.fn.selectpicker.Constructor.BootstrapVersion = '4';
           </script>
-          
+
 
           <div class="form-group">
-            <%= r.label :title %><br>
-            <%= r.text_field(:title, required: true, class: "form-control") %>
-          </div>
-
-          <div class="form-group">
-            <%= r.label :instructions %><br>
+            <%= r.label(:instructions, {class:"no-mg-tb"}) %>
+            <small class="form-text text-muted no-mg-tb mg-bt-5"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small> 
             <%= r.text_field(:description, required: true, class: "form-control") %>
           </div>
+          
 
           <%= r.hidden_field :document_format, value: @format %>
 
@@ -177,15 +182,10 @@
             <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
           </div>
 
+
           <div class="form-group">
-            <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
             <%= r.label :categories %><br>
-              <% @categories.each do |c| %>
-                <%# <div class="form-check form-check-inline"> %>
-                  <%= r.check_box :categories, { multiple: true, class: "form-check-input" }, c, false %>
-                  <%= r.label(c, class: "form-check-label") %>
-                <%# </div> %>
-              <% end %>
+            <%= r.select("categories", options_for_select(@categories), {}, {class: "form-control selectpicker", multiple: true, required: true}) %>
           </div>
         </div>
         <div class="modal-footer">

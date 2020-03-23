@@ -40,6 +40,7 @@ class RequestsController < ApplicationController
             # pair[0] = ""
             # @categories.push JSON.parse(pair)['language']
         # end
+        @categories = ["Day To Day", "Legal", "Medical", "Housing", "Food", "Clothing", "Education", "Employment", "Immigration", "Asylum Interveiw", "Assylum Docs"]
         @format = params[:document_format] || "text"
         @request = Request.new
     end
@@ -105,6 +106,7 @@ class RequestsController < ApplicationController
             @request.num_claims = 0 #TODO: Should be daault in db
             @request._status = 0  #TODO: Should be daault in db
             @request.deadline = @request.deadline.time.in_time_zone("UTC")
+            @request.categories = @request.categories[1...]
             if !@request.save
                 flash[:alert] = "Uh Oh! There was an error creating your request."
             end
@@ -139,13 +141,14 @@ class RequestsController < ApplicationController
             return days_left.to_s + " days", false
         end
     end
+
     # def format_id(s)
-    #     s_list = s.downcase.split(" ")
-    #     new_s = ""
+    #     s_list = s.split(" ")
+    #     returnString = ""
     #     s_list.each do |i|
-    #         new_s += "_#{i}"
+    #         returnString += "_#{i.downcase}"
     #     end
-    #     return new_s
+    #     return returnString
     # end
     
     def authorize
