@@ -101,9 +101,6 @@ class ClaimsController < ApplicationController
       req._status = 3
       req.save!
       RequestMailer.completed_request(params[:claim_id]).deliver_now
-      puts "SHOULD HAVE CALLED MAILER"
-      puts ""
-      puts ""
       redirect_to claim_path(claim_id: params[:claim_id])
     end 
   rescue ActiveRecord::RecordInvalid 
