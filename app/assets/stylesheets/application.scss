@@ -14,11 +14,15 @@
  */
 
 // @import "bootstrap-sprockets";
+$primary: #337ab7;
 @import "bootstrap";
 @import "font-awesome";
 
-body {
+
+
+.form-control {
   background-color: #f8f9fa;
+  border-color:  #f8f9fa;;
 }
 
 .page-header-container {
@@ -142,7 +146,7 @@ body {
   }
 
   .flex-body {
-    
+    background-color: #f8f9fa;
     padding: 15px;
     flex: 1 1 auto;
     overflow-y: scroll;
@@ -188,6 +192,7 @@ body {
 
 
   .flex-body {
+    background-color: #f8f9fa;
     flex: 1;
     padding: 15px;
     overflow-y: scroll;
@@ -433,11 +438,12 @@ body {
   margin: 5px 0;
 }
 .tag {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   padding: 5px;
   border-radius: 2px;
   margin-right: 3px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 1px rgba(0,0,0,0.05);
 }
 .tag-big {
   @media only screen and (min-width: 800px) {
@@ -519,10 +525,11 @@ body {
 .langs {
   margin-bottom: 5px;
   .sm {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     width: 10px;
     color: #337ab7;
-    margin-right: 2px;
+    margin-right: 10px;
+    margin-left: 5px;
   }
 }
 
@@ -553,9 +560,10 @@ body {
 
   .document-container{
     border-radius: 5px;
-    background-color: rgba(0,0,0,0.05);
+    background-color:white;
     padding: 10px;
     margin:10px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.05);
 
     .document-text {
       max-height: 40%;
@@ -599,6 +607,7 @@ body {
     margin: 1.5em 10px;
     border-radius: 5px;
     background-color: rgba(199, 224, 238, 0.424);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 4px 14px rgba(0,0,0,0.05);
     padding: 10px;
 
     .document-text {
@@ -762,6 +771,7 @@ input[type="checkbox"]:checked + label {
   padding: 10px;
   padding-right: 30px;
   background-color: rgb(250, 250, 252);
+  margin-top: 4px;
   cursor: pointer;
   white-space: nowrap;
   color: #337ab7;
@@ -769,10 +779,14 @@ input[type="checkbox"]:checked + label {
   font-size: 18px;
 }
 
+.dd-alt {
+  margin-top: 0;
+}
+
 .dd-button:after {
   content: '';
   position: absolute;
-  top: 40%;
+  top: 55%;
   right: 15px;
   transform: translateY(-50%);
   width: 0; 
@@ -782,6 +796,10 @@ input[type="checkbox"]:checked + label {
   border-top: 5px solid #337ab7;
   color: #337ab7;
 }
+.dd-alt:after {
+  top:45%;
+}
+
 
 .dd-button:hover {
   background-color: #eeeeee;
@@ -873,3 +891,8 @@ input[type="checkbox"]:checked + label {
   @extend .alert-danger;
 }
 
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 700px;
+  }
+}
