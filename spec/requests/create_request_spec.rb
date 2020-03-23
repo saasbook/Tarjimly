@@ -45,6 +45,8 @@ describe "Creating a new request" do
     expect(page).to have_current_path('/requests')
   end
 
+  # testing for disabled file upload
+
   # it "should be able to upload a file" do
   #   click_link("Upload File Instead")
   #   test_file = File.join(Rails.root, "test/fixtures/files/test.pdf")
