@@ -90,6 +90,8 @@ gem 'aws-sdk-s3'
 # email notification gems 
 gem 'aws-sdk'
 gem 'figaro'
+gem 'rufus-scheduler'
+
 
 gem 'rack-flash3'
 gem 'webpacker'

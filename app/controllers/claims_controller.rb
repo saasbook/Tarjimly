@@ -29,7 +29,7 @@ class ClaimsController < ApplicationController
 
   def create
     ActiveRecord::Base.transaction do
-        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) 
+        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id], email: session[:email]) 
         req =  Request.find_by(id: params[:request_id])
         existing_claims = req.num_claims
         req.num_claims = existing_claims + 1
@@ -100,7 +100,7 @@ class ClaimsController < ApplicationController
       end
       req._status = 3
       req.save!
-      RequestMailer.completed_request.deliver
+      RequestMailer.completed_request(params[:claim_id]).deliver_now
       puts "SHOULD HAVE CALLED MAILER"
       puts ""
       puts ""

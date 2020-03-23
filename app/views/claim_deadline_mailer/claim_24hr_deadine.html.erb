@@ -1,0 +1,31 @@
+
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+  <style>
+    h1 {color:blue;}
+    p {color:black;}
+  </style>
+  <center>
+  <%= image_tag(attachments['logo-2.png'].url) %>
+  </center>
+  </head>
+  <body>
+     
+    <h1> Hello!</h1>
+    <p>
+      The request @request.title you claimed is due tomorrow and has not been submitted. Visit TarjimlyDocs to complete the translation! 
+      <br>
+    </p>
+    <p>
+    <center>
+       <a href="https://tarjimilydocs/claims/#{@claim.id}", class:"login100-form-btn" > TarjimlyDocs </a>
+      </center>   
+    </p>
+  </body>
+</html>
