@@ -35,7 +35,7 @@
               <% end %>
               <% if @request._status==0%>
                 <span class="tag tag-big tag-orange"> Pending</span>
-              <% elsif @request._status==1 %>
+              <% elsif @request._status==1 || @request._status==3 %>
                 <span class="tag tag-big tag-green"> Completed </i></span>
               <% end %>
             </div>
