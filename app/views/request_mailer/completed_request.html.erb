@@ -8,8 +8,36 @@
 <html>
   <head>
   <style>
-    h1 {color:blue;}
-    p {color:black;}
+  h1 {color:#337ab7;;
+  font-size:42px;
+  font-weight: 325;}
+  p {color:black;
+  font-size:22px;font-weight: 275;}
+  input[type=submit] {
+   
+    background:transparent; 
+    padding:5px 15px; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-size: 32px;
+    font-weight: 250;
+    color:#346BB4;
+    border: 2px solid #346BB4;
+  }
+  input:hover[type="submit"] {
+    padding:5px 15px; 
+    background:#346BB4; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+    font-size: 32px;
+    font-weight: 250;
+    border: 2px solid #346BB4;
+    color: white;
+  }
   </style>
   <center>
   <%= image_tag(attachments['logo-2.png'].url) %>
@@ -17,15 +45,36 @@
   </head>
   <body>
      
-    <h1> Hello </h1>
+    <h1> Hello! </h1>
     <p>
-      Your requested translation @title from @from_lang to @to_lang has been completed by our translators! You can view, and download the translation on TarjimlyDocs by logging in bellow!
+      Your requested translation <%= @request.title%> from <%=@request.from_language%>  to <%= @request.to_language %> has been completed by our translators! You can view, and download the translation on TarjimlyDocs by logging in bellow!
       <br>
     </p>
     <p>
     <center>
-       <a href="https://tarjimilydocs/requests/#{@request.id}", class:"login100-form-btn" > TarjimlyDocs </a>
+       <a href="https://tarjimilydocs/requests/<%=@request.id%>"style="background:#346BB4; 
+       padding:5px 15px; 
+       border:0 none;
+       cursor:pointer;
+       -webkit-border-radius: 5px;
+       border-radius: 5px; 
+       font-size: 32px;
+       font-weight: 250;
+       color:white;
+       border: 2px solid #346BB4;">TarjimlyDocs </a>
       </center>   
     </p>
+    <p >
+     Thank you for your help supporting our mission!
+      <br>
+      The Tarjimly Team </p>
+      <p style="color:black;font-size:18px;font-weight: 200;">
+      <a href="https://www.tarjim.ly" > Tarjimly </a> 
+      <br> 
+      40 Royal Oak Ct <br>
+      Mountain View, CA 94040 <br>
+      <a href="tel:+17038629708">+1-703-862-9708</a> <br>
+      <a href="mailto:team@tarjim.ly">team@tarjim.ly</a> <br>   
+      </p>
   </body>
 </html>

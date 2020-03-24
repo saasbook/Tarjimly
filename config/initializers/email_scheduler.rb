@@ -2,7 +2,7 @@ require 'rufus-scheduler'
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '1m' do
+scheduler.every '12h' do
     Rails.logger.info "hello, it's #{Time.now}"
     Rails.logger.flush
     @all_calims = Claim.where(_status: 0)
