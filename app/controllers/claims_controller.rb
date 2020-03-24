@@ -37,7 +37,7 @@ end
 
   def create
     ActiveRecord::Base.transaction do
-        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id]) 
+        Claim.create(translator_tarjimly_id: @translatorID, _status: 0, request_id: params[:request_id], email: session[:email]) 
         req =  Request.find_by(id: params[:request_id])
         existing_claims = req.num_claims
         req.num_claims = existing_claims + 1
@@ -108,7 +108,7 @@ end
       end
       req._status = 3
       req.save!
-      RequestMailer.completed_request
+      RequestMailer.completed_request(params[:claim_id]).deliver_now
       redirect_to claim_path(claim_id: params[:claim_id])
     end 
   rescue ActiveRecord::RecordInvalid 

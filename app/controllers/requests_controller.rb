@@ -71,14 +71,6 @@ class RequestsController < ApplicationController
             pair[0] = ""
             @languages.push JSON.parse(pair)['language']
         end
-        # TODO: NEED END POINT FOR THE CATEGORY OPTIONS IN TARJIMLY SERVER
-
-        # response_two = RestClient.get( 'https://tarjim.ly/api/mobile/v1/public/all-languages')
-        # @categories = Array.new
-        # response_two.body.scan(/[^}]*}/).each do |pair|
-            # pair[0] = ""
-            # @categories.push JSON.parse(pair)['language']
-        # end
         @format = params[:document_format] || "text"
         @request = Request.new
     end
@@ -90,6 +82,7 @@ class RequestsController < ApplicationController
             end
             @request = Request.new(request_params)
             @request.to_language = to_lang
+            @request.email = session[:email]
             #TODO: should be a validation and include rest
             if @request.nil? || @request.deadline.nil?
                 redirect_to new_request_url
