@@ -1,6 +1,8 @@
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
+<script src="https://unpkg.com/feather-icons"></script>
+
 <p id="notice"><%= flash[:notice] %></p>
 
 <div class="container pad-for-nav" id="request_<%=@request.id%>">
@@ -10,10 +12,14 @@
 
   <div class="info-container">
 
-     <div class="spread">
+     <div class="card-spread">
       <span class="lead bold title"> <%= @request.title %> </span>
       <p class="lead lead-no-margin bold mg-tb-5"> 
-        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+        <% if getDaysLeft(@request)[1]%>
+            <span class="blue">Overdue: </span> <%= getDaysLeft(@request)[0] %> <i class="feather" data-feather="frown"></i> </span>
+          <% else %>
+            <span class="blue">Due: </span> <span> <%= getDaysLeft(@request)[0] %> </span>
+          <%end%>
       </p>
     </div>
 
@@ -71,3 +77,6 @@
   </div>  
 </div>
 
+<script>
+  feather.replace();
+</script>

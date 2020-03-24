@@ -13,13 +13,16 @@
  *=require font-awesome
  */
 
-// @import "bootstrap-sprockets";
 $primary: #337ab7;
 @import "bootstrap";
 @import "font-awesome";
+@import "tempusdominus-bootstrap-4";
 
-
-
+.feather {
+  color: #ff6b00;
+  position: relative;
+  top: 5px;
+}
 .form-control {
   background-color: #f8f9fa;
   border-color:  #f8f9fa;;
@@ -380,7 +383,10 @@ $primary: #337ab7;
 
 
 
-
+.card-spread {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 .requests-card {
@@ -777,6 +783,7 @@ input[type="checkbox"]:checked + label {
   color: #337ab7;
   font-weight: 400;
   font-size: 18px;
+  z-index: 3;
 }
 
 .dd-alt {
@@ -891,8 +898,19 @@ input[type="checkbox"]:checked + label {
   @extend .alert-danger;
 }
 
+
+
 @media (min-width: 576px){
   .modal-dialog {
     max-width: 700px;
   }
 }
+
+@media (max-width: 576px){
+  .card-spread {
+    flex-flow: column;
+    padding-bottom: 5px;
+  }
+}
+
+

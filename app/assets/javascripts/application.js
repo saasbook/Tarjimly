@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require moment
 //= require rails-ujs
 //= require activestorage
 //= require popper
@@ -24,6 +25,7 @@
 //= require detect_timezone
 //= require jquery.detect_timezone
 //= require jstimezonedetect
+//= require tempusdominus-bootstrap-4.js
 
 
 
