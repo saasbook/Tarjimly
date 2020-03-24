@@ -159,7 +159,7 @@
           <div class="form-group">
           <%#  <% if @format == "text"%>
               <%= r.label(:document, {class:"no-mg-tb"})%>
-              <small class="form-text text-muted no-mg-tb mg-bt-5"> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. </small> 
+              <small class="form-text text-muted no-mg-tb mg-bt-5"> Please copy and paste the specific text that you would like translated below, in the order in which you would like it to be translated. Our translators will provide a line for line translation for what you enter here. </small> 
               <%= r.text_area(:document_text, rows: 5,  required: true, direct_upload: true,  contenteditable:"true", class: "form-control") %>
               <%# <%= link_to "Upload File Instead", new_request_path(document_format: "upload"), method: :get %>
             <%# <% else %>
@@ -173,7 +173,7 @@
 
           <div class="form-group">
             <%= r.label(:instructions, {class:"no-mg-tb"}) %>
-            <small class="form-text text-muted no-mg-tb mg-bt-5"> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</small> 
+            <small class="form-text text-muted no-mg-tb mg-bt-5"> If there are any specific instructions for your translation, such as addressing young children and using simpler language, please include them here so our translators will be able to provide the best possible translation for your request. </small> 
             <%= r.text_field(:description, required: true, class: "form-control") %>
           </div>
           
