@@ -3,15 +3,15 @@ Rails.application.configure do
 
   # email production configuration 
 
-  config.action_mailer.delivery_method = :smtp
-  host = 'tarjim.ly' 
-  config.action_mailer.default_url_options = { host: host }
+  # host = 'tarjim.ly' 
+  # config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.delivery_method     = :aws_sdk
   config.action_mailer.smtp_settings = {
-   address:              'smtp.gmail.com',
+   address:              'email-smtp.us-west-2.amazonaws.com',
    port:                 587,
-   user_name:            'team@tarjim.ly',
-   password:             'TarjimlyTranslate!123',
-   authentication:       'plain',
+   user_name:            ENV["SES_SMTP_USERNAME"],
+   password:             ENV["SES_SMTP_PASSWORD"],
+   authentication:       'login',
    enable_starttls_auto: true }
 
 
