@@ -5,6 +5,8 @@ Rails.application.configure do
 
   # host = 'tarjim.ly' 
   # config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.perform_deliveries = false
+
   config.action_mailer.delivery_method     = :aws_sdk
   config.action_mailer.smtp_settings = {
    address:              'email-smtp.us-west-2.amazonaws.com',
