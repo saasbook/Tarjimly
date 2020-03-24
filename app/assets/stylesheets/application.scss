@@ -13,12 +13,10 @@
  *=require font-awesome
  */
 
-// @import "bootstrap-sprockets";
 $primary: #337ab7;
 @import "bootstrap";
 @import "font-awesome";
-
-
+@import "tempusdominus-bootstrap-4";
 
 .form-control {
   background-color: #f8f9fa;
