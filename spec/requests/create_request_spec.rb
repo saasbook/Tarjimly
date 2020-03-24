@@ -12,7 +12,7 @@ describe "Navigating to a new request " do
   it "should find the new request button" do
       visit "/requests"
       click_button 'New Request'
-      expect(page).to have_current_path('/requests/new')          
+      expect(page).to have_current_path('/requests')          
   end
 end
 
@@ -22,7 +22,8 @@ describe "Creating a new request" do
     fill_in 'email', with: "cassihardin@gmail.com"
     fill_in 'password', with: "tarjimlydocs19"
     click_button('Login')
-    visit "/requests/new"
+    visit "/requests"
+    click_button 'New Request'
   end
 
   it "should be able to fill in fields successfully" do
@@ -31,7 +32,7 @@ describe "Creating a new request" do
     fill_in 'request_document_text', with: 'Rspec Test Document'
     fill_in 'request_deadline', with: '2097-08-08'
     select 'English', from: 'request_from_language'
-    select 'Arabic', from: 'request_to_language'
+    select 'Afar', from: 'request_to_language'
     click_button('Create Request')
     expect(page).to have_current_path('/requests')
   end
@@ -41,28 +42,30 @@ describe "Creating a new request" do
       fill_in 'request_title', with: 'Rspec Test'
     end
     click_button 'Create Request'
-    expect(page).to have_current_path('/requests/new')
+    expect(page).to have_current_path('/requests')
   end
 
-  it "should be able to upload a file" do
-    click_link("Upload File Instead")
-    test_file = File.join(Rails.root, "test/fixtures/files/test.pdf")
-    within("#new_request") do
-      fill_in 'request_title', with: 'Rspec Upload Test'
-      fill_in 'request_description', with: 'Rspec Test Description'
-      fill_in 'request_deadline', with: '2097-08-08'
-      attach_file('request_document_uploads', test_file)
-      select 'English', from: 'request_from_language'
-      select 'Arabic', from: 'request_to_language'
-    end
-    click_button 'Create Request'
+  # testing for disabled file upload
+
+  # it "should be able to upload a file" do
+  #   click_link("Upload File Instead")
+  #   test_file = File.join(Rails.root, "test/fixtures/files/test.pdf")
+  #   within("#new_request") do
+  #     fill_in 'request_title', with: 'Rspec Upload Test'
+  #     fill_in 'request_description', with: 'Rspec Test Description'
+  #     fill_in 'request_deadline', with: '2097-08-08'
+  #     attach_file('request_document_uploads', test_file)
+  #     select 'English', from: 'request_from_language'
+  #     select 'Arabic', from: 'request_to_language'
+  #   end
+  #   click_button 'Create Request'
 
     # page.should have_selector(:link_or_button, 'View')
    
 
     # click_button 'View'
     # expect(page).to have_text('pdf')
-  end
+  # end
 
 end
 
