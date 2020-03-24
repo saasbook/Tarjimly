@@ -48,6 +48,7 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 gem 'twitter-bootstrap-rails-confirm', '~> 1.0', '>= 1.0.4'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'popper_js', '~> 1.14.5'
+gem 'bootstrap4-datetime-picker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
