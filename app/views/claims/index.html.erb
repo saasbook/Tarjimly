@@ -1,6 +1,8 @@
 <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
 <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 <%= csrf_meta_tags %>
+<script src="https://unpkg.com/feather-icons"></script>
+
 
 
 <div class="flex-container pad-for-nav">
@@ -85,16 +87,16 @@
       <% @claims.each do |claim| %>
           <% request = claim.request%>
           <div class="requests-card mg-top-15" id="request_<%=request.id%>">
-            <div class="spread">
+            <div class="card-spread">
               <h4 class="card-title">
                 <%= request.title %>
               </h4>
-              <p class="lead-no-margin card-subs pad-top-5">
+              <p class="lead-no-margin card-subs">
                 <% if claim._status.to_i != 1%>
                   <% if getDaysLeft(request)[1]%>
-                    <span class="blue">Deadline: </span> <%= getDaysLeft(request)[0] %> <i class="fa fa-exclamation-circle red"></i>  </span>
+                    <span class="blue">Overdue: </span> <%= getDaysLeft(request)[0] %> <i class="feather" data-feather="frown"></i> </span>
                   <% else %>
-                    <span class="blue">Deadline: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                    <span class="blue">Due: </span> <span> <%= getDaysLeft(request)[0] %> </span>
                   <%end%>
                 <% end %>
               </p>
@@ -133,7 +135,9 @@
   </div>
 </div>
 
-
+<script>
+   feather.replace()
+</script>
 
 
 

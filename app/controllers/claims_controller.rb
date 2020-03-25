@@ -130,19 +130,26 @@ end
   end
 
   def getDaysLeft(request)
-    days_left = ((request.deadline.time.in_time_zone(session[:time_zone]) - request.created_at.time.in_time_zone(session[:time_zone])).to_i)/86400
-    if days_left == -1
-      return "1 day ago", true
-    elsif days_left < 0
-      return (-1*days_left).to_s + " days ago", true
-    elsif days_left == 0
-      return "Today", true
-    elsif days_left == 1
-      return "1 day", true
-    else
-      return days_left.to_s + " days", false
+    request_time = request.deadline.time.in_time_zone(session[:time_zone])
+    days_left = ( request_time - Time.now) /86400
+    time_of_day = DateTime.parse(request_time.to_s).strftime("%l:%M %p")
+    day_of_week = DateTime.parse(request_time.to_s).strftime("%A")
+    day = DateTime.parse(request_time.to_s).strftime("%B %e")
+    puts "DAYS LEFT: #{days_left}"
+    if days_left >= 0 && days_left < 1
+        return "Today, #{time_of_day}", false            
+    elsif days_left >= 1 && days_left < 2
+        return "Tomorrow, #{time_of_day}", false
+    elsif days_left >= 2 && days_left < 7
+        return "#{day_of_week}, #{time_of_day}", false
+    elsif days_left < 0 && days_left >= -1
+        return "Yesterday, #{time_of_day}", true
+    elsif days_left < -1
+        return "#{day}, #{time_of_day}", true
+    else 
+        return "#{day}, #{time_of_day}", false
     end
-  end
+end
 
   def authorize
     if @translatorID.present?
