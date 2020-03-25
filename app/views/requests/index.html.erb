@@ -159,7 +159,7 @@
           <div class="form-group">
           <%#  <% if @format == "text"%>
               <%= r.label(:document, {class:"no-mg-tb"})%>
-              <small class="form-text text-muted no-mg-tb mg-bt-5"> Please copy and paste the specific text that you would like translated below, in the order in which you would like it to be translated. Our translators will provide a line for line translation for what you enter here. </small> 
+              <small class="form-text text-muted no-mg-tb mg-bt-5"> Please copy and paste the specific text that you would like translated below, in the order in which you would like it to be translated. Our translators will provide a line for line translation for what you enter here. We recommend numbering each paragraph or line before your text in order to make it clear to the translator </small> 
               <%= r.text_area(:document_text, rows: 5,  required: true, direct_upload: true,  contenteditable:"true", class: "form-control") %>
               <%# <%= link_to "Upload File Instead", new_request_path(document_format: "upload"), method: :get %>
             <%# <% else %>
