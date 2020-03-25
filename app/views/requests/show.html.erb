@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/feather-icons"></script>
+
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %> alert-dismissible" role="alert">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -17,11 +19,15 @@
   </div>
 
   <div class="info-container">
-    <div class="spread">
+    <div class="card-spread">
       <span class="lead bold title"> <%= @request.title %> </span>
       <p class="lead lead-no-margin bold mg-tb-5"> 
         <% if @request._status.to_i != 1%>
-        <span class="blue">Deadline: </span><%= @request.deadline.time.in_time_zone(session[:time_zone]).to_s[0..10] %>
+          <% if getDaysLeft(@request)[1]%>
+            <span class="blue">Overdue: </span> <%= getDaysLeft(@request)[0] %> <i class="feather" data-feather="frown"></i> </span>
+          <% else %>
+            <span class="blue">Due: </span> <span> <%= getDaysLeft(@request)[0] %> </span>
+          <%end%>
         <% end %>
       </p>
     </div>
@@ -95,3 +101,6 @@
     </div>
   <%end%>
 </div>
+<script>
+  feather.replace();
+</script>

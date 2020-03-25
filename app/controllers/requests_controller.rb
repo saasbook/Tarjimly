@@ -80,12 +80,16 @@ class RequestsController < ApplicationController
             if to_lang.nil? || to_lang.empty?
                 next
             end
+  
             @request = Request.new(request_params)
             @request.to_language = to_lang
             @request.email = session[:email]
+            @request.deadline = DateTime.strptime(params[:request]['deadline'], '%m/%d/%Y %I:%M %p')
+
             #TODO: should be a validation and include rest
-            if @request.nil? || @request.deadline.nil?
-                redirect_to new_request_url
+            if @request.nil?
+                flash[:alert] = "Uh Oh! There was an error creating your request." 
+                redirect_to requests_url
                 return
             end
             upload_format = params[:request][:format] || "text"
@@ -127,11 +131,24 @@ class RequestsController < ApplicationController
     end
 
     def getDaysLeft(request)
-        days_left = ((request.deadline.time.in_time_zone(session[:time_zone]) - request.created_at.time.in_time_zone(session[:time_zone])).to_i)/86400
-        if days_left < 0
-            return (-1*days_left).to_s + " days ago", true
-        else
-            return days_left.to_s + " days", false
+        request_time = request.deadline.time.in_time_zone(session[:time_zone])
+        days_left = ( request_time - Time.now) /86400
+        time_of_day = DateTime.parse(request_time.to_s).strftime("%l:%M %p")
+        day_of_week = DateTime.parse(request_time.to_s).strftime("%A")
+        day = DateTime.parse(request_time.to_s).strftime("%B %e")
+        puts "DAYS LEFT: #{days_left}"
+        if days_left >= 0 && days_left < 1
+            return "Today, #{time_of_day}", false            
+        elsif days_left >= 1 && days_left < 2
+            return "Tomorrow, #{time_of_day}", false
+        elsif days_left >= 2 && days_left < 7
+            return "#{day_of_week}, #{time_of_day}", false
+        elsif days_left < 0 && days_left >= -1
+            return "Yesterday, #{time_of_day}", true
+        elsif days_left < -1
+            return "#{day}, #{time_of_day}", true
+        else 
+            return "#{day}, #{time_of_day}", false
         end
     end
 
@@ -173,6 +190,6 @@ class RequestsController < ApplicationController
 
     private
     def request_params
-        params.require(:request).permit(:from_language, :to_language, :deadline, :document_text, :document_format, :title, :description,:form_type, categories: [], document_uploads: [])
+        params.require(:request).permit(:from_language, :deadline, :document_text, :document_format, :title, :description,:form_type, to_language: [], categories: [], document_uploads: [])
     end
 end

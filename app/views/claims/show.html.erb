@@ -1,3 +1,4 @@
+<script src="https://unpkg.com/feather-icons"></script>
 
 <% flash.each do |key, value| %>
   <div class="alert alert-<%= key %> alert-dismissible" role="alert">
@@ -15,10 +16,16 @@
   </div>
 
   <div class="info-container">
-    <div class="spread">
+    <div class="card-spread">
       <span class="lead bold title"> <%= @request.title %> </span>
       <p class="lead lead-no-margin bold mg-tb-5"> 
-        <span class="blue">Deadline: </span><%= @request.deadline.to_s[0..10] %>
+        <% if @request._status.to_i != 1 || @request._status!=3 %>
+          <% if getDaysLeft(@request)[1]%>
+            <span class="blue">Overdue: </span> <%= getDaysLeft(@request)[0] %> <i class="feather" data-feather="frown"></i> </span>
+          <% else %>
+            <span class="blue">Due: </span> <span> <%= getDaysLeft(@request)[0] %> </span>
+          <%end%>
+        <% end %>
       </p>
     </div>
     <p class="lead bold langs"> 
@@ -97,3 +104,6 @@
     <%end%>
   </div>  
 </div>
+<script>
+  feather.replace();
+</script>
