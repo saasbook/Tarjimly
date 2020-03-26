@@ -34,7 +34,7 @@ describe 'About to translate' do
         click_button('Login')
         expect(@request._status).to equal(3)
         expect(page).to have_current_path("/requests")   
-        expect(page).to have_content("Your request Passport Application has been translated")
+        expect(page).to have_content("Your request Passport Application from English to Arabic has been translated")
         visit current_path
         expect(@request.reload._status).to equal(1)
     end 
