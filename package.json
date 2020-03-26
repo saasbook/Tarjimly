@@ -10,7 +10,7 @@
   "engines": {
     "npm": "6.9.0",
     "node": "10.16.3",
-    "yarn": "1.21.1"
+    "yarn": "1.x"
   },
   "dependencies": {
     "abbrev": "^1.1.1",
