@@ -185,7 +185,7 @@ class RequestsController < ApplicationController
         if @requests.present?
             flash[:success] = []
             @requests.each do |request|
-                flash[:success] << "Your request #{view_context.link_to(request.title,  request_path(request_id: request.id))} has been translated!"
+                flash[:success] << "Your request #{view_context.link_to(request.title,  request_path(request_id: request.id))} from #{request.from_language} to #{request.to_language} has been translated!"
                 request._status = 1
                 request.save!
             end 
