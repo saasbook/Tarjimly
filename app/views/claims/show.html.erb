@@ -34,7 +34,7 @@
         <%=@request.to_language %>
     </p>
     <p class="lead lead-no-margin" style="margin-bottom: 10px"> 
-      <%= @request.description %><br/>
+      <%= simple_format(@request.description) %>
         <% if @request.categories%>
             <div class="tags-container">
               <% @request.categories.each do |c| %>
@@ -57,7 +57,7 @@
         </p>
         <div class="document-text">
           <p class="lead lead-small lead-no-margin"> 
-              <%= @request.document_text %>
+              <%= simple_format(@request.document_text) %>
           </p>
         </div>
       <% else %>
@@ -81,7 +81,7 @@
       </p>
       <div class="document-text">
         <p class="lead lead-small lead-no-margin"> 
-          <%= @claim.translation_text %>
+          <%= simple_format(@claim.translation_text) %>
         </p>
       </div>
     </div>

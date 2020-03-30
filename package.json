@@ -7,6 +7,11 @@
     "lib": "lib",
     "test": "test"
   },
+  "engines": {
+    "npm": "6.9.0",
+    "node": "10.16.3",
+    "yarn": "1.x"
+  },
   "dependencies": {
     "abbrev": "^1.1.1",
     "accepts": "^1.3.7",
@@ -805,7 +810,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "rails server"
   },
   "repository": {
     "type": "git",
