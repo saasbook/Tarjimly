@@ -1,8 +1,7 @@
 
 class RequestMailer < ApplicationMailer
-    default from: 'cassihardin@gmail.com'
+    default from: 'team@tarjim.ly'
     # prepend_view_path "completed_request"
-    puts "OPENED UP SPECIFIC MAILER AND MADE PROGRESSS"
 
     def completed_request(claim_id)
         @claim = Claim.find_by_id(claim_id)

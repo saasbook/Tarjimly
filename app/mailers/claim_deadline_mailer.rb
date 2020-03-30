@@ -1,5 +1,5 @@
 class ClaimDeadlineMailer < ApplicationMailer
-    default from: 'cassihardin@gmail.com'
+    default from: 'team@tarjim.ly'
     def claim_24hr_deadine(claim_id)
         @claim = Claim.find_by_id(claim_id)
         translator_email = @claim.email
