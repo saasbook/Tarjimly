@@ -1,0 +1,51 @@
+## Ignore Mac OS Stuff
+.DS_Store
+.AppleDouble
+.LSOverride
+
+## Ignore VSCode Stuff
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+## Ignore RubyMine Stuff
+.idea/
+
+## Ignore Rails Stuff
+# Logfiles and tempfiles.
+/log/
+/tmp/
+!/log/.keep
+!/tmp/.keep
+
+# Secrets
+config/initializers/secret_token.rb
+config/master.key
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+
+#db
+db/test.sqlite3
+db/development.sqlite3
+
+#Extra assets
+/node_modules/
+/public/assets/
+
+# Coverage
+/coverage/*
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore application configuration
+/config/application.yml

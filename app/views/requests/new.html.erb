@@ -1,0 +1,65 @@
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+
+<div class="container">
+  <h1 class="page-header-title" style="margin: 2.5em 0 1em 0"> New Request </h1>
+  <%= form_for @request do |r| %>
+    <div class="form-group">
+     <%#  <% if @format == "text"%>
+        <%= r.label :document %><br>
+        <%= r.text_area(:document_text,  required: true, direct_upload: true, class: "form-control") %>
+        <%# <%= link_to "Upload File Instead", new_request_path(document_format: "upload"), method: :get %>
+      <%# <% else %>
+       <%#  <%= r.label :document_uploads %>
+       <%#  <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %>
+       <%#  <%= link_to "Enter Text Instead", new_request_path(document_format: "text"), method: :get %>
+      <%# <% end %>
+    </div>
+
+    <div class="form-group">
+          <%= r.label(:from_language, {class:"pad-bt-5"})%><br>
+          <%= r.select("from_language", options_for_select(@languages), {}, {class: "form-control selectpicker", required: true }) %>
+        </div>
+        <div class="form-group">
+           <%= r.label(:to_language, {class:"pad-bt-5"})%><br>
+          <%= r.select("to_language", options_for_select(@languages), {}, {class: "form-control selectpicker", multiple: true, required: true}) %>
+        </div>
+
+    <div class="form-group">
+      <%= r.label :title %><br>
+      <%= r.text_field(:title, required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <%= r.label :instructions %><br>
+      <%= r.text_field(:description, required: true, class: "form-control") %>
+    </div>
+
+    <%= r.hidden_field :document_format, value: @format %>
+
+    <div class="form-group">
+      <%= r.label :deadline %><br>
+      <%= r.date_field(:deadline, min: Date.today, required: true, class: "form-control") %>
+    </div>
+
+    <div class="form-group">
+      <% @categories = ["Legal", "Medical", "Housing", "Day To Day"]%>
+      <%= r.label :categories %><br>
+      <% @categories.each do |c| %>
+          <%= r.check_box :categories, { multiple: true }, c, false %>
+          <%= r.label c %>
+      <% end %>
+    </div>
+
+    <div class="form-group">
+      <%= r.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= button_to "Cancel", requests_path, action: "index", method: :get, data: { confirm: 'Are you sure you want to cancel this request?', title: 'Confirm Request Cancellation', commit: 'YES', cancel: 'NO'}, class: "btn btn-primary" %>
+  </div>
+</div>

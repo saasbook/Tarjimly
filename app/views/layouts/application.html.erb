@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TarjimlyDocs</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag "application" %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  </head>
+
+  <body>
+    <% if session[:role].nil? || session[:role].empty? %>
+        <div ></div>
+    <% elsif session[:role] == "Translator" %>
+      <div class="tarjimly-nav">
+          <%= image_tag "logo.png", style: "height: 100%"%>
+          <a href="/claims" class="">My Claims</a>
+      </div>
+    <% else %>
+      <div class="tarjimly-nav">
+          <%= image_tag "logo.png", style: "height: 100%"%>
+          <a href="/requests" class="">My Requests</a>
+      </div>
+    <% end %>
+     
+
+<%# <h1> there should be text displaying right now  </h1> %>
+  <% flash.each do |key, value| %>
+      <% if key == 'alert' %>
+        <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= value %>
+        </div>
+      <%end%>
+    <% end %>
+
+  <%= yield %>
+
+  </body>
+</html>

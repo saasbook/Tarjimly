@@ -1,0 +1,227 @@
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/css/bootstrap-select.min.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.9/dist/js/bootstrap-select.min.js"></script>
+<script src="https://unpkg.com/feather-icons"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.0-alpha14/css/tempusdominus-bootstrap-4.min.css" />
+
+
+<div class="flex-container pad-for-nav">
+    <div class="flex-sidebar">
+      <div class="profile-container">
+        <h3> <%=@name%> </h3>
+        <h4 class="bold-2"> <%=@role%> </h4>
+        <h4> Total Requests: <span class="badgey"><%= @total_count %></span> </h4>
+        <%=link_to "Sign Out", :controller => "auth", :action => :logout, method: :get, class: "btn btn-primary" %>
+
+      </div>
+      
+      <h3 class="section-header pad-left mg-bt-10"> Notifications </h3>
+      
+      <div class="notifications-container">
+          <% flash.each do |key, value| %>
+          <% if key != 'alert'%>
+            <% if key == 'success' %>
+            <% value.each do |val| %>
+              <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <%= raw val %>
+                    </div>
+              <% end %>
+             <% else%>
+              <div class="alert alert-<%= key %> alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <%= value %>
+              </div>
+
+            <%end%>
+            <%end%>
+          <% end %>
+          <% if flash.nil? || flash.empty? %>
+            <div class="alert alert-warning" role="alert">
+              You have no new notifications.
+            </div>
+          <% end %>
+      </div>
+
+    </div>
+    <div class="flex-body">
+      <div class="card-spread mg-10" >
+        <h3 class="section-header-big">
+          <% if @status.is_a?(String) && @status.to_i == 0%>
+            Pending Requests
+          <% elsif @status.is_a?(String) && @status.to_i == 1%>
+            Completed Requests
+          <% else %>
+            My Requests
+          <% end %>
+        </h3>
+        <div class="flex phone-header">
+          <button type="button" style="margin-right: 10px"  class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            New Request
+          </button>
+
+          <label class="dropdown">
+            <div class="dd-button">
+              Filter
+            </div>
+            <input type="checkbox" class="dd-input" id="test">
+
+            <ul class="dd-menu">
+              <li><%= link_to "All Requests", requests_url() %></li>
+              <li><%= link_to "Pending Requests", requests_url(status: 0) %></li>
+              <li><%= link_to "Completed Requests", requests_url(status: 1) %></li>
+            </ul>
+          </label>
+        </div>
+      </div>
+
+      <div class="request-list">
+      <% if @requests.empty? %>
+        <%if @status.is_a?(String) && @status.to_i == 1 %>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no completed requests at the moment, please check back later! 
+          </div>
+        <%else%>
+          <div class="alert alert-warning mg-tp-20" role="alert">
+            You have no pending requests at the moment, get started by making a <a href="" data-toggle="modal" data-target="#staticBackdrop" class="alert-link">new request</a>!
+        <%end%>
+      <% end %>
+      <% @requests.each do |request| %>
+          <div class="requests-card mg-top-15" id="request_<%=request.id%>">
+            <div class="card-spread">
+              <h4 class="card-title">
+                <%= request.title %>
+              </h4>
+              <p class="lead-no-margin card-subs">
+                 <% if request._status.to_i != 1%>
+                  <% if getDaysLeft(request)[1]%>
+                    <span class="blue">Overdue: </span> <%= getDaysLeft(request)[0] %> <i class="feather" data-feather="frown"></i> </span>
+                  <% else %>
+                    <span class="blue">Due: </span> <span> <%= getDaysLeft(request)[0] %> </span>
+                  <%end%>
+                <% end %>
+              </p>
+            </div>
+            <p class="langs card-subs"> 
+                <%= request.from_language %>
+                <i class="fa fa-arrow-right sm"></i>
+                <%=request.to_language %>
+            </p>
+            <p class="card-text">
+              <%= simple_format(request.description) %>
+            </p>
+            <div class="card-row">
+              <div class="">
+                <div class="tags-container">
+                  <% if request.categories%>
+                    <% request.categories.each do |c| %>
+                      <span class="tag tag-blue"><%= "#{c}" %></span>
+                    <% end %>
+                  <%end%>
+                  <% if request._status==0%>
+                      <span class="tag tag-orange"> Pending</span>
+                    <% elsif request._status==1 %>
+                      <span class="tag tag-green"> Completed</span>
+                    <% end %>
+                </div>
+              </div>
+              <div class="card-col-2">
+                <%= button_to "View", request_path(request_id: request.id), action: "show", method: :get, class:"btn btn-primary", style: "margin: 5px 0 0 0" %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- New Request Modal -->
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">New Request</h5>
+
+      </div>
+       <%= form_for @request do |r| %>
+        <div class="modal-body">
+
+        <div class="form-group">
+            <%= r.label :title %><br>
+            <%= r.text_field(:title, required: true, class: "form-control") %>
+          </div>
+         
+         <div class="form-group">
+            <%= r.label(:from_language, "From Lanaguage", {class:"pad-bt-5"})%><br>
+            <%= r.select("from_language", options_for_select(@languages), {prompt: "Select Language"}, {class: "form-control selectpicker", required: true, "data-live-search": true, "data-live-search-placeholder": "Search Languages" }) %>
+          </div>
+          <div class="form-group">
+            <%= r.label(:to_language, "To Language(s)", {class:"pad-bt-5"})%><br>
+            <%= r.select("to_language", options_for_select(@languages), {}, {class: "form-control selectpicker", multiple: true, required: true, "data-live-search": true, "data-live-search-placeholder": "Search Languages" }) %>
+          </div>
+
+           
+         
+          <div class="form-group">
+          <%#  <% if @format == "text"%>
+              <%= r.label(:document, {class:"no-mg-tb"})%>
+              <small class="form-text text-muted no-mg-tb mg-bt-5"> Please copy and paste the specific text that you would like translated below, in the order in which you would like it to be translated. Our translators will provide a line for line translation for what you enter here. We recommend numbering each paragraph or line before your text in order to make it clear to the translator. </small> 
+              <%= r.text_area(:document_text, rows: 8,  required: true, direct_upload: true,  contenteditable:"true", class: "form-control") %>
+              <%# <%= link_to "Upload File Instead", new_request_path(document_format: "upload"), method: :get %>
+            <%# <% else %>
+            <%#  <%= r.label :document_uploads %>
+            <%#  <%= r.file_field(:document_uploads, multiple: true, accept: 'image/png, image/jpeg, application/pdf', required: true, class: "form-control-file") %>
+            <%#  <%= link_to "Enter Text Instead", new_request_path(document_format: "text"), method: :get %>
+            <%# <% end %>
+          </div>
+           
+
+
+          <div class="form-group">
+            <%= r.label(:instructions, {class:"no-mg-tb"}) %>
+            <small class="form-text text-muted no-mg-tb mg-bt-5"> If there are any specific instructions for your translation, such as addressing young children and using simpler language, please include them here so our translators will be able to provide the best possible translation for your request. </small> 
+            <%= r.text_area(:description, required: true, class: "form-control") %>
+          </div>
+          
+
+          <%= r.hidden_field :document_format, value: @format %>
+
+          <div class="form-group">
+            <%= r.label :deadline %><br>
+            <%= r.text_field(:deadline, autocomplete:"off", class: "form-control datetimepicker-input", "data-toggle": "datetimepicker", "data-target": "#request_deadline", required: true )%>
+          </div>
+
+
+
+          <div class="form-group">
+            <%= r.label :categories %><br>
+            <%= r.select("categories", options_for_select(@categories), {}, {class: "form-control selectpicker", multiple: true, required: true}) %>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <%= r.submit class: "btn btn-primary" %>
+            
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<script>
+  $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+  $(function () {
+    $('.selectpicker').selectpicker();
+  });
+  $(function () {
+      $('#request_deadline').datetimepicker();
+  });
+  
+   feather.replace()
+</script>
+ 

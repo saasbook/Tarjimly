@@ -1,0 +1,86 @@
+
+<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+
+<!DOCTYPE html>
+<html>
+  <head>
+  <style>
+    h1 {color:#337ab7;;
+    font-size:42px;
+    font-weight: 325;}
+    p {color:black;
+    font-size:22px;font-weight: 275;}
+    input[type=submit] {
+   
+      background:transparent; 
+      padding:5px 15px; 
+      border:0 none;
+      cursor:pointer;
+      -webkit-border-radius: 5px;
+      border-radius: 5px; 
+      font-size: 32px;
+      font-weight: 250;
+      color:#346BB4;
+      border: 2px solid #346BB4;
+    }
+    input:hover[type="submit"] {
+      padding:5px 15px; 
+      background:#346BB4; 
+      border:0 none;
+      cursor:pointer;
+      -webkit-border-radius: 5px;
+      border-radius: 5px; 
+      font-size: 32px;
+      font-weight: 250;
+      border: 2px solid #346BB4;
+      color: white;
+    }
+  </style>
+ 
+  </head>
+  <body>
+  <br>
+  <center>
+
+  <%= image_tag(attachments['logo-2.png'].url) %>
+  </center>
+    <h1> Hello!  </h1>
+    <br>
+    <p >
+      The request <%= @request.title%> you claimed is due tomorrow and has not been submitted. Visit TarjimlyDocs to complete the translation! 
+      <br>
+    </p>
+    <br>
+
+    <center>
+      <a href="https://www.docs.tarjim.ly/claims/<%=@claim.id%>" style="background:#346BB4; 
+      padding:5px 15px; 
+      border:0 none;
+      cursor:pointer;
+      -webkit-border-radius: 5px;
+      border-radius: 5px; 
+      font-size: 32px;
+      font-weight: 250;
+      color:white;
+      border: 2px solid #346BB4;">
+      TarjimlyDocs </a>
+    </form>
+      </center>   
+    <br>
+    <p >
+     Thank you for your help supporting our mission!
+      <br>
+      The Tarjimly Team </p>
+      <p style="color:black;font-size:18px;font-weight: 200;">
+      <a href="https://www.tarjim.ly" > Tarjimly </a> 
+      <br> 
+      40 Royal Oak Ct <br>
+      Mountain View, CA 94040 <br>
+      <a href="tel:+17038629708">+1-703-862-9708</a> <br>
+      <a href="mailto:team@tarjim.ly">team@tarjim.ly</a> <br>   
+      </p>
+   
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<% if session[:tarjimlyID] != nil%>
+    <% if session[:role] == 'Translator'%>
+        <script type="text/javascript">
+          window.location.href="/claims"  
+        </script>
+    <% else%>
+    <script type="text/javascript">
+          window.location.href="/requests"
+        </script>
+    <% end %>
+  <% end %>
+<%= stylesheet_link_tag "main", media: "all", "data-turbolinks-track" => true %>
+<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+<%= csrf_meta_tags %>
+ <div class="home">
+ <div class="limiter">
+		<div class="container-login100">
+			<div class="wrap-login100">
+				<%= form_tag(validate_login_path, class: "login100-form validate-form") do %>
+          <span class="login100-form-img"><%= image_tag "logo-2.png"%></span>
+		      <% flash.each do |key, value| %>
+          		<% if key == 'info'%>
+              		<div class="alert alert-<%= key %> alert-dismissible" role="alert">
+                		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                		<%= value %>
+              		</div>
+            	<%end%>
+          	<% end %>
+					
+					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100 has-val" type="text" name="email" id="email">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Email</span>
+					</div>
+					
+					
+					<div class="wrap-input100 validate-input" data-validate="Password is required">
+						<input class="input100 has-val" type="password" name="password" name="password">
+						<span class="focus-input100"></span>
+						<span class="label-input100">Password</span>
+					</div>
+
+					
+			
+
+					<div class="container-login100-form-btn">
+          <%= submit_tag "Login", class:"login100-form-btn"%><br/>
+
+					</div>
+					
+					<div class="text-center mg-tp-10 p-b-20">
+            <a href="https://tarjimly.org/invite">
+						<span class="txt2">
+							or sign up
+						</span>
+            </a>
+					</div>
+
+					
+				</form>
+
+				<div class="login100-more" style="background-image: url('assets/landing.jpg');">
+				</div>
+        <% end %>
+			</div>
+		</div>
+	</div>
+  </div>
+	
+	
+
+
+
